@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/header/Header";
 
-const font = Nunito({ subsets: ["latin"] });
+const pretendard = localFont({
+  src: "../public/assets/fonts/PretendardVariable.woff2",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "가치행",
@@ -16,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={font.className}>
+    <html lang='ko' className={pretendard.className}>
+      <body>
         <Header />
         {children}
       </body>
