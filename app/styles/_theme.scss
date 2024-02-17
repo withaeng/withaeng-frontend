@@ -1,61 +1,86 @@
 :root {
-  --white: #ffffff;
-  --white-100: #f2f2f2;
-  --gray-100: #0000001a;
+  --primary-main: #ffa500;
+  --primary-light: #ffc570;
+  --primary-exLight: #ffdd95;
+  --primary-pressing: #f2a10d;
 
-  --black: #000000;
+  --secondary-main: #3652ad;
+  --secondary-light: #718eed;
 
-  --sky: #4bd4f2;
-  --sky-100: #0b8cbf;
-  --bule: #0468bf;
-  --bule-200: #023e73;
-  --bule-300: #011526;
+  --nutral-black-01: #131313;
+  --nutral-black-02: #333333;
+  --nutral-black-03: #535353;
+  --nutral-black-04: #737373;
+  --nutral-black-05: #939393;
+  --nutral-white-01: #ffffff;
+  --nutral-white-02: #faf8f6;
+  --nutral-white-03: #dad8d6;
+  --nutral-white-04: #babbb6;
 
-  --yellow: #f2b705;
-  --yellow-100: #f29f05;
-  --yellow-200: #f27507;
-
-  --red: #f23a29;
-
-  /* pastel */
-  --pastel-rose: #c5afb0;
-  --pastel-rose-100: #b98780;
-  --pastel-rose-200: #b77a71;
-  --pastel-rose-300: #9b7070;
-
-  --paster-blue: #cccccc;
-  --paster-blue-100: #aababd;
-  --paster-blue-200: #8fb6ba;
-  --paster-blue-300: #7699a5;
-  --paster-blue-400: #445f72;
+  --caption-main: #ec5c53;
+  --caption-light: #f8867e;
 }
 
-$white: #ffffff;
-$white-100: #f2f2f2;
-$gray-100: #0000001a;
+$primary-main: #ffa500;
+$primary-light: #ffc570;
+$primary-exLight: #ffdd95;
+$primary-pressing: #f2a10d;
 
-$black: #000000;
+$secondary-main: #3652ad;
+$secondary-light: #718eed;
+ 
+$nutral-black-01: #131313;
+$nutral-black-02: #333333;
+$nutral-black-03: #535353;
+$nutral-black-04: #737373;
+$nutral-black-05: #939393;
+$nutral-white-01: #ffffff;
+$nutral-white-02: #faf8f6;
+$nutral-white-03: #dad8d6;
+$nutral-white-04: #babbb6;
 
-$sky: #4bd4f2;
-$sky-100: #0b8cbf;
-$blue: #0468bf;
-$blue-200: #023e73;
-$blue-300: #011526;
+$caption-main: #ec5c53;
+$caption-light: #f8867e;
 
-$yellow: #f2b705;
-$yellow-100: #f29f05;
-$yellow-200: #f27507;
-
-$red: #f23a29;
-$red-100: #f56060;
-
-$pastel-rose: #c5afb0;
-$pastel-rose-100: #b98780;
-$pastel-rose-200: #b77a71;
-$pastel-rose-300: #9b7070;
-
-$paster-blue: #cccccc;
-$paster-blue-100: #aababd;
-$paster-blue-200: #8fb6ba;
-$paster-blue-300: #7699a5;
-$paster-blue-400: #445f72;
+.font-display-01 {
+  @include font-theme(60px, 600, auto);
+}
+.font-display-02 {
+  @include font-theme(48px, 600, auto);
+}
+.font-headline-01 {
+  @include font-theme(40px, 600, auto);
+}
+.font-headline-02 {
+  @include font-theme(32px, 600, auto);
+}
+.font-headline-03 {
+  @include font-theme(28px, 600, auto);
+}
+.font-headline-04 {
+  @include font-theme(20px, 600, auto);
+}
+.font-subtitle-01 {
+  @include font-theme(16px, 600, 20px);
+}
+.font-subtitle-02 {
+  @include font-theme(14px, 600, 20px);
+}
+.font-body-01 {
+  @include font-theme(18px, 400, auto);
+}
+.font-body-02 {
+  @include font-theme(16px, 400, auto);
+}
+.font-body-03 {
+  @include font-theme(14px, 300, auto);
+}
+.font-caption-01 {
+  @include font-theme(12px, 500, auto);
+}
+.font-caption-02 {
+  @include font-theme(12px, 400, auto);
+}
+.font-caption-03 {
+  @include font-theme(10px, 300, auto);
+}

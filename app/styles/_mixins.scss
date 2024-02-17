@@ -13,3 +13,9 @@
   line-height: $line-height;
   max-height: calc($line-count * $line-height);
 }
+
+@mixin font-theme($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
