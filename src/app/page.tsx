@@ -1,4 +1,4 @@
-import variables from "@/app/styles/variables.module.scss";
+import variables from "@/styles/variables.module.scss";
 
 export default function Home() {
   return (
