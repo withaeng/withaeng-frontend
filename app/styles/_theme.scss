@@ -15,10 +15,10 @@
   --nutral-white-01: #ffffff;
   --nutral-white-02: #faf8f6;
   --nutral-white-03: #dad8d6;
-  --nutral-white-03: #babbb6;
+  --nutral-white-04: #babbb6;
 
-  --caption-01: #ec5c53;
-  --caption-02: #f8867e;
+  --caption-main: #ec5c53;
+  --caption-light: #f8867e;
 }
 
 $primary-main: #ffa500;
@@ -37,10 +37,10 @@ $nutral-black-05: #939393;
 $nutral-white-01: #ffffff;
 $nutral-white-02: #faf8f6;
 $nutral-white-03: #dad8d6;
-$nutral-white-03: #babbb6;
+$nutral-white-04: #babbb6;
 
-$caption-01: #ec5c53;
-$caption-02: #f8867e;
+$caption-main: #ec5c53;
+$caption-light: #f8867e;
 
 .font-display-01 {
   @include font-theme(60px, 600, auto);

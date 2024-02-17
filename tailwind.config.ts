@@ -34,8 +34,8 @@ const config: Config = {
         },
       },
       caption: {
-        "01": "ec5c53",
-        "02": "f8867e",
+        "main": "ec5c53",
+        "light": "f8867e",
       },
     },
     fontSize: {
