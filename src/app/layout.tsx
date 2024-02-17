@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "./components/header/Header";
 
 const pretendard = localFont({
-  src: "../public/assets/fonts/PretendardVariable.woff2",
+  src: "../../public/assets/fonts/PretendardVariable.woff2",
   display: "swap",
 });
 
