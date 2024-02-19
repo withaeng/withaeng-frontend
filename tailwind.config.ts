@@ -30,8 +30,8 @@ const config: Config = {
         },
       },
       caption: {
-        main: '#ec5c53',
-        light: '#f8867e',
+        main: 'ec5c53',
+        light: 'f8867e',
       },
     },
     fontSize: {
