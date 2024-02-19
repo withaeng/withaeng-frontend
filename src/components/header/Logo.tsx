@@ -9,7 +9,7 @@ export default function Logo() {
         className="md:block hidden cursor-pointer"
         height={100}
         width={100}
-        src="assets/images/vercel.svg"
+        src="../assets/images/vercel.svg"
       />
     </Link>
   );
