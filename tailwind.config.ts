@@ -26,7 +26,7 @@ const config: Config = {
           '01': '#ffffff',
           '02': '#faf8f6',
           '03': '#dad8d6',
-          '04': '#babbb6',
+          '04': '#bab8b6',
         },
       },
       caption: {

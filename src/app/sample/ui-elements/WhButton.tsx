@@ -1,0 +1,45 @@
+'use client';
+
+import React from 'react';
+import { IconType } from 'react-icons';
+
+const defaultBtnCss =
+  'rounded-sm disabled:opacity-40 border px-5 py-3 border-primary-main transition text-sm font-semibold flex items-center justify-center gap-2.5';
+
+const isOutLineCss =
+  'hover:bg-nutral-white-02 text-primary-main bg-nutral-white-01 disabled:text-nutral-white-04 disabled:border-nutral-white-04 disabled:bg-nutral-white-01';
+
+const noOutLineCss = 'bg-primary-main hover:bg-primary-pressing';
+
+export interface ButtonProps {
+  label: string;
+  outLine?: boolean;
+  size?: string;
+  disabled?: boolean;
+  icon?: IconType;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const WhButton: React.FC<ButtonProps> = ({
+  label,
+  size,
+  outLine,
+  disabled,
+  icon,
+  onClick,
+}) => {
+  return (
+    <button
+      disabled={disabled}
+      className={`
+      ${defaultBtnCss}
+      ${outLine ? `${isOutLineCss}` : `${noOutLineCss}`} 
+    `}
+    >
+      {/* {Icon && <Icon size={24} />} */}
+      {label}
+    </button>
+  );
+};
+
+export default WhButton;
