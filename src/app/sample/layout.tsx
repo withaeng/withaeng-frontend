@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 const linkCss =
   'text-secondary-main underline hover:text-secondary-light hover:decoration-secondary-light';
 export default function SampleLayout({
