@@ -13,16 +13,16 @@ const page = () => {
           <section className='flex flex-col gap-4'>
             <h2>BTN TYPE - LARGE</h2>
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} />
-              <WhButton label='버튼명 입력' onClick={() => {}} />
-              <WhButton label='버튼명 입력' onClick={() => {}} />
+              <WhButton label='버튼명 입력' onClick={() => {}} large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} large/>
             </div>
 
             {/* disabled */}
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled large/>
             </div>
           </section>
 
@@ -43,14 +43,14 @@ const page = () => {
           <section className='mt-20 flex flex-col gap-4'>
             <h2>BTN TYPE - SMALL</h2>
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} />
-              <WhButton label='버튼명 입력' onClick={() => {}} />
-              <WhButton label='버튼명 입력' onClick={() => {}} />
+              <WhButton label='버튼명 입력' onClick={() => {}} small/>
+              <WhButton label='버튼명 입력' onClick={() => {}} small/>
+              <WhButton label='버튼명 입력' onClick={() => {}} small/>
             </div>
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
-              <WhButton label='버튼명 입력' onClick={() => {}} disabled />
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled small/>
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled small/>
+              <WhButton label='버튼명 입력' onClick={() => {}} disabled small/>
             </div>
           </section>
         </div>
@@ -60,9 +60,9 @@ const page = () => {
           <section className='flex flex-col gap-4'>
             <h2>BTN TYPE OUTLINE LARGE</h2>
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine large/>
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine large/>
             </div>
 
             {/* disabled */}
@@ -72,18 +72,21 @@ const page = () => {
                 onClick={() => {}}
                 outLine
                 disabled
+                large
               />
               <WhButton
                 label='버튼명 입력'
                 onClick={() => {}}
                 outLine
                 disabled
+                large
               />
               <WhButton
                 label='버튼명 입력'
                 onClick={() => {}}
                 outLine
                 disabled
+                large
               />
             </div>
           </section>
@@ -120,9 +123,9 @@ const page = () => {
           <section className='mt-20 flex flex-col gap-4'>
             <h2>BTN TYPE OUTLINE - SMALL </h2>
             <div className='flex gap-8'>
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
-              <WhButton label='버튼명 입력' onClick={() => {}} outLine />
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine small />
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine small />
+              <WhButton label='버튼명 입력' onClick={() => {}} outLine small />
             </div>
             <div className='flex gap-8'>
               <WhButton
@@ -130,18 +133,21 @@ const page = () => {
                 onClick={() => {}}
                 outLine
                 disabled
+                small
               />
               <WhButton
                 label='버튼명 입력'
                 onClick={() => {}}
                 outLine
                 disabled
+                small
               />
               <WhButton
                 label='버튼명 입력'
                 onClick={() => {}}
                 outLine
                 disabled
+                small
               />
             </div>
           </section>
