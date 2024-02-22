@@ -30,104 +30,104 @@ const config: Config = {
         },
       },
       caption: {
-        main: 'ec5c53',
-        light: 'f8867e',
+        main: '#ec5c53',
+        light: '#f8867e',
       },
     },
     fontSize: {
       'display-01': [
-        '60px',
+        '6rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'display-02': [
-        '48px',
+        '4.8rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-01': [
-        '40px',
+        '4rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-02': [
-        '32px',
+        '3.2rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-03': [
-        '28px',
+        '2.8rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-04': [
-        '20px',
+        '2rem',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'subtitle-01': [
-        '16px',
+        '1.6rem',
         {
           fontWeight: '600',
           lineHeight: '20px',
         },
       ],
       'subtitle-02': [
-        '14px',
+        '1.4rem',
         {
           fontWeight: '600',
           lineHeight: '20px',
         },
       ],
       'body-01': [
-        '18px',
+        '1.8rem',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'body-02': [
-        '16px',
+        '1.6rem',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'body-03': [
-        '14px',
+        '1.4rem',
         {
           fontWeight: '300',
           lineHeight: 'auto',
         },
       ],
       'caption-01': [
-        '12px',
+        '1.2rem',
         {
           fontWeight: '500',
           lineHeight: 'auto',
         },
       ],
       'caption-02': [
-        '12px',
+        '1.2rem',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'caption-03': [
-        '10px',
+        '1rem',
         {
           fontWeight: '300',
           lineHeight: 'auto',
