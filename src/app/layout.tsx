@@ -112,7 +112,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={pretendard.className}>
+    <html lang='ko' className={pretendard.className}>
       <body>
         <Header />
         <main>{children}</main>

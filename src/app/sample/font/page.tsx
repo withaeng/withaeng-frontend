@@ -1,7 +1,8 @@
 'use client';
+
 import { useState } from 'react';
 
-const buttonCss = 'border-[1px] p-[4px] flex-none';
+const buttonCss = 'border p-4 flex-none';
 
 export default function Page() {
   const [color, changeFontColor] = useState('text-primary-main');
@@ -9,26 +10,30 @@ export default function Page() {
     <>
       <h1>Hello, Font Page!</h1>
       {/* primary */}
-      <section className='flex flex-nowrap gap-[8px]'>
+      <section className='flex flex-nowrap gap-4'>
         <button
+          type='button'
           className={`${buttonCss} text-primary-main`}
           onClick={() => changeFontColor('text-primary-main')}
         >
           primary main
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-primary-light`}
           onClick={() => changeFontColor('text-primary-light')}
         >
           primary light
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-primary-exLight`}
           onClick={() => changeFontColor('text-primary-exLight')}
         >
           primary ex-light
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-primary-pressing`}
           onClick={() => changeFontColor('text-primary-pressing')}
         >
@@ -36,14 +41,16 @@ export default function Page() {
         </button>
       </section>
       {/* secondary */}
-      <section className='flex flex-nowrap gap-[8px] my-[8px]'>
+      <section className='flex flex-nowrap gap-4 my-4'>
         <button
+          type='button'
           className={`${buttonCss} text-secondary-main`}
           onClick={() => changeFontColor('text-secondary-main')}
         >
           secondary main
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-secondary-light`}
           onClick={() => changeFontColor('text-secondary-light')}
         >
@@ -51,32 +58,37 @@ export default function Page() {
         </button>
       </section>
       {/* natural black */}
-      <section className='flex flex-nowrap gap-[8px]'>
+      <section className='flex flex-nowrap gap-4'>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-black-01`}
           onClick={() => changeFontColor('text-nutral-black-01')}
         >
           nutral black 01
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-black-02`}
           onClick={() => changeFontColor('text-nutral-black-02')}
         >
           nutral black 02
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-black-03`}
           onClick={() => changeFontColor('text-nutral-black-03')}
         >
           nutral black 03
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-black-04`}
           onClick={() => changeFontColor('text-nutral-black-04')}
         >
           nutral black 04
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-black-05`}
           onClick={() => changeFontColor('text-nutral-black-05')}
         >
@@ -84,26 +96,30 @@ export default function Page() {
         </button>
       </section>
       {/* natural white */}
-      <section className='flex flex-nowrap gap-[8px] my-[8px]'>
+      <section className='flex flex-nowrap gap-4 my-4'>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-white-01`}
           onClick={() => changeFontColor('text-nutral-white-01')}
         >
           nutral white 01
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-white-02`}
           onClick={() => changeFontColor('text-nutral-white-02')}
         >
           nutral white 02
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-white-03`}
           onClick={() => changeFontColor('text-nutral-white-03')}
         >
           nutral white 03
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-nutral-white-04`}
           onClick={() => changeFontColor('text-nutral-white-04')}
         >
@@ -111,22 +127,24 @@ export default function Page() {
         </button>
       </section>
       {/* caption */}
-      <section className='flex flex-nowrap gap-[8px]'>
+      <section className='flex flex-nowrap gap-4'>
         <button
+          type='button'
           className={`${buttonCss} text-caption-main`}
           onClick={() => changeFontColor('text-caption-main')}
         >
           caption main
         </button>
         <button
+          type='button'
           className={`${buttonCss} text-caption-light`}
           onClick={() => changeFontColor('text-caption-light')}
         >
           caption light
         </button>
       </section>
-      <section className={`flex p-[8px] gap-[8px]`}>
-        <div className={`flex flex-col p-[8px] ${color}`}>
+      <section className='flex p-4 gap-4'>
+        <div className={`flex flex-col p-4 ${color}`}>
           <span className='text-display-01'>Display 1</span>
           <span className='text-display-02'>Display 2</span>
           <span className='text-headline-01'>Headline 1</span>
@@ -134,7 +152,7 @@ export default function Page() {
           <span className='text-headline-03'>Headline 3</span>
           <span className='text-headline-04'>Headline 4</span>
         </div>
-        <div className={`flex flex-col p-[8px] ${color}`}>
+        <div className={`flex flex-col p-4 ${color}`}>
           <span className='text-subtitle-01'>Subtitle 1</span>
           <span className='text-subtitle-02'>Subtitle 2</span>
           <span className='text-body-01'>Body 1</span>
