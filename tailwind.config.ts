@@ -36,98 +36,98 @@ const config: Config = {
     },
     fontSize: {
       'display-01': [
-        '6rem',
+        '60px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'display-02': [
-        '4.8rem',
+        '48px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-01': [
-        '4rem',
+        '40px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-02': [
-        '3.2rem',
+        '32px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-03': [
-        '2.8rem',
+        '28px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'headline-04': [
-        '2rem',
+        '20px',
         {
           fontWeight: '600',
           lineHeight: 'auto',
         },
       ],
       'subtitle-01': [
-        '1.6rem',
+        '16px',
         {
           fontWeight: '600',
           lineHeight: '20px',
         },
       ],
       'subtitle-02': [
-        '1.4rem',
+        '14px',
         {
           fontWeight: '600',
           lineHeight: '20px',
         },
       ],
       'body-01': [
-        '1.8rem',
+        '18px',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'body-02': [
-        '1.6rem',
+        '16px',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'body-03': [
-        '1.4rem',
+        '14px',
         {
           fontWeight: '300',
           lineHeight: 'auto',
         },
       ],
       'caption-01': [
-        '1.2rem',
+        '12px',
         {
           fontWeight: '500',
           lineHeight: 'auto',
         },
       ],
       'caption-02': [
-        '1.2rem',
+        '12px',
         {
           fontWeight: '400',
           lineHeight: 'auto',
         },
       ],
       'caption-03': [
-        '1rem',
+        '10px',
         {
           fontWeight: '300',
           lineHeight: 'auto',
@@ -135,6 +135,9 @@ const config: Config = {
       ],
     },
     extend: {
+      spacing: {
+        '21.25': '340px', // header padding
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
