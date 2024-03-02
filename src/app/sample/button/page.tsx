@@ -24,7 +24,7 @@ const page = () => (
             </WhButton>
             <WhButton onClick={() => {}} size='lg'>
               버튼명 입력
-              <WhIcon src="/assets/icons/sample-icon.svg" />
+              <WhIcon />
             </WhButton>
 
             <WhButton onClick={() => {}} size='lg' onlyIcon>

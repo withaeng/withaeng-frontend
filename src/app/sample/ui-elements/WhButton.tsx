@@ -40,9 +40,9 @@ export const WhButton: React.FC<ButtonProps> = ({
   }
 
   if (size === 'lg') {
-    onlyIconCss = 'px-4';
+    onlyIconCss = 'px-2.5';
   } else {
-    onlyIconCss = 'px-3';
+    onlyIconCss = 'px-2';
   }
 
   return (
@@ -53,7 +53,7 @@ export const WhButton: React.FC<ButtonProps> = ({
       className={`
       ${defaultBtnCss}
       ${btnSizeCss}
-      ${onlyIcon ? `${onlyIconCss}` : 'px-8'}
+      ${onlyIcon ? `${onlyIconCss}` : 'px-5'}
       ${outLine ? `${isOutLineCss}` : `${noOutLineCss}`}
     `}
     >
