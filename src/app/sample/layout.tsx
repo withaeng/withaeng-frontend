@@ -12,7 +12,7 @@ export default function SampleLayout({
     <>
       <Header />
       <section className='flex'>
-        <nav className='w-1/6 flex flex-col px-2 py-2 bg-white z-10 shadow-sm'>
+        <nav className='z-10 flex flex-col w-1/6 px-2 py-2 bg-white shadow-sm'>
           <Link className={`${linkCss}`} href='/sample'>
             <span className='text-sky-600'>sample</span>
           </Link>
@@ -21,6 +21,9 @@ export default function SampleLayout({
           </Link>
           <Link className={`${linkCss}`} href='/sample/ui-elements'>
             ui-elements
+          </Link>
+          <Link className={`${linkCss}`} href='/sample/editor'>
+            editor
           </Link>
         </nav>
         <main className='w-5/6'>{children}</main>
