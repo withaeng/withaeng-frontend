@@ -1,3 +1,4 @@
+import Header from '@/components/header/Header';
 import Link from 'next/link';
 
 const linkCss =
@@ -8,19 +9,22 @@ export default function SampleLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
-      <header className='w-full flex gap-4 px-2 py-2 bg-white z-10 shadow-sm'>
-        <Link className={`${linkCss}`} href='/sample'>
-          <span className='text-sky-600'>sample</span>
-        </Link>
-        <Link className={`${linkCss}`} href='/sample/font'>
-          font
-        </Link>
-        <Link className={`${linkCss}`} href='/sample/ui-elements'>
-          ui-elements
-        </Link>
-      </header>
-      {children}
-    </section>
+    <>
+      <Header />
+      <section className='flex'>
+        <nav className='w-1/6 flex flex-col px-2 py-2 bg-white z-10 shadow-sm'>
+          <Link className={`${linkCss}`} href='/sample'>
+            <span className='text-sky-600'>sample</span>
+          </Link>
+          <Link className={`${linkCss}`} href='/sample/font'>
+            font
+          </Link>
+          <Link className={`${linkCss}`} href='/sample/ui-elements'>
+            ui-elements
+          </Link>
+        </nav>
+        <main className='w-5/6'>{children}</main>
+      </section>
+    </>
   );
 }
