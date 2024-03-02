@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const buttonCss = 'border p-4 flex-none';
+const buttonCss = 'border p-2 flex-none';
 
 export default function Page() {
   const [color, changeFontColor] = useState('text-primary-main');
