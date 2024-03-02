@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 export interface IconProps {
-  src: boolean;
+  src: 'string | StaticImport';
 }
 
 const WhIcon: React.FC<IconProps> = ({ src }) => (
