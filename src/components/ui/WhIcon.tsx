@@ -1,21 +1,27 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
-export interface IconProps {
-  src: 'string | StaticImport';
+interface IconProps {
+  src: string;
+  alt: string;
+  isIcon: boolean;
 }
 
-const WhIcon: React.FC<IconProps> = ({ src }) => (
-  <div>
-    {src ? null : (
-      <Image
-        width={20}
-        height={20}
-        src='/assets/icons/sample-icon.svg'
-        alt='sample-icon'
-      />
-    )}
-  </div>
-);
-
-export default WhIcon;
+export default function WhIcon({ src, alt, isIcon = false }: IconProps) {
+  return (
+    <div>
+      {isIcon ? (
+        <Image width={20} height={20} src={src} alt={alt} />
+      ) : (
+        <Image
+          width={20}
+          height={20}
+          src='/assets/icons/sample-icon.svg'
+          alt='sample-icon'
+        />
+      )}
+    </div>
+  );
+}

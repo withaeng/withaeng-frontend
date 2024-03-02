@@ -23,14 +23,14 @@ interface ButtonProps {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const WhButton: React.FC<ButtonProps> = ({
-  children,
-  outLine,
-  disabled,
-  size,
-  onlyIcon,
+export default function WhButton({
+  children = undefined,
+  disabled = false,
+  onlyIcon = false,
+  outLine = false,
+  size = 'md',
   onClick,
-}) => {
+}: ButtonProps) {
   if (size === 'lg') {
     btnSizeCss = 'py-3';
   } else if (size === 'md') {
@@ -62,6 +62,4 @@ export const WhButton: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
-
-export default WhButton;
+}
