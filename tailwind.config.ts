@@ -136,9 +136,6 @@ const config: Config = {
       ],
     },
     extend: {
-      spacing: {
-        '21.25': '340px', // header padding
-      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

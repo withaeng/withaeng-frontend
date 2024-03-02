@@ -1,0 +1,10 @@
+export { default as ProfilIconBlue01 } from './blue-01.svg';
+export { default as ProfilIconRed01 } from './red-01.svg';
+export { default as ProfilIconRed02 } from './red-02.svg';
+export { default as ProfilIconOrange01 } from './orange-01.svg';
+export { default as ProfilIconOrange02 } from './orange-02.svg';
+export { default as ProfilIconGreen01 } from './green-01.svg';
+export { default as ProfilIconGreen02 } from './green-02.svg';
+export { default as ProfilIconPurple01 } from './purple-01.svg';
+export { default as ProfilIconPurple02 } from './purple-02.svg';
+export { default as ProfilIconGray01 } from './gray-01.svg';
