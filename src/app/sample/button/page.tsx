@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { WhButton } from '../ui-elements/WhButton';
-
-import WhIcon from '../ui-elements/WhIcon';
+import { WhButton } from '@/components/ui/WhButton';
+import WhIcon from '@/components/ui/WhIcon';
 
 const page = () => (
   <div className='m-6'>
