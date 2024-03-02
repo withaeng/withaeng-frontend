@@ -54,31 +54,33 @@ const page = () => (
         <section className='mt-20 flex flex-col gap-4'>
           <h2>BTN TYPE - MIDDLE </h2>
           <div className='flex gap-8'>
-            <WhButton onClick={() => {}}> 버튼명 입력</WhButton>
-            <WhButton onClick={() => {}}>
+            <WhButton onClick={() => {}} size='md'>
+              버튼명 입력
+            </WhButton>
+            <WhButton onClick={() => {}} size='md'>
               <WhIcon />
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}}>
+            <WhButton onClick={() => {}} size='md'>
               버튼명 입력 <WhIcon />
             </WhButton>
-            <WhButton onClick={() => {}} onlyIcon>
+            <WhButton onClick={() => {}} size='md' onlyIcon>
               <WhIcon />
             </WhButton>
           </div>
           <div className='flex gap-8'>
-            <WhButton onClick={() => {}} disabled>
+            <WhButton onClick={() => {}} size='md' disabled>
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} disabled>
+            <WhButton onClick={() => {}} size='md' disabled>
               <WhIcon />
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} disabled>
+            <WhButton onClick={() => {}} size='md' disabled>
               버튼명 입력
               <WhIcon />
             </WhButton>
-            <WhButton onClick={() => {}} disabled onlyIcon>
+            <WhButton onClick={() => {}} size='md' disabled onlyIcon>
               <WhIcon />
             </WhButton>
           </div>
@@ -159,34 +161,34 @@ const page = () => (
         <section className='mt-20 flex flex-col gap-4'>
           <h2>BTN TYPE OUTLINE MIDDLE</h2>
           <div className='flex gap-8'>
-            <WhButton onClick={() => {}} outLine>
+            <WhButton onClick={() => {}} outLine size='md'>
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} outLine>
+            <WhButton onClick={() => {}} outLine size='md'>
               <WhIcon />
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} outLine>
+            <WhButton onClick={() => {}} outLine size='md'>
               버튼명 입력
               <WhIcon />
             </WhButton>
-            <WhButton onClick={() => {}} outLine onlyIcon>
+            <WhButton onClick={() => {}} outLine size='md' onlyIcon>
               <WhIcon />
             </WhButton>
           </div>
           <div className='flex gap-8'>
-            <WhButton onClick={() => {}} outLine disabled>
+            <WhButton onClick={() => {}} outLine disabled size='md'>
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} outLine disabled>
+            <WhButton onClick={() => {}} outLine disabled size='md'>
               <WhIcon />
               버튼명 입력
             </WhButton>
-            <WhButton onClick={() => {}} outLine disabled>
+            <WhButton onClick={() => {}} outLine disabled size='md'>
               버튼명 입력
               <WhIcon />
             </WhButton>
-            <WhButton onClick={() => {}} outLine disabled onlyIcon>
+            <WhButton onClick={() => {}} outLine disabled size='md' onlyIcon>
               <WhIcon />
             </WhButton>
           </div>
