@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 const defaultBtnCss =
   'rounded-sm disabled:opacity-40 border  border-primary-main transition text-sm font-semibold flex items-center justify-center gap-2.5';
@@ -10,10 +10,15 @@ const isOutLineCss =
 
 const noOutLineCss = 'bg-primary-main hover:bg-primary-pressing';
 
+let btnSizeCss = '';
+
+let onlyIconCss = '';
+
 export interface ButtonProps {
+  children: ReactNode;
   outLine: boolean;
   disabled: boolean;
-  size: string;
+  size: 'lg' | 'sm';
   onlyIcon: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -25,20 +30,36 @@ export const WhButton: React.FC<ButtonProps> = ({
   size,
   onlyIcon,
   onClick,
-}) => (
-  <button
-    type='button'
-    disabled={disabled}
-    onClick={onClick}
-    className={`
+}) => {
+  if (size === 'lg') {
+    btnSizeCss = 'py-3';
+  } else if (size === 'sm') {
+    btnSizeCss = 'py-1';
+  } else {
+    btnSizeCss = 'py-2';
+  }
+
+  if (size === 'lg') {
+    onlyIconCss = 'px-4';
+  } else {
+    onlyIconCss = 'px-3';
+  }
+
+  return (
+    <button
+      type='button'
+      disabled={disabled}
+      onClick={onClick}
+      className={`
       ${defaultBtnCss}
-      ${size === 'lg' ? 'py-3' : size === 'sm' ? 'py-1' : 'py-2'}
-      ${onlyIcon && size === 'lg' ? 'px-2.5' : onlyIcon ? 'px-2' : 'px-5'}
-      ${outLine ? `${isOutLineCss}` : `${noOutLineCss}`} 
+      ${btnSizeCss}
+      ${onlyIcon ? `${onlyIconCss}` : 'px-8'}
+      ${outLine ? `${isOutLineCss}` : `${noOutLineCss}`}
     `}
-  >
-    {children}
-  </button>
-);
+    >
+      {children}
+    </button>
+  );
+};
 
 export default WhButton;
