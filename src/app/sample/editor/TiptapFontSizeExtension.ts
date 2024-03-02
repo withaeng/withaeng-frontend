@@ -6,7 +6,6 @@ import TextStyle from '@tiptap/extension-text-style';
  * https://stackoverflow.com/questions/70564092/tiptap-font-size-react
  */
 
-// --------- add this block ---- vvvvvv ----------
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     fontSize: {
@@ -21,7 +20,6 @@ declare module '@tiptap/core' {
     };
   }
 }
-// ---------------- add this block ----- ^^^^ --------------
 
 const FontSize = TextStyle.extend({
   addAttributes() {
@@ -31,11 +29,11 @@ const FontSize = TextStyle.extend({
         default: null,
         parseHTML: (element) => element.style.fontSize.replace('px', ''),
         renderHTML: (attributes) => {
-          if (!attributes['fontSize']) {
+          if (!attributes.fontSize) {
             return {};
           }
           return {
-            style: `font-size: ${attributes['fontSize']}px`,
+            style: `font-size: ${attributes.fontSize}px`,
           };
         },
       },
@@ -47,17 +45,15 @@ const FontSize = TextStyle.extend({
       ...this.parent?.(),
       setFontSize:
         (fontSize) =>
-        ({ commands }) => {
-          return commands.setMark(this.name, { fontSize: fontSize });
-        },
+        ({ commands }) =>
+          commands.setMark(this.name, { fontSize }),
       unsetFontSize:
         () =>
-        ({ chain }) => {
-          return chain()
+        ({ chain }) =>
+          chain()
             .setMark(this.name, { fontSize: null })
             .removeEmptyTextStyle()
-            .run();
-        },
+            .run(),
     };
   },
 });

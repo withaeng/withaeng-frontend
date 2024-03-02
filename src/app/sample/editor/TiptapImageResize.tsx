@@ -34,7 +34,7 @@ const useEvent = <T extends (...args: any[]) => any>(handler: T): T => {
 const MIN_WIDTH = 60;
 const BORDER_COLOR = '#0096fd';
 
-const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
+function ResizableImageTemplate({ node, updateAttributes }: NodeViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [editing, setEditing] = useState(false);
@@ -69,21 +69,21 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
       let newWidth = currentWidth;
       const transform = direction[1] === 'w' ? -1 : 1;
 
+      const mouseMoveHandler = (e: MouseEvent) => {
+        newWidth = Math.max(
+          currentWidth + transform * (e.clientX - initialXPosition),
+          MIN_WIDTH
+        );
+        setResizingStyle({ width: newWidth });
+        // If mouse is up, remove event listeners
+        if (!e.buttons) removeListeners();
+      };
+
       const removeListeners = () => {
         window.removeEventListener('mousemove', mouseMoveHandler);
         window.removeEventListener('mouseup', removeListeners);
         updateAttributes({ width: newWidth });
         setResizingStyle(undefined);
-      };
-
-      const mouseMoveHandler = (event: MouseEvent) => {
-        newWidth = Math.max(
-          currentWidth + transform * (event.clientX - initialXPosition),
-          MIN_WIDTH
-        );
-        setResizingStyle({ width: newWidth });
-        // If mouse is up, remove event listeners
-        if (!event.buttons) removeListeners();
       };
 
       window.addEventListener('mousemove', mouseMoveHandler);
@@ -106,7 +106,7 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
         ...{ w: { left: 0 }, e: { right: 0 } }[direction[1]],
         cursor: `${direction}-resize`,
       }}
-    ></div>
+    />
   );
 
   return (
@@ -134,6 +134,7 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
             ...resizingStyle,
             cursor: 'default',
           }}
+          alt=''
         />
         {editing && (
           <>
@@ -151,7 +152,7 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
                   backgroundColor: BORDER_COLOR,
                   ...style,
                 }}
-              ></div>
+              />
             ))}
             {dragCornerButton('nw')}
             {dragCornerButton('ne')}
@@ -162,7 +163,7 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
       </div>
     </NodeViewWrapper>
   );
-};
+}
 
 export default TipTapImage.extend({
   addAttributes() {
