@@ -6,13 +6,12 @@ import Image from 'next/image';
 interface IconProps {
   src?: string;
   alt?: string;
-  isIcon?: boolean;
 }
 
-export default function WhIcon({ src = '', alt = '', isIcon }: IconProps) {
+export default function WhIcon({ src = '', alt = '' }: IconProps) {
   return (
     <div>
-      {isIcon ? (
+      {src && alt ? (
         <Image width={20} height={20} src={src} alt={alt} />
       ) : (
         <Image
@@ -29,5 +28,4 @@ export default function WhIcon({ src = '', alt = '', isIcon }: IconProps) {
 WhIcon.defaultProps = {
   src: '',
   alt: '',
-  isIcon: false,
 };

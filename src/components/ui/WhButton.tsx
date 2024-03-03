@@ -3,12 +3,12 @@
 import React, { ReactNode } from 'react';
 
 const defaultBtnCss =
-  'rounded-sm disabled:opacity-40 border  border-primary-main transition text-sm font-semibold flex items-center justify-center gap-2.5';
+  'rounded-sm disabled:opacity-40 border border-primary-main transition text-subtitle-02 flex items-center justify-center gap-2.5 text-nutral-black-02';
 
 const outLineBtnCss =
-  'hover:bg-nutral-white-02 text-primary-main bg-nutral-white-01 disabled:text-nutral-white-04 disabled:border-nutral-white-04 disabled:bg-nutral-white-01';
+  'hover:bg-nutral-white-02 text-primary-main bg-nutral-white-01 disabled:text-nutral-white-03 disabled:border-nutral-white-04';
 
-const fullBtnCss = 'bg-primary-main hover:bg-primary-pressing';
+const fillBtnCss = 'bg-primary-main hover:bg-primary-pressing';
 
 let btnSizeCss = '';
 
@@ -32,13 +32,11 @@ export default function WhButton({
   onClick,
 }: ButtonProps) {
   if (size === 'lg') {
-    btnSizeCss = 'py-3';
+    btnSizeCss = 'py-3 max-h-11';
   } else if (size === 'md') {
-    btnSizeCss = 'py-2';
+    btnSizeCss = 'py-2 max-h-9';
   } else if (size === 'sm') {
-    btnSizeCss = 'py-1';
-  } else {
-    btnSizeCss = 'py-2';
+    btnSizeCss = 'py-1 max-h-7';
   }
 
   if (size === 'lg') {
@@ -56,7 +54,7 @@ export default function WhButton({
       ${defaultBtnCss}
       ${btnSizeCss}
       ${onlyIcon ? `${onlyIconCss}` : 'px-5'}
-      ${outLine ? `${outLineBtnCss}` : `${fullBtnCss}`}
+      ${outLine ? `${outLineBtnCss}` : `${fillBtnCss}`}
     `}
     >
       {children}

@@ -261,7 +261,7 @@ const page = () => (
               outLine
               size='lg'
             >
-              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
+              <WhIcon  src='/assets/icons/like.svg' alt='하트 아이콘' />
               버튼명 입력
             </WhButton>
             <WhButton
@@ -272,7 +272,7 @@ const page = () => (
               size='lg'
             >
               버튼명 입력
-              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
+              <WhIcon  src='/assets/icons/like.svg' alt='하트 아이콘' />
             </WhButton>
             <WhButton
               onClick={() => {
@@ -282,7 +282,7 @@ const page = () => (
               size='lg'
               onlyIcon
             >
-              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
+              <WhIcon  src='/assets/icons/like.svg' alt='하트 아이콘' />
             </WhButton>
           </div>
 
