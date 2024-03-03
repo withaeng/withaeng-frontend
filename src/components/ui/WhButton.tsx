@@ -16,18 +16,18 @@ let onlyIconCss = '';
 
 interface ButtonProps {
   children: ReactNode;
-  outLine: boolean;
-  disabled: boolean;
+  outLine?: boolean;
+  disabled?: boolean;
   size: 'lg' | 'md' | 'sm';
-  onlyIcon: boolean;
+  onlyIcon?: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function WhButton({
-  children = undefined,
-  disabled = false,
-  onlyIcon = false,
-  outLine = false,
+  children,
+  disabled,
+  onlyIcon,
+  outLine,
   size = 'md',
   onClick,
 }: ButtonProps) {
@@ -63,3 +63,9 @@ export default function WhButton({
     </button>
   );
 }
+
+WhButton.defaultProps = {
+  disabled: false,
+  onlyIcon: false,
+  outLine: false,
+};

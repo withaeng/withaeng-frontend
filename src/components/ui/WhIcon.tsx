@@ -4,12 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 
 interface IconProps {
-  src: string;
-  alt: string;
-  isIcon: boolean;
+  src?: string;
+  alt?: string;
+  isIcon?: boolean;
 }
 
-export default function WhIcon({ src, alt, isIcon = false }: IconProps) {
+export default function WhIcon({ src = '', alt = '', isIcon }: IconProps) {
   return (
     <div>
       {isIcon ? (
@@ -25,3 +25,9 @@ export default function WhIcon({ src, alt, isIcon = false }: IconProps) {
     </div>
   );
 }
+
+WhIcon.defaultProps = {
+  src: '',
+  alt: '',
+  isIcon: false,
+};

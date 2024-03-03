@@ -6,12 +6,10 @@ import WhButton from '@/components/ui/WhButton';
 
 const page = () => (
   <div className='m-6'>
-    <h1 className='py-4'> this is Button page</h1>
-
     <div className='flex gap-16'>
       {/* left button */}
       <div>
-        <section className='flex flex-col gap-4'>
+        <section className='flex flex-col gap-2'>
           <h2>BTN TYPE - LARGE</h2>
           <div className='flex gap-8'>
             <WhButton
@@ -96,7 +94,7 @@ const page = () => (
           </div>
         </section>
 
-        <section className='mt-20 flex flex-col gap-4'>
+        <section className='mt-20 flex flex-col gap-2'>
           <h2>BTN TYPE - MIDDLE </h2>
           <div className='flex gap-8'>
             <WhButton
@@ -177,7 +175,7 @@ const page = () => (
           </div>
         </section>
 
-        <section className='mt-20 flex flex-col gap-4'>
+        <section className='mt-20 flex flex-col gap-2'>
           <h2>BTN TYPE - SMALL</h2>
           <div className='flex gap-8'>
             <WhButton
@@ -243,7 +241,7 @@ const page = () => (
 
       {/* right button */}
       <div>
-        <section className='flex flex-col gap-4'>
+        <section className='flex flex-col gap-2'>
           <h2>BTN TYPE OUTLINE LARGE</h2>
           <div className='flex gap-8'>
             <WhButton
@@ -263,7 +261,7 @@ const page = () => (
               outLine
               size='lg'
             >
-              <WhIcon isIcon src='/assets/icons/like.svg' />
+              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
               버튼명 입력
             </WhButton>
             <WhButton
@@ -274,7 +272,7 @@ const page = () => (
               size='lg'
             >
               버튼명 입력
-              <WhIcon isIcon src='/assets/icons/like.svg' />
+              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
             </WhButton>
             <WhButton
               onClick={() => {
@@ -284,7 +282,7 @@ const page = () => (
               size='lg'
               onlyIcon
             >
-              <WhIcon isIcon src='/assets/icons/like.svg' />
+              <WhIcon isIcon src='/assets/icons/like.svg' alt='하트 아이콘' />
             </WhButton>
           </div>
 
@@ -336,7 +334,7 @@ const page = () => (
           </div>
         </section>
 
-        <section className='mt-20 flex flex-col gap-4'>
+        <section className='mt-20 flex flex-col gap-2'>
           <h2>BTN TYPE OUTLINE MIDDLE</h2>
           <div className='flex gap-8'>
             <WhButton
@@ -426,7 +424,7 @@ const page = () => (
           </div>
         </section>
 
-        <section className='mt-20 flex flex-col gap-4'>
+        <section className='mt-20 flex flex-col gap-2'>
           <h2>BTN TYPE OUTLINE - SMALL </h2>
           <div className='flex gap-8'>
             <WhButton
