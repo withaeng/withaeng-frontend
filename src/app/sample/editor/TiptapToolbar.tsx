@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/react';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   RiAlignCenter,
   RiAlignJustify,
@@ -11,6 +11,7 @@ import {
   RiFontColor,
   RiImageLine,
   RiItalic,
+  RiLink,
   RiListOrdered,
   RiListUnordered,
   RiQuoteText,
@@ -94,6 +95,18 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
     const selected = e.target.value;
     return editor.commands.setFontSize(selected);
   };
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href;
+    const url = window.prompt('URL', previousUrl);
+    if (url === null) {
+      return;
+    }
+    if (url === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink().run();
+      return;
+    }
+    editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+  }, [editor]);
 
   return (
     <div className='flex gap-1 p-2 border-t border-x border-nutral-white-04 not-prose'>
@@ -317,6 +330,18 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         <label htmlFor='imageInput'>
           <RiImageLine className={iconClass} />
         </label>
+      </button>
+
+      <button
+        type='button'
+        onClick={setLink}
+        className={
+          editor.isActive('link')
+            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
+            : `${BUTTON_CLASS}`
+        }
+      >
+        <RiLink className={iconClass} />
       </button>
 
       <button

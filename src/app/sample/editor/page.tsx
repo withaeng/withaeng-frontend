@@ -8,6 +8,7 @@ import TextStyle from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import TextAlign from '@tiptap/extension-text-align';
 import Highlight from '@tiptap/extension-highlight';
+import Link from '@tiptap/extension-link';
 import FontSize from './TiptapFontSizeExtension';
 import TiptapToolbar from './TiptapToolbar';
 import ResizableImageExtension from './TiptapImageResize';
@@ -28,6 +29,10 @@ export default function TipTapPage() {
       }),
       Highlight.configure({ multicolor: true }),
       FontSize,
+      Link.configure({
+        openOnClick: true,
+        autolink: true,
+      }),
       ResizableImageExtension,
     ],
   });
