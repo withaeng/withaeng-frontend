@@ -11,6 +11,7 @@ import Highlight from '@tiptap/extension-highlight';
 import FontSize from './TiptapFontSizeExtension';
 import TiptapToolbar from './TiptapToolbar';
 import ResizableImageExtension from './TiptapImageResize';
+import './tiptap.css';
 
 export default function TipTapPage() {
   const editor = useEditor({
