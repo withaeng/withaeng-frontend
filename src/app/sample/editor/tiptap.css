@@ -10,3 +10,6 @@ select,
 option {
   cursor: pointer;
 }
+.prose img {
+  margin: 0;
+}

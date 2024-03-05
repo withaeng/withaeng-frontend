@@ -60,14 +60,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
   const addImage = () => {
     if (imageRef.current?.files) {
       const file = imageRef.current.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        // base64 형식으로 받아옴.
-        // TODO: 추후 이미지 업로드 기능으로 서버에서 url 받아온 후, 에디터에 이미지 데이터 등록.
-        // console.log(reader.result);
-        // editor.commands.setImage({ src: 서버에서_받아온_url });
-      };
+      editor.commands.setImage({ src: URL.createObjectURL(file) });
     }
   };
 
