@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ReactComponent as MenuIcon } from '/public/assets/icons/hamburger-menu.svg';
+import { ReactComponent as MenuIcon } from '../../../public/assets/icons/hamburger-menu.svg';
 // TODO: ProfilIconGray01 제외하고 그 외 프로필 아이콘은 제거 예정 > 서버에서 전달 받음
 import {
   ProfilIconGray01,
