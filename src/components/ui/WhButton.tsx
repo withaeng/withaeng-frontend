@@ -3,7 +3,7 @@
 import React, { ReactNode } from 'react';
 
 const defaultBtnCss =
-  'rounded-sm disabled:opacity-40 border border-primary-main transition text-subtitle-02 flex items-center justify-center gap-2.5 text-nutral-black-02';
+  'rounded-sm disabled:opacity-40 px-5 border border-primary-main transition text-subtitle-02 flex items-center justify-center gap-2.5 text-nutral-white-01';
 
 const outLineBtnCss =
   'hover:bg-nutral-white-02 text-primary-main bg-nutral-white-01 disabled:text-nutral-white-03 disabled:border-nutral-white-04';
@@ -12,21 +12,17 @@ const fillBtnCss = 'bg-primary-main hover:bg-primary-pressing';
 
 let btnSizeCss = '';
 
-let onlyIconCss = '';
-
 interface ButtonProps {
   children: ReactNode;
   outLine?: boolean;
   disabled?: boolean;
   size: 'lg' | 'md' | 'sm';
-  onlyIcon?: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function WhButton({
   children,
   disabled,
-  onlyIcon,
   outLine,
   size = 'md',
   onClick,
@@ -39,12 +35,6 @@ export default function WhButton({
     btnSizeCss = 'py-1 max-h-7';
   }
 
-  if (size === 'lg') {
-    onlyIconCss = 'px-2.5';
-  } else {
-    onlyIconCss = 'px-2';
-  }
-
   return (
     <button
       type='button'
@@ -53,7 +43,6 @@ export default function WhButton({
       className={`
       ${defaultBtnCss}
       ${btnSizeCss}
-      ${onlyIcon ? `${onlyIconCss}` : 'px-5'}
       ${outLine ? `${outLineBtnCss}` : `${fillBtnCss}`}
     `}
     >
@@ -64,6 +53,5 @@ export default function WhButton({
 
 WhButton.defaultProps = {
   disabled: false,
-  onlyIcon: false,
   outLine: false,
 };
