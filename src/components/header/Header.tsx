@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ReactComponent as MenuIcon } from '../../../public/assets/icons/hamburger-menu.svg';
+import { HamburgerIcon } from '../../../public/assets/icons/menu';
 // TODO: ProfilIconGray01 제외하고 그 외 프로필 아이콘은 제거 예정 > 서버에서 전달 받음
 import {
   ProfilIconGray01,
@@ -13,7 +13,6 @@ import {
   ProfilIconRed01,
   ProfilIconRed02,
 } from '../../../public/assets/icons/profile';
-
 import Container from '../Container';
 import Logo from './Logo';
 
@@ -59,7 +58,7 @@ export default function Header() {
 
         {/* profile menu */}
         <div className='flex items-center gap-3 px-4 py-3 border rounded-full border-nutral-white-03'>
-          <MenuIcon />
+          <HamburgerIcon />
           <div className='relative w-8 h-8'>
             {/* TODO: 서버에서 url 전달받아 표시 예정 > width, height 값 지정 필요 */}
             {/* mouse hover 이벤트 발생 시 프로필 아이콘 투명도를 이용해서 변경 */}
