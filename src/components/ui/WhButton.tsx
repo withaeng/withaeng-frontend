@@ -22,8 +22,8 @@ interface ButtonProps {
 
 export default function WhButton({
   children,
-  disabled,
-  outLine,
+  disabled = false,
+  outLine = false,
   size = 'md',
   onClick,
 }: ButtonProps) {
@@ -50,8 +50,3 @@ export default function WhButton({
     </button>
   );
 }
-
-WhButton.defaultProps = {
-  disabled: false,
-  outLine: false,
-};
