@@ -6,7 +6,7 @@ import WhChip from '@/components/elements/WhChip';
 const page = () => (
   <div className='flex  m-10 gap-8'>
     <div>
-      <p className='mb-[20px]'>👉 default</p>
+      <p className='mb-5'>👉 default</p>
       <WhChip
         onClick={() => {
           alert('태그 공용 컴포넌트입니다.');
@@ -16,7 +16,7 @@ const page = () => (
       </WhChip>
     </div>
     <div>
-      <p className='mb-[20px]'>👉 disabled </p>
+      <p className='mb-5'>👉 disabled </p>
       <WhChip
         onClick={() => {
           alert('태그 공용 컴포넌트입니다.');

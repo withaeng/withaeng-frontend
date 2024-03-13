@@ -11,7 +11,7 @@ interface ChipProps {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function WhChip({ children, disabled, onClick }: ChipProps) {
+export default function WhChip({ children, disabled= false, onClick }: ChipProps) {
   return (
     <button
       type='button'
@@ -26,6 +26,3 @@ export default function WhChip({ children, disabled, onClick }: ChipProps) {
   );
 }
 
-WhChip.defaultProps = {
-  disabled: false,
-};
