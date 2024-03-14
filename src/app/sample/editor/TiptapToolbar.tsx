@@ -45,13 +45,13 @@ const headings = [
 ];
 
 const fontSizes = [
-  { value: '10', label: '10px' },
-  { value: '12', label: '12px' },
-  { value: '14', label: '14px' },
-  { value: '16', label: '16px' },
-  { value: '18', label: '18px' },
-  { value: '20', label: '20px' },
-  { value: '22', label: '22px' },
+  { value: '10', label: '10' },
+  { value: '12', label: '12' },
+  { value: '14', label: '14' },
+  { value: '16', label: '16' },
+  { value: '18', label: '18' },
+  { value: '20', label: '20' },
+  { value: '22', label: '22' },
 ];
 
 export default function TiptapToolbar({ editor }: { editor: Editor }) {
@@ -136,7 +136,6 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </select>
       <DivideLine />
       <label
-        id='txtColorLabel'
         htmlFor='txtColorInput'
         className={`relative cursor-pointer ${BUTTON_CLASS}`}
       >
@@ -153,7 +152,6 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         <RiFontColor className={iconClass} />
       </label>
       <label
-        id='bgColorLabel'
         htmlFor='bgColorInput'
         className={`relative cursor-pointer ${BUTTON_CLASS}`}
       >
@@ -164,12 +162,12 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
             editor.commands.setHighlight({ color: event.target.value })
           }
           value={editor.getAttributes('highlight').color ?? '#000000'}
-          id='bgColorInput'
         />
         <MdFontDownload className={iconClass} />
       </label>
       <button
         type='button'
+        aria-label='bold button'
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         className={
@@ -182,6 +180,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='italic button'
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         className={
@@ -194,6 +193,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='underline button'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
         disabled={!editor.can().chain().focus().toggleUnderline().run()}
         className={
@@ -206,6 +206,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='strike button'
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         className={
@@ -219,6 +220,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       <DivideLine />
       <button
         type='button'
+        aria-label='text-align(left) button'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
         className={
           editor.isActive({ textAlign: 'left' })
@@ -230,6 +232,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='text-align(center) button'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
         className={
           editor.isActive({ textAlign: 'center' })
@@ -241,6 +244,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='text-align(right) button'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
         className={
           editor.isActive({ textAlign: 'right' })
@@ -252,6 +256,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='text-align(justify) button'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
         className={
           editor.isActive({ textAlign: 'justify' })
@@ -264,6 +269,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       <DivideLine />
       <button
         type='button'
+        aria-label='bulletList button'
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={
           editor.isActive('bulletList')
@@ -275,6 +281,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </button>
       <button
         type='button'
+        aria-label='orderedList button'
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={
           editor.isActive('orderedList')
@@ -287,6 +294,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
 
       <button
         type='button'
+        aria-label='blockquote button'
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         className={
           editor.isActive('blockquote')
@@ -299,6 +307,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       <DivideLine />
       <button
         type='button'
+        aria-label='separator line button'
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
         className={BUTTON_CLASS}
       >
@@ -314,6 +323,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       />
       <button
         type='button'
+        aria-label='image button'
         className={
           editor.isActive('image')
             ? `${BUTTON_CLASS} ${IS_ACTIVE}`
@@ -327,6 +337,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
 
       <button
         type='button'
+        aria-label='link button'
         onClick={setLink}
         className={
           editor.isActive('link')
@@ -339,6 +350,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
 
       <button
         type='button'
+        aria-label='undo button'
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
         className={BUTTON_CLASS}
@@ -348,6 +360,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
 
       <button
         type='button'
+        aria-label='redo button'
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
         className={BUTTON_CLASS}

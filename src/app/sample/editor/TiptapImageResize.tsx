@@ -76,9 +76,8 @@ function ResizableImageTemplate({ node, updateAttributes }: NodeViewProps) {
         );
         setResizingStyle({ width: newWidth });
         // If mouse is up, remove event listeners
-        if (!e.buttons) removeListeners();
+        // if (!e.buttons) removeListeners();
       };
-
       const removeListeners = () => {
         window.removeEventListener('mousemove', mouseMoveHandler);
         window.removeEventListener('mouseup', removeListeners);
@@ -97,6 +96,7 @@ function ResizableImageTemplate({ node, updateAttributes }: NodeViewProps) {
       tabIndex={0}
       onMouseDown={handleMouseDown}
       data-direction={direction}
+      aria-label='drag button'
       style={{
         position: 'absolute',
         height: '10px',
@@ -127,7 +127,9 @@ function ResizableImageTemplate({ node, updateAttributes }: NodeViewProps) {
           lineHeight: '0px',
         }}
       >
+        {/* eslint-disable @next/next/no-img-element */}
         <img
+          /* eslint-disable react/jsx-props-no-spreading */
           {...node.attrs}
           ref={imgRef}
           style={{
@@ -140,13 +142,13 @@ function ResizableImageTemplate({ node, updateAttributes }: NodeViewProps) {
           <>
             {/* Don't use a simple border as it pushes other content around. */}
             {[
-              { left: 0, top: 0, height: '100%', width: '1px' },
-              { right: 0, top: 0, height: '100%', width: '1px' },
-              { top: 0, left: 0, width: '100%', height: '1px' },
-              { bottom: 0, left: 0, width: '100%', height: '1px' },
-            ].map((style, i) => (
+              { key: 1, left: 0, top: 0, height: '100%', width: '1px' },
+              { key: 2, right: 0, top: 0, height: '100%', width: '1px' },
+              { key: 3, top: 0, left: 0, width: '100%', height: '1px' },
+              { key: 4, bottom: 0, left: 0, width: '100%', height: '1px' },
+            ].map((style) => (
               <div
-                key={i}
+                key={style.key}
                 style={{
                   position: 'absolute',
                   backgroundColor: BORDER_COLOR,
