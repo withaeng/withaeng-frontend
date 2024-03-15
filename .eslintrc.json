@@ -15,8 +15,9 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off",
     "no-alert": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "warn",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
