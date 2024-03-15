@@ -14,20 +14,20 @@ export default function Page() {
     <div className='flex m-10 gap-8'>
     <div>
       <p className='mb-5'>👉 default</p>
-      <WhChip onClick={()=> {}} >태그 내용</WhChip>
+      <WhChip >태그 내용</WhChip>
     </div>
     <div>
       <p className='mb-5'>👉 disabled </p>
-      <WhChip  onClick={()=>{}}  disabled>태그 내용</WhChip>
+      <WhChip  disabled>태그 내용</WhChip>
     </div>
 
     <div>
       <p className='mb-5'>👉 여러개일 경우</p>
     <div className='flex gap-3'>
 
-      {itemList.map((item, index) => (
-        <div key={index.id}>
-          <WhChip  onClick={()=>{}} >{item.title}</WhChip>
+      {itemList.map((item) => (
+        <div key={item.id}>
+          <WhChip  >{item.title}</WhChip>
         </div>
       ))}
     </div>

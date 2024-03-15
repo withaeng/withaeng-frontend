@@ -10,10 +10,9 @@ const isSelectedCss = 'bg-primary-eexLight text-primary-pressing border-primary-
 interface ChipProps {
   children: ReactNode;
   disabled?: boolean;
-  onClick:(e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function WhChip({ children, disabled= false, onClick }: ChipProps) {
+export default function WhChip({ children, disabled= false}: ChipProps) {
 
   const [isSelected, setIsSelected] = useState(false);
 
