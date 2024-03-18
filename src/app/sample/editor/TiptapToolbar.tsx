@@ -23,9 +23,9 @@ import { Level } from '@tiptap/extension-heading';
 import { MdFontDownload } from 'react-icons/md';
 
 // custom class
-const BUTTON_CLASS =
+const buttonClass =
   'p-1 rounded-sm transition-all duration-75 hover:bg-nutral-black-05/20 disabled:text-nutral-black-05/70 disabled:bg-nutral-black-05/10';
-const IS_ACTIVE =
+const isActive =
   'text-primary-main bg-primary-main/10 hover:bg-primary-main/30';
 const iconClass = 'w-5 h-5';
 
@@ -137,7 +137,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       <DivideLine />
       <label
         htmlFor='txtColorInput'
-        className={`relative cursor-pointer ${BUTTON_CLASS}`}
+        className={`relative cursor-pointer ${buttonClass}`}
       >
         <input
           className='absolute bottom-0 left-0 w-0 h-0 opacity-0'
@@ -153,7 +153,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
       </label>
       <label
         htmlFor='bgColorInput'
-        className={`relative cursor-pointer ${BUTTON_CLASS}`}
+        className={`relative cursor-pointer ${buttonClass}`}
       >
         <input
           className='absolute bottom-0 left-0 w-0 h-0 opacity-0'
@@ -172,8 +172,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         disabled={!editor.can().chain().focus().toggleBold().run()}
         className={
           editor.isActive('bold')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiBold className={iconClass} />
@@ -185,8 +185,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         className={
           editor.isActive('italic')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiItalic className={iconClass} />
@@ -198,8 +198,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         disabled={!editor.can().chain().focus().toggleUnderline().run()}
         className={
           editor.isActive('underline')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiUnderline className={iconClass} />
@@ -211,8 +211,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         className={
           editor.isActive('strike')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiStrikethrough2 className={iconClass} />
@@ -224,8 +224,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
         className={
           editor.isActive({ textAlign: 'left' })
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiAlignLeft className={iconClass} />
@@ -236,8 +236,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
         className={
           editor.isActive({ textAlign: 'center' })
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiAlignCenter className={iconClass} />
@@ -248,8 +248,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
         className={
           editor.isActive({ textAlign: 'right' })
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiAlignRight className={iconClass} />
@@ -260,8 +260,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
         className={
           editor.isActive({ textAlign: 'justify' })
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiAlignJustify className={iconClass} />
@@ -273,8 +273,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={
           editor.isActive('bulletList')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiListUnordered className={iconClass} />
@@ -285,8 +285,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={
           editor.isActive('orderedList')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiListOrdered className={iconClass} />
@@ -298,8 +298,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         className={
           editor.isActive('blockquote')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiQuoteText className={iconClass} />
@@ -309,7 +309,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         type='button'
         aria-label='separator line button'
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        className={BUTTON_CLASS}
+        className={buttonClass}
       >
         <RiSeparator className={iconClass} />
       </button>
@@ -326,8 +326,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         aria-label='image button'
         className={
           editor.isActive('image')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <label htmlFor='imageInput'>
@@ -341,8 +341,8 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         onClick={setLink}
         className={
           editor.isActive('link')
-            ? `${BUTTON_CLASS} ${IS_ACTIVE}`
-            : `${BUTTON_CLASS}`
+            ? `${buttonClass} ${isActive}`
+            : `${buttonClass}`
         }
       >
         <RiLink className={iconClass} />
@@ -353,7 +353,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         aria-label='undo button'
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
-        className={BUTTON_CLASS}
+        className={buttonClass}
       >
         <RiArrowGoBackLine className={iconClass} />
       </button>
@@ -363,7 +363,7 @@ export default function TiptapToolbar({ editor }: { editor: Editor }) {
         aria-label='redo button'
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
-        className={BUTTON_CLASS}
+        className={buttonClass}
       >
         <RiArrowGoForwardLine className={iconClass} />
       </button>
