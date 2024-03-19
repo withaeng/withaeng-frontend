@@ -1,4 +1,4 @@
 cd ../
 mkdir output
-cp -R ./whatpl-frontend/* ./output
-cp -R ./output ./whatpl-frontend/
+cp -R ./withaeng-frontend/* ./output
+cp -R ./output ./withaeng-frontend/
