@@ -1,0 +1,31 @@
+# 워크플로우 이름
+name: develop-workflows.yml
+
+on: # 발생 이벤트 타입
+  push: # push 이벤트 발생 시
+    branches: [develop] # target 브랜치
+
+jobs: # 실행 작업 코드
+  build: # build 작업
+    runs-on: ubuntu-latest # 최신 ubuntu 환경에서 실행
+    container: pandoc/latex # pandoc/latex 이미지를 사용하는 컨테이너에서 실행
+    steps:
+      - uses: actions/checkout@v2 # GitHub Actions의 actions/checkout 액션을 사용하여 리포지토리를 체크아웃
+      - name: Install mustache (to update the date) # Ruby 및 Mustache를 설치하는 단계를 정의
+        run: apk add ruby && gem install mustache
+      - name: creates output # build.sh 스크립트를 실행하여 output 디렉토리를 생성하는 단계를 정의
+        run: sh ./build.sh
+      - name: Pushes to another repository # cpina/github-action-push-to-another-repository 액션을 사용하여 코드를 다른 리포지토리로 푸시하는 단계를 정의
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.REPO_OWNER_ACCESS_TOKEN }}
+        with:
+          source-directory: "output"
+          destination-github-username: SOL-hub
+          destination-repository-name: withaeng-frontend
+          user-email: ${{ secrets.REPO_OWNER_EMAIL }}
+          commit-message: ${{ github.event.commits[0].message }}
+          target-branch: develop
+      - name: push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
