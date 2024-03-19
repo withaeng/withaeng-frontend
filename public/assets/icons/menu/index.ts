@@ -1,0 +1,13 @@
+export { ReactComponent as BellIcon } from './bell.svg';
+export { ReactComponent as BookmarkIcon } from './bookmark.svg';
+export { ReactComponent as CheckIcon } from './check.svg';
+export { ReactComponent as CloseIcon } from './close.svg';
+export { ReactComponent as Close20Icon } from './close-20.svg';
+export { ReactComponent as HamburgerIcon } from './hamburger.svg';
+export { ReactComponent as MoreHorizontalIcon } from './more-horizontal.svg';
+export { ReactComponent as MoreVerticalIcon } from './more-vertical.svg';
+export { ReactComponent as SearchIcon } from './search.svg';
+export { ReactComponent as SettingIcon } from './setting.svg';
+export { ReactComponent as ShareAndroidIcon } from './share-android.svg';
+export { ReactComponent as ShareIosIcon } from './share-ios.svg';
+export { ReactComponent as TagIcon } from './tag.svg';
