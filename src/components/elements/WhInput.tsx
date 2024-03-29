@@ -1,44 +1,45 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 
 const defaultInputCss =
-  'border px-4 py-3 text-nutral-white-03 placeholder:text-body-02  placeholder:text-nutral-white-03  rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'px-4 py-3 text-body-02 placeholder:text-body-02  placeholder:text-nutral-white-03  rounded disabled:bg-nutral-white-02 disabled:border-0';
 
-const defaultBorderCss =
-  'border-nutral-white-03 focus:outline-primary-pressing';
+const isFocusBorderCss =
+  'focus:outline-primary-pressing border-nutral-white-03 border';
 
-const defaultLabelCss = 'text-nutral-white-03 text-body-02 my-2';
+const defaultLabelCss = 'text-black-02 text-body-02 my-2';
 
-const isErrorCss = 'border border-caption-main focus:outline-caption-main'
+const isErrorCss = 'border border-caption-main outline-caption-main';
 
 const errorMsgCss = 'text-caption-main text-caption-02 mt-2';
 
 let inputSizeCss = '';
 
 interface InputProps {
-  children: ReactNode;
   disabled?: boolean;
-  placeholder: string;
+  placeholder?: string;
   label?: string;
-  isErr?:boolean;
-  errorMsg?:string;
+  isErr?: boolean;
+  errorMsg?: string;
+  inputValue: string;
+  setInputValue: any;
   size: 'lg' | 'md' | 'sm';
 }
 export default function WhInput({
-  children = undefined,
   disabled = false,
   size = 'md',
   placeholder = '내용을 입력해주세요.',
   label = '레이블 이름',
   isErr = false,
-  errorMsg = ''
+  errorMsg = '',
+  inputValue = '',
+  setInputValue = '',
 }: InputProps) {
-
-  const [ val, setVal] = useState('내용을 입력해주세요.');
-
-  const closeClick = () => {
-  }
+  const change = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+  };
 
   if (size === 'lg') {
     inputSizeCss = 'h-11';
@@ -48,25 +49,20 @@ export default function WhInput({
     inputSizeCss = 'h-9';
   }
 
-  if(!isErr) {
-    errorMsg = '';
-  }
-  
   return (
     <div>
       <div className='flex flex-col'>
         <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
           {label}
         </label>
-        {/* <input id="search" name="Search" type="search"  */}
-        <input 
-        type='search'
-          className={`${inputSizeCss} ${defaultInputCss} ${isErr ? `${isErrorCss}` :  `${defaultBorderCss}` }`}
+        <input
+          type='search'
+          className={`${inputSizeCss} ${defaultInputCss} ${isErr ? `${isErrorCss}` : `${isFocusBorderCss}`}`}
           disabled={disabled}
           placeholder={placeholder}
-          isErr={isErr}
+          onChange={change}
         />
-        <span  className={`${errorMsgCss }`}>{errorMsg}</span>
+        {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>
     </div>
   );
