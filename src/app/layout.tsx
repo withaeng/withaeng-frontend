@@ -112,9 +112,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko' className={pretendard.className}>
-      <body>
-        <main>{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
