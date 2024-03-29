@@ -7,7 +7,7 @@ export default function Page() {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <div className='flex  m-8 gap-10'>
+    <div className='flex m-8 gap-10'>
       {/* height 44 */}
       <div>
         <p className='mb-5'>👉 height 44(레이블 이름 유무 설정 가능)</p>
