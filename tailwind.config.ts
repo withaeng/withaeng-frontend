@@ -8,6 +8,7 @@ const config: Config = {
         main: '#FFA500',
         light: '#FFC570',
         exLight: '#FFDD95',
+        eexLight: '#FFEABF',
         pressing: '#f2a10d',
       },
       secondary: {
@@ -26,7 +27,7 @@ const config: Config = {
           '01': '#ffffff',
           '02': '#faf8f6',
           '03': '#dad8d6',
-          '04': '#babbb6',
+          '04': '#bab8b6',
         },
       },
       caption: {
@@ -102,7 +103,7 @@ const config: Config = {
         '16px',
         {
           fontWeight: '400',
-          lineHeight: 'auto',
+          lineHeight: '20px',
         },
       ],
       'body-03': [
@@ -142,6 +143,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 export default config;

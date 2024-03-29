@@ -1,0 +1,10 @@
+export { ReactComponent as ProfilIconBlue01 } from './blue-01.svg';
+export { ReactComponent as ProfilIconRed01 } from './red-01.svg';
+export { ReactComponent as ProfilIconRed02 } from './red-02.svg';
+export { ReactComponent as ProfilIconOrange01 } from './orange-01.svg';
+export { ReactComponent as ProfilIconOrange02 } from './orange-02.svg';
+export { ReactComponent as ProfilIconGreen01 } from './green-01.svg';
+export { ReactComponent as ProfilIconGreen02 } from './green-02.svg';
+export { ReactComponent as ProfilIconPurple01 } from './purple-01.svg';
+export { ReactComponent as ProfilIconPurple02 } from './purple-02.svg';
+export { ReactComponent as ProfilIconGray01 } from './gray-01.svg';

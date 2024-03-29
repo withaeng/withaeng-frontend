@@ -1,12 +1,12 @@
-import variables from '@/styles/variables.module.scss';
+import Link from 'next/link';
+
+const linkCss =
+  'text-headline-03 text-secondary-main underline hover:text-secondary-light hover:decoration-secondary-light';
 
 export default function HomePage() {
   return (
-    <>
-      {/* 1. tailwind css로 custom 등록한 font 적용법 */}
-      <h1 className="text-display-02">같이의 가치를 위해</h1>
-      {/* 2. scss style 적용법 */}
-      <h2 className={variables.title}>Sass 적용</h2>
-    </>
+    <Link className={`${linkCss}`} href='/sample'>
+      sample page
+    </Link>
   );
 }
