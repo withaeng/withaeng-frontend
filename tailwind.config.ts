@@ -135,6 +135,10 @@ const config: Config = {
         },
       ],
     },
+    boxShadow: {
+      'primary-inner-06': 'inset 0 0 0 6px #FFA500',
+      'primary-inner-08': 'inset 0 0 0 8px #FFA500',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
