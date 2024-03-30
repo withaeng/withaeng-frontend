@@ -35,10 +35,9 @@ const page = () => (
             >
               버튼명 입력
             </WhButton>
-
           </div>
 
-          <div className='flex gap-8'>
+          <div className='flex gap-8 '>
             {/* disabled */}
             <WhButton
               onClick={() => {
@@ -67,7 +66,6 @@ const page = () => (
             >
               버튼명 입력
             </WhButton>
-            
           </div>
         </section>
 
@@ -96,9 +94,8 @@ const page = () => (
               }}
               size='md'
             >
-              버튼명 입력 
+              버튼명 입력
             </WhButton>
-         
           </div>
           <div className='flex gap-8'>
             <WhButton
@@ -127,9 +124,7 @@ const page = () => (
               disabled
             >
               버튼명 입력
-             
             </WhButton>
-            
           </div>
         </section>
 
@@ -150,7 +145,6 @@ const page = () => (
               }}
               size='sm'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -160,7 +154,6 @@ const page = () => (
               size='sm'
             >
               버튼명 입력
-              
             </WhButton>
           </div>
           <div className='flex gap-8'>
@@ -180,7 +173,6 @@ const page = () => (
               disabled
               size='sm'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -191,7 +183,35 @@ const page = () => (
               size='sm'
             >
               버튼명 입력
-              
+            </WhButton>
+          </div>
+        </section>
+
+        {/* fit-content */}
+        <section className='flex flex-col gap-2 mt-10'>
+          <h2>BTN TYPE fit-content or full (width : 100%)</h2>
+          <div>
+            <p>👉 fit-content 인 아닌 경우 </p>
+            <WhButton
+              onClick={() => {
+                alert('버튼컴포넌트');
+              }}
+              size='lg'
+            >
+              버튼명 입력
+            </WhButton>
+          </div>
+
+          <div>
+            <p>👉 fit-content 인 경우</p>
+            <WhButton
+              fitContent
+              onClick={() => {
+                alert('버튼컴포넌트');
+              }}
+              size='lg'
+            >
+              버튼명 입력
             </WhButton>
           </div>
         </section>
@@ -211,7 +231,6 @@ const page = () => (
             >
               버튼명 입력
             </WhButton>
-
             <WhButton
               onClick={() => {
                 alert('버튼컴포넌트');
@@ -225,12 +244,11 @@ const page = () => (
               onClick={() => {
                 alert('버튼컴포넌트');
               }}
-              outLine
               size='lg'
+              outLine
             >
               버튼명 입력
             </WhButton>
-          
           </div>
 
           {/* disabled */}
@@ -253,7 +271,6 @@ const page = () => (
               disabled
               size='lg'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -265,9 +282,7 @@ const page = () => (
               size='lg'
             >
               버튼명 입력
-              
             </WhButton>
-          
           </div>
         </section>
 
@@ -290,7 +305,6 @@ const page = () => (
               outLine
               size='md'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -301,9 +315,7 @@ const page = () => (
               size='md'
             >
               버튼명 입력
-              
             </WhButton>
-           
           </div>
           <div className='flex gap-8'>
             <WhButton
@@ -324,7 +336,6 @@ const page = () => (
               disabled
               size='md'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -336,9 +347,7 @@ const page = () => (
               size='md'
             >
               버튼명 입력
-              
             </WhButton>
-           
           </div>
         </section>
 
@@ -361,7 +370,6 @@ const page = () => (
               outLine
               size='sm'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -372,7 +380,6 @@ const page = () => (
               size='sm'
             >
               버튼명 입력
-              
             </WhButton>
           </div>
           <div className='flex gap-8'>
@@ -394,7 +401,6 @@ const page = () => (
               disabled
               size='sm'
             >
-              
               버튼명 입력
             </WhButton>
             <WhButton
@@ -406,7 +412,6 @@ const page = () => (
               size='sm'
             >
               버튼명 입력
-              
             </WhButton>
           </div>
         </section>
