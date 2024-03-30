@@ -16,6 +16,7 @@ interface ButtonProps {
   children: ReactNode;
   outLine?: boolean;
   disabled?: boolean;
+  fitContent?: boolean;
   size: 'lg' | 'md' | 'sm';
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -24,6 +25,7 @@ export default function WhButton({
   children,
   disabled = false,
   outLine = false,
+  fitContent = false,
   size = 'md',
   onClick,
 }: ButtonProps) {
@@ -42,6 +44,7 @@ export default function WhButton({
       onClick={onClick}
       className={`
       ${defaultBtnCss}
+      ${!fitContent && 'w-full'}
       ${btnSizeCss}
       ${outLine ? `${outLineBtnCss}` : `${fillBtnCss}`}
     `}
