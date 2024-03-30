@@ -10,6 +10,12 @@ interface WhRadioProps {
   onChange: (value: any) => void;
 }
 
+const defaultRadioCss =
+  'appearance-none border border-nutral-white-03 bg-nutral-white-01 hover:border-primary-main checked:border-0 rounded-full cursor-pointer duration-500';
+
+let radioSizeClass = '';
+let radioWrapperCss = '';
+
 export default function WhRadio({
   children,
   id,
@@ -19,11 +25,6 @@ export default function WhRadio({
   size = 'sm',
   onChange = () => {},
 }: WhRadioProps) {
-  const defaultRadioCss =
-    'appearance-none border border-nutral-white-03 bg-nutral-white-01 hover:border-primary-main checked:border-0 rounded-full cursor-pointer duration-500';
-
-  let radioSizeClass = '';
-  let radioWrapperCss = '';
   if (size === 'sm') {
     radioSizeClass = 'w-5 h-5 checked:shadow-primary-inner-06';
     radioWrapperCss = 'gap-3 text-body-02';
