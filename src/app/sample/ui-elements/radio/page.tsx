@@ -22,7 +22,7 @@ export default function Page() {
           name='fruit1'
           value='사과'
           checked={test1 === '사과'}
-          onChange={() => handleRadio1}
+          onChange={handleRadio1}
         >
           사과
         </WhRadio>
@@ -31,7 +31,7 @@ export default function Page() {
           name='fruit1'
           value='바나나'
           checked={test1 === '바나나'}
-          onChange={() => handleRadio1}
+          onChange={handleRadio1}
         >
           바나나
         </WhRadio>
@@ -40,7 +40,7 @@ export default function Page() {
           name='fruit1'
           value='복숭아'
           checked={test1 === '복숭아'}
-          onChange={() => handleRadio1}
+          onChange={handleRadio1}
         >
           복숭아
         </WhRadio>
@@ -49,7 +49,7 @@ export default function Page() {
           name='fruit1'
           value='포도'
           checked={test1 === '포도'}
-          onChange={() => handleRadio1}
+          onChange={handleRadio1}
         >
           포도
         </WhRadio>
@@ -62,7 +62,7 @@ export default function Page() {
           value='사과'
           size='md'
           checked={test2 === '사과'}
-          onChange={() => handleRadio2}
+          onChange={handleRadio2}
         >
           사과
         </WhRadio>
@@ -72,7 +72,7 @@ export default function Page() {
           value='바나나'
           size='md'
           checked={test2 === '바나나'}
-          onChange={() => handleRadio2}
+          onChange={handleRadio2}
         >
           바나나
         </WhRadio>
@@ -82,7 +82,7 @@ export default function Page() {
           value='복숭아'
           size='md'
           checked={test2 === '복숭아'}
-          onChange={() => handleRadio2}
+          onChange={handleRadio2}
         >
           복숭아
         </WhRadio>
@@ -92,7 +92,7 @@ export default function Page() {
           value='포도'
           size='md'
           checked={test2 === '포도'}
-          onChange={() => handleRadio2}
+          onChange={handleRadio2}
         >
           포도
         </WhRadio>

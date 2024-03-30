@@ -17,10 +17,10 @@ export default function WhRadio({
   value,
   checked = false,
   size = 'sm',
-  onChange,
+  onChange = () => {},
 }: WhRadioProps) {
   const defaultRadioCss =
-    'appearance-none border border-nutral-white-03 bg-nutral-white-01 hover:border-primary-main checked:border-primary-main rounded-full';
+    'appearance-none border border-nutral-white-03 bg-nutral-white-01 hover:border-primary-main checked:border-0 rounded-full cursor-pointer duration-500';
 
   let radioSizeClass = '';
   let radioWrapperCss = '';
@@ -45,7 +45,9 @@ export default function WhRadio({
           onChange(value);
         }}
       />
-      <label htmlFor={id}>{children}</label>
+      <label htmlFor={id} className='cursor-pointer'>
+        {children}
+      </label>
     </div>
   );
 }
