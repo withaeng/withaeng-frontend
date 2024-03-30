@@ -8,7 +8,7 @@ const defaultInputCss =
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
 
-const defaultLabelCss = 'text-black-02 text-body-02 my-2';
+const defaultLabelCss = 'text-black-02 text-body-02 mb-3';
 
 const isErrorCss = 'border border-caption-main outline-caption-main';
 
@@ -22,24 +22,24 @@ interface InputProps {
   label?: string;
   isErr?: boolean;
   errorMsg?: string;
-  inputValue: string;
-  setInputValue: any;
+  handleInputChange: (value: string) => void;
   size: 'lg' | 'md' | 'sm';
 }
 export default function WhInput({
   disabled = false,
   size = 'md',
   placeholder = '내용을 입력해주세요.',
-  label = '레이블 이름',
+  label = '',
   isErr = false,
   errorMsg = '',
-  inputValue = '',
-  setInputValue = '',
+  handleInputChange,
 }: InputProps) {
-  const change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    setInputValue(newValue);
-  };
+  // const change = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const newValue = e.target.value;
+  //   handleInputChange(newValue);
+
+  //   console.log('testt', newValue);
+  // };
 
   if (size === 'lg') {
     inputSizeCss = 'h-11';
@@ -51,16 +51,18 @@ export default function WhInput({
 
   return (
     <div>
-      <div className='flex flex-col'>
-        <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
-          {label}
-        </label>
+      <div className='flex flex-col my-6'>
+        {label && (
+          <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
+            {label}
+          </label>
+        )}
         <input
           type='search'
           className={`${inputSizeCss} ${defaultInputCss} ${isErr ? `${isErrorCss}` : `${isFocusBorderCss}`}`}
           disabled={disabled}
           placeholder={placeholder}
-          onChange={change}
+          onChange={(e) => handleInputChange(e.target.value)}
         />
         {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>

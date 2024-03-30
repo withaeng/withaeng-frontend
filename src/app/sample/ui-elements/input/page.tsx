@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import WhInput from '@/components/elements/WhInput';
 
 export default function Page() {
-  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (value: string) => {
+    console.log('Input value:', value); // 값 전달 확인하는 로그
+  };
 
   return (
     <div className='flex m-8 gap-10'>
@@ -16,24 +18,17 @@ export default function Page() {
           label='라벨 이름 lg'
           size='lg'
           placeholder='직접 내용입력'
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
         />
 
         <WhInput
           size='lg'
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
           isErr
           errorMsg='설명을 입력하세요.'
         />
 
-        <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          size='lg'
-          disabled
-        />
+        <WhInput handleInputChange={handleInputChange} size='lg' disabled />
       </div>
 
       {/* height 40 */}
@@ -42,27 +37,19 @@ export default function Page() {
 
         <WhInput
           label='라벨 이름 md'
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
           size='md'
           placeholder='직접 내용입력'
-        >
-          내용을 입력해주세요.
-        </WhInput>
+        />
+
         <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
           size='md'
           errorMsg='설명을 입력하세요.'
           isErr
         />
 
-        <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          size='md'
-          disabled
-        />
+        <WhInput handleInputChange={handleInputChange} size='md' disabled />
       </div>
 
       {/* height 36 */}
@@ -70,26 +57,19 @@ export default function Page() {
         <p className='mb-5'>👉 height 36(레이블 이름 유무 설정 가능) </p>
 
         <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
           label='라벨 이름 sm'
           size='sm'
           placeholder='직접 내용입력'
         />
         <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          handleInputChange={handleInputChange}
           size='sm'
           errorMsg='설명을 입력하세요.'
           isErr
         />
 
-        <WhInput
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          size='sm'
-          disabled
-        />
+        <WhInput handleInputChange={handleInputChange} size='sm' disabled />
       </div>
     </div>
   );
