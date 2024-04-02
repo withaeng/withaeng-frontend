@@ -26,16 +26,16 @@ function setCheckboxIcon(
   indeterminate?: boolean
 ): ReactElement | null {
   if (checked) {
-    return size === 'sm' ? <CheckedSm /> : <CheckedMd />;
+    return size === 'sm' ? <CheckedSm className='cursor-pointer' /> : <CheckedMd className='cursor-pointer' />;
   } else if (indeterminate) {
-    return size === 'sm' ? <IndeterminateSm /> : <IndeterminateMd />;
+    return size === 'sm' ? <IndeterminateSm className='cursor-pointer' /> : <IndeterminateMd className='cursor-pointer' />;
   } else {
     return null;
   }
 }
 
 const defaultCheckboxCss =
-  'border border-nutral-white-03 rounded hover:[&:not([disabled])]:border-primary-light disabled:bg-nutral-white-02 checked:border-primary-main checked:bg-primary-main transition duration-150 ease-in-out';
+  'w-full h-full appearance-none outline-none border border-nutral-white-03 rounded hover:[&:not([disabled])]:border-primary-light disabled:bg-nutral-white-02 disabled:cursor-auto checked:border-primary-main checked:bg-primary-main transition duration-150 ease-in-out cursor-pointer';
 let checkboxSizeCss = '';
 let checkboxWrapperSizeCss = '';
 let checkboxIndeterminateCss = '';
@@ -51,24 +51,24 @@ export default function WhCheckbox({
   onChange = () => {},
 }: WhCheckboxProps) {
   if (size === 'sm') {
-    checkboxSizeCss = 'w-5 h-5';
-    checkboxWrapperSizeCss = 'gap-3 text-body-02';
+    checkboxSizeCss = 'relative flex justify-center items-center w-5 h-5';
+    checkboxWrapperSizeCss = 'inline-flex gap-3 text-body-02';
   } else {
-    checkboxSizeCss = 'w-6 h-6';
-    checkboxWrapperSizeCss = 'gap-5 text-body-01';
+    checkboxSizeCss = 'relative flex justify-center items-center w-6 h-6';
+    checkboxWrapperSizeCss = 'inline-flex gap-5 text-body-01';
   }
   if (indeterminate) {
-    checkboxIndeterminateCss = 'bg-primary-main';
+    checkboxIndeterminateCss = 'bg-primary-main border-0';
   } else {
     checkboxIndeterminateCss = '';
   }
   return (
-    <div className={`inline-flex ${checkboxWrapperSizeCss}`}>
+    <div className={`${checkboxWrapperSizeCss}`}>
       <div
-        className={`relative flex justify-center items-center ${checkboxSizeCss}`}
+        className={`${checkboxSizeCss}`}
       >
         <input
-          className={`w-full h-full ${defaultCheckboxCss} ${checkboxIndeterminateCss} appearance-none outline-none`}
+          className={`${defaultCheckboxCss} ${checkboxIndeterminateCss}`}
           type='checkbox'
           id={id}
           value={value}
@@ -82,7 +82,7 @@ export default function WhCheckbox({
           {setCheckboxIcon(id, size, checked, indeterminate)}
         </label>
       </div>
-      <label htmlFor={id}>{children}</label>
+      <label htmlFor={id} className='cursor-pointer'>{children}</label>
     </div>
   );
 }

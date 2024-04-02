@@ -50,8 +50,7 @@ export default function Page() {
 
   function handleAllCheckboxList2(checked: boolean): void {
     if (checked) {
-      const temp = fruitKindList.map((el) => el.value);
-      setCheckboxList2(checkboxList2.concat(temp));
+      setCheckboxList2([...fruitKindList.map((el) => el.value)]);
       setAllCheckboxList2(true);
     } else {
       setCheckboxList2([]);
@@ -65,6 +64,10 @@ export default function Page() {
 
   function isChecked2(value: string): boolean {
     return checkboxList2.includes(value);
+  }
+
+  function isAllChecked(): boolean {
+    return checkboxList2.length === fruitKindList.length;
   }
 
   function isIndeterminated(): boolean {
@@ -118,9 +121,9 @@ export default function Page() {
         <WhCheckbox
           id='all'
           value='all'
-          checked={allCheckboxList2}
+          checked={isAllChecked()}
           indeterminate={isIndeterminated()}
-          onChange={() => handleAllCheckboxList2}
+          onChange={handleAllCheckboxList2}
         >
           전체
         </WhCheckbox>
@@ -130,7 +133,7 @@ export default function Page() {
             id={el.id}
             value={el.value}
             checked={isChecked2(el.value)}
-            onChange={() => handleCheckboxList2}
+            onChange={handleCheckboxList2}
           >
             {el.value}
           </WhCheckbox>
