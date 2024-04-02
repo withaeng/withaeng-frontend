@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 const defaultTextareaCss =
-  'w-full h-[100px] px-4 py-[10px] text-body-02 placeholder:text-body-02  placeholder:text-nutral-white-03  rounded disabled:bg-nutral-white-02 disabled:border-0 disabled:text-nutral-white-04 focus:outline-primary-pressing resize-none border border-nutral-white-03';
+  'w-full h-[100px] px-4 py-2.5 text-body-02 placeholder:text-body-02  placeholder:text-nutral-white-03  rounded disabled:bg-nutral-white-02 disabled:border-0 disabled:text-nutral-white-04 focus:outline-primary-pressing resize-none border border-nutral-white-03';
 
 const defaultLabelCss = 'text-black-02 text-body-02';
 
@@ -21,16 +21,16 @@ export default function WhTextarea({
   label = '',
   handleTextareaChange,
 }: TextareaProps) {
-  const [textareaCount, setTextareaCount] = useState(0);
+  const [textCount, setTextCount] = useState(0);
 
-  const onTextareaHandler = (e) => {
+  const onTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     let textValue = e.target.value;
 
     if (textValue.length > 60) {
       textValue = textValue.slice(0, 60);
     }
 
-    setTextareaCount(textValue.length);
+    setTextCount(textValue.length);
     handleTextareaChange(textValue);
   };
 
@@ -42,7 +42,7 @@ export default function WhTextarea({
             {label}
           </label>
 
-          <span className={`${defaultCountCss}`}>{textareaCount}/60</span>
+          <span className={`${defaultCountCss}`}>{textCount}/60</span>
         </div>
         <textarea
           cols={40}

@@ -5,17 +5,17 @@ import React, { useState } from 'react';
 
 export default function Page() {
   const [textareaValue, setTextareaValue] = useState('');
-  const [textareaCount, setTextareaCount] = useState(0);
+  const [textCount, setTextCount] = useState(0);
 
   const handleTextareaChange = (value: string) => {
     setTextareaValue(value);
-    setTextareaCount(value.length);
+    setTextCount(value.length);
   };
 
   return (
     <div className='m-8'>
       <p>👉 입력되고 있는 내용 : {textareaValue}</p>
-      <p>👉 입력되고 있는 글자수 : {textareaCount}</p>
+      <p>👉 입력되고 있는 글자수 : {textCount}</p>
 
       <div className='flex gap-10'>
         <WhTextarea
