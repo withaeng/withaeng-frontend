@@ -21,7 +21,6 @@ export default function Page() {
   ];
   const [checkboxList1, setCheckboxList1] = useState<string[]>([]);
   const [checkboxList2, setCheckboxList2] = useState<string[]>([]);
-  const [allCheckboxList2, setAllCheckboxList2] = useState(false);
 
   function handleCheckbox1(checked: boolean): void {
     setCheckbox1(checked);
@@ -44,17 +43,14 @@ export default function Page() {
       setCheckboxList2(checkboxList2.concat(value));
     } else {
       setCheckboxList2(checkboxList2.filter((el) => el !== value));
-      setAllCheckboxList2(false);
     }
   }
 
   function handleAllCheckboxList2(checked: boolean): void {
     if (checked) {
       setCheckboxList2([...fruitKindList.map((el) => el.value)]);
-      setAllCheckboxList2(true);
     } else {
       setCheckboxList2([]);
-      setAllCheckboxList2(false);
     }
   }
 
