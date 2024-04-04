@@ -16,6 +16,9 @@ const page = () => (
     <Link href='/sample/ui-elements/chip' className={`${linkCss}`}>
       common Chip
     </Link>
+    <Link href='/sample/ui-elements/textarea' className={`${linkCss}`}>
+      common textarea
+    </Link>
     <Link href='/sample/ui-elements/checkbox' className={`${linkCss}`}>
       common Checkbox
     </Link>
