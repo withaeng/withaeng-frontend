@@ -18,6 +18,11 @@ const page = () => (
     </Link>
     <Link href='/sample/ui-elements/textarea' className={`${linkCss}`}>
       common textarea
+    <Link href='/sample/ui-elements/checkbox' className={`${linkCss}`}>
+      common Checkbox
+    </Link>
+    <Link href='/sample/ui-elements/radio' className={`${linkCss}`}>
+      common Radio
     </Link>
   </div>
 );
