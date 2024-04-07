@@ -24,7 +24,7 @@ interface InputProps {
   isErr?: boolean;
   errorMsg?: string;
   handleInputChange: (value: string) => void;
-  size: 'lg' | 'md' | 'sm';
+  size?: 'lg' | 'md' | 'sm';
 }
 
 export default function WhInput({
@@ -38,6 +38,8 @@ export default function WhInput({
 }: InputProps) {
   const [inputValue, setInputValue] = useState('');
 
+  console.log(setInputValue, 111);
+
   if (size === 'lg') {
     inputSizeCss = 'h-11';
   } else if (size === 'md') {
@@ -45,6 +47,16 @@ export default function WhInput({
   } else if (size === 'sm') {
     inputSizeCss = 'h-9';
   }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    handleInputChange(e.target.value);
+  };
+
+  const handleClear = () => {
+    setInputValue('');
+    handleInputChange('');
+  };
 
   return (
     <div>
@@ -63,15 +75,12 @@ export default function WhInput({
             disabled={disabled}
             placeholder={placeholder}
             value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              handleInputChange(e.target.value);
-            }}
+            onChange={handleChange}
           />
           {inputValue && (
             <DeleteFillIcon
               className={`${closeBtnCss}`}
-              onClick={() => setInputValue('')}
+              onClick={handleClear}
             />
           )}
         </div>
