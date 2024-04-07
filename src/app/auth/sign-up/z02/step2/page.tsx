@@ -6,7 +6,7 @@ import ButtonGroup from '../../components/FooterButtonList';
 export default function SignUpStep4Page() {
   const router = useRouter();
   const onClick = () => {
-    router.push('/auth/sign-up/z03/step5');
+    router.push('/auth/sign-up/z02/step1');
   };
 
   return (
