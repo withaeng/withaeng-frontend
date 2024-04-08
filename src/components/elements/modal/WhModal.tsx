@@ -18,14 +18,20 @@ export default function WhModal({
   isDismissable = true,
   children,
 }: Props) {
+  const handleClose = (closable: boolean): void => {
+    if (closable) onClose();
+  };
+
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {isOpen &&
         createPortal(
           <div className='fixed top-0 left-0 w-dvw h-dvh'>
             <div
+              role='presentation'
               className='w-full h-full bg-[#000000] opacity-20 z-40'
-              onClick={isDismissable ? onClose : () => {}}
+              onClick={() => handleClose(isDismissable)}
             />
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nutral-white-01 z-50 w-fit px-[84px] py-[72px] min-w-[580px] rounded shadow-modal'>
               {!hideCloseButton && (
