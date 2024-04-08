@@ -16,6 +16,7 @@
   },
   "rules": {
     "no-alert": "off",
+    "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "jsx-a11y/label-has-associated-control": [
