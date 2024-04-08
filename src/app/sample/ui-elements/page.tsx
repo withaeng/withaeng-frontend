@@ -25,6 +25,9 @@ const page = () => (
     <Link href='/sample/ui-elements/radio' className={`${linkCss}`}>
       common Radio
     </Link>
+    <Link href='/sample/ui-elements/modal' className={`${linkCss}`}>
+      common Modal
+    </Link>
   </div>
 );
 
