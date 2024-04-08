@@ -8,16 +8,16 @@ import WhModalFooter from '@/components/elements/modal/WhModalFooter';
 import useModal from '@/components/elements/modal/useModal';
 import WhModalBody from '@/components/elements/modal/WhModalBody';
 
-const StepBar = ({ value }: { value: number }): React.ReactNode => {
+function StepBar({ value }: { value: number }): React.ReactNode {
   return (
     <div className='h-0.5 w-full bg-primary-exLight mt-2'>
       <div
-        className={`h-full bg-primary-main transition-all`}
-        style={{ width: value + '%' }}
+        className='h-full bg-primary-main transition-all'
+        style={{ width: `${value}%` }}
       />
     </div>
   );
-};
+}
 
 export default function StepModal() {
   const [step, setStep] = useState(1);
@@ -26,7 +26,6 @@ export default function StepModal() {
   const handlePrevClick = () => {
     if (step === 2) setStep(1);
     else if (step === 3) setStep(2);
-    else return;
   };
 
   const handleNextClick = () => {
@@ -35,12 +34,13 @@ export default function StepModal() {
     else if (step === 3) {
       onClose();
       setStep(1);
-    } else return;
+    }
   };
 
   return (
     <div>
-      <label htmlFor=''>step 모달 열기</label>
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label>step 모달 열기</label>
       <WhButton size='md' fitContent onClick={onOpen}>
         step 모달
       </WhButton>
@@ -53,30 +53,23 @@ export default function StepModal() {
         </WhModalBody>
         <WhModalFooter>
           {step === 1 && (
-            <WhModalButtonList
-              onClick={handleNextClick}
-              label='다음'
-            ></WhModalButtonList>
+            <WhModalButtonList onClick={handleNextClick} label='다음' />
           )}
           {step === 2 && (
-            <>
-              <WhModalButtonList
-                prev
-                onPrevChlick={handlePrevClick}
-                onClick={handleNextClick}
-                label='다음'
-              ></WhModalButtonList>
-            </>
+            <WhModalButtonList
+              prev
+              onPrevChlick={handlePrevClick}
+              onClick={handleNextClick}
+              label='다음'
+            />
           )}
           {step === 3 && (
-            <>
-              <WhModalButtonList
-                prev
-                onPrevChlick={handlePrevClick}
-                onClick={handleNextClick}
-                label='완료'
-              ></WhModalButtonList>
-            </>
+            <WhModalButtonList
+              prev
+              onPrevChlick={handlePrevClick}
+              onClick={handleNextClick}
+              label='완료'
+            />
           )}
         </WhModalFooter>
       </WhModal>

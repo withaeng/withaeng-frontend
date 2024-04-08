@@ -12,7 +12,8 @@ export default function NonDismissableModal() {
   const { isOpen, onOpen, onClose } = useModal();
   return (
     <div>
-      <label htmlFor=''>오버레이 닫기 불가</label>
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label>오버레이 닫기 불가</label>
       <WhButton size='md' fitContent onClick={onOpen}>
         오버레이 닫기 불가 모달
       </WhButton>
@@ -25,7 +26,7 @@ export default function NonDismissableModal() {
           </div>
         </WhModalBody>
         <WhModalFooter>
-          <WhModalButtonList onClick={onClose} label='닫기'></WhModalButtonList>
+          <WhModalButtonList onClick={onClose} label='닫기' />
         </WhModalFooter>
       </WhModal>
     </div>

@@ -12,7 +12,8 @@ export default function BasicModal() {
   const { isOpen, onOpen, onClose } = useModal();
   return (
     <div>
-      <label htmlFor=''>기본 모달 열기</label>
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label>기본 모달 열기</label>
       <WhButton size='md' fitContent onClick={onOpen}>
         기본 모달
       </WhButton>
@@ -25,7 +26,7 @@ export default function BasicModal() {
           </div>
         </WhModalBody>
         <WhModalFooter>
-          <WhModalButtonList onClick={onClose} label='닫기'></WhModalButtonList>
+          <WhModalButtonList onClick={onClose} label='닫기' />
         </WhModalFooter>
       </WhModal>
     </div>
