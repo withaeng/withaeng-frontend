@@ -138,6 +138,7 @@ const config: Config = {
     boxShadow: {
       'primary-inner-06': 'inset 0 0 0 6px #FFA500',
       'primary-inner-08': 'inset 0 0 0 8px #FFA500',
+      modal: '0 2px 8px 0 #0000001A',
     },
     extend: {
       backgroundImage: {
