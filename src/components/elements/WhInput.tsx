@@ -38,8 +38,6 @@ export default function WhInput({
 }: InputProps) {
   const [inputValue, setInputValue] = useState('');
 
-  console.log(setInputValue, 111);
-
   if (size === 'lg') {
     inputSizeCss = 'h-11';
   } else if (size === 'md') {
