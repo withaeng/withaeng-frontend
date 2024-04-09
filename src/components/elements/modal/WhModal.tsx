@@ -7,7 +7,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   hideCloseButton?: boolean;
-  isDismissable?: boolean;
+  isDismissible?: boolean;
   children: React.ReactNode;
 }
 
@@ -15,7 +15,7 @@ export default function WhModal({
   isOpen,
   onClose,
   hideCloseButton = false,
-  isDismissable = true,
+  isDismissible = true,
   children,
 }: Props) {
   const handleClose = (closable: boolean): void => {
@@ -31,7 +31,7 @@ export default function WhModal({
             <div
               role='presentation'
               className='w-full h-full bg-[#000000] opacity-20 z-40'
-              onClick={() => handleClose(isDismissable)}
+              onClick={() => handleClose(isDismissible)}
             />
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nutral-white-01 z-50 w-fit px-[84px] py-[72px] min-w-[580px] rounded shadow-modal'>
               {!hideCloseButton && (
