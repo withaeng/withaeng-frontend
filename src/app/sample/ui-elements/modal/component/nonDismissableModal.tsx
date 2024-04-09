@@ -17,7 +17,7 @@ export default function NonDismissableModal() {
       <WhButton size='md' fitContent onClick={onOpen}>
         오버레이 닫기 불가 모달
       </WhButton>
-      <WhModal isOpen={isOpen} onClose={onClose} isDismissable={false}>
+      <WhModal isOpen={isOpen} onClose={onClose} isDismissible={false}>
         <WhModalHeader>모달 헤더 입니다.</WhModalHeader>
 
         <WhModalBody>
