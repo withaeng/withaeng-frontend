@@ -24,7 +24,9 @@ export default function WhModal({
   const handleClose = (closable: boolean): void => {
     if (closable) onClose();
   };
-
+  if (typeof window !== 'object') {
+    return null;
+  }
   return (
     <>
       {createPortal(
