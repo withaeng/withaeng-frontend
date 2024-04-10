@@ -24,7 +24,7 @@ export default function WhModalButtonList({
 
   return (
     <div className='flex justify-center'>
-      <div className='flex gap-5 w-[400px]'>
+      <div className='flex gap-5 w-[500px]'>
         {prev && (
           <div className='w-[100px]'>
             <WhButton
