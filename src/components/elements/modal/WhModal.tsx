@@ -1,6 +1,8 @@
 'use client';
 
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 import { CloseIcon } from '../../../../public/assets/icons/menu';
 
 interface Props {
@@ -18,16 +20,24 @@ export default function WhModal({
   isDismissible = true,
   children,
 }: Props) {
+  const nodeRef = useRef(null);
   const handleClose = (closable: boolean): void => {
     if (closable) onClose();
   };
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {isOpen &&
-        createPortal(
-          <div className='fixed top-0 left-0 w-dvw h-dvh'>
+      {createPortal(
+        <CSSTransition
+          in={isOpen}
+          timeout={500}
+          nodeRef={nodeRef}
+          mountOnEnter
+          unmountOnExit
+          classNames='modal-transition'
+          className='fixed top-0 left-0 w-dvw h-dvh'
+        >
+          <div ref={nodeRef}>
             <div
               role='presentation'
               className='w-full h-full bg-[#000000] opacity-20 z-40'
@@ -41,9 +51,10 @@ export default function WhModal({
               )}
               <div className=''>{children}</div>
             </div>
-          </div>,
-          document.body
-        )}
+          </div>
+        </CSSTransition>,
+        document.body
+      )}
     </>
   );
 }
