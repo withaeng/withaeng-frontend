@@ -4,9 +4,7 @@ import { useState } from 'react';
 import WhButton from '@/components/elements/WhButton';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
-import WhModalFooter from '@/components/elements/modal/WhModalFooter';
 import useModal from '@/components/elements/modal/useModal';
-import WhModalBody from '@/components/elements/modal/WhModalBody';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
@@ -46,32 +44,28 @@ export default function StepModal() {
       </WhButton>
       <WhModal isOpen={isOpen} onClose={onClose}>
         <StepBar value={(step / 3) * 100} />
-        <WhModalBody>
-          <div className='flex flex-col gap-10 mt-10 mx-[15px]'>
-            <div>STEP {step}</div>
-          </div>
-        </WhModalBody>
-        <WhModalFooter>
-          {step === 1 && (
-            <WhModalButtonList onClick={handleNextClick} label='다음' />
-          )}
-          {step === 2 && (
-            <WhModalButtonList
-              prev
-              onPrevChlick={handlePrevClick}
-              onClick={handleNextClick}
-              label='다음'
-            />
-          )}
-          {step === 3 && (
-            <WhModalButtonList
-              prev
-              onPrevChlick={handlePrevClick}
-              onClick={handleNextClick}
-              label='완료'
-            />
-          )}
-        </WhModalFooter>
+        <div className='flex flex-col gap-10 mt-10 mx-[15px]'>
+          <div>STEP {step}</div>
+        </div>
+        {step === 1 && (
+          <WhModalButtonList onClick={handleNextClick} label='다음' />
+        )}
+        {step === 2 && (
+          <WhModalButtonList
+            prev
+            onPrevChlick={handlePrevClick}
+            onClick={handleNextClick}
+            label='다음'
+          />
+        )}
+        {step === 3 && (
+          <WhModalButtonList
+            prev
+            onPrevChlick={handlePrevClick}
+            onClick={handleNextClick}
+            label='완료'
+          />
+        )}
       </WhModal>
     </div>
   );
