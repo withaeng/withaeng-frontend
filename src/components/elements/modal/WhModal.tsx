@@ -32,7 +32,7 @@ export default function WhModal({
       {createPortal(
         <CSSTransition
           in={isOpen}
-          timeout={500}
+          timeout={400}
           nodeRef={nodeRef}
           mountOnEnter
           unmountOnExit
