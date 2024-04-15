@@ -1,7 +1,7 @@
 'use client';
 
-import ButtonGroup from '@/app/auth/sign-up/components/FooterButtonList';
 import WhChip from '@/components/elements/WhChip';
+import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -40,7 +40,7 @@ const cantEatList = [
   { id: 10, value: '탄산' },
 ];
 
-export default function SignUpStep6Page() {
+export default function SignUpPreferStep2Page() {
   const [interests, setInterests] = useState<string[]>([]);
   const [consume, setConsume] = useState<string[]>([]);
   const [cantEat, setCantEat] = useState<string[]>([]);
@@ -125,7 +125,6 @@ export default function SignUpStep6Page() {
           </div>
         </div>
       </div>
-      <ButtonGroup prev onClick={onClick} label='다음' />
     </>
   );
 }

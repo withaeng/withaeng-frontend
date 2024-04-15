@@ -1,18 +1,17 @@
 import Header from '@/components/header/Header';
+import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }
 
-export default function SignUpLayout({ children }: Props) {
+export default function SignUpLayout({ children, modal }: Props) {
   return (
     <div className='bg-nutral-white-02 h-dvh flex flex-col'>
       <Header />
-      <main className='flex justify-center items-center grow'>
-        <div className='w-[630px] rounded border bg-nutral-white-01 border-nutral-white-03'>
-          {children}
-        </div>
-      </main>
+      <main className='flex justify-center items-center grow'>{children}</main>
+      {modal}
     </div>
   );
 }

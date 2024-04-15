@@ -1,7 +1,7 @@
 'use client';
 
-import ButtonGroup from '@/app/auth/sign-up/components/FooterButtonList';
 import WhChip from '@/components/elements/WhChip';
+import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useState } from 'react';
 
 const genderList = [
@@ -24,7 +24,7 @@ const drinkingList = [
   { id: 3, value: '아예 음주 안함' },
 ];
 
-export default function SignUpStep7Page() {
+export default function SignUpPreferStep3Page() {
   const [gender, setGender] = useState<string[]>([]);
   const [smoking, setSmoking] = useState<string[]>([]);
   const [drinking, setDrinking] = useState<string[]>([]);
@@ -106,7 +106,6 @@ export default function SignUpStep7Page() {
           </div>
         </div>
       </div>
-      <ButtonGroup prev onClick={onClick} label='같이행 시작하기' />
     </>
   );
 }

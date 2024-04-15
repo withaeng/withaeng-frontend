@@ -10,11 +10,8 @@ export default function HomePage() {
         <Link className={`${linkCss}`} href='/sample'>
           sample page
         </Link>
-        <Link className={`${linkCss}`} href='/auth/login'>
-          login page
-        </Link>
-        <Link className={`${linkCss}`} href='/auth/sign-up/z02/step1'>
-          sign up page
+        <Link className={`${linkCss}`} href='/auth'>
+          auth page
         </Link>
       </div>
     </main>

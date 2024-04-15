@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import WhChip from '@/components/elements/WhChip';
-import ButtonGroup from '../../components/FooterButtonList';
+import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
+import WhInput from '@/components/elements/WhInput';
 
 const mbtiList = [
   { id: 0, value: 'ISTJ' },
@@ -28,7 +29,8 @@ const preferRegionList = [
   { id: 1, value: '해외' },
 ];
 
-export default function SignUpStep5Page() {
+export default function SignUpPreferStep1Page() {
+  const [nickname, setNickname] = useState<string>('');
   const [mbti, setMbti] = useState<string[]>([]);
   const [preferRegion, setPreferRegion] = useState<string[]>([]);
 
@@ -60,8 +62,13 @@ export default function SignUpStep5Page() {
       </h3>
       <div className='flex flex-col gap-10 mb-11'>
         <div>
-          <p className='mb-3'>닉네임을 입력해주세요.</p>
-          <div>input 들어갈 자리</div>
+          <WhInput
+            value={nickname}
+            handleInputChange={setNickname}
+            size='lg'
+            placeholder='닉네임은 2자 ~ 10자 이내로 입력 가능합니다.'
+            label='닉네임을 입력해주세요.'
+          />
         </div>
         <div>
           <p className='mb-3'>당신의 MBTI는 무엇인가요?</p>
@@ -94,7 +101,6 @@ export default function SignUpStep5Page() {
           </div>
         </div>
       </div>
-      <ButtonGroup onClick={onClick} label='다음' />
     </>
   );
 }
