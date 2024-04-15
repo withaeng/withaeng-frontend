@@ -13,3 +13,5 @@ export { ReactComponent as MessageOpenIcon } from './message-open.svg';
 export { ReactComponent as UserAddIcon } from './user-add.svg';
 export { ReactComponent as UserIcon } from './user.svg';
 export { ReactComponent as UsersGroupIcon } from './users-group.svg';
+export { ReactComponent as CalendarCheckGrayIcon } from './calendar-check-gray.svg';
+export { ReactComponent as UsersGroupGrayIcon } from './users-group-gray.svg';
