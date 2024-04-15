@@ -33,6 +33,7 @@ const config: Config = {
       caption: {
         main: '#ec5c53',
         light: '#f8867e',
+        success: '#36C304',
       },
     },
     fontSize: {
@@ -40,42 +41,42 @@ const config: Config = {
         '60px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'display-02': [
         '48px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'headline-01': [
         '40px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'headline-02': [
         '32px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'headline-03': [
         '28px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'headline-04': [
         '20px',
         {
           fontWeight: '600',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'subtitle-01': [
@@ -96,7 +97,7 @@ const config: Config = {
         '18px',
         {
           fontWeight: '400',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'body-02': [
@@ -110,28 +111,28 @@ const config: Config = {
         '14px',
         {
           fontWeight: '300',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'caption-01': [
         '12px',
         {
           fontWeight: '500',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'caption-02': [
         '12px',
         {
           fontWeight: '400',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
       'caption-03': [
         '10px',
         {
           fontWeight: '300',
-          lineHeight: 'auto',
+          lineHeight: '100%',
         },
       ],
     },
