@@ -18,7 +18,7 @@ interface ButtonProps {
   disabled?: boolean;
   fitContent?: boolean;
   size: 'lg' | 'md' | 'sm';
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function WhButton({
