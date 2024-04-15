@@ -25,6 +25,8 @@ interface InputProps {
   errorMsg?: string;
   handleInputChange: (value: string) => void;
   size?: 'lg' | 'md' | 'sm';
+  value?: string;
+  type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
 }
 
 export default function WhInput({
@@ -35,8 +37,10 @@ export default function WhInput({
   isErr = false,
   errorMsg = '',
   handleInputChange,
+  value,
+  type = 'text',
 }: InputProps) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value);
 
   if (size === 'lg') {
     inputSizeCss = 'h-11';
@@ -58,7 +62,7 @@ export default function WhInput({
 
   return (
     <div>
-      <div className='flex flex-col my-6 relative '>
+      <div className='flex flex-col relative'>
         {label && (
           <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
             {label}
@@ -66,7 +70,7 @@ export default function WhInput({
         )}
         <div className='flex items-center'>
           <input
-            type='text'
+            type={type}
             className={`${inputSizeCss} ${defaultInputCss} ${
               isErr ? `${isErrorCss}` : `${isFocusBorderCss}`
             }`}
