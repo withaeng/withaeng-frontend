@@ -6,6 +6,7 @@ import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 
 const secondarySpanCss = 'text-secondary-main font-semibold underline';
 export default function SignUpTermModal() {
+  // TODO: 이메일 재전송 로직 작업
   const onClick = () => {};
   return (
     <WhModal className='px-[84px] py-[72px]'>
