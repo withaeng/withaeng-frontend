@@ -96,7 +96,7 @@ export default function WhInput({
             )}
           </div>
         </div>
-        {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
+        {isErr && errorMsg && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>
     </div>
   );
