@@ -29,6 +29,8 @@ interface InputProps {
   type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
   isClearable?: boolean;
   endAdornment?: React.ReactNode;
+  minLength?: number;
+  maxLength?: number;
 }
 
 export default function WhInput({
@@ -43,6 +45,8 @@ export default function WhInput({
   type = 'text',
   isClearable = true,
   endAdornment,
+  minLength,
+  maxLength,
 }: InputProps) {
   const [inputValue, setInputValue] = useState(value);
 
@@ -82,6 +86,8 @@ export default function WhInput({
             placeholder={placeholder}
             value={inputValue}
             onChange={handleChange}
+            minLength={minLength}
+            maxLength={maxLength}
           />
           <div className={`${closeBtnCss}`}>
             {endAdornment}
