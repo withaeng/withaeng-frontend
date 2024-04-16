@@ -10,6 +10,7 @@ import {
   EyeShow20Icon,
 } from '../../../../../../public/assets/icons/system';
 import { useState } from 'react';
+import { Check20Icon } from '../../../../../../public/assets/icons/menu';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -37,6 +38,10 @@ export default function SignUpContent({
       console.error('비밀번호를 입력하세요');
       return;
     }
+    if (!isMinWords() || !isCombination()) {
+      console.error('비밀번호 규칙에 맞게 입력하세요');
+      return;
+    }
     if (!form.term) {
       console.error('이용약관에 동의해주세요.');
       return;
@@ -44,6 +49,16 @@ export default function SignUpContent({
     console.log(form);
     // TODO: 서버 연결, 데이터 저장 및 이메일 전송
     router.replace('/auth/sign-up/email-check');
+  };
+
+  const isMinWords = (): boolean | undefined => {
+    return form.password.length > 0 ? form.password.length >= 8 : undefined;
+  };
+
+  const isCombination = (): boolean | undefined => {
+    return form.password.length > 0
+      ? /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(form.password)
+      : undefined;
   };
 
   return (
@@ -60,37 +75,89 @@ export default function SignUpContent({
           size='lg'
           placeholder='이메일'
         />
-        {/* TODO: 최소 8자, 영 + 숫자 조합 = 미설정 부분 체크 */}
-        <WhInput
-          type={showPw ? 'text' : 'password'}
-          value={form.password}
-          handleInputChange={(value) =>
-            setForm((prev) => ({ ...prev, password: value }))
-          }
-          size='lg'
-          placeholder='비밀번호를 입력하세요.'
-          label='비밀번호'
-          isClearable={false}
-          endAdornment={
-            showPw ? (
-              <button
-                type='button'
-                className={buttonStyle}
-                onClick={() => setShowPw(false)}
+        <div>
+          <WhInput
+            type={showPw ? 'text' : 'password'}
+            value={form.password}
+            handleInputChange={(value) =>
+              setForm((prev) => ({ ...prev, password: value }))
+            }
+            size='lg'
+            placeholder='비밀번호를 입력하세요.'
+            label='비밀번호'
+            isClearable={false}
+            isErr={
+              form.password.length > 0
+                ? !isMinWords() || !isCombination()
+                : undefined
+            }
+            endAdornment={
+              showPw ? (
+                <button
+                  type='button'
+                  className={buttonStyle}
+                  onClick={() => setShowPw(false)}
+                >
+                  <EyeShow20Icon />
+                </button>
+              ) : (
+                <button
+                  type='button'
+                  className={buttonStyle}
+                  onClick={() => setShowPw(true)}
+                >
+                  <EyeHide20Icon />
+                </button>
+              )
+            }
+          />
+          <div className='flex gap-6 mt-1'>
+            <div className='flex gap-1'>
+              <Check20Icon
+                stroke={
+                  isMinWords() === undefined
+                    ? '#BAB8B6'
+                    : isMinWords()
+                      ? '#36C304'
+                      : '#EC5C53'
+                }
+              />
+              <span
+                className={
+                  isMinWords() === undefined
+                    ? 'text-nutral-white-04'
+                    : isMinWords()
+                      ? 'text-caption-success'
+                      : 'text-caption-main'
+                }
               >
-                <EyeShow20Icon />
-              </button>
-            ) : (
-              <button
-                type='button'
-                className={buttonStyle}
-                onClick={() => setShowPw(true)}
+                최소 8자 입력
+              </span>
+            </div>
+            <div className='flex gap-1'>
+              <Check20Icon
+                stroke={
+                  isCombination() === undefined
+                    ? '#BAB8B6'
+                    : isCombination()
+                      ? '#36C304'
+                      : '#EC5C53'
+                }
+              />
+              <span
+                className={
+                  isCombination() === undefined
+                    ? 'text-nutral-white-04'
+                    : isCombination()
+                      ? 'text-caption-success'
+                      : 'text-caption-main'
+                }
               >
-                <EyeHide20Icon />
-              </button>
-            )
-          }
-        />
+                영문자 + 숫자 조합
+              </span>
+            </div>
+          </div>
+        </div>
         {/* TODO: 캘린더 추가 */}
         <div>생년월일 calendar 들어갈 자리</div>
         <div>
