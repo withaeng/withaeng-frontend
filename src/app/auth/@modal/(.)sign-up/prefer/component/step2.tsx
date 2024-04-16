@@ -1,9 +1,7 @@
 'use client';
 
-import WhChip from '@/components/elements/WhChip';
-import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import WhChip from '@/components/elements/WhChip';
 
 const interestsList = [
   { id: 0, value: '사진' },
@@ -44,11 +42,6 @@ export default function SignUpPreferStep2Page() {
   const [interests, setInterests] = useState<string[]>([]);
   const [consume, setConsume] = useState<string[]>([]);
   const [cantEat, setCantEat] = useState<string[]>([]);
-
-  const router = useRouter();
-  const onClick = () => {
-    router.push('/auth/sign-up/z03/step7');
-  };
 
   function handleInterestsChip(value: string) {
     if (!interests.includes(value)) {

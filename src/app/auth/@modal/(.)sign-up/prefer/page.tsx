@@ -23,9 +23,11 @@ function StepBar({ value }: { value: number }): React.ReactNode {
 export default function SignUpPreferModal() {
   const [step, setStep] = useState(1);
   const router = useRouter();
+
   const onPrevClick = () => {
     setStep((prev) => prev - 1);
   };
+
   const onNextClick = () => {
     if (step === 3) {
       router.replace('/');
@@ -33,6 +35,7 @@ export default function SignUpPreferModal() {
       setStep((prev) => prev + 1);
     }
   };
+
   return (
     <WhModal className='px-[85px] py-[72px] h-[800px]'>
       <div className='flex flex-col h-full'>

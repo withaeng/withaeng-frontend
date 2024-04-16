@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import WhChip from '@/components/elements/WhChip';
-import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import WhInput from '@/components/elements/WhInput';
 
 const mbtiList = [
@@ -33,11 +31,6 @@ export default function SignUpPreferStep1Page() {
   const [nickname, setNickname] = useState<string>('');
   const [mbti, setMbti] = useState<string[]>([]);
   const [preferRegion, setPreferRegion] = useState<string[]>([]);
-
-  const router = useRouter();
-  const onClick = () => {
-    router.push('/auth/sign-up/z03/step6');
-  };
 
   function handleMbtiChip(value: string) {
     if (!mbti.includes(value)) {

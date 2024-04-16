@@ -1,8 +1,7 @@
 'use client';
 
-import WhChip from '@/components/elements/WhChip';
-import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useState } from 'react';
+import WhChip from '@/components/elements/WhChip';
 
 const genderList = [
   { id: 0, value: '동성' },
@@ -28,8 +27,6 @@ export default function SignUpPreferStep3Page() {
   const [gender, setGender] = useState<string[]>([]);
   const [smoking, setSmoking] = useState<string[]>([]);
   const [drinking, setDrinking] = useState<string[]>([]);
-
-  const onClick = () => {};
 
   function handleGenderChip(value: string) {
     if (!gender.includes(value)) {
