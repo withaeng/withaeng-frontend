@@ -5,7 +5,13 @@ import WhInput from '@/components/elements/WhInput';
 import { useRouter } from 'next/navigation';
 import { UserSignUp } from '../page';
 import WhButton from '@/components/elements/WhButton';
+import {
+  EyeHide20Icon,
+  EyeShow20Icon,
+} from '../../../../../../public/assets/icons/system';
+import { useState } from 'react';
 
+const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
 
 export default function SignUpContent({
@@ -18,9 +24,11 @@ export default function SignUpContent({
   setTermPage: (value: boolean) => void;
 }) {
   const router = useRouter();
+  const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // FIXME: 입력이 올바르지 않은 경우 추가 작업
     if (!form.email) {
       console.error('이메일을 입력하세요');
       return;
@@ -34,6 +42,7 @@ export default function SignUpContent({
       return;
     }
     console.log(form);
+    // TODO: 서버 연결, 데이터 저장 및 이메일 전송
     router.replace('/auth/sign-up/email-check');
   };
 
@@ -51,16 +60,38 @@ export default function SignUpContent({
           size='lg'
           placeholder='이메일'
         />
+        {/* TODO: 최소 8자, 영 + 숫자 조합 = 미설정 부분 체크 */}
         <WhInput
-          type='password'
-          label='비밀번호'
+          type={showPw ? 'text' : 'password'}
           value={form.password}
           handleInputChange={(value) =>
             setForm((prev) => ({ ...prev, password: value }))
           }
           size='lg'
-          placeholder='비밀번호'
+          placeholder='비밀번호를 입력하세요.'
+          label='비밀번호'
+          isClearable={false}
+          endAdornment={
+            showPw ? (
+              <button
+                type='button'
+                className={buttonStyle}
+                onClick={() => setShowPw(false)}
+              >
+                <EyeShow20Icon />
+              </button>
+            ) : (
+              <button
+                type='button'
+                className={buttonStyle}
+                onClick={() => setShowPw(true)}
+              >
+                <EyeHide20Icon />
+              </button>
+            )
+          }
         />
+        {/* TODO: 캘린더 추가 */}
         <div>생년월일 calendar 들어갈 자리</div>
         <div>
           <label htmlFor='sign-up_gender'>

@@ -6,14 +6,24 @@ import WhButton from '@/components/elements/WhButton';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhInput from '@/components/elements/WhInput';
 import Link from 'next/link';
+import {
+  EyeHide20Icon,
+  EyeShow20Icon,
+} from '../../../../../public/assets/icons/system';
 
+const buttonStyle = 'w-full h-full flex justify-center items-center';
 const dividerStyle = 'h-0 w-full border border-nutral-white-03';
 
 export default function LoginModal() {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [showPw, setShowPw] = useState(false);
 
-  const login = () => {};
+  const login = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: 서버연결필요
+    console.log(email, pw);
+  };
 
   return (
     <WhModal className='px-[101px] py-[116px] w-[680px]'>
@@ -26,7 +36,7 @@ export default function LoginModal() {
           <span className='w-full text-nutral-black-01'>로그인 / 회원가입</span>
           <div className={dividerStyle} />
         </div>
-        <div className='mt-11 mx-11 flex flex-col gap-5'>
+        <form onSubmit={login} className='mt-11 mx-11 flex flex-col gap-5'>
           <WhInput
             type='email'
             value={email}
@@ -35,13 +45,33 @@ export default function LoginModal() {
             placeholder='이메일'
           />
           <WhInput
-            type='password'
+            type={showPw ? 'text' : 'password'}
             value={pw}
             handleInputChange={setPw}
             size='lg'
             placeholder='비밀번호'
+            isClearable={false}
+            endAdornment={
+              showPw ? (
+                <button
+                  type='button'
+                  className={buttonStyle}
+                  onClick={() => setShowPw(false)}
+                >
+                  <EyeShow20Icon />
+                </button>
+              ) : (
+                <button
+                  type='button'
+                  className={buttonStyle}
+                  onClick={() => setShowPw(true)}
+                >
+                  <EyeHide20Icon />
+                </button>
+              )
+            }
           />
-          <WhButton size='lg' onClick={login}>
+          <WhButton type='submit' size='lg'>
             로그인하기
           </WhButton>
           <div className='flex justify-between'>
@@ -56,7 +86,7 @@ export default function LoginModal() {
               회원가입
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </WhModal>
   );
