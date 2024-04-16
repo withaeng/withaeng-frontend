@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
 import WhInput from '@/components/elements/WhInput';
 
@@ -27,26 +24,21 @@ const preferRegionList = [
   { id: 1, value: '해외' },
 ];
 
-export default function SignUpPreferStep1Page() {
-  const [nickname, setNickname] = useState<string>('');
-  const [mbti, setMbti] = useState<string[]>([]);
-  const [preferRegion, setPreferRegion] = useState<string[]>([]);
-
-  function handleMbtiChip(value: string) {
-    if (!mbti.includes(value)) {
-      setMbti((prev) => [...prev, value]);
-    } else {
-      setMbti((prev) => prev.filter((item) => item !== value));
-    }
-  }
-  function handleRegionChip(value: string) {
-    if (!preferRegion.includes(value)) {
-      setPreferRegion((prev) => [...prev, value]);
-    } else {
-      setPreferRegion((prev) => prev.filter((item) => item !== value));
-    }
-  }
-
+export default function SignUpPreferStep1Page({
+  nickname,
+  handleNickname,
+  mbti,
+  handleMbtiChip,
+  preferRegion,
+  handleRegionChip,
+}: {
+  nickname: string;
+  handleNickname: (value: string) => void;
+  mbti: string[];
+  handleMbtiChip: (value: string) => void;
+  preferRegion: string[];
+  handleRegionChip: (value: string) => void;
+}) {
   return (
     <>
       <h3 className='text-headline-03 my-5'>
@@ -57,10 +49,12 @@ export default function SignUpPreferStep1Page() {
         <div>
           <WhInput
             value={nickname}
-            handleInputChange={setNickname}
+            handleInputChange={handleNickname}
             size='lg'
             placeholder='닉네임은 2자 ~ 10자 이내로 입력 가능합니다.'
             label='닉네임을 입력해주세요.'
+            minLength={2}
+            maxLength={10}
           />
         </div>
         <div>

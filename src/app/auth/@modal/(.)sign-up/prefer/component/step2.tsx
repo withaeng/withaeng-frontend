@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
 
 const interestsList = [
@@ -38,33 +35,21 @@ const cantEatList = [
   { id: 10, value: '탄산' },
 ];
 
-export default function SignUpPreferStep2Page() {
-  const [interests, setInterests] = useState<string[]>([]);
-  const [consume, setConsume] = useState<string[]>([]);
-  const [cantEat, setCantEat] = useState<string[]>([]);
-
-  function handleInterestsChip(value: string) {
-    if (!interests.includes(value)) {
-      setInterests((prev) => [...prev, value]);
-    } else {
-      setInterests((prev) => prev.filter((item) => item !== value));
-    }
-  }
-  function handleConsumeChip(value: string) {
-    if (!consume.includes(value)) {
-      setConsume((prev) => [...prev, value]);
-    } else {
-      setConsume((prev) => prev.filter((item) => item !== value));
-    }
-  }
-  function handleCantEatChip(value: string) {
-    if (!cantEat.includes(value)) {
-      setCantEat((prev) => [...prev, value]);
-    } else {
-      setCantEat((prev) => prev.filter((item) => item !== value));
-    }
-  }
-
+export default function SignUpPreferStep2Page({
+  interests,
+  handleInterestsChip,
+  consume,
+  handleConsumeChip,
+  cantEat,
+  handleCantEatChip,
+}: {
+  interests: string[];
+  handleInterestsChip: (value: string) => void;
+  consume: string[];
+  handleConsumeChip: (value: string) => void;
+  cantEat: string[];
+  handleCantEatChip: (value: string) => void;
+}) {
   return (
     <>
       <h3 className='text-headline-03 my-5'>

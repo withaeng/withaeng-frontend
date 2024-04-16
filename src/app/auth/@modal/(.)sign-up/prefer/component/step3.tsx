@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
 
 const genderList = [
@@ -23,33 +20,21 @@ const drinkingList = [
   { id: 3, value: '아예 음주 안함' },
 ];
 
-export default function SignUpPreferStep3Page() {
-  const [gender, setGender] = useState<string[]>([]);
-  const [smoking, setSmoking] = useState<string[]>([]);
-  const [drinking, setDrinking] = useState<string[]>([]);
-
-  function handleGenderChip(value: string) {
-    if (!gender.includes(value)) {
-      setGender((prev) => [...prev, value]);
-    } else {
-      setGender((prev) => prev.filter((item) => item !== value));
-    }
-  }
-  function handleSmokingChip(value: string) {
-    if (!smoking.includes(value)) {
-      setSmoking((prev) => [...prev, value]);
-    } else {
-      setSmoking((prev) => prev.filter((item) => item !== value));
-    }
-  }
-  function handleDrinkingChip(value: string) {
-    if (!drinking.includes(value)) {
-      setDrinking((prev) => [...prev, value]);
-    } else {
-      setDrinking((prev) => prev.filter((item) => item !== value));
-    }
-  }
-
+export default function SignUpPreferStep3Page({
+  gender,
+  handleGenderChip,
+  smoking,
+  handleSmokingChip,
+  drinking,
+  handleDrinkingChip,
+}: {
+  gender: string[];
+  handleGenderChip: (value: string) => void;
+  smoking: string[];
+  handleSmokingChip: (value: string) => void;
+  drinking: string[];
+  handleDrinkingChip: (value: string) => void;
+}) {
   return (
     <>
       <h3 className='text-headline-03 my-5'>
