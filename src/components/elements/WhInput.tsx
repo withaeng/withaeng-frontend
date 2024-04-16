@@ -27,6 +27,8 @@ interface InputProps {
   size?: 'lg' | 'md' | 'sm';
   value?: string;
   type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
+  isClearable?: boolean;
+  endAdornment?: React.ReactNode;
 }
 
 export default function WhInput({
@@ -39,6 +41,8 @@ export default function WhInput({
   handleInputChange,
   value,
   type = 'text',
+  isClearable = true,
+  endAdornment,
 }: InputProps) {
   const [inputValue, setInputValue] = useState(value);
 
@@ -79,12 +83,12 @@ export default function WhInput({
             value={inputValue}
             onChange={handleChange}
           />
-          {inputValue && (
-            <DeleteFillIcon
-              className={`${closeBtnCss}`}
-              onClick={handleClear}
-            />
-          )}
+          <div className={`${closeBtnCss}`}>
+            {endAdornment}
+            {isClearable && inputValue && (
+              <DeleteFillIcon onClick={handleClear} />
+            )}
+          </div>
         </div>
         {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>
