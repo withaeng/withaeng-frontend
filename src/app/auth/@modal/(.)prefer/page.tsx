@@ -125,7 +125,11 @@ drinking : ${drinking},
   };
 
   return (
-    <WhModal className='px-[85px] py-[72px] h-[800px]'>
+    <WhModal
+      isOpen={true}
+      onClose={() => router.back()}
+      className='px-[85px] py-[72px] h-[800px]'
+    >
       <div className='flex flex-col h-full'>
         <p className='text-nutral-black-04 text-right'>
           <Link href='/'>건너뛰기</Link>
