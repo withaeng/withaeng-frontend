@@ -9,7 +9,7 @@ import {
 } from '../../../public/assets/icons/checkbox/index';
 
 interface WhCheckboxProps {
-  children: ReactNode;
+  children?: ReactNode;
   id: string;
   value: string;
   checked?: boolean;
@@ -26,9 +26,17 @@ function setCheckboxIcon(
   indeterminate?: boolean
 ): ReactElement | null {
   if (checked) {
-    return size === 'sm' ? <CheckedSm className='cursor-pointer' /> : <CheckedMd className='cursor-pointer' />;
+    return size === 'sm' ? (
+      <CheckedSm className='cursor-pointer' />
+    ) : (
+      <CheckedMd className='cursor-pointer' />
+    );
   } else if (indeterminate) {
-    return size === 'sm' ? <IndeterminateSm className='cursor-pointer' /> : <IndeterminateMd className='cursor-pointer' />;
+    return size === 'sm' ? (
+      <IndeterminateSm className='cursor-pointer' />
+    ) : (
+      <IndeterminateMd className='cursor-pointer' />
+    );
   } else {
     return null;
   }
@@ -64,9 +72,7 @@ export default function WhCheckbox({
   }
   return (
     <div className={`${checkboxWrapperSizeCss}`}>
-      <div
-        className={`${checkboxSizeCss}`}
-      >
+      <div className={`${checkboxSizeCss}`}>
         <input
           className={`${defaultCheckboxCss} ${checkboxIndeterminateCss}`}
           type='checkbox'
@@ -82,7 +88,9 @@ export default function WhCheckbox({
           {setCheckboxIcon(id, size, checked, indeterminate)}
         </label>
       </div>
-      <label htmlFor={id} className='cursor-pointer'>{children}</label>
+      <label htmlFor={id} className='cursor-pointer'>
+        {children}
+      </label>
     </div>
   );
 }
