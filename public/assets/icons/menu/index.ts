@@ -1,7 +1,6 @@
 export { ReactComponent as BellIcon } from './bell.svg';
 export { ReactComponent as BookmarkIcon } from './bookmark.svg';
 export { ReactComponent as CheckIcon } from './check.svg';
-export { ReactComponent as Check20Icon } from './check-20.svg';
 export { ReactComponent as CloseIcon } from './close.svg';
 export { ReactComponent as Close20Icon } from './close-20.svg';
 export { ReactComponent as HamburgerIcon } from './hamburger.svg';

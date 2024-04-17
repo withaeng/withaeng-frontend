@@ -8,8 +8,8 @@ import WhModal from '@/components/elements/modal/WhModal';
 import WhInput from '@/components/elements/WhInput';
 import { ReactComponent as LogoImage } from '../../../../../public/assets/images/withaeng-logo-transparent-h42.svg';
 import {
-  EyeHide20Icon,
-  EyeShow20Icon,
+  EyeHideIcon,
+  EyeShowIcon,
 } from '../../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
@@ -65,7 +65,7 @@ export default function LoginModal() {
                   className={buttonStyle}
                   onClick={() => setShowPw(false)}
                 >
-                  <EyeShow20Icon />
+                  <EyeShowIcon width={20} height={20} />
                 </button>
               ) : (
                 <button
@@ -74,7 +74,7 @@ export default function LoginModal() {
                   className={buttonStyle}
                   onClick={() => setShowPw(true)}
                 >
-                  <EyeHide20Icon />
+                  <EyeHideIcon width={20} height={20} />
                 </button>
               )
             }

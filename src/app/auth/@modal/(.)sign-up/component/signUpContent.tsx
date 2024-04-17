@@ -6,10 +6,10 @@ import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
 import {
-  EyeHide20Icon,
-  EyeShow20Icon,
+  EyeHideIcon,
+  EyeShowIcon,
 } from '../../../../../../public/assets/icons/system';
-import { Check20Icon } from '../../../../../../public/assets/icons/menu';
+import { CheckIcon } from '../../../../../../public/assets/icons/menu';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -129,7 +129,7 @@ export default function SignUpContent({
                   className={buttonStyle}
                   onClick={() => setShowPw(false)}
                 >
-                  <EyeShow20Icon />
+                  <EyeShowIcon width={20} height={20} />
                 </button>
               ) : (
                 <button
@@ -138,18 +138,26 @@ export default function SignUpContent({
                   className={buttonStyle}
                   onClick={() => setShowPw(true)}
                 >
-                  <EyeHide20Icon />
+                  <EyeHideIcon width={20} height={20} />
                 </button>
               )
             }
           />
           <div className='flex gap-6 mt-1'>
             <div className='flex gap-1'>
-              <Check20Icon stroke={iconColor(isMinWords())} />
+              <CheckIcon
+                width={20}
+                height={20}
+                stroke={iconColor(isMinWords())}
+              />
               <span className={textColor(isMinWords())}>최소 8자 입력</span>
             </div>
             <div className='flex gap-1'>
-              <Check20Icon stroke={iconColor(isCombination())} />
+              <CheckIcon
+                width={20}
+                height={20}
+                stroke={iconColor(isCombination())}
+              />
               <span className={textColor(isCombination())}>
                 영문자 + 숫자 조합
               </span>
