@@ -25,6 +25,9 @@ export default function SampleLayout({
           <Link className={`${linkCss}`} href='/sample/editor'>
             editor
           </Link>
+          <Link className={`${linkCss}`} href='/mypage'>
+            mypage
+          </Link>
         </nav>
         <main className='w-5/6'>{children}</main>
       </section>
