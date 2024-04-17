@@ -14,7 +14,7 @@ export default function AuthPage() {
           회원가입
         </WhButton>
       </Link>
-      <Link href={'/auth/sign-up/prefer'} passHref>
+      <Link href={'/auth/prefer'} passHref>
         <WhButton size='md' fitContent>
           회원가입 이후 정보 입력
         </WhButton>

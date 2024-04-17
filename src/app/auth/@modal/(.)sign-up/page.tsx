@@ -4,6 +4,7 @@ import { useState } from 'react';
 import WhModal from '@/components/elements/modal/WhModal';
 import SignUpContent from './component/signUpContent';
 import TermContent from './component/termContent';
+import { useRouter } from 'next/navigation';
 
 export interface UserSignUp {
   email: string;
@@ -22,11 +23,16 @@ const initFormData: UserSignUp = {
 };
 
 export default function SignUpModal() {
+  const router = useRouter();
   const [form, setForm] = useState(initFormData);
   const [termPage, setTermPage] = useState(false);
 
   return (
-    <WhModal className='px-[105px] py-[72px] h-[800px]'>
+    <WhModal
+      isOpen={true}
+      onClose={() => router.back()}
+      className='px-[105px] py-[72px] h-[800px]'
+    >
       {!termPage ? (
         <SignUpContent
           form={form}

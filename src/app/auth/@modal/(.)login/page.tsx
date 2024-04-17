@@ -10,11 +10,13 @@ import {
   EyeHide20Icon,
   EyeShow20Icon,
 } from '../../../../../public/assets/icons/system';
+import { useRouter } from 'next/navigation';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const dividerStyle = 'h-0 w-full border border-nutral-white-03';
 
 export default function LoginModal() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [showPw, setShowPw] = useState(false);
@@ -26,7 +28,11 @@ export default function LoginModal() {
   };
 
   return (
-    <WhModal className='px-[101px] py-[116px] w-[680px]'>
+    <WhModal
+      isOpen={true}
+      onClose={() => router.back()}
+      className='px-[101px] py-[116px]'
+    >
       <div className='mb-12 flex justify-center'>
         <LogoImage />
       </div>
