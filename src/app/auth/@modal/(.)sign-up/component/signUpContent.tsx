@@ -1,19 +1,26 @@
+import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
-import { useRouter } from 'next/navigation';
-import { UserSignUp } from '../page';
 import WhButton from '@/components/elements/WhButton';
 import {
   EyeHide20Icon,
   EyeShow20Icon,
 } from '../../../../../../public/assets/icons/system';
-import { useState } from 'react';
 import { Check20Icon } from '../../../../../../public/assets/icons/menu';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
+
+export interface UserSignUp {
+  email: string;
+  password: string;
+  birth: Date;
+  gender: 'male' | 'female';
+  term: boolean;
+}
 
 export default function SignUpContent({
   form,
@@ -26,6 +33,39 @@ export default function SignUpContent({
 }) {
   const router = useRouter();
   const [showPw, setShowPw] = useState(false);
+
+  const isMinWords = useCallback(
+    () => (form.password.length > 0 ? form.password.length >= 8 : undefined),
+    [form.password]
+  );
+
+  const isCombination = useCallback(
+    () =>
+      form.password.length > 0
+        ? /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(form.password)
+        : undefined,
+    [form.password]
+  );
+
+  const iconColor = useCallback((bol: boolean | undefined): string => {
+    if (bol !== undefined) {
+      if (bol) {
+        return '#36C304';
+      }
+      return '#EC5C53';
+    }
+    return '#BAB8B6';
+  }, []);
+
+  const textColor = useCallback((bol: boolean | undefined): string => {
+    if (bol !== undefined) {
+      if (bol) {
+        return 'text-caption-success';
+      }
+      return 'text-caption-main';
+    }
+    return 'text-nutral-white-04';
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,16 +89,6 @@ export default function SignUpContent({
     console.log(form);
     // TODO: 서버 연결, 데이터 저장 및 이메일 전송
     router.replace('/auth/sign-up/email-check');
-  };
-
-  const isMinWords = (): boolean | undefined => {
-    return form.password.length > 0 ? form.password.length >= 8 : undefined;
-  };
-
-  const isCombination = (): boolean | undefined => {
-    return form.password.length > 0
-      ? /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(form.password)
-      : undefined;
   };
 
   return (
@@ -95,6 +125,7 @@ export default function SignUpContent({
               showPw ? (
                 <button
                   type='button'
+                  aria-label='show password'
                   className={buttonStyle}
                   onClick={() => setShowPw(false)}
                 >
@@ -103,6 +134,7 @@ export default function SignUpContent({
               ) : (
                 <button
                   type='button'
+                  aria-label='hide password'
                   className={buttonStyle}
                   onClick={() => setShowPw(true)}
                 >
@@ -113,46 +145,12 @@ export default function SignUpContent({
           />
           <div className='flex gap-6 mt-1'>
             <div className='flex gap-1'>
-              <Check20Icon
-                stroke={
-                  isMinWords() === undefined
-                    ? '#BAB8B6'
-                    : isMinWords()
-                      ? '#36C304'
-                      : '#EC5C53'
-                }
-              />
-              <span
-                className={
-                  isMinWords() === undefined
-                    ? 'text-nutral-white-04'
-                    : isMinWords()
-                      ? 'text-caption-success'
-                      : 'text-caption-main'
-                }
-              >
-                최소 8자 입력
-              </span>
+              <Check20Icon stroke={iconColor(isMinWords())} />
+              <span className={textColor(isMinWords())}>최소 8자 입력</span>
             </div>
             <div className='flex gap-1'>
-              <Check20Icon
-                stroke={
-                  isCombination() === undefined
-                    ? '#BAB8B6'
-                    : isCombination()
-                      ? '#36C304'
-                      : '#EC5C53'
-                }
-              />
-              <span
-                className={
-                  isCombination() === undefined
-                    ? 'text-nutral-white-04'
-                    : isCombination()
-                      ? 'text-caption-success'
-                      : 'text-caption-main'
-                }
-              >
+              <Check20Icon stroke={iconColor(isCombination())} />
+              <span className={textColor(isCombination())}>
                 영문자 + 숫자 조합
               </span>
             </div>
@@ -195,12 +193,14 @@ export default function SignUpContent({
       <div className='flex justify-between mb-3'>
         <label htmlFor='이용약관' className='text-body-03 text-nutral-black-05'>
           <span className={secondarySpanCss}>만 14세 이용</span>에 동의하며,{' '}
-          <span
+          <button
+            type='button'
+            aria-label='개인정보 이용약관 버튼'
             onClick={() => setTermPage(true)}
             className={`${secondarySpanCss} underline cursor-pointer`}
           >
             개인정보 이용약관
-          </span>
+          </button>
           에 동의합니다.
         </label>
         <WhCheckbox
@@ -208,9 +208,7 @@ export default function SignUpContent({
           value='term'
           checked={form.term}
           onChange={() => setForm((prev) => ({ ...prev, term: !prev.term }))}
-        >
-          {''}
-        </WhCheckbox>
+        />
       </div>
       <WhButton size='lg' type='submit'>
         동의하며, 계속 진행하겠습니다.

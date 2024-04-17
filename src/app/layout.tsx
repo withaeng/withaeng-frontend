@@ -114,7 +114,7 @@ export default function RootLayout({
     <html lang='ko' className={pretendard.className}>
       <body>
         {children}
-        <div id='modal-root'></div>
+        <div id='modal-root' />
       </body>
     </html>
   );

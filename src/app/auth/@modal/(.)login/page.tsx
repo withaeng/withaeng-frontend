@@ -1,16 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { ReactComponent as LogoImage } from '../../../../../public/assets/images/withaeng-logo-transparent-h42.svg';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import WhButton from '@/components/elements/WhButton';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhInput from '@/components/elements/WhInput';
-import Link from 'next/link';
+import { ReactComponent as LogoImage } from '../../../../../public/assets/images/withaeng-logo-transparent-h42.svg';
 import {
   EyeHide20Icon,
   EyeShow20Icon,
 } from '../../../../../public/assets/icons/system';
-import { useRouter } from 'next/navigation';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const dividerStyle = 'h-0 w-full border border-nutral-white-03';
@@ -29,7 +29,7 @@ export default function LoginModal() {
 
   return (
     <WhModal
-      isOpen={true}
+      isOpen
       onClose={() => router.back()}
       className='px-[101px] py-[116px]'
     >
@@ -61,6 +61,7 @@ export default function LoginModal() {
               showPw ? (
                 <button
                   type='button'
+                  aria-label='show password'
                   className={buttonStyle}
                   onClick={() => setShowPw(false)}
                 >
@@ -69,6 +70,7 @@ export default function LoginModal() {
               ) : (
                 <button
                   type='button'
+                  aria-label='hide password'
                   className={buttonStyle}
                   onClick={() => setShowPw(true)}
                 >

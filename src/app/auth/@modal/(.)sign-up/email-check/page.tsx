@@ -13,7 +13,7 @@ export default function SignUpTermModal() {
 
   return (
     <WhModal
-      isOpen={true}
+      isOpen
       onClose={() => router.back()}
       className='px-[84px] py-[72px]'
     >

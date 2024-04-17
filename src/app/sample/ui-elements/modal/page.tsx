@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import WhButton from '@/components/elements/WhButton';
 import BasicModal from './component/basicModal';
 import LongContentModal from './component/longContentModal';
 import NonDismissableModal from './component/nonDismissableModal';
 import StepModal from './component/stepModal';
-import Link from 'next/link';
 
 export default function ModalPage() {
   return (

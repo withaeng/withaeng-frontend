@@ -1,18 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import WhModal from '@/components/elements/modal/WhModal';
-import SignUpContent from './component/signUpContent';
-import TermContent from './component/termContent';
 import { useRouter } from 'next/navigation';
-
-export interface UserSignUp {
-  email: string;
-  password: string;
-  birth: Date;
-  gender: 'male' | 'female';
-  term: boolean;
-}
+import WhModal from '@/components/elements/modal/WhModal';
+import SignUpContent, { UserSignUp } from './component/signUpContent';
+import TermContent from './component/termContent';
 
 const initFormData: UserSignUp = {
   email: '',
@@ -29,7 +21,7 @@ export default function SignUpModal() {
 
   return (
     <WhModal
-      isOpen={true}
+      isOpen
       onClose={() => router.back()}
       className='px-[105px] py-[72px] h-[800px]'
     >

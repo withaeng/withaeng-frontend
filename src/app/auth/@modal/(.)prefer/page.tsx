@@ -126,7 +126,7 @@ drinking : ${drinking},
 
   return (
     <WhModal
-      isOpen={true}
+      isOpen
       onClose={() => router.back()}
       className='px-[85px] py-[72px] h-[800px]'
     >

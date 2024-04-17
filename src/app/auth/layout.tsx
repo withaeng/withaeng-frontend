@@ -1,5 +1,4 @@
 import Header from '@/components/header/Header';
-import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
