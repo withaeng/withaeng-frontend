@@ -32,7 +32,7 @@ export default function MypageNavMenu() {
         <li key={item.href}>
           <Link href={item.href}>
             <div
-              className={`${defaultNavCss} ${segment === item.segment ? 'bg-primary-exLight hover:text-nutral-black-02' : 'bg-nutral-white-02'}`}
+              className={`${defaultNavCss} ${segment === item.segment && 'bg-primary-exLight '}`}
             >
               {item.label}
             </div>
