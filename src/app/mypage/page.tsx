@@ -8,7 +8,7 @@ function MyPage() {
 
   useEffect(() => {
     router.push('/mypage/myInfo');
-  }, []);
+  }, [router]);
 
   return null;
 }

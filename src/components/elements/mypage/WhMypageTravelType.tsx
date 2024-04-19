@@ -41,7 +41,7 @@ export default function WhMypageTravelType() {
         { id: 12, type: 'ESTP' },
         { id: 13, type: 'ENFP' },
         { id: 14, type: 'ENTJ' },
-        { id: 14, type: 'ENFJ' },
+        { id: 15, type: 'ENFJ' },
       ],
     },
 

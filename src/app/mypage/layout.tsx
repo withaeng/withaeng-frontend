@@ -1,6 +1,10 @@
 import WhMypageNavMenu from '../../components/elements/mypage/WhMypageNavMenu';
 
-export default function MypageLayout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function MypageLayout({ children }: LayoutProps) {
   return (
     <div className='flex bg-nutral-white-02 h-screen gap-5 pt-[124px]'>
       {/* left */}
