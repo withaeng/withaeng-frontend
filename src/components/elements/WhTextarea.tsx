@@ -13,12 +13,14 @@ interface TextareaProps {
   disabled?: boolean;
   placeholder?: string;
   label?: string;
-  handleTextareaChange: (value: string) => void;
+  value: string;
+  handleTextareaChange?: (value: string) => void;
 }
 export default function WhTextarea({
   disabled = false,
   placeholder = '내용을 입력해주세요.',
   label = '',
+  value = '',
   handleTextareaChange,
 }: TextareaProps) {
   const [textCount, setTextCount] = useState(0);
@@ -36,7 +38,7 @@ export default function WhTextarea({
 
   return (
     <div>
-      <div className='flex flex-col my-6'>
+      <div className='flex flex-col my-7'>
         <div className='flex justify-between items-center mb-3'>
           <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
             {label}
@@ -49,6 +51,7 @@ export default function WhTextarea({
           maxLength={60}
           className={`${defaultTextareaCss}`}
           disabled={disabled}
+          value={value}
           placeholder={placeholder}
           onChange={onTextareaHandler}
         />

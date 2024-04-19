@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
 import WhMypageMoreButton from '@/components/elements/mypage/WhMypageMoreButton';
-import WhMypageHeader from './WhMypageHeader';
-import WhMypageInfo from './WhMypageInfo';
-import WhMypageTravelType from './WhMypageTravelType';
+import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
+import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
+import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
 
 export default function Setting() {
   return (

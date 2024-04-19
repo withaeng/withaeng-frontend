@@ -1,22 +1,18 @@
-import WhMypageNavMenu from './myInfo/WhMypageNavMenu';
+import WhMypageNavMenu from '../../components/elements/mypage/WhMypageNavMenu';
 
-export default async function MypageLayout({ children }) {
+export default function MypageLayout({ children }) {
   return (
-    <div className='flex items-stretch bg-nutral-white-01'>
+    <div className='flex bg-nutral-white-02 h-screen gap-5 pt-[124px]'>
       {/* left */}
-      <header className='flex items-end flex-col grow'>
-        <section className='w-[305px] h-dvh'>
-          <div className='fixed h-dvh flex flex-col'>
-            <WhMypageNavMenu />
-          </div>
-        </section>
-      </header>
+      <div className='w-[305px] flex items-end flex-col grow'>
+        <div className='fixed h-dvh flex flex-col'>
+          <WhMypageNavMenu />
+        </div>
+      </div>
 
       {/* right */}
       <div className='flex items-start h-dvh flex-col grow'>
-        <div className='h-full'>
-          <main>{children}</main>
-        </div>
+        <main>{children}</main>
       </div>
     </div>
   );

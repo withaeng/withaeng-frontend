@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DeleteFillIcon } from '../../../public/assets/icons/system';
 
 const defaultInputCss =
-  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
 
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
@@ -23,7 +23,8 @@ interface InputProps {
   label?: string;
   isErr?: boolean;
   errorMsg?: string;
-  handleInputChange: (value: string) => void;
+  value: string;
+  handleInputChange?: (value: string) => void;
   size?: 'lg' | 'md' | 'sm';
 }
 
@@ -34,6 +35,7 @@ export default function WhInput({
   label = '',
   isErr = false,
   errorMsg = '',
+  value = '',
   handleInputChange,
 }: InputProps) {
   const [inputValue, setInputValue] = useState('');
@@ -58,7 +60,7 @@ export default function WhInput({
 
   return (
     <div>
-      <div className='flex flex-col my-6 relative '>
+      <div className='flex flex-col relative '>
         {label && (
           <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
             {label}
@@ -72,7 +74,7 @@ export default function WhInput({
             }`}
             disabled={disabled}
             placeholder={placeholder}
-            value={inputValue}
+            value={value}
             onChange={handleChange}
           />
           {inputValue && (
