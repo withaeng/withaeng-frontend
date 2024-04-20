@@ -144,21 +144,23 @@ export default function SignUpContent({
             }
           />
           <div className='flex gap-6 mt-1'>
-            <div className='flex gap-1'>
+            <div className='flex gap-1 items-center'>
               <CheckIcon
                 width={20}
                 height={20}
                 stroke={iconColor(isMinWords())}
               />
-              <span className={textColor(isMinWords())}>최소 8자 입력</span>
+              <span className={`${textColor(isMinWords())} text-caption-02`}>
+                최소 8자 입력
+              </span>
             </div>
-            <div className='flex gap-1'>
+            <div className='flex gap-1 items-center'>
               <CheckIcon
                 width={20}
                 height={20}
                 stroke={iconColor(isCombination())}
               />
-              <span className={textColor(isCombination())}>
+              <span className={`${textColor(isCombination())} text-caption-02`}>
                 영문자 + 숫자 조합
               </span>
             </div>
@@ -219,7 +221,7 @@ export default function SignUpContent({
         />
       </div>
       <WhButton size='lg' type='submit'>
-        동의하며, 계속 진행하겠습니다.
+        동의합니다.
       </WhButton>
     </form>
   );
