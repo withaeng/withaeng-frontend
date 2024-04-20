@@ -1,0 +1,13 @@
+export { ReactComponent as ContinuousAttendance1DayIcon } from './continuous-attendance-1day.svg';
+export { ReactComponent as ContinuousAttendance7DaysIcon } from './continuous-attendance-7days.svg';
+export { ReactComponent as ContinuousAttendance30DaysIcon } from './continuous-attendance-30days.svg';
+export { ReactComponent as ContinuousAttendance100DaysIcon } from './continuous-attendance-100days.svg';
+export { ReactComponent as AccompanyOnceIcon } from './accompany-once.svg';
+export { ReactComponent as Accompany7TimesIcon } from './accompany-7times.svg';
+export { ReactComponent as Accompany30TimesIcon } from './accompany-30times.svg';
+export { ReactComponent as Accompany100TimesIcon } from './accompany-100times.svg';
+export { ReactComponent as AccompanyCompletedOnceIcon } from './accompany-completed-once.svg';
+export { ReactComponent as AccompanyCompleted7TimesIcon } from './accompany-completed-7times.svg';
+export { ReactComponent as AccompanyCompleted30TimesIcon } from './accompany-completed-30times.svg';
+export { ReactComponent as AccompanyCompleted100TimesIcon } from './accompany-completed-100times.svg';
+export { ReactComponent as DefaultBadgeIcon } from './default-badge.svg';
