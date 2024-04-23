@@ -1,16 +1,5 @@
-'use client';
+import MyInfo from './myInfo/page';
 
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-
-function MyPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push('/mypage/myInfo');
-  }, [router]);
-
-  return null;
+export default function MyPage() {
+  return <MyInfo />;
 }
-
-export default MyPage;

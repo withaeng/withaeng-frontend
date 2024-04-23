@@ -6,7 +6,7 @@ import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
 import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
 import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
 
-export default function Setting() {
+export default function MyInfo() {
   return (
     <div className='flex flex-col gap-10'>
       <WhMypageHeader title='내 정보 관리' />
@@ -22,6 +22,7 @@ export default function Setting() {
       <WhMypageCard
         title='프로필'
         content='여행타입에 대한 설명 문구가 들어갈 곳입니다.'
+        linkText='수정'
       >
         <WhMypageTravelType />
       </WhMypageCard>

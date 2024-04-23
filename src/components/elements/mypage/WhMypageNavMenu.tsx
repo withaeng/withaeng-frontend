@@ -27,7 +27,7 @@ export default function MypageNavMenu() {
   ];
 
   return (
-    <ul className='flex flex-col text-headline-04 w-[305px] gap-[19px]'>
+    <ul className='flex flex-col text-headline-04 w-[305px] gap-[14px]'>
       {navItem.map((item) => (
         <li key={item.href}>
           <Link href={item.href}>
