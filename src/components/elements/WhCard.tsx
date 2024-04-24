@@ -45,12 +45,16 @@ function accompanyStateBgColor(status: string): string {
 
 function accompaniedCss(status: string): string {
   const baseCss =
-    'w-[305px] flex flex-col gap-1 p-2 rounded-lg bg-nutral-white-01 hover:shadow-modal';
+    'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   } else {
     return baseCss;
   }
+}
+
+function labelCss(status: string): string {
+  return `absolute top-0 left-0 inline-block py-1 px-2 ${accompanyStateBgColor(status)} text-nutral-white-01 text-caption-01 rounded-ss`;
 }
 
 export default function WhCard({
@@ -69,17 +73,13 @@ export default function WhCard({
     <div className={accompaniedCss(status)}>
       <section className='relative w-full h-[152px]'>
         <Image
-          className='object-cover rounded-lg w-full h-full'
+          className='object-cover rounded w-full h-full'
           src={thumbnailImageUrl}
           width={298}
           height={152}
           alt='동행 썸네일 이미지'
         />
-        <span
-          className={`absolute top-0 left-0 inline-block py-1 px-2 ${accompanyStateBgColor(status)} text-nutral-white-01 text-caption-01 rounded-ss-md`}
-        >
-          {accompanyState(status)}
-        </span>
+        <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>
       <section className='flex justify-between text-nutral-black-05 text-caption-01'>
         <div className='flex gap-2 items-center h-8 text-subtitle-02'>
@@ -105,10 +105,10 @@ export default function WhCard({
         </div>
       </section>
       <section className='mt-1 max-w-full overflow-hidden text-ellipsis whitespace-nowrap'>
-        <span className='text-subtitle-01 text-nutral-black-03'>{title}</span>
+        <span className='text-subtitle-02 text-nutral-black-03'>{title}</span>
       </section>
       {tags !== null && (
-        <section className='mt-3 flex gap-3'>
+        <section className='mt-2 flex gap-3 pb-2'>
           {tags.map((tag) => (
             <span key={tag} className='text-caption-01 text-primary-main'>
               {tag}
