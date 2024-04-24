@@ -13,7 +13,7 @@ export default function MyInfo() {
 
       <WhMypageCard
         title='프로필'
-        content='프로필에 대한 설명 문구가 있는 경우, 없는 경우.'
+        content='나의 프로필을 완성하여 상대방에게 나를 알리세요!!'
         linkText='수정'
       >
         <WhMypageInfo />
@@ -21,7 +21,7 @@ export default function MyInfo() {
 
       <WhMypageCard
         title='프로필'
-        content='여행타입에 대한 설명 문구가 들어갈 곳입니다.'
+        content='나의 여행 타입을 설정하여 보다 좋은 동행 파트너를 찾으세요!!'
         linkText='수정'
       >
         <WhMypageTravelType />
