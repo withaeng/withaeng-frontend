@@ -28,6 +28,9 @@ const page = () => (
     <Link href='/sample/ui-elements/modal' className={`${linkCss}`}>
       common Modal
     </Link>
+    <Link href='/sample/ui-elements/badge' className={`${linkCss}`}>
+      common Badge
+    </Link>
   </div>
 );
 

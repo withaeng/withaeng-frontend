@@ -6,7 +6,7 @@ const defaultBtnCss =
   'rounded-sm disabled:opacity-40 px-5 border border-primary-main transition text-subtitle-02 flex items-center justify-center gap-2.5 text-nutral-white-01';
 
 const outLineBtnCss =
-  'hover:bg-nutral-white-02 text-primary-main bg-nutral-white-01 disabled:text-nutral-white-03 disabled:border-nutral-white-04';
+  'hover:bg-nutral-white-02 text-primary-main disabled:text-nutral-white-03 disabled:border-nutral-white-04';
 
 const fillBtnCss = 'bg-primary-main hover:bg-primary-pressing';
 
