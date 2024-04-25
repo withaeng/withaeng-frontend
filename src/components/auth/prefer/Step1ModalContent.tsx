@@ -24,7 +24,7 @@ const preferRegionList = [
   { id: 1, value: '해외' },
 ];
 
-export default function SignUpPreferStep1Page({
+export default function SignUpPreferStep1ModalContent({
   nickname,
   handleNickname,
   mbti,

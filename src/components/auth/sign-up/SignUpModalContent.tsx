@@ -5,11 +5,11 @@ import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
+import { CheckIcon } from '../../../../public/assets/icons/menu';
 import {
   EyeHideIcon,
   EyeShowIcon,
-} from '../../../../../../public/assets/icons/system';
-import { CheckIcon } from '../../../../../../public/assets/icons/menu';
+} from '../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -22,14 +22,16 @@ export interface UserSignUp {
   term: boolean;
 }
 
-export default function SignUpContent({
+export default function SignUpModalContent({
   form,
   setForm,
   setTermPage,
+  signUpHandler,
 }: {
   form: UserSignUp;
   setForm: React.Dispatch<React.SetStateAction<UserSignUp>>;
   setTermPage: (value: boolean) => void;
+  signUpHandler: () => void;
 }) {
   const router = useRouter();
   const [showPw, setShowPw] = useState(false);
@@ -87,8 +89,8 @@ export default function SignUpContent({
       return;
     }
     console.log(form);
-    // TODO: 서버 연결, 데이터 저장 및 이메일 전송
-    router.replace('/auth/sign-up/email-check');
+
+    signUpHandler();
   };
 
   return (

@@ -2,9 +2,9 @@
 
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
-import { UserSignUp } from './signUpContent';
+import { UserSignUp } from './SignUpModalContent';
 
-export default function TermContent({
+export default function TermModalContent({
   setForm,
   setTermPage,
 }: {

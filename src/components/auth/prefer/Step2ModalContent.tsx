@@ -35,7 +35,7 @@ const cantEatList = [
   { id: 10, value: '탄산' },
 ];
 
-export default function SignUpPreferStep2Page({
+export default function SignUpPreferStep2ModalContent({
   interests,
   handleInterestsChip,
   consume,

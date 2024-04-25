@@ -20,7 +20,7 @@ const drinkingList = [
   { id: 3, value: '아예 음주 안함' },
 ];
 
-export default function SignUpPreferStep3Page({
+export default function SignUpPreferStep3ModalContent({
   gender,
   handleGenderChip,
   smoking,
