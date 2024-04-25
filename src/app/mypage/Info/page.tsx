@@ -6,7 +6,7 @@ import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
 import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
 import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
 
-export default function MyInfo() {
+export default function Info() {
   return (
     <div className='flex flex-col gap-10'>
       <WhMypageHeader title='내 정보 관리' />

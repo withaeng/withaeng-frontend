@@ -4,20 +4,20 @@ import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 export default function MypageNavMenu() {
-  const segment: string | null = useSelectedLayoutSegment() || 'myInfo';
+  const segment: string | null = useSelectedLayoutSegment() || 'Info';
   const defaultNavCss =
     'px-5 py-2.5 hover:text-primary-main rounded text-headline-04 text-nutral-black-02';
 
   const navItem = [
     {
-      href: '/mypage/myInfo',
+      href: '/mypage/Info',
       label: '내 정보 관리',
-      segment: 'myInfo',
+      segment: 'Info',
     },
     {
-      href: '/mypage/myactive',
+      href: '/mypage/activity',
       label: '내 활동',
-      segment: 'myactive',
+      segment: 'activity',
     },
     {
       href: '/mypage/setting',

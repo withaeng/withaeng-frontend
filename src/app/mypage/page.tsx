@@ -1,5 +1,5 @@
-import MyInfo from './myInfo/page';
+import Info from './Info/page';
 
 export default function MyPage() {
-  return <MyInfo />;
+  return <Info />;
 }
