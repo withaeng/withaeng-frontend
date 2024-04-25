@@ -1,5 +1,3 @@
-import WhButton from '@/components/elements/WhButton';
-import Link from 'next/link';
 import LoginSignUpModal from './component/loginSignUpModal';
 import PreferModal from './component/preferModal';
 

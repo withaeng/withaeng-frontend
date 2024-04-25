@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
@@ -33,7 +32,6 @@ export default function SignUpModalContent({
   setTermPage: (value: boolean) => void;
   signUpHandler: () => void;
 }) {
-  const router = useRouter();
   const [showPw, setShowPw] = useState(false);
 
   const isMinWords = useCallback(

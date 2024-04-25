@@ -20,9 +20,17 @@ function StepBar({ value }: { value: number }): React.ReactNode {
     </div>
   );
 }
-export default function preferModal() {
+export default function PreferModal() {
   const { isOpen, onClose, onOpen } = useModal();
   const [step, setStep] = useState(1);
+
+  const handleOpen = () => {
+    setStep(1);
+    onOpen();
+  };
+  const handleClose = () => {
+    onClose();
+  };
 
   // step 1 : state
   const [nickname, setNickname] = useState<string>('');
@@ -125,13 +133,6 @@ drinking : ${drinking},
     }
   };
 
-  const handleOpen = () => {
-    setStep(1);
-    onOpen();
-  };
-  const handleClose = () => {
-    onClose();
-  };
   return (
     <>
       <WhButton size='md' fitContent onClick={handleOpen}>

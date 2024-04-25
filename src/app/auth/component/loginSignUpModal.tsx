@@ -19,7 +19,7 @@ const initFormData: UserSignUp = {
   term: false,
 };
 
-export default function loginSignUpModal() {
+export default function LoginSignUpModal() {
   const { isOpen, onClose, onOpen } = useModal();
   const [content, setContent] = useState<'login' | 'signUp' | 'emailCheck'>(
     'login'
@@ -54,6 +54,7 @@ export default function loginSignUpModal() {
                 아직 회원이 아니신가요?
               </p>
               <button
+                type='button'
                 onClick={() => setContent('signUp')}
                 className='text-subtitle-02 text-nutral-black-02 cursor-pointer'
               >
