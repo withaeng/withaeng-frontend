@@ -14,6 +14,18 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'withaeng.com',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
