@@ -20,6 +20,7 @@
 
   --caption-main: #ec5c53;
   --caption-light: #f8867e;
+  --caption-success: #36C304;
 }
 
 $primary-main: #ffa500;
@@ -43,6 +44,7 @@ $nutral-white-04: #babbb6;
 
 $caption-main: #ec5c53;
 $caption-light: #f8867e;
+$caption-light: #36C304;
 
 .font-display-01 {
   @include font-theme(60px, 600, auto);
