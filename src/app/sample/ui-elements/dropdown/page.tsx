@@ -10,8 +10,8 @@ const dataList = [
 ];
 
 export default function Page() {
-  const [value1, setValue1] = useState<string | undefined>();
-  const [value2, setValue2] = useState<string | undefined>();
+  const [value1, setValue1] = useState<string>('');
+  const [value2, setValue2] = useState<string>('');
   return (
     <div className='flex flex-col gap-5'>
       <div>

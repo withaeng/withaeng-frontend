@@ -6,6 +6,9 @@ import {
   ChevronUpIcon,
 } from '../../../public/assets/icons/arrow';
 
+const defaultLabelCss =
+  'px-6 py-3 w-full border border-nutral-white-04 rounded flex justify-between disabled:bg-nutral-white-02 disabled:border-nutral-white-02';
+const focusLabelCss = 'border-nutral-black-04';
 const defaultCss =
   'px-6 py-4 text-nutral-black-01 hover:bg-nutral-white-02 w-full text-start';
 const focusCss = 'bg-primary-eexLight hover:bg-primary-exLight';
@@ -16,8 +19,8 @@ interface DropdownData {
 }
 
 interface DropdownProps {
-  value?: string | undefined;
-  onChange?: (value: string | undefined) => void;
+  value?: string;
+  onChange?: (value: string) => void;
   disabled?: boolean;
   dataList?: DropdownData[];
 }
@@ -40,11 +43,11 @@ export default function WhDropdown({
       <button
         type='button'
         onClick={() => setOpen((prev) => !prev)}
-        className='px-6 py-3 w-full border border-nutral-white-03 rounded flex justify-between disabled:bg-nutral-white-02 disabled:border-nutral-white-02'
+        className={`${defaultLabelCss} ${open && focusLabelCss}`}
         disabled={disabled}
       >
-        {value && dataList ? (
-          <span>{dataList[index!].name}</span>
+        {value && dataList && index ? (
+          <span>{dataList[index].name}</span>
         ) : (
           <span className='text-nutral-white-04'>{'옵션을 선택해주세요.'}</span>
         )}
