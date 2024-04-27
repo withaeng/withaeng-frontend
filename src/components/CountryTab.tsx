@@ -1,6 +1,11 @@
+import WhChip from './elements/WhChip';
 import WhTab, { TabData } from './elements/WhTab';
 
-const COUNTRY: TabData[] = [
+interface CountryTabData extends TabData {
+  subDatas: { id: string; name: string }[];
+}
+
+const COUNTRY: CountryTabData[] = [
   {
     id: '0',
     title: '주요 국가 및 도시',
@@ -101,13 +106,22 @@ export default function CountryTab({
   value,
   onChange,
 }: Props) {
+  const index = COUNTRY.findIndex((data) => data.id === tabValue);
+
   return (
-    <WhTab
-      dataList={COUNTRY}
-      tabValue={tabValue}
-      onTabChange={onTabChange}
-      value={value}
-      onChange={onChange}
-    />
+    <WhTab dataList={COUNTRY} value={tabValue} onChange={onTabChange}>
+      <div className='mt-[21px] mx-2.5 flex flex-wrap gap-5 max-w-[628px]'>
+        {COUNTRY[index].subDatas?.map((datas) => (
+          <WhChip
+            key={datas.id}
+            value={value}
+            checked={datas.id === value}
+            onClick={() => onChange(datas.id)}
+          >
+            {datas.name}
+          </WhChip>
+        ))}
+      </div>
+    </WhTab>
   );
 }
