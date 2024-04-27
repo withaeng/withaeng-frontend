@@ -9,7 +9,6 @@ import {
   EyeHideIcon,
   EyeShowIcon,
 } from '../../../../public/assets/icons/system';
-import WhCalendar from '@/components/elements/WhCalendar';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -17,7 +16,7 @@ const secondarySpanCss = 'text-secondary-main text-subtitle-02';
 export interface UserSignUp {
   email: string;
   password: string;
-  birth: Date | null;
+  birth: Date;
   gender: 'male' | 'female';
   term: boolean;
 }
@@ -167,23 +166,12 @@ export default function SignUpModalContent({
             </div>
           </div>
         </div>
-        <div>
-          <label htmlFor='sign-up_calendar'>
-            생년월일 {/* FIXME: required label 처리 (임시 작업) */}
-            <span className='text-caption-main'>*</span>
-          </label>
-          <div id='sign-up_calendar' className='mt-3'>
-            <WhCalendar
-              value={form.birth}
-              onChange={(value) =>
-                setForm((prev) => ({ ...prev, birth: value }))
-              }
-            />
-          </div>
-        </div>
+        {/* TODO: 캘린더 추가 */}
+        <div>생년월일 calendar 들어갈 자리</div>
         <div>
           <label htmlFor='sign-up_gender'>
-            성별 {/* FIXME: required label 처리 (임시 작업) */}
+            성별
+            {/* FIXME: required label 처리 (임시 작업) */}
             <span className='text-caption-main'>*</span>
           </label>
           <div id='sign-up_gender' className='flex mt-3 gap-8'>

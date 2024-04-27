@@ -14,7 +14,7 @@ import EmailCheckModalComponent from '@/components/auth/sign-up/EmailCheckModalC
 const initFormData: UserSignUp = {
   email: '',
   password: '',
-  birth: new Date('1990.01.01'),
+  birth: new Date(),
   gender: 'male',
   term: false,
 };
