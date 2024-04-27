@@ -34,6 +34,9 @@ const page = () => (
     <Link href='/sample/ui-elements/badge' className={`${linkCss}`}>
       common Badge
     </Link>
+    <Link href='/sample/ui-elements/calendar' className={`${linkCss}`}>
+      common Calendar
+    </Link>
   </div>
 );
 
