@@ -48,7 +48,7 @@ const WEEKDAY = [
 ];
 
 interface CalendarProps {
-  onChange?: (value: Date | null) => void;
+  onChange: (value: Date | null) => void;
   size?: 'lg' | 'md' | 'sm';
   value?: Date | null;
 }
@@ -58,8 +58,8 @@ export default function WhCalendar({
   size = 'md',
   value,
 }: CalendarProps) {
-  const dateChange = (value: Date | string | null) => {
-    onChange && onChange(dayjs(value).toDate());
+  const dateChange = (date: Date | string | null) => {
+    onChange(dayjs(date).toDate());
   };
 
   if (size === 'lg') {
@@ -102,6 +102,7 @@ export default function WhCalendar({
                   type='button'
                   onClick={decreaseMonth}
                   disabled={prevMonthButtonDisabled}
+                  aria-label='prev month'
                 >
                   <ChevronLeftIcon width={20} height={20} stroke='#FFA500' />
                 </button>
@@ -137,6 +138,7 @@ export default function WhCalendar({
                   type='button'
                   onClick={increaseMonth}
                   disabled={nextMonthButtonDisabled}
+                  aria-label='next month'
                 >
                   <ChevronRightIcon width={20} height={20} stroke='#FFA500' />
                 </button>
@@ -144,8 +146,8 @@ export default function WhCalendar({
             )}
           />
         </div>
-        <div className='absolute  right-4'>
-          <CalendarIcon width={20} height={20} />
+        <div className='absolute right-4'>
+          <CalendarIcon width={24} height={24} stroke='#BAB8B6' />
         </div>
       </div>
     </div>
