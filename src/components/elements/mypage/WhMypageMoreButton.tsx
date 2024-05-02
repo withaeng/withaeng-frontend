@@ -1,20 +1,22 @@
-import { useState } from 'react';
+import React from 'react';
 import { ChevronDown20Icon } from '../../../../public/assets/icons/arrow/index';
 
 const defaultMoreBtnCss =
-  'max-w-[118px] z-10 flex justify-between items-center py-3 px-[23.5px] border rounded-[20px] border-nutral-white-03 bg-nutral-white-01';
+  'absolute  max-w-[118px] z-10 flex justify-between items-center py-3 px-[23.5px] border rounded-[20px] border-nutral-white-03 bg-nutral-white-01';
 
-export default function WhMypageMoreButton() {
-  const [isOpen, setIsOpen] = useState(false);
+interface ButtonProps {
+  isOpen: boolean;
+  onClick: () => void;
+}
 
-  const toggleButton = () => {
-    setIsOpen(!isOpen);
-  };
-
+export default function WhMypageMoreButton({
+  onClick,
+  isOpen = false,
+}: ButtonProps) {
   return (
-    <div className='flex justify-center'>
+    <div className={`flex justify-center ${isOpen ? '-mt-50' : ''}`}>
       <button
-        onClick={toggleButton}
+        onClick={onClick}
         type='button'
         className={`${defaultMoreBtnCss}`}
       >

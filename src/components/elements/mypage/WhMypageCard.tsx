@@ -1,17 +1,19 @@
-import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface Props {
-  linkText?: string;
+  linkText?: ReactNode;
   title: string;
   content?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 const defaultCardCss =
   'flex items-center justify-between pb-5 mb-8 border-b border-nutral-white-03';
 
 export default function WhMypageCard({
-  linkText = '',
+  onClick,
+  linkText,
   title = '',
   content = '',
   children,
@@ -22,13 +24,17 @@ export default function WhMypageCard({
         <div>
           <h4 className='text-nutral-black-02 text-headline-04'>{title}</h4>
           {content && (
-            <p className='text-body-03 text-nutral-black-05'>{content}</p>
+            <p className='text-body-03 text-nutral-black-05 mt-1'>{content}</p>
           )}
         </div>
         {linkText && (
-          <Link href='/edit' className='text-secondary-main text-subtitle-02'>
+          <button
+            type='button'
+            onClick={onClick}
+            className='text-secondary-main text-subtitle-02'
+          >
             {linkText}
-          </Link>
+          </button>
         )}
       </div>
       <div>{children}</div>

@@ -1,7 +1,7 @@
 'use client';
 
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
-import WhMypageMoreButton from '@/components/elements/mypage/WhMypageMoreButton';
+import EditProfileModal from '@/components/elements/mypage/editProfile';
 import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
 import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
 import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
@@ -14,7 +14,7 @@ export default function Info() {
       <WhMypageCard
         title='프로필'
         content='나의 프로필을 완성하여 상대방에게 나를 알리세요!!'
-        linkText='수정'
+        linkText={<EditProfileModal />}
       >
         <WhMypageInfo />
       </WhMypageCard>
@@ -26,8 +26,6 @@ export default function Info() {
       >
         <WhMypageTravelType />
       </WhMypageCard>
-
-      <WhMypageMoreButton />
     </div>
   );
 }
