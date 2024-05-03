@@ -10,6 +10,7 @@ import SignUpModalContent, {
 } from '@/components/auth/sign-up/SignUpModalContent';
 import TermModalContent from '@/components/auth/sign-up/TermModalContent';
 import EmailCheckModalComponent from '@/components/auth/sign-up/EmailCheckModalContent';
+import FindPasswordModalContent from '@/components/auth/login/FindPasswordModalContent';
 
 const initFormData: UserSignUp = {
   email: '',
@@ -21,13 +22,16 @@ const initFormData: UserSignUp = {
 
 export default function LoginSignUpModal() {
   const { isOpen, onClose, onOpen } = useModal();
-  const [content, setContent] = useState<'login' | 'signUp' | 'emailCheck'>(
-    'login'
-  );
+  const [content, setContent] = useState<
+    'login' | 'signUp' | 'findPassword' | 'emailCheck'
+  >('login');
+  // 회원가입
   const [form, setForm] = useState(initFormData);
   const [termPage, setTermPage] = useState(false);
+  // 비밀번호 찾기
+  const [email, setEamil] = useState('');
 
-  const signUpHandler = () => {
+  const emailCheckHandler = () => {
     // TODO: 서버 연결, 데이터 저장 및 이메일 전송
     setContent('emailCheck');
   };
@@ -49,17 +53,24 @@ export default function LoginSignUpModal() {
         {content === 'login' && (
           <div className='px-[101px] py-[116px]'>
             <LoginModalContent />
-            <div className='flex justify-between mt-5 mx-11'>
-              <p className='text-body-03 text-nutral-black-03'>
-                아직 회원이 아니신가요?
-              </p>
+            <div className='flex justify-between mt-5 mx-11 text-nutral-black-03'>
               <button
                 type='button'
-                onClick={() => setContent('signUp')}
-                className='text-subtitle-02 text-nutral-black-02 cursor-pointer'
+                onClick={() => setContent('findPassword')}
+                className='text-body-03'
               >
-                회원가입
+                비밀번호 찾기
               </button>
+              <div className='flex gap-2'>
+                <p className='text-body-03'>아직 회원이 아니신가요?</p>
+                <button
+                  type='button'
+                  onClick={() => setContent('signUp')}
+                  className='text-secondary-main text-body-03'
+                >
+                  회원가입
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -71,11 +82,20 @@ export default function LoginSignUpModal() {
                 form={form}
                 setForm={setForm}
                 setTermPage={setTermPage}
-                signUpHandler={signUpHandler}
+                handleSubmit={emailCheckHandler}
               />
             ) : (
               <TermModalContent setForm={setForm} setTermPage={setTermPage} />
             )}
+          </div>
+        )}
+        {content === 'findPassword' && (
+          <div className='px-[105px] py-[72px]'>
+            <FindPasswordModalContent
+              email={email}
+              setEmail={setEamil}
+              handleSubmit={emailCheckHandler}
+            />
           </div>
         )}
         {/* 이메일 확인 */}

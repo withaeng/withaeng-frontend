@@ -25,12 +25,12 @@ export default function SignUpModalContent({
   form,
   setForm,
   setTermPage,
-  signUpHandler,
+  handleSubmit,
 }: {
   form: UserSignUp;
   setForm: React.Dispatch<React.SetStateAction<UserSignUp>>;
   setTermPage: (value: boolean) => void;
-  signUpHandler: () => void;
+  handleSubmit: () => void;
 }) {
   const [showPw, setShowPw] = useState(false);
 
@@ -67,7 +67,7 @@ export default function SignUpModalContent({
     return 'text-nutral-white-04';
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSignUpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // FIXME: 입력이 올바르지 않은 경우 추가 작업
     if (!form.email) {
@@ -88,11 +88,11 @@ export default function SignUpModalContent({
     }
     console.log(form);
 
-    signUpHandler();
+    handleSubmit();
   };
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col h-full'>
+    <form onSubmit={handleSignUpSubmit} className='flex flex-col h-full'>
       <WhModalHeader>회원가입 정보 입력</WhModalHeader>
       <div className='grow flex flex-col gap-10 mt-10 mx-[15px]'>
         <WhInput
