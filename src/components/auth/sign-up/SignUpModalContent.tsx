@@ -1,16 +1,10 @@
-import { useCallback, useState } from 'react';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
-import { CheckIcon } from '../../../../public/assets/icons/menu';
-import {
-  EyeHideIcon,
-  EyeShowIcon,
-} from '../../../../public/assets/icons/system';
+import PasswordInput from '../PasswordInput';
 
-const buttonStyle = 'w-full h-full flex justify-center items-center';
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
 
 export interface UserSignUp {
@@ -32,41 +26,6 @@ export default function SignUpModalContent({
   setTermPage: (value: boolean) => void;
   handleSubmit: () => void;
 }) {
-  const [showPw, setShowPw] = useState(false);
-
-  const isMinWords = useCallback(
-    () => (form.password.length > 0 ? form.password.length >= 8 : undefined),
-    [form.password]
-  );
-
-  const isCombination = useCallback(
-    () =>
-      form.password.length > 0
-        ? /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(form.password)
-        : undefined,
-    [form.password]
-  );
-
-  const iconColor = useCallback((bol: boolean | undefined): string => {
-    if (bol !== undefined) {
-      if (bol) {
-        return '#36C304';
-      }
-      return '#EC5C53';
-    }
-    return '#BAB8B6';
-  }, []);
-
-  const textColor = useCallback((bol: boolean | undefined): string => {
-    if (bol !== undefined) {
-      if (bol) {
-        return 'text-caption-success';
-      }
-      return 'text-caption-main';
-    }
-    return 'text-nutral-white-04';
-  }, []);
-
   const handleSignUpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // FIXME: 입력이 올바르지 않은 경우 추가 작업
@@ -76,10 +35,6 @@ export default function SignUpModalContent({
     }
     if (!form.password) {
       console.error('비밀번호를 입력하세요');
-      return;
-    }
-    if (!isMinWords() || !isCombination()) {
-      console.error('비밀번호 규칙에 맞게 입력하세요');
       return;
     }
     if (!form.term) {
@@ -105,67 +60,12 @@ export default function SignUpModalContent({
           size='lg'
           placeholder='이메일'
         />
-        <div>
-          <WhInput
-            type={showPw ? 'text' : 'password'}
-            value={form.password}
-            handleInputChange={(value) =>
-              setForm((prev) => ({ ...prev, password: value }))
-            }
-            size='lg'
-            placeholder='비밀번호를 입력하세요.'
-            label='비밀번호'
-            isClearable={false}
-            isErr={
-              form.password.length > 0
-                ? !isMinWords() || !isCombination()
-                : undefined
-            }
-            endAdornment={
-              showPw ? (
-                <button
-                  type='button'
-                  aria-label='show password'
-                  className={buttonStyle}
-                  onClick={() => setShowPw(false)}
-                >
-                  <EyeShowIcon width={20} height={20} />
-                </button>
-              ) : (
-                <button
-                  type='button'
-                  aria-label='hide password'
-                  className={buttonStyle}
-                  onClick={() => setShowPw(true)}
-                >
-                  <EyeHideIcon width={20} height={20} />
-                </button>
-              )
-            }
-          />
-          <div className='flex gap-6 mt-1'>
-            <div className='flex gap-1 items-center'>
-              <CheckIcon
-                width={20}
-                height={20}
-                stroke={iconColor(isMinWords())}
-              />
-              <span className={`${textColor(isMinWords())} text-caption-02`}>
-                최소 8자 입력
-              </span>
-            </div>
-            <div className='flex gap-1 items-center'>
-              <CheckIcon
-                width={20}
-                height={20}
-                stroke={iconColor(isCombination())}
-              />
-              <span className={`${textColor(isCombination())} text-caption-02`}>
-                영문자 + 숫자 조합
-              </span>
-            </div>
-          </div>
-        </div>
+        <PasswordInput
+          password={form.password}
+          setPassword={(value) =>
+            setForm((prev) => ({ ...prev, password: value }))
+          }
+        />
         {/* TODO: 캘린더 추가 */}
         <div>생년월일 calendar 들어갈 자리</div>
         <div>
