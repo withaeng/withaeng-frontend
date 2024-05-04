@@ -83,6 +83,9 @@ export default function WhCalendar({
             showYearDropdown
             showMonthDropdown
             scrollableYearDropdown
+            onKeyDown={(e) => {
+              e.preventDefault();
+            }}
             yearDropdownItemNumber={100}
             formatWeekDay={(nameOfDay) =>
               WEEKDAY[WEEKDAY.findIndex((week) => week.value === nameOfDay)]
@@ -116,8 +119,8 @@ export default function WhCalendar({
                 <div>
                   <select
                     value={date.getFullYear()}
-                    onChange={({ target: { value } }) =>
-                      changeYear(Number(value))
+                    onChange={({ target: { value: targetValue } }) =>
+                      changeYear(Number(targetValue))
                     }
                   >
                     {YEARS.map((option) => (
@@ -128,9 +131,9 @@ export default function WhCalendar({
                   </select>
                   <select
                     value={MONTHS[date.getMonth()].value}
-                    onChange={({ target: { value } }) =>
+                    onChange={({ target: { value: targetValue } }) =>
                       changeMonth(
-                        MONTHS.findIndex((month) => month.value === value)
+                        MONTHS.findIndex((month) => month.value === targetValue)
                       )
                     }
                   >
