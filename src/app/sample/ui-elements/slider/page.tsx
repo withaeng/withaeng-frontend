@@ -4,22 +4,22 @@ import WhSlider from '@/components/elements/WhSlider';
 import { useState } from 'react';
 
 const ageMarks = {
-  20: 20,
-  25: 25,
-  30: 30,
-  35: 35,
-  40: 40,
-  45: 45,
+  20: '20',
+  25: '25',
+  30: '30',
+  35: '35',
+  40: '40',
+  45: '45',
   50: '50+',
 };
 
 const companionMarks = {
-  3: 3,
-  4: 4,
-  5: 5,
-  6: 6,
-  7: 7,
-  8: 8,
+  3: '3',
+  4: '4',
+  5: '5',
+  6: '6',
+  7: '7',
+  8: '8',
 };
 
 export default function Page() {
