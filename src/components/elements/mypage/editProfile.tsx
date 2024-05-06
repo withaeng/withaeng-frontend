@@ -10,7 +10,10 @@ import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';
 import { PencilIcon } from '../../../../public/assets/icons/edit';
 import WhTextarea from '../WhTextarea';
 
-const isData = {};
+const isData = true;
+
+const editBtnCss =
+  'absolute top-1/3 right-1/3 mr-9 bg-nutral-white-01 rounded-full p-[11px] shadow-modal cursor-pointer';
 
 export default function EditProfileModal() {
   const { isOpen, onOpen, onClose } = useModal();
@@ -25,7 +28,6 @@ export default function EditProfileModal() {
       </button>
       <WhModal isOpen={isOpen} onClose={onClose} isDismissible={false}>
         <WhModalHeader>프로필 수정</WhModalHeader>
-
         <div className='flex flex-col my-[54px] justify-center items-center'>
           {isData ? (
             <Image
@@ -53,12 +55,9 @@ export default function EditProfileModal() {
           <WhTextarea label='한 줄 자기소개' />
         </div>
         <WhModalButtonList onClick={onClose} label='수정' />
-        <button
-          type='button'
-          className='absolute top-1/3 right-1/3 mr-9 bg-nutral-white-01 rounded-full p-[11px] shadow-modal '
-        >
+        <div className={editBtnCss}>
           <PencilIcon />
-        </button>
+        </div>
       </WhModal>
     </div>
   );

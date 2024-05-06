@@ -2,15 +2,9 @@
 
 import React, { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
-import WhMypageMoreButton from './WhMypageMoreButton';
 
 export default function WhMypageTravelType() {
   const [chipList, setChipList] = useState<string[]>([]);
-  const [showFull, setShowFull] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowFull((prevShowFull) => !prevShowFull);
-  };
 
   function handleChip(value: string) {
     if (!chipList.includes(value)) {
@@ -141,9 +135,7 @@ export default function WhMypageTravelType() {
   ];
 
   return (
-    <div
-      className={`flex flex-col gap-10 ${showFull ? '' : 'h-[577px] overflow-hidden'}`}
-    >
+    <div className='flex flex-col gap-10 h-[429px] overflow-scroll'>
       {/* MBTI 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -186,7 +178,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 여행 관심사 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -208,7 +199,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 소비 스타일 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -230,7 +220,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 못 먹는 음식 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -252,7 +241,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 동행자 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -274,7 +262,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 흡연 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -296,7 +283,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-
       {/* 음주 타입 */}
       <div>
         <h4 className='text-body-02 text-neutral-black-02 pb-3'>
@@ -318,7 +304,6 @@ export default function WhMypageTravelType() {
           </div>
         ))}
       </div>
-      <WhMypageMoreButton onClick={handleButtonClick} isOpen={showFull} />
     </div>
   );
 }
