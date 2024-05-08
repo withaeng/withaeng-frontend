@@ -13,6 +13,13 @@ export default function Page() {
       >
         bottom일 경우
       </WhTooltip>
+
+      <WhTooltip
+        position='top'
+        content='인증된 사용자는 보다 많은 사람들에게 믿음과 안정감을 줄 수 있어요.'
+      >
+        인증마크 (마이페이지에 사용될 helpbox)
+      </WhTooltip>
     </div>
   );
 }
