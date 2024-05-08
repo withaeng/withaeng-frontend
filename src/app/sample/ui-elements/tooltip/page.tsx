@@ -2,7 +2,7 @@ import WhTooltip from '@/components/elements/WhTooltip';
 
 export default function Page() {
   return (
-    <div className='flex gap-40 m-20'>
+    <div className='flex gap-52 m-20'>
       <WhTooltip position='top' coreText='동행' content='을 직접 찾아볼까요?'>
         top일 경우
       </WhTooltip>
