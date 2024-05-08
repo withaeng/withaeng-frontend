@@ -43,7 +43,7 @@ export default function WhTooltip({
   const [isShow, setIsShow] = useState(true);
 
   const handleClick = () => {
-    setIsShow((prevState) => !prevState);
+    setIsShow(false);
   };
 
   return (
@@ -52,7 +52,7 @@ export default function WhTooltip({
         <button
           type='button'
           onClick={handleClick}
-          className='mx-2 text-secondary-main cursor-pointer'
+          className='mx-2 text-secondary-main'
         >
           {children}
         </button>
