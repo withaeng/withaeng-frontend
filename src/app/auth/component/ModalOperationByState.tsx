@@ -31,7 +31,7 @@ export default function ModalOperationByState() {
       <WhButton size='md' fitContent onClick={() => handleOpen('login')}>
         로그인 / 회원가입
       </WhButton>
-      <WhButton size='md' fitContent onClick={() => handleOpen('login')}>
+      <WhButton size='md' fitContent onClick={() => handleOpen('prefer')}>
         회원가입 이후 정보 등록
       </WhButton>
       <LoginModal
