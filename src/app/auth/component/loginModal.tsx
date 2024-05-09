@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import LoginModalContent from '@/components/auth/login/LoginModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import { AuthModalProps } from '@/types/auth';
@@ -9,10 +10,26 @@ export default function LoginModal({
   onClose,
   onOpen,
 }: AuthModalProps) {
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
+
+  useEffect(
+    () => () => {
+      setEmail('');
+      setPw('');
+    },
+    []
+  );
+
   return (
     <WhModal isOpen={isOpen} onClose={onClose}>
       <div className='px-[101px] py-[116px]'>
-        <LoginModalContent />
+        <LoginModalContent
+          email={email}
+          pw={pw}
+          handleEmail={setEmail}
+          handlePw={setPw}
+        />
         <div className='flex justify-between mt-5 mx-11 text-nutral-black-03'>
           <button
             type='button'

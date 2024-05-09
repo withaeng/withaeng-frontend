@@ -12,9 +12,17 @@ import {
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const dividerStyle = 'h-0 w-full border border-nutral-white-03';
 
-export default function LoginModalContent() {
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
+export default function LoginModalContent({
+  email,
+  pw,
+  handleEmail,
+  handlePw,
+}: {
+  email: string;
+  handleEmail: (value: string) => void;
+  pw: string;
+  handlePw: (value: string) => void;
+}) {
   const [showPw, setShowPw] = useState(false);
 
   const login = (e: React.FormEvent) => {
@@ -38,14 +46,14 @@ export default function LoginModalContent() {
           <WhInput
             type='email'
             value={email}
-            handleInputChange={setEmail}
+            handleInputChange={handleEmail}
             size='lg'
             placeholder='이메일'
           />
           <WhInput
             type={showPw ? 'text' : 'password'}
             value={pw}
-            handleInputChange={setPw}
+            handleInputChange={handlePw}
             size='lg'
             placeholder='비밀번호'
             isClearable={false}

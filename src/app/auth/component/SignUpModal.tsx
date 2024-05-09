@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignUpModalContent from '@/components/auth/sign-up/SignUpModalContent';
 import TermModalContent from '@/components/auth/sign-up/TermModalContent';
 import { AuthModalProps, UserSignUp } from '@/types/auth';
@@ -21,6 +21,13 @@ export default function SignUpModal({
 }: AuthModalProps) {
   const [form, setForm] = useState(initFormData);
   const [termPage, setTermPage] = useState(false);
+
+  useEffect(
+    () => () => {
+      setForm(initFormData);
+    },
+    []
+  );
 
   return (
     <WhModal isOpen={isOpen} onClose={onClose}>

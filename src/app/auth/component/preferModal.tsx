@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Step1ModalContent from '@/components/auth/prefer/Step1ModalContent';
 import Step2ModalContent from '@/components/auth/prefer/Step2ModalContent';
@@ -42,6 +42,20 @@ export default function PreferModal({
   const [smoking, setSmoking] = useState<string[]>([]);
   const [drinking, setDrinking] = useState<string[]>([]);
 
+  useEffect(
+    () => () => {
+      setNickname('');
+      setMbti([]);
+      setPreferRegion([]);
+      setInterests([]);
+      setConsume([]);
+      setCantEat([]);
+      setGender([]);
+      setSmoking([]);
+      setDrinking([]);
+    },
+    []
+  );
   // step 1 : function
   function handleNickname(value: string) {
     // FIXME: 닉네임 조건 걸어야함.
