@@ -30,7 +30,7 @@ export default function SignUpModal({
             form={form}
             setForm={setForm}
             setTermPage={setTermPage}
-            handleSubmit={() => onOpen('emailCheck')}
+            handleSubmit={() => onOpen('checkEmail')}
           />
         ) : (
           <TermModalContent setForm={setForm} setTermPage={setTermPage} />

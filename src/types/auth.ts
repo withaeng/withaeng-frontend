@@ -4,7 +4,7 @@ export type AuthModalType =
   | 'login'
   | 'signup'
   | 'findPassword'
-  | 'emailCheck'
+  | 'checkEmail'
   | 'prefer';
 
 export interface UserSignUp {

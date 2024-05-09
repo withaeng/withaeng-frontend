@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
-import EmailCheckModalComponent from '@/components/auth/sign-up/EmailCheckModalContent';
+import CheckEmailModalComponent from '@/components/auth/sign-up/CheckEmailModalContent';
 
 export default function CheckEmailPage() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function CheckEmailPage() {
   return (
     <WhModal isOpen onClose={() => router.push('/')}>
       <div className='px-[84px] py-[72px]'>
-        <EmailCheckModalComponent />
+        <CheckEmailModalComponent />
       </div>
     </WhModal>
   );

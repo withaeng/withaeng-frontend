@@ -3,7 +3,7 @@ import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 
 const secondarySpanCss = 'text-secondary-main font-semibold underline';
 
-export default function EmailCheckModalComponent() {
+export default function CheckEmailModalComponent() {
   return (
     <>
       <WhModalHeader>이메일을 확인해주세요.</WhModalHeader>

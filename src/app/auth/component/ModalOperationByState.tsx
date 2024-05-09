@@ -7,13 +7,13 @@ import PreferModal from './preferModal';
 import LoginModal from './loginModal';
 import SignUpModal from './SignUpModal';
 import FindPasswordModal from './FindPasswordModal';
-import EmailCheckModal from './EmailCheckModal';
+import CheckEmailModal from './CheckEmailModal';
 
 const modalInit: Record<AuthModalType, boolean> = {
   login: false,
   signup: false,
   findPassword: false,
-  emailCheck: false,
+  checkEmail: false,
   prefer: false,
 };
 
@@ -45,12 +45,12 @@ export default function ModalOperationByState() {
         onOpen={handleOpen}
       />
       <FindPasswordModal
-        isOpen={open.signup}
+        isOpen={open.findPassword}
         onClose={handleClose}
         onOpen={handleOpen}
       />
-      <EmailCheckModal isOpen={open.signup} onClose={handleClose} />
-      <PreferModal isOpen={open.signup} onClose={handleClose} />
+      <CheckEmailModal isOpen={open.checkEmail} onClose={handleClose} />
+      <PreferModal isOpen={open.prefer} onClose={handleClose} />
     </>
   );
 }

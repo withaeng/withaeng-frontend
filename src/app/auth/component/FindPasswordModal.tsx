@@ -18,7 +18,7 @@ export default function FindPasswordModal({
         <FindPasswordModalContent
           email={email}
           setEmail={setEamil}
-          handleSubmit={() => onOpen('emailCheck')}
+          handleSubmit={() => onOpen('checkEmail')}
         />
       </div>
     </WhModal>
