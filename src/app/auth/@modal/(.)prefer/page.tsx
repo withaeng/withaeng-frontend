@@ -132,7 +132,9 @@ drinking : ${drinking},
     >
       <div className='flex flex-col h-full'>
         <p className='text-nutral-black-04 text-right'>
-          <Link href='/'>건너뛰기</Link>
+          <Link href='/' replace>
+            건너뛰기
+          </Link>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (
