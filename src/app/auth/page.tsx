@@ -1,11 +1,10 @@
-import LoginSignUpModal from './component/loginSignUpModal';
-import PreferModal from './component/preferModal';
+import ModalOperationByState from './component/ModalOperationByState';
 
 export default function AuthPage() {
   return (
     <div className='flex flex-col gap-5 justify-center items-center'>
-      <LoginSignUpModal />
-      <PreferModal />
+      <p>👉 useState로 조작</p>
+      <ModalOperationByState />
     </div>
   );
 }

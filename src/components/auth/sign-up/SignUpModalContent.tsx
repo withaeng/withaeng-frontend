@@ -3,17 +3,10 @@ import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
+import { UserSignUp } from '@/types/auth';
 import PasswordInput from '../PasswordInput';
 
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
-
-export interface UserSignUp {
-  email: string;
-  password: string;
-  birth: Date;
-  gender: 'male' | 'female';
-  term: boolean;
-}
 
 export default function SignUpModalContent({
   form,

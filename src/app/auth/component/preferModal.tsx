@@ -5,10 +5,9 @@ import Link from 'next/link';
 import Step1ModalContent from '@/components/auth/prefer/Step1ModalContent';
 import Step2ModalContent from '@/components/auth/prefer/Step2ModalContent';
 import Step3ModalContent from '@/components/auth/prefer/Step3ModalContent';
-import WhButton from '@/components/elements/WhButton';
 import WhModal from '@/components/elements/modal/WhModal';
-import useModal from '@/components/elements/modal/useModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
+import { AuthModalProps } from '@/types/auth';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
@@ -20,14 +19,12 @@ function StepBar({ value }: { value: number }): React.ReactNode {
     </div>
   );
 }
-export default function PreferModal() {
-  const { isOpen, onClose, onOpen } = useModal();
+export default function PreferModal({
+  isOpen,
+  onClose,
+}: Omit<AuthModalProps, 'onOpen'>) {
   const [step, setStep] = useState(1);
 
-  const handleOpen = () => {
-    setStep(1);
-    onOpen();
-  };
   const handleClose = () => {
     onClose();
   };
@@ -134,77 +131,72 @@ drinking : ${drinking},
   };
 
   return (
-    <>
-      <WhButton size='md' fitContent onClick={handleOpen}>
-        회원가입 이후 정보 입력
-      </WhButton>
-      <WhModal
-        isOpen={isOpen}
-        onClose={handleClose}
-        className='px-[85px] py-[72px] h-[800px]'
-      >
-        <div className='flex flex-col h-full'>
-          <p className='text-nutral-black-04 text-right'>
-            <Link href='/'>건너뛰기</Link>
-          </p>
-          <StepBar value={(step / 3) * 100} />
-          {step === 1 && (
-            <>
-              <div className='grow'>
-                <Step1ModalContent
-                  nickname={nickname}
-                  handleNickname={handleNickname}
-                  mbti={mbti}
-                  handleMbtiChip={handleMbtiChip}
-                  preferRegion={preferRegion}
-                  handleRegionChip={handleRegionChip}
-                />
-              </div>
-              <WhModalButtonList onClick={onNextClick} label='다음' />
-            </>
-          )}
-          {step === 2 && (
-            <>
-              <div className='grow'>
-                <Step2ModalContent
-                  interests={interests}
-                  handleInterestsChip={handleInterestsChip}
-                  consume={consume}
-                  handleConsumeChip={handleConsumeChip}
-                  cantEat={cantEat}
-                  handleCantEatChip={handleCantEatChip}
-                />
-              </div>
-              <WhModalButtonList
-                prev
-                onPrevClick={onPrevClick}
-                onClick={onNextClick}
-                label='다음'
+    <WhModal
+      isOpen={isOpen}
+      onClose={handleClose}
+      className='px-[85px] py-[72px] h-[800px]'
+    >
+      <div className='flex flex-col h-full'>
+        <p className='text-nutral-black-04 text-right'>
+          <Link href='/'>건너뛰기</Link>
+        </p>
+        <StepBar value={(step / 3) * 100} />
+        {step === 1 && (
+          <>
+            <div className='grow'>
+              <Step1ModalContent
+                nickname={nickname}
+                handleNickname={handleNickname}
+                mbti={mbti}
+                handleMbtiChip={handleMbtiChip}
+                preferRegion={preferRegion}
+                handleRegionChip={handleRegionChip}
               />
-            </>
-          )}
-          {step === 3 && (
-            <>
-              <div className='grow'>
-                <Step3ModalContent
-                  gender={gender}
-                  handleGenderChip={handleGenderChip}
-                  smoking={smoking}
-                  handleSmokingChip={handleSmokingChip}
-                  drinking={drinking}
-                  handleDrinkingChip={handleDrinkingChip}
-                />
-              </div>
-              <WhModalButtonList
-                prev
-                onPrevClick={onPrevClick}
-                onClick={onNextClick}
-                label='같이행 시작하기'
+            </div>
+            <WhModalButtonList onClick={onNextClick} label='다음' />
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <div className='grow'>
+              <Step2ModalContent
+                interests={interests}
+                handleInterestsChip={handleInterestsChip}
+                consume={consume}
+                handleConsumeChip={handleConsumeChip}
+                cantEat={cantEat}
+                handleCantEatChip={handleCantEatChip}
               />
-            </>
-          )}
-        </div>
-      </WhModal>
-    </>
+            </div>
+            <WhModalButtonList
+              prev
+              onPrevClick={onPrevClick}
+              onClick={onNextClick}
+              label='다음'
+            />
+          </>
+        )}
+        {step === 3 && (
+          <>
+            <div className='grow'>
+              <Step3ModalContent
+                gender={gender}
+                handleGenderChip={handleGenderChip}
+                smoking={smoking}
+                handleSmokingChip={handleSmokingChip}
+                drinking={drinking}
+                handleDrinkingChip={handleDrinkingChip}
+              />
+            </div>
+            <WhModalButtonList
+              prev
+              onPrevClick={onPrevClick}
+              onClick={onNextClick}
+              label='같이행 시작하기'
+            />
+          </>
+        )}
+      </div>
+    </WhModal>
   );
 }

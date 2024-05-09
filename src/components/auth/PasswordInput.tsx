@@ -2,11 +2,8 @@
 
 import { useCallback, useState } from 'react';
 import WhInput from '../elements/WhInput';
-import {
-  CheckIcon,
-  EyeHideIcon,
-  EyeShowIcon,
-} from '../../../public/assets/icons/system';
+import { CheckIcon } from '../../../public/assets/icons/menu';
+import { EyeHideIcon, EyeShowIcon } from '../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 
