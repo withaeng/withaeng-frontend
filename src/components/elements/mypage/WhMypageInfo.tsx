@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import WhTextarea from '@/components/elements/WhTextarea';
-import Image from 'next/image';
 import WhInput from '@/components/elements/WhInput';
 import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';
+import 'react-circular-progressbar/dist/styles.css';
+import CircleProgressBar from './CircleProgressBar';
 
 export default function WhMypageInfo() {
   const itemList = {
@@ -20,20 +21,26 @@ export default function WhMypageInfo() {
     birth: '2024.04.11',
   };
 
+  const [circularPercentage, setCircularPercentage] = useState(88);
+
   return (
     <div className='flex gap-[60px] justify-center'>
       {/* left */}
       <div className='flex flex-col justify-center items-center'>
-        <Image
-          src={sampleProfile}
-          alt='profile-image'
-          width={120}
-          height={120}
-        />
+        {/* circular start */}
+        <div>
+          <CircleProgressBar
+            circularPercentage={circularPercentage}
+            circleWidth={200}
+            imageSrc={sampleProfile}
+          />
+        </div>
+
+        {/* circular end */}
+
         <p className='py-[13px] text-headline-04 text-primary-main'>
           {itemList.name}
         </p>
-
         <ul className='flex bg-nutral-white-02 py-5 px-4 gap-6 text-center rounded text-subtitle-01'>
           <li className='flex flex-col border-r border-nutral-white-03 pr-6'>
             <p className='mb-2'>{itemList.score}</p>

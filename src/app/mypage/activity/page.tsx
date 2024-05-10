@@ -5,8 +5,8 @@ import WhButton from '@/components/elements/WhButton';
 import WhCard from '@/components/elements/WhCard';
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
 import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
-import WhMypageProgressBar from '@/components/elements/mypage/WhMypageProgressBar';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
 
 const badgeContainerCss =
   'bg-nutral-white-02 py-[3.75rem] px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
@@ -103,6 +103,7 @@ const tabList = [
 ];
 export default function Activity() {
   const [selectedTab, setSelectedTab] = useState('tab1');
+  const filled = 36.5;
 
   const changeTab = (tabId) => {
     setSelectedTab(tabId);
@@ -119,18 +120,32 @@ export default function Activity() {
           </h4>
           <p className='text-nutral-black-04 text-body-03'>
             잘 하고 있어요!&nbsp;
-            <span className='text-primary-main'>13.5점</span>만 높이면&nbsp;
+            <span className='text-primary-main'>{50 - filled}</span>만
+            높이면&nbsp;
             <span className='text-secondary-main'>인증마크</span>를 받을 수
             있어요.
           </p>
         </div>
-        <WhMypageProgressBar />
+
+        <div className='flex gap-3 items-center max-w-[586px] mt-6'>
+          <span className='text-primary-main text-subtitle-01'>{filled}</span>
+
+          <div className='w-[500px] rounded-2xl bg-nutral-white-02 h-6'>
+            <div
+              className='h-6 rounded-2xl bg-primary-main'
+              style={{ width: `${filled}%` }}
+            />
+            <MannerArrowIcon className='ml-[172px] mt-[7px]' />
+          </div>
+
+          <span className='text-nutral-white-04 text-body-02'>100</span>
+        </div>
 
         <div className='flex gap-3 mt-8'>
           <h4 className='text-subtitle-01 text-neutral-black-02'>나의 배지</h4>
           <p className='text-nutral-black-04 text-subtitle-02'>
             <span className='text-primary-main text-body-03'>
-              {badgeList.length}
+              {badgeList.length}&nbsp;
             </span>
             / 12
           </p>
@@ -179,12 +194,12 @@ export default function Activity() {
         </div>
 
         <div className='bg-nutral-white-02 rounded'>
-          <div className='px-10 pt-6 pb-8'>
-            {selectedTab === 'tab1' &&
-              (accompanyList.length > 0 ? (
-                accompanyList
-                  .filter((item) => item.status === 'joining')
-                  .map((accompany) => (
+          {selectedTab === 'tab1' &&
+            (accompanyList.length > 0 ? (
+              accompanyList
+                .filter((item) => item.status === 'joining')
+                .map((accompany) => (
+                  <div className='px-10 pt-6 pb-8'>
                     <WhCard
                       key={accompany.id}
                       status={accompany.status}
@@ -198,22 +213,22 @@ export default function Activity() {
                       accompaniedCnt={accompany.accompaniedCnt}
                       thumbnailImageUrl={accompany.thumbnailImageUrl}
                     />
-                  ))
-              ) : (
-                <div className='flex justify-center flex-col items-center py-20'>
-                  <div>
-                    <p className='text-nutral-black-05 text-subtitle-02 text-center mb-3'>
-                      {selectedTab === 'tab1' ? '진행 중' : '완료한'}
-                      동행이 없어요. <br />
-                      동행할 콘텐츠를 찾아볼까요?
-                    </p>
-                    <WhButton size='md' onClick={() => {}}>
-                      찾아보러 가기
-                    </WhButton>
                   </div>
+                ))
+            ) : (
+              <div className='flex justify-center flex-col items-center py-20'>
+                <div>
+                  <p className='text-nutral-black-05 text-subtitle-02 text-center mb-3'>
+                    {selectedTab === 'tab1' ? '진행 중' : '완료한'}
+                    동행이 없어요. <br />
+                    동행할 콘텐츠를 찾아볼까요?
+                  </p>
+                  <WhButton size='md' onClick={() => {}}>
+                    찾아보러 가기
+                  </WhButton>
                 </div>
-              ))}
-          </div>
+              </div>
+            ))}
         </div>
 
         <div className='bg-nutral-white-02 rounded'>
@@ -222,19 +237,21 @@ export default function Activity() {
               accompanyList
                 .filter((item) => item.status === 'joined')
                 .map((accompany) => (
-                  <WhCard
-                    key={accompany.id}
-                    status={accompany.status}
-                    profileImageUrl={accompany.profileImageUrl}
-                    nickname={accompany.nickname}
-                    title={accompany.title}
-                    tags={accompany.tags}
-                    startTripDate={accompany.startTripDate}
-                    endTripDate={accompany.endTripDate}
-                    accompanyCnt={accompany.accompanyCnt}
-                    accompaniedCnt={accompany.accompaniedCnt}
-                    thumbnailImageUrl={accompany.thumbnailImageUrl}
-                  />
+                  <div className='px-10 pt-6 pb-8'>
+                    <WhCard
+                      key={accompany.id}
+                      status={accompany.status}
+                      profileImageUrl={accompany.profileImageUrl}
+                      nickname={accompany.nickname}
+                      title={accompany.title}
+                      tags={accompany.tags}
+                      startTripDate={accompany.startTripDate}
+                      endTripDate={accompany.endTripDate}
+                      accompanyCnt={accompany.accompanyCnt}
+                      accompaniedCnt={accompany.accompaniedCnt}
+                      thumbnailImageUrl={accompany.thumbnailImageUrl}
+                    />
+                  </div>
                 ))
             ) : (
               <div className='flex justify-center flex-col items-center py-20'>

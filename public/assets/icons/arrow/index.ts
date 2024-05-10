@@ -10,3 +10,4 @@ export { ReactComponent as ChevronUp20Icon } from './chevron-up-20.svg';
 export { ReactComponent as ChevronDown20Icon } from './chevron-down-20.svg';
 export { ReactComponent as ChevronLeft20Icon } from './chevron-left-20.svg';
 export { ReactComponent as ChevronRight20Icon } from './chevron-right-20.svg';
+export { ReactComponent as MannerArrowIcon } from './manner-arrow.svg';
