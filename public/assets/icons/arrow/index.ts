@@ -6,7 +6,3 @@ export { ReactComponent as ChevronUpIcon } from './chevron-up.svg';
 export { ReactComponent as ChevronDownIcon } from './chevron-down.svg';
 export { ReactComponent as ChevronLeftIcon } from './chevron-left.svg';
 export { ReactComponent as ChevronRightIcon } from './chevron-right.svg';
-export { ReactComponent as ChevronUp20Icon } from './chevron-up-20.svg';
-export { ReactComponent as ChevronDown20Icon } from './chevron-down-20.svg';
-export { ReactComponent as ChevronLeft20Icon } from './chevron-left-20.svg';
-export { ReactComponent as ChevronRight20Icon } from './chevron-right-20.svg';

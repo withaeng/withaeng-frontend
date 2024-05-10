@@ -28,6 +28,24 @@ const page = () => (
     <Link href='/sample/ui-elements/modal' className={`${linkCss}`}>
       common Modal
     </Link>
+    <Link href='/sample/ui-elements/card' className={`${linkCss}`}>
+      common Card
+    </Link>
+    <Link href='/sample/ui-elements/badge' className={`${linkCss}`}>
+      common Badge
+    </Link>
+    <Link href='/sample/ui-elements/calendar' className={`${linkCss}`}>
+      common Calendar
+    </Link>
+    <Link href='/sample/ui-elements/tab' className={`${linkCss}`}>
+      common Tab
+    </Link>
+    <Link href='/sample/ui-elements/dropdown' className={`${linkCss}`}>
+      common Dropdown
+    </Link>
+    <Link href='/sample/ui-elements/slider' className={`${linkCss}`}>
+      common Slider
+    </Link>
   </div>
 );
 

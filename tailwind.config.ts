@@ -33,6 +33,7 @@ const config: Config = {
       caption: {
         main: '#ec5c53',
         light: '#f8867e',
+        success: '#36C304',
       },
     },
     fontSize: {
