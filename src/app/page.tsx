@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { ReactElement, useCallback, useState } from 'react';
-import WhChip from '@/components/elements/WhChip';
 import WhCard from '@/components/elements/WhCard';
 import HomeBannerImage from '../../public/assets/images/home-banner.webp';
 import PopularCityCard from './components/PopularCityCard';
+import { FilterIcon } from '../../public/assets/icons/system';
 
 // TODO: api 호출 후 데이터 세팅 예정, 타입 지정 예정
 const popularCityList = [
@@ -231,7 +231,13 @@ export default function HomePage() {
           onChange={handleChangeTabValue}
         >
           <section className='mt-3 mb-5'>
-            <WhChip>필터</WhChip>
+          <button
+            type='button'
+            className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 text-nutral-black-03 border border-nutral-white-03 transition text-subtitle-02 flex items-center justify-center gap-1'
+          >
+            <FilterIcon width={20} height={20} fill='#737373' />
+            필터
+          </button>
           </section>
           <section className='w-full h-full mb-[120px]'>
             <ul className='flex flex-wrap gap-5'>
