@@ -6,3 +6,5 @@ export { ReactComponent as EyeShowIcon } from './eye-show.svg';
 export { ReactComponent as InfoIcon } from './info.svg';
 export { ReactComponent as WarningIcon } from './warning.svg';
 export { ReactComponent as Warning20Icon } from './warning-20.svg';
+export { ReactComponent as CopyrightIcon } from './copyright.svg';
+export { ReactComponent as FooterLineIcon } from './footer-line.svg';

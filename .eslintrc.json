@@ -26,6 +26,7 @@
         "labelAttributes": ["htmlFor"],
         "controlComponents": ["input"]
       }
-    ]
+    ],
+    "react/jsx-no-bind": "off"
   }
 }
