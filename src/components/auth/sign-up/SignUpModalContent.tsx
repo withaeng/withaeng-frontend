@@ -3,6 +3,7 @@ import WhRadio from '@/components/elements/WhRadio';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
+import WhCalendar from '@/components/elements/WhCalendar';
 import { UserSignUp } from '@/types/auth';
 import PasswordInput from '../PasswordInput';
 
@@ -59,12 +60,24 @@ export default function SignUpModalContent({
             setForm((prev) => ({ ...prev, password: value }))
           }
         />
-        {/* TODO: 캘린더 추가 */}
-        <div>생년월일 calendar 들어갈 자리</div>
+        <div>
+          <label htmlFor='sign-up_birth'>
+            생년월일 {/* FIXME: required label 처리 (임시 작업) */}
+            <span className='text-caption-main'>*</span>
+          </label>
+          <div id='sign-up_birth' className='mt-3'>
+            <WhCalendar
+              value={form.birth}
+              onChange={(value) =>
+                setForm((prev) => ({ ...prev, birth: value ?? new Date() }))
+              }
+            />
+          </div>
+        </div>
+
         <div>
           <label htmlFor='sign-up_gender'>
-            성별
-            {/* FIXME: required label 처리 (임시 작업) */}
+            성별 {/* FIXME: required label 처리 (임시 작업) */}
             <span className='text-caption-main'>*</span>
           </label>
           <div id='sign-up_gender' className='flex mt-3 gap-8'>
