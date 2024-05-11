@@ -26,7 +26,7 @@ export default function LoginPage() {
               비밀번호 찾기
             </button>
           </Link>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 items-center'>
             <p className='text-body-03'>아직 회원이 아니신가요?</p>
             <Link href='/auth/signup' replace>
               <button
