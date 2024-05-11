@@ -34,6 +34,9 @@ const page = () => (
     <Link href='/sample/ui-elements/badge' className={`${linkCss}`}>
       common Badge
     </Link>
+    <Link href='/sample/ui-elements/calendar' className={`${linkCss}`}>
+      common Calendar
+    </Link>
     <Link href='/sample/ui-elements/tab' className={`${linkCss}`}>
       common Tab
     </Link>
@@ -42,6 +45,8 @@ const page = () => (
     </Link>
     <Link href='/sample/ui-elements/tooltip' className={`${linkCss}`}>
       common Tooltip
+    <Link href='/sample/ui-elements/slider' className={`${linkCss}`}>
+      common Slider
     </Link>
   </div>
 );
