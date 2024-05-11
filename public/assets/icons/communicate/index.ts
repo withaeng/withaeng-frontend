@@ -15,3 +15,11 @@ export { ReactComponent as UserIcon } from './user.svg';
 export { ReactComponent as UsersGroupIcon } from './users-group.svg';
 export { ReactComponent as CalendarCheckGrayIcon } from './calendar-check-gray.svg';
 export { ReactComponent as UsersGroupGrayIcon } from './users-group-gray.svg';
+export { ReactComponent as ChatIcon } from './chat.svg';
+export { ReactComponent as ReportIcon } from './report.svg';
+export { ReactComponent as JoinTypeIcon } from './join-type.svg';
+export { ReactComponent as GenderIcon } from './gender.svg';
+
+
+
+

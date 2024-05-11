@@ -14,6 +14,7 @@ const config: Config = {
       secondary: {
         main: '#3652AD',
         light: '#718EED',
+        exLight: '#BECDFF',
       },
       nutral: {
         black: {
