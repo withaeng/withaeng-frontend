@@ -49,13 +49,7 @@ export default function WhTooltip({
   return (
     <div>
       <div className='relative group'>
-        <button
-          type='button'
-          onClick={handleClick}
-          className='mx-2 text-secondary-main'
-        >
-          {children}
-        </button>
+        <div className='mx-2 text-secondary-main'>{children}</div>
         {isShow && (
           <div>
             <p className={`${defaultTooltipCss} ${positionCss}`}>
