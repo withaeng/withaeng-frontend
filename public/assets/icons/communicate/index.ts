@@ -19,7 +19,3 @@ export { ReactComponent as ChatIcon } from './chat.svg';
 export { ReactComponent as ReportIcon } from './report.svg';
 export { ReactComponent as JoinTypeIcon } from './join-type.svg';
 export { ReactComponent as GenderIcon } from './gender.svg';
-
-
-
-
