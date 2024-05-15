@@ -15,7 +15,7 @@ const initFormData: UserSignUp = {
   term: false,
 };
 
-export default function SignUpPage() {
+export default function SignUpModalPage() {
   const router = useRouter();
   const [form, setForm] = useState(initFormData);
   const [termPage, setTermPage] = useState(false);
@@ -28,7 +28,7 @@ export default function SignUpPage() {
             form={form}
             setForm={setForm}
             setTermPage={setTermPage}
-            handleSubmit={() => router.push('/auth/checkEmail')}
+            handleSubmit={() => router.replace('/checkEmail')}
           />
         ) : (
           <TermModalContent setForm={setForm} setTermPage={setTermPage} />

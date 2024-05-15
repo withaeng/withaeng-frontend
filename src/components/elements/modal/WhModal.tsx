@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import { CloseIcon } from '../../../../public/assets/icons/menu';
@@ -22,8 +22,18 @@ export default function WhModal({
   className,
   children,
 }: Props) {
+  const [element, setElement] = useState<HTMLElement | null>(null);
   const nodeRef = useRef(null);
+
+  useEffect(() => {
+    setElement(document.getElementById('modal-root')!);
+  }, []);
+
   if (typeof window !== 'object') {
+    return null;
+  }
+
+  if (!element) {
     return null;
   }
 
@@ -55,6 +65,6 @@ export default function WhModal({
         </div>
       </div>
     </CSSTransition>,
-    document.getElementById('modal-root')!
+    element
   );
 }

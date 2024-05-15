@@ -6,7 +6,7 @@ import Link from 'next/link';
 import LoginModalContent from '@/components/auth/login/LoginModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 
-export default function LoginPage() {
+export default function LoginModalPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
@@ -21,14 +21,14 @@ export default function LoginPage() {
           handlePw={setPw}
         />
         <div className='flex justify-between mt-5 mx-11 text-nutral-black-03'>
-          <Link href='/auth/findPassword' replace>
+          <Link href='/findPassword' replace>
             <button type='button' className='text-body-03'>
               비밀번호 찾기
             </button>
           </Link>
           <div className='flex gap-2 items-center'>
             <p className='text-body-03'>아직 회원이 아니신가요?</p>
-            <Link href='/auth/signup' replace>
+            <Link href='/signup' replace>
               <button
                 type='button'
                 className='text-secondary-main text-body-03'

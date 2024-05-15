@@ -6,12 +6,12 @@ export default function AuthPage() {
   return (
     <div className='flex flex-col gap-5 justify-center items-center'>
       <p>👉 route로 조작</p>
-      <Link href='/auth/login'>
+      <Link href='/login'>
         <WhButton size='md' fitContent>
           로그인 / 회원가입
         </WhButton>
       </Link>
-      <Link href='/auth/prefer'>
+      <Link href='/prefer'>
         <WhButton size='md' fitContent>
           회원가입 이후 정보 입력
         </WhButton>

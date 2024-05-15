@@ -107,13 +107,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  modal,
+}: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return (
     <html lang='ko' className={pretendard.className}>
       <body>
         {children}
+        {modal}
         <div id='modal-root' />
       </body>
     </html>

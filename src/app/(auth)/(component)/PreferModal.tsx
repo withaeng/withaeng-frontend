@@ -20,7 +20,7 @@ function StepBar({ value }: { value: number }): React.ReactNode {
   );
 }
 
-export default function PreferPage() {
+export default function PreferModalPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
 
@@ -127,7 +127,7 @@ drinking : ${drinking},
   return (
     <WhModal
       isOpen
-      onClose={() => router.back()}
+      onClose={() => router.replace('/')}
       className='px-[85px] py-[72px] h-[800px]'
     >
       <div className='flex flex-col h-full'>

@@ -152,7 +152,9 @@ drinking : ${drinking},
     >
       <div className='flex flex-col h-full'>
         <p className='text-nutral-black-04 text-right'>
-          <Link href='/'>건너뛰기</Link>
+          <button type='button' onClick={handleClose}>
+            건너뛰기
+          </button>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (

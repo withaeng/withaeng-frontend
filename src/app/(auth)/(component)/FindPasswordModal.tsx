@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
 import FindPasswordModalContent from '@/components/auth/login/FindPasswordModalContent';
 
-export default function FindPasswordPage() {
+export default function FindPasswordModalPage() {
   const router = useRouter();
   const [email, setEamil] = useState('');
 
@@ -15,7 +15,7 @@ export default function FindPasswordPage() {
         <FindPasswordModalContent
           email={email}
           setEmail={setEamil}
-          handleSubmit={() => router.push('/auth/checkEmail')}
+          handleSubmit={() => router.replace('/checkEmail')}
         />
       </div>
     </WhModal>
