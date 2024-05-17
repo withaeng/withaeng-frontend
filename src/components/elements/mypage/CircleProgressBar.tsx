@@ -50,7 +50,7 @@ export default function CircleProgressBar({
           height={imageSize}
         />
       </svg>
-      <text
+      <span
         x='50%'
         y='50%'
         dy='0.3em'
@@ -58,7 +58,7 @@ export default function CircleProgressBar({
         className='bg-primary-eexLight text-primary-main text-caption-01 py-1 px-2 rounded ml-[120px] mb-[32px] max-w-[42px] max-h-[22px]'
       >
         {circularPercentage}%
-      </text>
+      </span>
     </div>
   );
 }

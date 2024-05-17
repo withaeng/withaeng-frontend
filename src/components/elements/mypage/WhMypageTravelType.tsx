@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
+import WhMoreButton from './WhMoreButton';
 
 export default function WhMypageTravelType() {
   const [chipList, setChipList] = useState<string[]>([]);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   function handleChip(value: string) {
     if (!chipList.includes(value)) {
@@ -135,175 +137,183 @@ export default function WhMypageTravelType() {
   ];
 
   return (
-    <div className='flex flex-col gap-10 h-[429px] overflow-scroll'>
-      {/* MBTI 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          당신의 MBTI는 무엇인가요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.mbtiList &&
-              item.mbtiList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
+    <div>
+      <div
+        className={`flex flex-col gap-10 overflow-hidden  ${isMoreOpen ? 'h-[429px]' : ''}`}
+      >
+        {/* MBTI 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            당신의 MBTI는 무엇인가요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.mbtiList &&
+                item.mbtiList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 여행 선호지역 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            여행 선호지역은 어디인가요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.favorAreaList &&
+                item.favorAreaList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 여행 관심사 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            여행 관심사는 어떻게 되세요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.interestList &&
+                item.interestList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 소비 스타일 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            여행에서의 소비 스타일은 어때요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.spendtypeList &&
+                item.spendtypeList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 못 먹는 음식 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            못 먹는 음식 있으세요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.dontFoodList &&
+                item.dontFoodList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 동행자 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            원하는 동행자의 성별이 있나요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.genderList &&
+                item.genderList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 흡연 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            흡연은 어떻게 하세요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.smokeList &&
+                item.smokeList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
+        {/* 음주 타입 */}
+        <div>
+          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+            음주는 어떻게 하세요?
+          </h4>
+          {myTravelType.map((item) => (
+            <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
+              {item.drinkList &&
+                item.drinkList.map((option) => (
+                  <WhChip
+                    key={option.id}
+                    value={option.type}
+                    checked={isIncludes(option.type)}
+                    onClick={() => handleChip(option.type)}
+                  >
+                    {option.type}
+                  </WhChip>
+                ))}
+            </div>
+          ))}
+        </div>
       </div>
-      {/* 여행 선호지역 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          여행 선호지역은 어디인가요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.favorAreaList &&
-              item.favorAreaList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 여행 관심사 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          여행 관심사는 어떻게 되세요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.interestList &&
-              item.interestList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 소비 스타일 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          여행에서의 소비 스타일은 어때요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.spendtypeList &&
-              item.spendtypeList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 못 먹는 음식 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          못 먹는 음식 있으세요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.dontFoodList &&
-              item.dontFoodList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 동행자 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          원하는 동행자의 성별이 있나요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.genderList &&
-              item.genderList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 흡연 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          흡연은 어떻게 하세요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.smokeList &&
-              item.smokeList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
-      {/* 음주 타입 */}
-      <div>
-        <h4 className='text-body-02 text-neutral-black-02 pb-3'>
-          음주는 어떻게 하세요?
-        </h4>
-        {myTravelType.map((item) => (
-          <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-            {item.drinkList &&
-              item.drinkList.map((option) => (
-                <WhChip
-                  key={option.id}
-                  value={option.type}
-                  checked={isIncludes(option.type)}
-                  onClick={() => handleChip(option.type)}
-                >
-                  {option.type}
-                </WhChip>
-              ))}
-          </div>
-        ))}
-      </div>
+      <WhMoreButton
+        onClick={() => setIsMoreOpen(!isMoreOpen)}
+        isOpen={isMoreOpen}
+      />
     </div>
   );
 }

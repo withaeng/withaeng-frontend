@@ -158,7 +158,7 @@ export default function Activity() {
 
         <section className={`${badgeContainerCss}`}>
           {badgeList.map((item) => (
-            <div className='flex flex-col gap-4 items-center'>
+            <div className='flex flex-col gap-4 items-center' key={item.value}>
               <WhBadge key={item.name} name={item.name} />
               <span className='text-subtitle-01 text-nutral-black-02'>
                 {item.value}
@@ -199,9 +199,8 @@ export default function Activity() {
               accompanyList
                 .filter((item) => item.status === 'joining')
                 .map((accompany) => (
-                  <div className='px-10 pt-6 pb-8'>
+                  <div className='px-10 pt-6 pb-8' key={accompany.id}>
                     <WhCard
-                      key={accompany.id}
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
                       nickname={accompany.nickname}
@@ -237,9 +236,8 @@ export default function Activity() {
               accompanyList
                 .filter((item) => item.status === 'joined')
                 .map((accompany) => (
-                  <div className='px-10 pt-6 pb-8'>
+                  <div className='px-10 pt-6 pb-8' key={accompany.id}>
                     <WhCard
-                      key={accompany.id}
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
                       nickname={accompany.nickname}
