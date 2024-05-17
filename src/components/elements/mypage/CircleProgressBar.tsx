@@ -1,10 +1,16 @@
 import React from 'react';
 
+interface CircleProgressBarProps {
+  circularPercentage: number;
+  circleWidth: number;
+  imageSrc: string;
+}
+
 export default function CircleProgressBar({
   circularPercentage,
   circleWidth,
-  imageSrc,
-}) {
+  imageSrc = '',
+}: CircleProgressBarProps) {
   const radius = 85;
   const dashArray = radius * Math.PI * 2;
   const dashOffset = dashArray - (dashArray * circularPercentage) / 100;

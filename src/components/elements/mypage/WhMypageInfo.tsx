@@ -1,7 +1,5 @@
 'use client';
 
-import React, { useState } from 'react';
-
 import WhTextarea from '@/components/elements/WhTextarea';
 import WhInput from '@/components/elements/WhInput';
 import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';
@@ -19,9 +17,8 @@ export default function WhMypageInfo() {
     introduce: '안녕하세요. 잘 부탁 드립니다.',
     sex: '여성',
     birth: '2024.04.11',
+    circularPercentage: 88,
   };
-
-  const [circularPercentage, setCircularPercentage] = useState(88);
 
   return (
     <div className='flex gap-[60px] justify-center'>
@@ -30,7 +27,7 @@ export default function WhMypageInfo() {
         {/* circular start */}
         <div>
           <CircleProgressBar
-            circularPercentage={circularPercentage}
+            circularPercentage={itemList.circularPercentage}
             circleWidth={200}
             imageSrc={sampleProfile}
           />
