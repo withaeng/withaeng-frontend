@@ -182,13 +182,17 @@ export default function Activity() {
             >
               {tab.title}
 
-              {selectedTab === 'tab1'
-                ? accompanyList.filter(
-                    (item) =>
-                      item.status === 'joining' || item.status === 'joined'
-                  ).length
-                : accompanyList.filter((item) => item.status === 'accompanied')
-                    .length}
+              {selectedTab === 'tab1' &&
+                tab.id === 'tab1' &&
+                accompanyList.filter(
+                  (item) =>
+                    item.status === 'joining' || item.status === 'joined'
+                ).length}
+
+              {selectedTab === 'tab2' &&
+                tab.id === 'tab2' &&
+                accompanyList.filter((item) => item.status === 'accompanied')
+                  .length}
             </button>
           ))}
         </div>
