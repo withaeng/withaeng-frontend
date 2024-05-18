@@ -26,6 +26,7 @@ export default function WhSlider({
   range = false,
   disabled = false,
 }: SliderProps) {
+  console.log(value);
   return (
     <Slider
       className={`mx-3 ${marks && 'mb-8'}`}

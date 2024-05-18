@@ -14,7 +14,7 @@ export default function PopularCityCard({
   continent,
 }: Props) {
   return (
-    <div className='flex flex-col cursor-pointer'>
+    <div className='flex flex-col cursor-pointer text-left'>
       <Image
         className='rounded w-[305px] h-[290px] object-cover'
         src={cityImageUrl}

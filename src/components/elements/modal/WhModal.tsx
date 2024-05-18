@@ -48,7 +48,12 @@ export default function WhModal({
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nutral-white-01 z-50 w-fit px-[84px] py-[72px] min-w-[580px] rounded shadow-modal'>
               {!hideCloseButton && (
                 <button type='button' aria-label='닫기 버튼' onClick={onClose}>
-                  <CloseIcon className='absolute top-5 right-5' />
+                  <CloseIcon
+                    width={24}
+                    height={24}
+                    stroke='#333333'
+                    className='absolute top-5 right-5'
+                  />
                 </button>
               )}
               <div className=''>{children}</div>

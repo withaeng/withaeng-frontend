@@ -1,18 +1,21 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { ReactElement, useCallback, useState } from 'react';
 import WhCard from '@/components/elements/WhCard';
 import HomeBannerImage from '../../public/assets/images/home-banner.webp';
 import PopularCityCard from './components/PopularCityCard';
 import { FilterIcon } from '../../public/assets/icons/system';
+import FilterModal from './modals/FilterModal';
 
 // TODO: api 호출 후 데이터 세팅 예정, 타입 지정 예정
 const popularCityList = [
   {
     id: '1',
     name: '서울',
+    engName: 'seoul',
     country: '대한민국',
     continent: '국내',
     cityImageUrl:
@@ -21,6 +24,7 @@ const popularCityList = [
   {
     id: '2',
     name: '도쿄',
+    engName: 'tokyo',
     country: '일본',
     continent: '동아시아',
     cityImageUrl:
@@ -29,6 +33,7 @@ const popularCityList = [
   {
     id: '3',
     name: '타이페이',
+    engName: 'taipei',
     country: '대만',
     continent: '동아시아',
     cityImageUrl:
@@ -37,6 +42,7 @@ const popularCityList = [
   {
     id: '4',
     name: '제주도',
+    engName: 'jeju',
     country: '대한민국',
     continent: '국내',
     cityImageUrl:
@@ -193,10 +199,18 @@ const showAccompanyList = (continentId: string): ReactElement => {
 
 export default function HomePage() {
   const [continentId, setContinentId] = useState<string>('ALL');
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState<boolean>(false);
+  const router = useRouter();
+
+  const goToPopularCityPage = (cityName: string) => {
+    router.push(`/popular-city/${cityName}`);
+  };
 
   const handleChangeTabValue = useCallback((tabId: string) => {
     setContinentId(tabId);
   }, []);
+
+  const openFilterModal = () => setIsFilterModalOpen(!isFilterModalOpen);
 
   return (
     <div className='max-w-7xl flex flex-col gap-[60px] items-center my-0 mx-auto'>
@@ -211,12 +225,18 @@ export default function HomePage() {
         <ul className='flex gap-5 pt-5'>
           {popularCityList.map((city) => (
             <li key={city.id}>
-              <PopularCityCard
-                name={city.name}
-                country={city.country}
-                continent={city.continent}
-                cityImageUrl={city.cityImageUrl}
-              />
+              <button
+                type='button'
+                aria-label='인기 도시'
+                onClick={() => goToPopularCityPage(city.engName)}
+              >
+                <PopularCityCard
+                  name={city.name}
+                  country={city.country}
+                  continent={city.continent}
+                  cityImageUrl={city.cityImageUrl}
+                />
+              </button>
             </li>
           ))}
         </ul>
@@ -231,13 +251,14 @@ export default function HomePage() {
           onChange={handleChangeTabValue}
         >
           <section className='mt-3 mb-5'>
-          <button
-            type='button'
-            className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 text-nutral-black-03 border border-nutral-white-03 transition text-subtitle-02 flex items-center justify-center gap-1'
-          >
-            <FilterIcon width={20} height={20} fill='#737373' />
-            필터
-          </button>
+            <button
+              type='button'
+              className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 text-nutral-black-03 border border-nutral-white-03 transition text-subtitle-02 flex items-center justify-center gap-1'
+              onClick={openFilterModal}
+            >
+              <FilterIcon width={20} height={20} fill='#737373' />
+              필터
+            </button>
           </section>
           <section className='w-full h-full mb-[120px]'>
             <ul className='flex flex-wrap gap-5'>
@@ -246,6 +267,7 @@ export default function HomePage() {
           </section>
         </WhTab>
       </section>
+      <FilterModal isOpen={isFilterModalOpen} />
     </div>
   );
 }
