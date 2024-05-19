@@ -45,6 +45,7 @@ const page = () => (
     </Link>
     <Link href='/sample/ui-elements/tooltip' className={`${linkCss}`}>
       common Tooltip
+    </Link>
     <Link href='/sample/ui-elements/slider' className={`${linkCss}`}>
       common Slider
     </Link>
