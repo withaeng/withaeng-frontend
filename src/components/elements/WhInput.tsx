@@ -25,6 +25,12 @@ interface InputProps {
   errorMsg?: string;
   handleInputChange: (value: string) => void;
   size?: 'lg' | 'md' | 'sm';
+  value?: string;
+  type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
+  isClearable?: boolean;
+  endAdornment?: React.ReactNode;
+  minLength?: number;
+  maxLength?: number;
 }
 
 export default function WhInput({
@@ -35,8 +41,14 @@ export default function WhInput({
   isErr = false,
   errorMsg = '',
   handleInputChange,
+  value,
+  type = 'text',
+  isClearable = true,
+  endAdornment,
+  minLength,
+  maxLength,
 }: InputProps) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value);
 
   if (size === 'lg') {
     inputSizeCss = 'h-11';
@@ -58,7 +70,7 @@ export default function WhInput({
 
   return (
     <div>
-      <div className='flex flex-col my-6 relative '>
+      <div className='flex flex-col relative'>
         {label && (
           <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
             {label}
@@ -66,7 +78,7 @@ export default function WhInput({
         )}
         <div className='flex items-center'>
           <input
-            type='text'
+            type={type}
             className={`${inputSizeCss} ${defaultInputCss} ${
               isErr ? `${isErrorCss}` : `${isFocusBorderCss}`
             }`}
@@ -74,15 +86,17 @@ export default function WhInput({
             placeholder={placeholder}
             value={inputValue}
             onChange={handleChange}
+            minLength={minLength}
+            maxLength={maxLength}
           />
-          {inputValue && (
-            <DeleteFillIcon
-              className={`${closeBtnCss}`}
-              onClick={handleClear}
-            />
-          )}
+          <div className={`${closeBtnCss}`}>
+            {endAdornment}
+            {isClearable && inputValue && (
+              <DeleteFillIcon onClick={handleClear} />
+            )}
+          </div>
         </div>
-        {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
+        {isErr && errorMsg && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>
     </div>
   );

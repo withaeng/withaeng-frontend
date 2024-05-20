@@ -21,17 +21,18 @@ export default function StepModal() {
   const [step, setStep] = useState(1);
   const { isOpen, onOpen, onClose } = useModal();
 
-  const handlePrevClick = () => {
-    if (step === 2) setStep(1);
-    else if (step === 3) setStep(2);
+  const handleOpen = () => {
+    setStep(1);
+    onOpen();
   };
-
+  const handlePrevClick = () => {
+    setStep((prev) => prev - 1);
+  };
   const handleNextClick = () => {
-    if (step === 1) setStep(2);
-    else if (step === 2) setStep(3);
-    else if (step === 3) {
+    if (step === 3) {
       onClose();
-      setStep(1);
+    } else {
+      setStep((prev) => prev + 1);
     }
   };
 
@@ -39,12 +40,12 @@ export default function StepModal() {
     <div>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label>step 모달 열기</label>
-      <WhButton size='md' fitContent onClick={onOpen}>
+      <WhButton size='md' fitContent onClick={handleOpen}>
         step 모달
       </WhButton>
-      <WhModal isOpen={isOpen} onClose={onClose}>
+      <WhModal isOpen={isOpen} onClose={onClose} className='px-20 py-16'>
         <StepBar value={(step / 3) * 100} />
-        <div className='flex flex-col gap-10 mt-10 mx-[15px]'>
+        <div className='flex flex-col gap-10 my-10 mx-5'>
           <div>STEP {step}</div>
         </div>
         {step === 1 && (
@@ -53,7 +54,7 @@ export default function StepModal() {
         {step === 2 && (
           <WhModalButtonList
             prev
-            onPrevChlick={handlePrevClick}
+            onPrevClick={handlePrevClick}
             onClick={handleNextClick}
             label='다음'
           />
@@ -61,7 +62,7 @@ export default function StepModal() {
         {step === 3 && (
           <WhModalButtonList
             prev
-            onPrevChlick={handlePrevClick}
+            onPrevClick={handlePrevClick}
             onClick={handleNextClick}
             label='완료'
           />
