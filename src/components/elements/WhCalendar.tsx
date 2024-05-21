@@ -76,6 +76,7 @@ export default function WhCalendar({
         <div className='*:w-full'>
           <DatePicker
             selected={value}
+            placeholderText='2024.01.01'
             onChange={dateChange}
             className={`${sizeCss} ${defaultInputCss} ${isFocusBorderCss} w-full`}
             calendarClassName={pretendard.className}
