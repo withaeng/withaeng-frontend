@@ -1,3 +1,4 @@
+import { ReactComponent } from './../../../../src/types/svg.d';
 export { ReactComponent as UpIcon } from './up.svg';
 export { ReactComponent as DownIcon } from './down.svg';
 export { ReactComponent as LeftIcon } from './left.svg';
@@ -11,3 +12,5 @@ export { ReactComponent as ChevronDown20Icon } from './chevron-down-20.svg';
 export { ReactComponent as ChevronLeft20Icon } from './chevron-left-20.svg';
 export { ReactComponent as ChevronRight20Icon } from './chevron-right-20.svg';
 export { ReactComponent as MannerArrowIcon } from './manner-arrow.svg';
+export { ReactComponent as TooltipTopArrowIcon } from './tooltip-top-arrow.svg';
+export { ReactComponent as TooltipBottomArrowIcon } from './tooltip-bottom-arrow.svg';
