@@ -57,7 +57,11 @@ export default function WhModal({
           <div className={`w-[680px] ${className}`}>
             {!hideCloseButton && (
               <button type='button' aria-label='닫기 버튼' onClick={onClose}>
-                <CloseIcon className='absolute top-5 right-5' />
+                <CloseIcon
+                  width={24}
+                  height={24}
+                  className='absolute top-5 right-5'
+                />
               </button>
             )}
             {children}
