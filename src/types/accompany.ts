@@ -9,4 +9,7 @@ export interface AccompanyData {
   bannerImageUrl?: string;
   accompanyCnt: number;
   openKakaoUrl: string;
+  age: number[] | number;
+  gender: string;
+  tags: string[];
 }

@@ -6,6 +6,8 @@ import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { AccompanyData } from '@/types/accompany';
 import Step1ModalContent from './Step1ModalContent';
+import Step2ModalContent from './Step2ModalContent';
+import Step3ModalContent from './Step3ModalContent';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
@@ -29,6 +31,9 @@ const initAccompany = {
   bannerImageUrl: '',
   accompanyCnt: 0,
   openKakaoUrl: '',
+  age: [20, 50],
+  gender: '',
+  tags: [],
 };
 
 export default function RegisterModal() {
@@ -37,9 +42,9 @@ export default function RegisterModal() {
   const [step, setStep] = useState(1);
 
   // change route
-  // const onPrevClick = () => {
-  //   setStep((prev) => prev - 1);
-  // };
+  const onPrevClick = () => {
+    setStep((prev) => prev - 1);
+  };
   const onNextClick = () => {
     if (step === 3) {
       router.replace('/');
@@ -58,10 +63,36 @@ export default function RegisterModal() {
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (
           <>
-            <div className='grow'>
+            <div className='grow overflow-auto'>
               <Step1ModalContent form={form} setForm={setForm} />
             </div>
             <WhModalButtonList onClick={onNextClick} label='다음' />
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <div className='grow overflow-auto'>
+              <Step2ModalContent form={form} setForm={setForm} />
+            </div>
+            <WhModalButtonList
+              prev
+              onPrevClick={onPrevClick}
+              onClick={onNextClick}
+              label='다음'
+            />
+          </>
+        )}
+        {step === 3 && (
+          <>
+            <div className='grow overflow-auto'>
+              <Step3ModalContent form={form} setForm={setForm} />
+            </div>
+            <WhModalButtonList
+              prev
+              onPrevClick={onPrevClick}
+              onClick={onNextClick}
+              label='다음'
+            />
           </>
         )}
       </div>
