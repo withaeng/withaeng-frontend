@@ -19,9 +19,9 @@ export default function Step1ModalContent({
 }) {
   const [tabCountry, setTabCountry] = useState('0');
   return (
-    <>
+    <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>동행 등록을 진행해볼까요? 😃</h3>
-      <div className='flex flex-col gap-10 my-5'>
+      <div className='flex flex-col gap-10 grow overflow-auto'>
         <div>
           <p>도시를 선택해주세요.</p>
           <CountryTab
@@ -71,6 +71,6 @@ export default function Step1ModalContent({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

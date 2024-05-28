@@ -25,18 +25,27 @@ export default function Step2ModalContent({
   form: AccompanyData;
   setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
 }) {
+  const ageText = () => {
+    if (!Array.isArray(form.age)) {
+      if (form.age < 50) return `${form.age}세`;
+      return `${form.age}세 이상`;
+    }
+    if (form.age[0] === form.age[1]) {
+      if (form.age[0] < 50) return `${form.age[0]}세`;
+      return `${form.age[0]}세 이상`;
+    }
+    if (form.age[1] < 50) return `${form.age[0]}세 ~ ${form.age[1]}세`;
+    return `${form.age[0]}세 ~ ${form.age[1]}세 이상`;
+  };
+
   return (
-    <>
+    <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>어떤 동행을 원하세요?? 👀</h3>
-      <div className='flex flex-col gap-10 my-5'>
+      <div className='flex flex-col gap-10 grow overflow-auto'>
         <div>
           <div className='flex justify-between'>
             <p className='mb-5'>인원을 설정해주세요. (본인 포함)</p>
-            <span>
-              {Array.isArray(form.age)
-                ? `${form.age[0]}살 ~ ${form.age[1]}`
-                : `${form.age}살`}
-            </span>
+            <span className='text-subtitle-02'>{ageText()}</span>
           </div>
           <WhSlider
             range
@@ -67,6 +76,6 @@ export default function Step2ModalContent({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -63,17 +63,13 @@ export default function RegisterModal() {
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (
           <>
-            <div className='grow overflow-auto'>
-              <Step1ModalContent form={form} setForm={setForm} />
-            </div>
+            <Step1ModalContent form={form} setForm={setForm} />
             <WhModalButtonList onClick={onNextClick} label='다음' />
           </>
         )}
         {step === 2 && (
           <>
-            <div className='grow overflow-auto'>
-              <Step2ModalContent form={form} setForm={setForm} />
-            </div>
+            <Step2ModalContent form={form} setForm={setForm} />
             <WhModalButtonList
               prev
               onPrevClick={onPrevClick}
@@ -84,9 +80,7 @@ export default function RegisterModal() {
         )}
         {step === 3 && (
           <>
-            <div className='grow overflow-auto'>
-              <Step3ModalContent form={form} setForm={setForm} />
-            </div>
+            <Step3ModalContent form={form} setForm={setForm} />
             <WhModalButtonList
               prev
               onPrevClick={onPrevClick}

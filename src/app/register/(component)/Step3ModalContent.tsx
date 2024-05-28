@@ -14,6 +14,7 @@ import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import ResizableImageExtension from '@/app/sample/editor/TiptapImageResize';
 import '@/app/sample/editor/tiptap.css';
+import { CameraIcon } from '../../../../public/assets/icons/edit';
 
 export default function Step3ModalContent({
   form,
@@ -29,7 +30,7 @@ export default function Step3ModalContent({
       Underline,
       Color,
       Placeholder.configure({
-        placeholder: '글을 작성해보세요.',
+        placeholder: '내용을 입력해주세요.',
       }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
@@ -62,9 +63,18 @@ export default function Step3ModalContent({
     return null;
   }
   return (
-    <>
+    <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>마지막이에요! 힘내주세요!! ✈️</h3>
-      <div className='flex flex-col gap-4 my-5'>
+      <div className='flex flex-col gap-4 overflow-auto'>
+        <div className='w-full h-[216px] bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'>
+          <CameraIcon />
+          <p className='text-center text-caption-03 text-nutral-white-04'>
+            사진을 업로드해주세요. <br />
+            업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
+          </p>
+          <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
+        </div>
+        <input id='banner-image' type='file' accept='image/png, image/jpeg' />
         <WhInput
           type='text'
           handleInputChange={(value) =>
@@ -81,7 +91,7 @@ export default function Step3ModalContent({
             editor={editor}
           />
         </div>
-        <div className='border-b border-nutral-white-03 p-2 flex gap-2'>
+        <div className='border-b border-nutral-white-03 p-2 flex gap-2 mb-2'>
           <ul className='flex gap-3'>
             {form.tags.length > 0 &&
               form.tags.map((tag) => (
@@ -110,6 +120,6 @@ export default function Step3ModalContent({
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
