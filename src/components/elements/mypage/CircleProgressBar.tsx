@@ -1,5 +1,10 @@
 import React from 'react';
 
+const percentageWrapCss =
+  'absolute bottom-0 bg-nutral-white-01  rounded-lg text-primary-main text-caption-01 py-[10px] px-1';
+
+const percentageLabelCss =
+  'bg-primary-eexLight text-primary-main text-caption-01 py-1 px-3 max-h-[22px] rounded';
 interface CircleProgressBarProps {
   circularPercentage: number;
   circleWidth: number;
@@ -19,7 +24,7 @@ export default function CircleProgressBar({
   const imageX = (circleWidth - imageSize) / 2;
   const imageY = (circleWidth - imageSize) / 2;
   return (
-    <div>
+    <div className='relative flex flex-col items-center'>
       <svg
         width={156}
         height={156}
@@ -56,15 +61,9 @@ export default function CircleProgressBar({
           height={imageSize}
         />
       </svg>
-      <span
-        x='50%'
-        y='50%'
-        dy='0.3em'
-        textAnchor='middle'
-        className='bg-primary-eexLight text-primary-main text-caption-01 py-1 px-2 rounded ml-[120px] mb-[32px] max-w-[42px] max-h-[22px]'
-      >
-        {circularPercentage}%
-      </span>
+      <div className={percentageWrapCss}>
+        <span className={percentageLabelCss}>{circularPercentage}% 완성</span>
+      </div>
     </div>
   );
 }

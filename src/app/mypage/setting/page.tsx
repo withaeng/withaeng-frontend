@@ -2,7 +2,7 @@
 
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
 import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
-import WithdrawModal from '@/components/elements/mypage/withdraw';
+import WithdrawModal from '@/components/elements/mypage/Withdraw';
 
 export default function Setting() {
   return (

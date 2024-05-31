@@ -24,6 +24,7 @@
     "@tiptap/pm": "^2.2.4",
     "@tiptap/react": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",
+    "browser-image-compression": "^2.0.2",
     "dayjs": "^1.11.10",
     "next": "^13.5.6",
     "rc-slider": "^10.6.2",

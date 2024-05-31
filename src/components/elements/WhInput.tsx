@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DeleteFillIcon } from '../../../public/assets/icons/system';
 
 const defaultInputCss =
-  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
+  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
 
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
@@ -23,8 +23,7 @@ interface InputProps {
   label?: string;
   isErr?: boolean;
   errorMsg?: string;
-  value: string;
-  handleInputChange?: (value: string) => void;
+  handleInputChange: (value: string) => void;
   size?: 'lg' | 'md' | 'sm';
   value?: string;
   type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
@@ -41,7 +40,6 @@ export default function WhInput({
   label = '',
   isErr = false,
   errorMsg = '',
-  value = '',
   handleInputChange,
   value,
   type = 'text',
@@ -86,14 +84,14 @@ export default function WhInput({
             }`}
             disabled={disabled}
             placeholder={placeholder}
-            value={value}
+            value={inputValue}
             onChange={handleChange}
             minLength={minLength}
             maxLength={maxLength}
           />
           <div className={`${closeBtnCss}`}>
             {endAdornment}
-            {isClearable && inputValue && (
+            {!disabled && isClearable && inputValue && (
               <DeleteFillIcon onClick={handleClear} />
             )}
           </div>

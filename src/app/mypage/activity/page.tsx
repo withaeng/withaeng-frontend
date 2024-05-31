@@ -6,6 +6,7 @@ import WhCard from '@/components/elements/WhCard';
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
 import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
 import React, { useState } from 'react';
+import WhTooltip from '@/components/elements/WhTooltip';
 import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
 
 const badgeContainerCss =
@@ -114,16 +115,23 @@ export default function Activity() {
       <WhMypageHeader title='내 활동' />
 
       <WhMypageCard title='매너 점수 & 나의 배지'>
-        <div className='flex gap-3 items-center'>
+        <div className='flex items-center gap-3'>
           <h4 className='text-subtitle-01 text-neutral-black-02'>
             나의 매너 점수
           </h4>
-          <p className='text-nutral-black-04 text-body-03'>
+          <p className='flex items-center text-nutral-black-04 text-body-03'>
             잘 하고 있어요!&nbsp;
-            <span className='text-primary-main'>{50 - filled}</span>만
-            높이면&nbsp;
-            <span className='text-secondary-main'>인증마크</span>를 받을 수
-            있어요.
+            <span className='text-body-03 text-primary-main'>
+              {50 - filled}
+            </span>
+            만 높이면&nbsp;
+            <WhTooltip
+              position='top'
+              content='인증된 사용자는 보다 많은 사람들에게 믿음과 안정감을 줄 수 있어요.'
+            >
+              인증마크
+            </WhTooltip>
+            를 받을 수 있어요.
           </p>
         </div>
 
@@ -158,7 +166,7 @@ export default function Activity() {
 
         <section className={`${badgeContainerCss}`}>
           {badgeList.map((item) => (
-            <div className='flex flex-col gap-4 items-center' key={item.value}>
+            <div className='flex flex-col items-center gap-4' key={item.value}>
               <WhBadge key={item.name} name={item.name} />
               <span className='text-subtitle-01 text-nutral-black-02'>
                 {item.value}
@@ -168,7 +176,7 @@ export default function Activity() {
         </section>
       </WhMypageCard>
       <WhMypageCard title='동행 내역'>
-        <div className='my-8 flex gap-7 text-headline-04'>
+        <div className='flex my-8 gap-7 text-headline-04'>
           {tabList.map((tab) => (
             <button
               key={tab.id}
@@ -197,7 +205,7 @@ export default function Activity() {
           ))}
         </div>
 
-        <div className='bg-nutral-white-02 rounded'>
+        <div className='rounded bg-nutral-white-02'>
           {selectedTab === 'tab1' &&
             (accompanyList.length > 0 ? (
               accompanyList
@@ -219,9 +227,9 @@ export default function Activity() {
                   </div>
                 ))
             ) : (
-              <div className='flex justify-center flex-col items-center py-20'>
+              <div className='flex flex-col items-center justify-center py-20'>
                 <div>
-                  <p className='text-nutral-black-05 text-subtitle-02 text-center mb-3'>
+                  <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
                     {selectedTab === 'tab1' ? '진행 중' : '완료한'}
                     동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?
@@ -234,7 +242,7 @@ export default function Activity() {
             ))}
         </div>
 
-        <div className='bg-nutral-white-02 rounded'>
+        <div className='rounded bg-nutral-white-02'>
           {selectedTab === 'tab2' &&
             (accompanyList.length > 0 ? (
               accompanyList
@@ -256,9 +264,9 @@ export default function Activity() {
                   </div>
                 ))
             ) : (
-              <div className='flex justify-center flex-col items-center py-20'>
+              <div className='flex flex-col items-center justify-center py-20'>
                 <div>
-                  <p className='text-nutral-black-05 text-subtitle-02 text-center mb-3'>
+                  <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
                     {selectedTab === 'tab2' ? '진행 중' : '완료한'}
                     동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?

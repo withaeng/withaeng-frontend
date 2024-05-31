@@ -20,37 +20,37 @@ export default function WhMypageInfo() {
     circularPercentage: 88,
   };
 
+  const infoItems = [
+    { value: itemList.score, label: '매너점수' },
+    { value: itemList.review, label: '후기' },
+    { value: itemList.period, label: '접속 기간' },
+  ];
+
   return (
     <div className='flex gap-[60px] justify-center'>
       {/* left */}
       <div className='flex flex-col justify-center items-center'>
-        {/* circular start */}
-        <div>
-          <CircleProgressBar
-            circularPercentage={itemList.circularPercentage}
-            circleWidth={200}
-            imageSrc={sampleProfile}
-          />
-        </div>
-
-        {/* circular end */}
+        <CircleProgressBar
+          circularPercentage={itemList.circularPercentage}
+          circleWidth={200}
+          imageSrc={sampleProfile}
+        />
 
         <p className='py-[13px] text-headline-04 text-primary-main'>
           {itemList.name}
         </p>
         <ul className='flex bg-nutral-white-02 py-5 px-4 gap-6 text-center rounded text-subtitle-01'>
-          <li className='flex flex-col border-r border-nutral-white-03 pr-6'>
-            <p className='mb-2'>{itemList.score}</p>
-            <span className='text-nutral-black-03 text-body-03'>매너점수</span>
-          </li>
-          <li className='border-r border-nutral-white-03 pr-6'>
-            <p className='mb-2'>{itemList.review}</p>
-            <span className='text-nutral-black-03 text-body-03'>후기</span>
-          </li>
-          <li>
-            <p className='mb-2'>{itemList.period}</p>
-            <span className='text-nutral-black-03 text-body-03'>접속 기간</span>
-          </li>
+          {infoItems.map((item, index) => (
+            <li
+              key={item.value}
+              className={`flex flex-col ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-6' : ''}`}
+            >
+              <p className='mb-2'>{item.value}</p>
+              <span className='text-nutral-black-03 text-body-03'>
+                {item.label}
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
       {/* right */}
@@ -65,19 +65,12 @@ export default function WhMypageInfo() {
 
         <div className='flex gap-5 w-[495px]'>
           <div className='w-[149px]'>
-            <WhInput
-              label='성별'
-              size='lg'
-              placeholder='직접 내용입력'
-              disabled
-              value={itemList.sex}
-            />
+            <WhInput label='성별' size='lg' disabled value={itemList.sex} />
           </div>
           <div className='w-[326px]'>
             <WhInput
               label='생년월일'
               size='lg'
-              placeholder='직접 내용입력'
               disabled
               value={itemList.birth}
             />

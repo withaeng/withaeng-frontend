@@ -49,7 +49,7 @@ export default function WhTooltip({
   return (
     <div>
       <div className='relative group'>
-        <div className='mx-2 text-secondary-main'>{children}</div>
+        <div className='text-secondary-main text-body-03'>{children}</div>
         {isShow && (
           <div>
             <p className={`${defaultTooltipCss} ${positionCss}`}>

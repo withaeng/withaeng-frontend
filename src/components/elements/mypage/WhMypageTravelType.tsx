@@ -137,7 +137,7 @@ export default function WhMypageTravelType() {
   ];
 
   return (
-    <div>
+    <div className='relative'>
       <div
         className={`flex flex-col gap-10 overflow-hidden  ${isMoreOpen ? 'h-[429px]' : ''}`}
       >
