@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import WhInput from '@/components/elements/WhInput';
 import { AccompanyData } from '@/types/accompany';
 
@@ -24,6 +24,9 @@ export default function Step3ModalContent({
   setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
 }) {
   const [newTag, setNewTag] = useState('');
+  const [image, setImage] = useState('');
+  const bannerImage = useRef<HTMLInputElement>(null);
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -59,6 +62,23 @@ export default function Step3ModalContent({
     }));
   };
 
+  const handleOpenInput = () => {
+    bannerImage.current?.click();
+  };
+
+  const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+    const { files } = e.target;
+    const uploadFile = files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(uploadFile);
+    reader.onloadend = () => {
+      setImage(reader.result?.toString() ?? '');
+    };
+  };
+
   if (!editor) {
     return null;
   }
@@ -66,15 +86,33 @@ export default function Step3ModalContent({
     <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>마지막이에요! 힘내주세요!! ✈️</h3>
       <div className='flex flex-col gap-4 overflow-auto'>
-        <div className='w-full h-[216px] bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'>
-          <CameraIcon />
-          <p className='text-center text-caption-03 text-nutral-white-04'>
-            사진을 업로드해주세요. <br />
-            업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
-          </p>
-          <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
-        </div>
-        <input id='banner-image' type='file' accept='image/png, image/jpeg' />
+        {image ? (
+          <div>
+            {/* <Image src={image} alt='배너 이미지' /> */}
+            {image}
+            <img src={image} />
+          </div>
+        ) : (
+          <button
+            type='button'
+            className='w-full h-[216px] bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'
+            onClick={handleOpenInput}
+          >
+            <CameraIcon />
+            <p className='text-center text-caption-03 text-nutral-white-04'>
+              사진을 업로드해주세요. <br />
+              업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
+            </p>
+            <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
+          </button>
+        )}
+        <input
+          ref={bannerImage}
+          id='banner-image'
+          type='file'
+          accept='image/*'
+          onChange={handleUploadImage}
+        />
         <WhInput
           type='text'
           handleInputChange={(value) =>
@@ -95,11 +133,10 @@ export default function Step3ModalContent({
           <ul className='flex gap-3'>
             {form.tags.length > 0 &&
               form.tags.map((tag) => (
-                <li>
+                <li key={tag}>
                   <button
                     type='button'
                     className='shrink-0 px-4 py-2 rounded-full bg-primary-main text-nutral-white-01 hover:bg-primary-light text-caption-01'
-                    key={tag}
                     onClick={() => delTags(tag)}
                   >
                     {tag}
