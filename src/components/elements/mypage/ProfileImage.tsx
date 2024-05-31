@@ -19,12 +19,12 @@ function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
     profileImg || null
   );
 
-  const pickedHandler = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.currentTarget.files) {
+  const pickedHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.currentTarget.files) {
       return;
     }
 
-    const imageFile = event.currentTarget.files[0];
+    const imageFile = e.currentTarget.files[0];
     console.log(imageFile);
     const options = {
       maxSizeMB: 0.5,
@@ -58,13 +58,18 @@ function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
           {previewFile ? (
             <Image
               src={previewFile}
-              alt='프로필'
+              alt='수정할 프로필 이미지'
               onClick={pickImageHandler}
               width={120}
               height={120}
             />
           ) : (
-            <Image src={sampleProfile} alt='기본' width={120} height={120} />
+            <Image
+              src={sampleProfile}
+              alt='프로필 기본 이미지'
+              width={120}
+              height={120}
+            />
           )}
           <input
             ref={filePickerRef}

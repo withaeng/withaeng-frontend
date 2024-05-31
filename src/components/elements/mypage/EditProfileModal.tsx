@@ -19,7 +19,12 @@ export default function EditProfileModal() {
       >
         프로필 수정
       </button>
-      <WhModal isOpen={isOpen} onClose={onClose} isDismissible={false}>
+      <WhModal
+        isOpen={isOpen}
+        onClose={onClose}
+        isDismissible={false}
+        className='px-[84px] py-[72px]'
+      >
         <WhModalHeader>프로필 수정</WhModalHeader>
         <div className='flex flex-col my-[54px] justify-center items-center'>
           <ProfileImage profileImg={null} isModalOpen={isOpen} />
