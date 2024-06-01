@@ -23,6 +23,12 @@ export default function Step1ModalContent({
   const [isDayTrip, setIsDayTrip] = useState(false);
 
   const handleDayTrip = () => {
+    if (isDayTrip) {
+      setForm((prev: AccompanyData) => ({
+        ...prev,
+        endTripDate: prev.startTripDate,
+      }));
+    }
     setIsDayTrip((prev) => !prev);
   };
 
@@ -66,16 +72,20 @@ export default function Step1ModalContent({
                 }))
               }
             />
-            <span className='text-headline-04 text-nutral-black-05'>~</span>
-            <WhCalendar
-              value={form.endTripDate}
-              onChange={(value: Date | null) =>
-                setForm((prev: AccompanyData) => ({
-                  ...prev,
-                  startTripDate: value ?? undefined,
-                }))
-              }
-            />
+            {!isDayTrip && (
+              <>
+                <span className='text-headline-04 text-nutral-black-05'>~</span>
+                <WhCalendar
+                  value={form.endTripDate}
+                  onChange={(value: Date | null) =>
+                    setForm((prev: AccompanyData) => ({
+                      ...prev,
+                      startTripDate: value ?? undefined,
+                    }))
+                  }
+                />
+              </>
+            )}
           </div>
           <WhCheckbox
             value='isDayTrip'
