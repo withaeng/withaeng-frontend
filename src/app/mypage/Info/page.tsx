@@ -3,8 +3,8 @@
 import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
 import EditProfileModal from '@/components/elements/mypage/EditProfileModal';
 import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
-import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
 import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
+import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
 
 export default function Info() {
   return (
