@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef, useState } from 'react';
+import Image from 'next/image';
 import WhInput from '@/components/elements/WhInput';
 import { AccompanyData } from '@/types/accompany';
 
@@ -72,6 +73,7 @@ export default function Step3ModalContent({
     }
     const { files } = e.target;
     const uploadFile = files[0];
+    console.log(uploadFile);
     const reader = new FileReader();
     reader.readAsDataURL(uploadFile);
     reader.onloadend = () => {
@@ -86,26 +88,32 @@ export default function Step3ModalContent({
     <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>마지막이에요! 힘내주세요!! ✈️</h3>
       <div className='flex flex-col gap-4 overflow-auto'>
-        {image ? (
-          <div>
-            {/* <Image src={image} alt='배너 이미지' /> */}
-            {image}
-            <img src={image} />
-          </div>
-        ) : (
-          <button
-            type='button'
-            className='w-full h-[216px] bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'
-            onClick={handleOpenInput}
-          >
-            <CameraIcon />
-            <p className='text-center text-caption-03 text-nutral-white-04'>
-              사진을 업로드해주세요. <br />
-              업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
-            </p>
-            <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
-          </button>
-        )}
+        <button
+          type='button'
+          className='w-full h-[216px] relative'
+          onClick={handleOpenInput}
+        >
+          {image ? (
+            <div className='flex items-center justify-center w-full h-full overflow-hidden'>
+              <Image
+                width={510}
+                height={216}
+                className='object-cover'
+                src={image}
+                alt='배너 이미지'
+              />
+            </div>
+          ) : (
+            <div className='bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'>
+              <CameraIcon />
+              <p className='text-center text-caption-03 text-nutral-white-04'>
+                사진을 업로드해주세요. <br />
+                업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
+              </p>
+              <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
+            </div>
+          )}
+        </button>
         <input
           ref={bannerImage}
           id='banner-image'

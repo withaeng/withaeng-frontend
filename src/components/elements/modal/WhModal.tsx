@@ -19,7 +19,7 @@ export default function WhModal({
   onClose,
   hideCloseButton = false,
   isDismissible = true,
-  className,
+  className = '',
   children,
 }: Props) {
   const [element, setElement] = useState<HTMLElement | null>(null);
@@ -60,6 +60,7 @@ export default function WhModal({
                 <CloseIcon
                   width={24}
                   height={24}
+                  stroke='#333333'
                   className='absolute top-5 right-5'
                 />
               </button>

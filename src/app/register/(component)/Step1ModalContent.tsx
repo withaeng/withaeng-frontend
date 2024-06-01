@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import CountryTab from '@/components/CountryTab';
 import WhCalendar from '@/components/elements/WhCalendar';
+import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhDropdown from '@/components/elements/WhDropdown';
 import { AccompanyData } from '@/types/accompany';
-import { useState } from 'react';
+import WhInput from '@/components/elements/WhInput';
 
 const dataList = [
   { id: '2', name: '2명' },
@@ -18,6 +20,12 @@ export default function Step1ModalContent({
   setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
 }) {
   const [tabCountry, setTabCountry] = useState('0');
+  const [isDayTrip, setIsDayTrip] = useState(false);
+
+  const handleDayTrip = () => {
+    setIsDayTrip((prev) => !prev);
+  };
+
   return (
     <div className='grow flex flex-col overflow-hidden'>
       <h3 className='text-headline-03 my-10'>동행 등록을 진행해볼까요? 😃</h3>
@@ -48,7 +56,7 @@ export default function Step1ModalContent({
         </div>
         <div>
           <p className='mb-3'>여행 일정을 선택해주세요.</p>
-          <div className='flex gap-[22px] items-center'>
+          <div className='flex gap-[22px] items-center mb-4'>
             <WhCalendar
               value={form.startTripDate}
               onChange={(value: Date | null) =>
@@ -69,6 +77,26 @@ export default function Step1ModalContent({
               }
             />
           </div>
+          <WhCheckbox
+            value='isDayTrip'
+            id='isDayTrip'
+            checked={isDayTrip}
+            onChange={handleDayTrip}
+          >
+            당일치기
+          </WhCheckbox>
+        </div>
+        <div>
+          <p className='mb-3'>오픈톡 링크를 적어주세요.</p>
+          <WhInput
+            value={form.openKakaoUrl}
+            handleInputChange={(value: string) =>
+              setForm((prev: AccompanyData) => ({
+                ...prev,
+                openKakaoUrl: value,
+              }))
+            }
+          />
         </div>
       </div>
     </div>

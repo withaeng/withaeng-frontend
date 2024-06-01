@@ -8,6 +8,7 @@ import { AccompanyData } from '@/types/accompany';
 import Step1ModalContent from './Step1ModalContent';
 import Step2ModalContent from './Step2ModalContent';
 import Step3ModalContent from './Step3ModalContent';
+import Step0ModalContent from './Step0ModalContent';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
@@ -39,7 +40,7 @@ const initAccompany = {
 export default function RegisterModal() {
   const router = useRouter();
   const [form, setForm] = useState<AccompanyData>(initAccompany);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   // change route
   const onPrevClick = () => {
@@ -60,33 +61,52 @@ export default function RegisterModal() {
       className='px-[85px] py-[72px] h-[800px]'
     >
       <div className='flex flex-col h-full'>
-        <StepBar value={(step / 3) * 100} />
+        {step > 0 && <StepBar value={(step / 3) * 100} />}
+        {step === 0 && (
+          <>
+            <Step0ModalContent />
+            <div className='mt-12'>
+              <WhModalButtonList onClick={onNextClick} label='다음' />
+            </div>
+          </>
+        )}
         {step === 1 && (
           <>
             <Step1ModalContent form={form} setForm={setForm} />
-            <WhModalButtonList onClick={onNextClick} label='다음' />
+            <div className='mt-12'>
+              <WhModalButtonList
+                prev
+                onPrevClick={onPrevClick}
+                onClick={onNextClick}
+                label='다음'
+              />
+            </div>
           </>
         )}
         {step === 2 && (
           <>
             <Step2ModalContent form={form} setForm={setForm} />
-            <WhModalButtonList
-              prev
-              onPrevClick={onPrevClick}
-              onClick={onNextClick}
-              label='다음'
-            />
+            <div className='mt-12'>
+              <WhModalButtonList
+                prev
+                onPrevClick={onPrevClick}
+                onClick={onNextClick}
+                label='다음'
+              />
+            </div>
           </>
         )}
         {step === 3 && (
           <>
             <Step3ModalContent form={form} setForm={setForm} />
-            <WhModalButtonList
-              prev
-              onPrevClick={onPrevClick}
-              onClick={onNextClick}
-              label='다음'
-            />
+            <div className='mt-12'>
+              <WhModalButtonList
+                prev
+                onPrevClick={onPrevClick}
+                onClick={onNextClick}
+                label='다음'
+              />
+            </div>
           </>
         )}
       </div>
