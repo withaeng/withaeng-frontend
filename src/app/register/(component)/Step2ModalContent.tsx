@@ -57,7 +57,7 @@ export default function Step2ModalContent({
       <div className='flex flex-col gap-10 grow overflow-auto'>
         <div>
           <div className='flex justify-between'>
-            <p className='mb-5'>인원을 설정해주세요. (본인 포함)</p>
+            <p className='mb-5'>원하는 동행 연령을 설정해주세요.</p>
             <span className='text-subtitle-02'>{ageText()}</span>
           </div>
           <div className='mb-12'>

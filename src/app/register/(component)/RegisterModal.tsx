@@ -66,7 +66,7 @@ export default function RegisterModal() {
           <>
             <Step0ModalContent />
             <div className='mt-12'>
-              <WhModalButtonList onClick={onNextClick} label='다음' />
+              <WhModalButtonList onClick={onNextClick} label='같이행 등록' />
             </div>
           </>
         )}

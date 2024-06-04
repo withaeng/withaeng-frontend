@@ -9,7 +9,6 @@ import {
   RiArrowGoForwardLine,
   RiBold,
   RiFontColor,
-  RiImageLine,
   RiItalic,
   RiLink,
   RiListOrdered,

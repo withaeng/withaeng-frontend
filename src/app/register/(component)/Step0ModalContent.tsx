@@ -3,7 +3,7 @@ import { RegisterGrapicSvg } from '../../../../public/assets/icons/edit';
 export default function Step0ModalContent() {
   return (
     <div className='grow flex flex-col overflow-hidden text-center'>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-10'>
         <h1 className='text-headline-03'>
           잠깐! 🤚
           <br />
