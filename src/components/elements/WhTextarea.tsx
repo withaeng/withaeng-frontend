@@ -37,20 +37,25 @@ export default function WhTextarea({
     }
 
     setTextCount(textValue.length);
-    handleTextareaChange && handleTextareaChange(textValue);
+    if (handleTextareaChange) {
+      handleTextareaChange(textValue);
+    }
   };
 
   return (
     <div>
       <div className='flex flex-col my-7'>
         <div className='flex justify-between items-center mb-3'>
-          <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
-            {label}
-          </label>
+          {label && (
+            <label htmlFor='textarea' className={defaultLabelCss}>
+              {label}
+            </label>
+          )}
 
           <span className={`${defaultCountCss}`}>{textCount}/60</span>
         </div>
         <textarea
+          id='textarea'
           cols={40}
           maxLength={60}
           className={`${defaultTextareaCss}`}
