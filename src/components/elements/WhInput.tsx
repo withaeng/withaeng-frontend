@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DeleteFillIcon } from '../../../public/assets/icons/system';
 
 const defaultInputCss =
-  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
 
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
