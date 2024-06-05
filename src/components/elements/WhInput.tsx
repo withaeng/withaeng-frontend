@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeleteFillIcon } from '../../../public/assets/icons/system';
 
 const defaultInputCss =
@@ -41,7 +41,7 @@ export default function WhInput({
   isErr = false,
   errorMsg = '',
   handleInputChange,
-  value,
+  value = '',
   type = 'text',
   isClearable = true,
   endAdornment,
@@ -58,6 +58,10 @@ export default function WhInput({
     inputSizeCss = 'h-9';
   }
 
+  useEffect(() => {
+    setInputValue(value || '');
+  }, [value]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     handleInputChange(e.target.value);
@@ -72,7 +76,7 @@ export default function WhInput({
     <div>
       <div className='flex flex-col relative'>
         {label && (
-          <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
+          <label htmlFor='레이블 이름' className={defaultLabelCss}>
             {label}
           </label>
         )}

@@ -23,7 +23,7 @@ export default function WhTextarea({
   value = '',
   handleTextareaChange,
 }: TextareaProps) {
-  const [textCount, setTextCount] = useState(0);
+  const [textCount, setTextCount] = useState(value.length);
 
   useEffect(() => {
     setTextCount(value.length);
@@ -37,7 +37,7 @@ export default function WhTextarea({
     }
 
     setTextCount(textValue.length);
-    handleTextareaChange(textValue);
+    handleTextareaChange && handleTextareaChange(textValue);
   };
 
   return (
