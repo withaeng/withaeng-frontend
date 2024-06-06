@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import WhButton from '@/components/elements/WhButton';
 import WhInput from '@/components/elements/WhInput';
 import {
@@ -15,10 +16,23 @@ export default function LoginModalContent() {
   const [showPw, setShowPw] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('로그인');
+    await fetch('/api/v1/auth/sign-in', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return new Error(res.statusText);
+        }
+        console.log('로그인 성공!');
+        router.replace('/');
+        return null;
+      })
+      .catch((err) => new Error(err));
   };
 
   return (
