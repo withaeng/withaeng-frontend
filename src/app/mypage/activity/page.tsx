@@ -136,7 +136,7 @@ export default function Activity() {
         </div>
 
         <p className='text-body-03 text-nutral-black-05 mt-2    '>
-          <span className=' text-nutral-black-04'>매너 점수란?</span>
+          <span className=' text-nutral-black-04'>매너 점수란?&nbsp;</span>
           여러분이 더 안전하고 신뢰할 수 있는 환경에서 서비스를 이용할 수 있도록
           돕기 위해 마련되었습니다.
           <br />
@@ -183,7 +183,7 @@ export default function Activity() {
         </section>
       </WhMypageCard>
       <WhMypageCard title='동행 내역'>
-        <div className='flex my-8 gap-7 text-headline-04'>
+        <div className='flex my-8 gap-7 text-subtitle-01'>
           {tabList.map((tab) => (
             <button
               key={tab.id}

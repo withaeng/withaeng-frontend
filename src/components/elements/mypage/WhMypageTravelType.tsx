@@ -107,8 +107,8 @@ export default function WhMypageTravelType() {
       id: 5,
       title: '원하는 동행자의 성별이 있나요?',
       genderList: [
-        { id: 0, type: '동성' },
-        { id: 1, type: '이성' },
+        { id: 0, type: '남성' },
+        { id: 1, type: '여성' },
         { id: 2, type: '상관 없음', status: 'true' },
       ],
     },
@@ -119,8 +119,8 @@ export default function WhMypageTravelType() {
       smokeList: [
         { id: 0, type: '자주 하는 편' },
         { id: 1, type: '선택적 흡연' },
-        { id: 2, type: '금주 중' },
-        { id: 3, type: '아예 음주 안함', status: 'true' },
+        { id: 2, type: '금연 중' },
+        { id: 3, type: '아예 흡연 안함', status: 'true' },
       ],
     },
 
