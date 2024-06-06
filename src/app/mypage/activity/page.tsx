@@ -119,7 +119,7 @@ export default function Activity() {
           <h4 className='text-subtitle-01 text-neutral-black-02'>
             나의 매너 점수
           </h4>
-          <p className='flex items-center text-nutral-black-04 text-body-03'>
+          <div className='flex items-center text-nutral-black-04 text-body-03'>
             잘 하고 있어요!&nbsp;
             <span className='text-body-03 text-primary-main'>
               {50 - filled}
@@ -132,7 +132,7 @@ export default function Activity() {
               인증마크
             </WhTooltip>
             를 받을 수 있어요.
-          </p>
+          </div>
         </div>
 
         <p className='text-body-03 text-nutral-black-05 mt-2    '>
@@ -191,34 +191,42 @@ export default function Activity() {
               onClick={() => changeTab(tab.id)}
               className={`${
                 selectedTab === tab.id
-                  ? ' text-nutral-black-02'
+                  ? ' text-nutral-black-03'
                   : ' text-nutral-white-04'
               } `}
             >
               {tab.title}
+              <span
+                className={`ml-2 ${
+                  selectedTab === tab.id
+                    ? ' text-primary-main '
+                    : ' text-nutral-white-04'
+                } `}
+              >
+                {tab.id === 'tab1' &&
+                  accompanyList.filter(
+                    (item) =>
+                      item.status === 'joining' || item.status === 'joined'
+                  ).length}
 
-              {selectedTab === 'tab1' &&
-                tab.id === 'tab1' &&
-                accompanyList.filter(
-                  (item) =>
-                    item.status === 'joining' || item.status === 'joined'
-                ).length}
-
-              {selectedTab === 'tab2' &&
-                tab.id === 'tab2' &&
-                accompanyList.filter((item) => item.status === 'accompanied')
-                  .length}
+                {tab.id === 'tab2' &&
+                  accompanyList.filter((item) => item.status === 'accompanied')
+                    .length}
+              </span>
             </button>
           ))}
         </div>
 
-        <div className='rounded bg-nutral-white-02'>
+        <div className='flex rounded bg-nutral-white-02'>
           {selectedTab === 'tab1' &&
             (accompanyList.length > 0 ? (
               accompanyList
-                .filter((item) => item.status === 'joining')
+                .filter(
+                  (item) =>
+                    item.status === 'joining' || item.status === 'joined'
+                )
                 .map((accompany) => (
-                  <div className='px-10 pt-6 pb-8' key={accompany.id}>
+                  <div className='px-5 pt-6 pb-8' key={accompany.id}>
                     <WhCard
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
@@ -237,8 +245,8 @@ export default function Activity() {
               <div className='flex flex-col items-center justify-center py-20'>
                 <div>
                   <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
-                    {selectedTab === 'tab1' ? '진행 중' : '완료한'}
-                    동행이 없어요. <br />
+                    {selectedTab === 'tab1' ? '진행 중인' : '완료한'}
+                    &nbsp; 동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?
                   </p>
                   <WhButton size='md' onClick={() => {}}>
@@ -253,7 +261,7 @@ export default function Activity() {
           {selectedTab === 'tab2' &&
             (accompanyList.length > 0 ? (
               accompanyList
-                .filter((item) => item.status === 'joined')
+                .filter((item) => item.status === 'accompanied')
                 .map((accompany) => (
                   <div className='px-10 pt-6 pb-8' key={accompany.id}>
                     <WhCard
@@ -274,8 +282,8 @@ export default function Activity() {
               <div className='flex flex-col items-center justify-center py-20'>
                 <div>
                   <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
-                    {selectedTab === 'tab2' ? '진행 중' : '완료한'}
-                    동행이 없어요. <br />
+                    {selectedTab === 'tab2' ? '진행 중인' : '완료한'}
+                    &nbsp; 동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?
                   </p>
                   <WhButton size='md' onClick={() => {}}>
