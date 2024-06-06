@@ -14,6 +14,7 @@ import { JoinTypeIcon } from '../../../../public/assets/icons/communicate';
 import { GenderIcon } from '../../../../public/assets/icons/communicate';
 import { MapPinIcon } from '../../../../public/assets/icons/communicate';
 import { Close20Icon } from '../../../../public/assets/icons/menu';
+import WhCard from '../WhCard';
 
 const listCss = 'flex items-center gap-6';
 
@@ -24,6 +25,118 @@ const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
 const detailBtn =
   'flex items-center gap-1 text-nutral-black-04 text-caption-01';
 
+const accompanyList = [
+  {
+    id: 2,
+    status: 'joining',
+    profileImageUrl:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    nickname: '도쿄피플',
+    title:
+      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
+    tags: null,
+    startTripDate: '2024-07-15',
+    endTripDate: '2024-07-16',
+    accompanyCnt: 4,
+    accompaniedCnt: 2,
+    thumbnailImageUrl:
+      'https://images.unsplash.com/photo-1601699233172-1bb3354b845b?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    continent: 'EU',
+  },
+  {
+    id: 3,
+    status: 'joining',
+    profileImageUrl:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    nickname: '도쿄피플',
+    title:
+      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
+    tags: ['태그 1', '태그 2', '태그 3'],
+    startTripDate: '2024-08-15',
+    endTripDate: '2024-08-16',
+    accompanyCnt: 4,
+    accompaniedCnt: 4,
+    thumbnailImageUrl:
+      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    continent: 'SEA',
+  },
+  {
+    id: 4,
+    status: 'joining',
+    profileImageUrl:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    nickname: '도쿄피플',
+    title:
+      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
+    tags: ['태그 1', '태그 2', '태그 3'],
+    startTripDate: '2024-08-15',
+    endTripDate: '2024-08-16',
+    accompanyCnt: 4,
+    accompaniedCnt: 4,
+    thumbnailImageUrl:
+      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    continent: 'JP',
+  },
+  {
+    id: 5,
+    status: 'joining',
+    profileImageUrl:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    nickname: '도쿄피플',
+    title:
+      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
+    tags: ['태그 1', '태그 2', '태그 3'],
+    startTripDate: '2024-08-15',
+    endTripDate: '2024-08-16',
+    accompanyCnt: 4,
+    accompaniedCnt: 4,
+    thumbnailImageUrl:
+      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    continent: 'NA',
+  },
+];
+
+const showAccompanyList = () => {
+  <>
+    {accompanyList.map((accompany) => (
+      <li key={accompany.id}>
+        <WhCard
+          status={accompany.status}
+          profileImageUrl={accompany.profileImageUrl}
+          nickname={accompany.nickname}
+          title={accompany.title}
+          tags={accompany.tags}
+          startTripDate={accompany.startTripDate}
+          endTripDate={accompany.endTripDate}
+          accompanyCnt={accompany.accompanyCnt}
+          accompaniedCnt={accompany.accompaniedCnt}
+          thumbnailImageUrl={accompany.thumbnailImageUrl}
+        />
+      </li>
+    ))}
+  </>;
+  return (
+    <>
+      {accompanyList.map((accompany) => (
+        <li key={accompany.id}>
+          <WhCard
+            status={accompany.status}
+            profileImageUrl={accompany.profileImageUrl}
+            nickname={accompany.nickname}
+            title={accompany.title}
+            tags={accompany.tags}
+            startTripDate={accompany.startTripDate}
+            endTripDate={accompany.endTripDate}
+            accompanyCnt={accompany.accompanyCnt}
+            accompaniedCnt={accompany.accompaniedCnt}
+            thumbnailImageUrl={accompany.thumbnailImageUrl}
+          />
+        </li>
+      ))}
+    </>
+  );
+};
+
 export default function WhDetailInfo() {
   const detailList = {
     id: '0',
@@ -31,12 +144,18 @@ export default function WhDetailInfo() {
     regist_at: '2024.12.12',
     view: 99,
     title: '호스트가 작성한 타이틀 노출',
+    tags: [
+      { id: 0, title: '태그0' },
+      { id: 1, title: '태그1' },
+      { id: 2, title: '태그2' },
+    ],
     profileImageUrl:
       'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     nickname: '도쿄피플1',
     name: '기묘림',
     score: '36.5',
-    people: 4,
+    companions: 2,
+    companionsCount: 3,
     wait: 3,
     location: '일본, 교토',
     review: 3,
@@ -137,6 +256,7 @@ export default function WhDetailInfo() {
         thumbnailImageUrl:
           'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
+
       {
         host: false,
         id: 2,
@@ -171,7 +291,17 @@ export default function WhDetailInfo() {
       nickname: '도쿄피플',
       title:
         '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: null,
+      tags: [
+        { id: 0, title: '사진' },
+        { id: 1, title: '음식' },
+        { id: 2, title: '관광지' },
+        { id: 3, title: '자연' },
+        { id: 4, title: '카페' },
+        { id: 5, title: '박물관' },
+        { id: 6, title: '전시관' },
+        { id: 7, title: '미술관' },
+      ],
+
       startTripDate: '1년 11개월',
       endTripDate: '2024-03-16',
       accompanyCnt: 3,
@@ -253,6 +383,8 @@ export default function WhDetailInfo() {
     },
   ];
 
+  const isHost = true;
+
   return (
     <div className='flex flex-col items-center'>
       <Image
@@ -261,9 +393,9 @@ export default function WhDetailInfo() {
         height={460}
         alt='profile-image'
       />
-      <div className='flex gap-10 my-5'>
+      <div className='flex gap-5 my-5 max-w-[1240px]'>
         {/* left start */}
-        <div className='max-w-[807px]'>
+        <div className='max-w-[847px]'>
           <div>
             <div className='flex items-center justify-between text-nutral-black-04 text-caption-02 mb-5'>
               {/* left */}
@@ -278,22 +410,29 @@ export default function WhDetailInfo() {
                 <LinkIcon />
               </div>
             </div>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center  justify-between'>
               <h1 className='text-nutral-black-02 text-headline-03'>
                 {detailList.title}
               </h1>
-
               <div className='flex gap-5'>
-                <div className={detailBtn}>
-                  <Pencil20Icon />
-                  <span>수정하기</span>
-                </div>
-
+                {isHost && (
+                  <div className={detailBtn}>
+                    <Pencil20Icon />
+                    <span>수정하기</span>
+                  </div>
+                )}
                 <div className={detailBtn}>
                   <ReportIcon />
                   <span>신고하기</span>
                 </div>
               </div>
+            </div>
+            <div className='flex gap-5'>
+              {detailList.tags.map((tag) => (
+                <span className='mt-2 text-primary-main text-subtitle-02'>
+                  {tag.title}
+                </span>
+              ))}
             </div>
 
             <h2 className={titleCss}>동행 정보</h2>
@@ -302,10 +441,33 @@ export default function WhDetailInfo() {
                 <MapPinIcon />
                 {detailList.location}
               </li>
-              <li className={listCss}>
-                <UsersGroupIcon />
-                동행 인원
-                <span className='text-primary-main'>{detailList.people}</span>
+              <li className='flex items-center'>
+                <UsersGroupIcon className='mr-6 ' />
+                동행 인원&nbsp;
+                <span>
+                  <span className='text-primary-main'>
+                    {' '}
+                    {detailList.companions}{' '}
+                  </span>
+                  / {detailList.companionsCount}
+                </span>
+                <Image
+                  className='inline object-cover rounded-full ml-2'
+                  src={detailList.profileImageUrl}
+                  width={24}
+                  height={24}
+                  alt='프로필 이미지'
+                />
+                <span className='text-nutral-black-05 ml-14'>
+                  호스트 승인 대기 인원 {detailList.wait}
+                </span>
+                <Image
+                  className='inline object-cover rounded-full ml-2'
+                  src={detailList.profileImageUrl}
+                  width={24}
+                  height={24}
+                  alt='프로필 이미지'
+                />
               </li>
               <li className={listCss}>
                 <CalendarCheckIcon />
@@ -361,26 +523,60 @@ export default function WhDetailInfo() {
                 Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada
                 id duis purus pretium varius. ...더보기
               </p>
-              <p className='text-caption-01 text-primary-main'>답글달기</p>
 
-              <div className='flex justify-between items-center mt-10 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+              <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
                 <input
-                  placeholder='댓글을 입력해주세요. (최대 100자)'
+                  placeholder='답글을 입력해주세요. (최대 100자)'
                   className=''
                 />
                 <span className='text-subtitle-02 text-primary-main'>
                   댓글남기기
                 </span>
               </div>
+
+              {/* reply */}
+              <div className='flex items-center gap-5 mt-10'>
+                <Image
+                  className='inline object-cover rounded-full h-full'
+                  src={detailList.profileImageUrl}
+                  width={48}
+                  height={48}
+                  alt='프로필 이미지'
+                />
+                <div>
+                  <p className='text-nutral-black-02 text-Subtitle-01'>
+                    다른 게스트
+                  </p>
+                  <p className='text-caption-01 text-black-04 mt-[5px]'>
+                    1시간 전
+                  </p>
+                </div>
+              </div>
+              <p className='text-body-02 text-nutral-black-03'>
+                Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada
+                id duis purus pretium varius. ...더보기
+              </p>
+              <p className='text-caption-01 text-primary-main'>답글달기</p>
+            </div>
+
+            {/* 댓글남기기  */}
+            <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+              <input
+                placeholder='답글을 입력해주세요. (최대 100자)'
+                className=''
+              />
+              <span className='text-subtitle-02 text-primary-main'>
+                댓글남기기
+              </span>
             </div>
           </div>
         </div>
         {/* left end */}
 
         {/* right start */}
-        <div>
+        <div className='max-w-[393px]'>
           <h3 className='mb-3 text-subtitle-01'>
-            승인 요청 리스트&nbsp;{itemList.length}
+            {isHost ? '동행장' : `승인 요청 리스트 ${itemList.length}`}
           </h3>
           <div className='max-h-[412px] overflow-scroll'>
             {detailList.itemList.map((accompany) => (
@@ -407,38 +603,49 @@ export default function WhDetailInfo() {
                       {accompany.age} &nbsp;∙&nbsp; {accompany.gender}
                       &nbsp;∙&nbsp;{accompany.period}
                     </p>
-                    {accompany.status === 'joining' && (
-                      <div className='flex gap-[10px] mt-3'>
-                        <WhButton
-                          fitContent
-                          size='sm'
-                          onClick={() => {}}
-                          outLine
-                        >
-                          취소
-                        </WhButton>
-                        <WhButton fitContent size='sm' onClick={() => {}}>
-                          승인
-                        </WhButton>
+
+                    {isHost ? (
+                      ''
+                    ) : (
+                      <div>
+                        {accompany.status === 'joining' && (
+                          <div className='flex gap-[10px] mt-3'>
+                            <WhButton
+                              fitContent
+                              size='sm'
+                              onClick={() => {}}
+                              outLine
+                            >
+                              취소
+                            </WhButton>
+                            <WhButton fitContent size='sm' onClick={() => {}}>
+                              승인
+                            </WhButton>
+                          </div>
+                        )}
+                        {accompany.status === 'joined' && (
+                          <div className={requestCss}>
+                            <CheckIcon
+                              width={20}
+                              height={20}
+                              stroke='#36C304'
+                            />
+                            <span className='text-caption-success text-body-03 mt-1'>
+                              승인하셨습니다. 벌써 기대가 되네요!
+                            </span>
+                          </div>
+                        )}
+                        {accompany.status !== 'joining' &&
+                          accompany.status !== 'joined' && (
+                            <div className={requestCss}>
+                              <Close20Icon stroke='#EC5C53' />
+                              <span className='text-caption-main  text-body-03 mt-1'>
+                                동행이 취소됐습니다.
+                              </span>
+                            </div>
+                          )}
                       </div>
                     )}
-                    {accompany.status === 'joined' && (
-                      <div className={requestCss}>
-                        <CheckIcon width={20} height={20} stroke='#36C304' />
-                        <span className='text-caption-success text-body-03 mt-1'>
-                          승인하셨습니다. 벌써 기대가 되네요!
-                        </span>
-                      </div>
-                    )}
-                    {accompany.status !== 'joining' &&
-                      accompany.status !== 'joined' && (
-                        <div className={requestCss}>
-                          <Close20Icon stroke='#EC5C53' />
-                          <span className='text-caption-main  text-body-03 mt-1'>
-                            동행이 취소됐습니다.
-                          </span>
-                        </div>
-                      )}
                   </div>
                 </div>
               </div>
@@ -453,6 +660,10 @@ export default function WhDetailInfo() {
       {/* 추천 동행 게시글 */}
       <div className=''>
         <h2 className={titleCss}>추천 동행 게시글</h2>
+
+        <section className='w-full h-full mb-[120px]'>
+          <ul className='flex flex-wrap gap-5'>{showAccompanyList()}</ul>
+        </section>
       </div>
     </div>
   );
