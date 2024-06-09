@@ -10,6 +10,12 @@ export default function HomePage() {
         <Link className={`${linkCss}`} href='/sample'>
           sample page
         </Link>
+        <Link className={`${linkCss}`} href='/auth'>
+          auth page
+        </Link>
+        <Link className={`${linkCss}`} href='/mypage'>
+          mypage
+        </Link>
       </div>
     </main>
   );
