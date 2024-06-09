@@ -263,7 +263,7 @@ export default function Activity() {
               accompanyList
                 .filter((item) => item.status === 'accompanied')
                 .map((accompany) => (
-                  <div className='px-10 pt-6 pb-8' key={accompany.id}>
+                  <div className='px-5 pt-6 pb-8' key={accompany.id}>
                     <WhCard
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
