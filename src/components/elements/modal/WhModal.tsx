@@ -1,5 +1,7 @@
 'use client';
 
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
