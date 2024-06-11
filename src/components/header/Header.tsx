@@ -9,6 +9,7 @@ import Container from '../Container';
 import Logo from './Logo';
 import WhButton from '../elements/WhButton';
 import { AddPlusIcon } from '../../../public/assets/icons/edit';
+import WhTooltip from '../elements/WhTooltip';
 // TODO: GNG profile icon 서버에서 받아서 표시
 export default function Header() {
   const router = useRouter();
@@ -26,10 +27,16 @@ export default function Header() {
 
         {/* 게시글 등록 버튼 */}
         <div className='mr-7'>
-          <WhButton size='md' onClick={goToAccompanyRegister}>
-            같이행 등록
-            <AddPlusIcon width={20} height={20} stroke='#fff' />
-          </WhButton>
+          <WhTooltip
+            position='bottom'
+            coreText='동행'
+            content='을 직접 찾아볼까요?'
+          >
+            <WhButton size='md' onClick={goToAccompanyRegister}>
+              같이행 등록
+              <AddPlusIcon width={20} height={20} stroke='#fff' />
+            </WhButton>
+          </WhTooltip>
         </div>
         {/* profile menu */}
         <div className='flex items-center gap-3 px-4 py-3 border rounded-full border-nutral-white-03'>
