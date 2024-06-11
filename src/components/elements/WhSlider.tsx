@@ -29,7 +29,7 @@ export default function WhSlider({
   console.log(value);
   return (
     <Slider
-      className={`mx-3 ${marks && 'mb-8'}`}
+      className={`mx-3 w-full ${marks && 'mb-8'}`}
       range={range}
       min={min}
       max={max}

@@ -17,7 +17,7 @@ export default function Header() {
     router.push('/accompany-register');
   }, []);
   return (
-    <header className='flex items-center justify-center w-full px-5 py-3 border-b border-nutral-white-03'>
+    <header className='flex items-center justify-center w-full px-5 py-3 border-b border-nutral-white-03 bg-nutral-white-01'>
       <Container>
         {/* logo & main menu */}
         <div className='flex-auto'>

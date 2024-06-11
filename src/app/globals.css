@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+  @apply text-body-02 text-nutral-black-02;
+}
+
 ::-webkit-scrollbar {
   @apply w-2;
   @apply h-2;
@@ -16,16 +21,15 @@
 }
 
 .modal-transition-enter-active {
-  animation: modal-enter 500ms ease-out;
+  animation: modal-enter 350ms ease-out;
 }
 .modal-transition-exit-active {
-  animation: modal-exit 500ms ease-out;
+  animation: modal-exit 350ms ease-out;
 }
 
 @keyframes modal-enter {
   from {
     opacity: 0;
-    scale: 1.05;
   }
   to {
     opacity: 1;
@@ -37,7 +41,6 @@
   }
   to {
     opacity: 0;
-    scale: 1.05;
   }
 }
 

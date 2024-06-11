@@ -109,15 +109,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  modal,
+}: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return (
-    <html lang='ko' className={pretendard.className}>
+     <html lang='ko' className={pretendard.className}>
       <body className='h-full flex flex-col'>
         <Header />
         <main className='flex-auto'>{children}</main>
         <Footer />
+         {modal}
+        <div id='modal-root' />
       </body>
     </html>
   );
