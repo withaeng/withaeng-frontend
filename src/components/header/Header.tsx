@@ -10,12 +10,14 @@ import Logo from './Logo';
 import WhButton from '../elements/WhButton';
 import { AddPlusIcon } from '../../../public/assets/icons/edit';
 import WhTooltip from '../elements/WhTooltip';
+import Link from 'next/link';
 // TODO: GNG profile icon 서버에서 받아서 표시
 export default function Header() {
   const router = useRouter();
   const goToAccompanyRegister = useCallback(() => {
     // TODO: 동행 게시글 작성 화면으로 이동
-    router.push('/accompany-register');
+    // router.push('/accompany-register'); TODO: 이 경로로 변경해야함
+    router.push('/register');
   }, []);
   return (
     <header className='flex items-center justify-center w-full px-5 py-3 border-b border-nutral-white-03 bg-nutral-white-01'>
@@ -41,10 +43,10 @@ export default function Header() {
         {/* profile menu */}
         <div className='flex items-center gap-3 px-4 py-3 border rounded-full border-nutral-white-03'>
           <HamburgerIcon />
-          <div className='relative w-8 h-8'>
+          <Link href='/mypage' className='relative w-8 h-8'>
             {/* TODO: 서버에서 url 전달받아 표시 예정 > width, height 값 지정 필요 */}
             <ProfilIconRed02 />
-          </div>
+          </Link>
         </div>
       </Container>
     </header>

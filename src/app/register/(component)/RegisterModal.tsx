@@ -59,6 +59,7 @@ export default function RegisterModal() {
       isOpen
       onClose={() => router.back()}
       className='px-[85px] py-[72px] h-[800px]'
+      isDismissible={false}
     >
       <div className='flex flex-col h-full'>
         {step > 0 && <StepBar value={(step / 3) * 100} />}
