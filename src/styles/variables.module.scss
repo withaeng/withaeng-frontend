@@ -1,0 +1,16 @@
+@import './mixins';
+
+$PRIMARY_COLOR: #0b8cbf;
+
+$BORDER_COLOR: #0000001a;
+$MAIN_COLOR: #0000001a;
+
+.title {
+  color: $PRIMARY_COLOR;
+}
+
+@include mobile() {
+  .title {
+    background-color: #c5afb0;
+  }
+}

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  @apply text-body-02 text-nutral-black-02;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+  @apply h-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-nutral-white-03 rounded-full;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-nutral-white-01;
+}
+
+.modal-transition-enter-active {
+  animation: modal-enter 350ms ease-out;
+}
+.modal-transition-exit-active {
+  animation: modal-exit 350ms ease-out;
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 캘린더 */
+.react-datepicker-popper {
+  transform: translate(0px, 39px) !important;
+}
+.react-datepicker .react-datepicker__header {
+  @apply bg-nutral-white-01 text-primary-main rounded-none border-none;
+}
+.react-datepicker .react-datepicker__header select {
+  @apply text-nutral-black-01;
+}
+.react-datepicker .react-datepicker__header .react-datepicker__day-names {
+  @apply flex justify-center items-center;
+}
+.react-datepicker .react-datepicker__header .react-datepicker__day-name {
+  @apply text-primary-light h-5;
+}
+.react-datepicker__triangle {
+  @apply hidden;
+}
+.react-datepicker .react-datepicker__day--outside-month {
+  @apply text-nutral-white-03;
+}
+.react-datepicker .react-datepicker__day--selected {
+  @apply bg-primary-main hover:bg-primary-pressing rounded-full hover:rounded-full;
+}
+.react-datepicker .react-datepicker__day--keyboard-selected {
+  @apply bg-primary-exLight hover:bg-primary-pressing rounded-full hover:rounded-full;
+}
+.react-datepicker .react-datepicker__day {
+  @apply hover:bg-primary-eexLight hover:rounded-full;
+}

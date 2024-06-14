@@ -1,0 +1,90 @@
+:root {
+  --primary-main: #ffa500;
+  --primary-light: #ffc570;
+  --primary-exLight: #ffdd95;
+  --primary-eexLight: #ffeabf;
+  --primary-pressing: #f2a10d;
+
+  --secondary-main: #3652ad;
+  --secondary-light: #718eed;
+
+  --nutral-black-01: #131313;
+  --nutral-black-02: #333333;
+  --nutral-black-03: #535353;
+  --nutral-black-04: #737373;
+  --nutral-black-05: #939393;
+  --nutral-white-01: #ffffff;
+  --nutral-white-02: #faf8f6;
+  --nutral-white-03: #dad8d6;
+  --nutral-white-04: #babbb6;
+
+  --caption-main: #ec5c53;
+  --caption-light: #f8867e;
+  --caption-success: #36C304;
+}
+
+$primary-main: #ffa500;
+$primary-light: #ffc570;
+$primary-exLight: #ffdd95;
+$primary-eexLight: #ffeabf;
+$primary-pressing: #f2a10d;
+
+$secondary-main: #3652ad;
+$secondary-light: #718eed;
+
+$nutral-black-01: #131313;
+$nutral-black-02: #333333;
+$nutral-black-03: #535353;
+$nutral-black-04: #737373;
+$nutral-black-05: #939393;
+$nutral-white-01: #ffffff;
+$nutral-white-02: #faf8f6;
+$nutral-white-03: #dad8d6;
+$nutral-white-04: #babbb6;
+
+$caption-main: #ec5c53;
+$caption-light: #f8867e;
+$caption-light: #36C304;
+
+.font-display-01 {
+  @include font-theme(60px, 600, 100%);
+}
+.font-display-02 {
+  @include font-theme(48px, 600, 100%);
+}
+.font-headline-01 {
+  @include font-theme(40px, 600, 100%);
+}
+.font-headline-02 {
+  @include font-theme(32px, 600, 100%);
+}
+.font-headline-03 {
+  @include font-theme(28px, 600, 100%);
+}
+.font-headline-04 {
+  @include font-theme(20px, 600, 100%);
+}
+.font-subtitle-01 {
+  @include font-theme(16px, 600, 20px);
+}
+.font-subtitle-02 {
+  @include font-theme(14px, 600, 20px);
+}
+.font-body-01 {
+  @include font-theme(18px, 400, 100%);
+}
+.font-body-02 {
+  @include font-theme(16px, 400, 20px);
+}
+.font-body-03 {
+  @include font-theme(14px, 300, 100%);
+}
+.font-caption-01 {
+  @include font-theme(12px, 500, 100%);
+}
+.font-caption-02 {
+  @include font-theme(12px, 400, 100%);
+}
+.font-caption-03 {
+  @include font-theme(10px, 300, 100%);
+}
