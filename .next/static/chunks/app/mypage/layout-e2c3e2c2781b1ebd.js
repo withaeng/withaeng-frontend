@@ -1,0 +1,9 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9690],{78399:function(e,t,n){Promise.resolve().then(n.bind(n,39240))},39240:function(e,t,n){"use strict";n.r(t),n.d(t,{default:function(){return MypageNavMenu}});var r=n(57437),a=n(61396),o=n.n(a),i=n(24033);function MypageNavMenu(){let e=(0,i.useSelectedLayoutSegment)()||"Info";return(0,r.jsx)("ul",{className:"flex flex-col text-headline-04 w-[305px] gap-[14px]",children:[{href:"/mypage/Info",label:"내 정보 관리",segment:"Info"},{href:"/mypage/activity",label:"내 활동",segment:"activity"},{href:"/mypage/setting",label:"설정",segment:"setting"}].map(t=>(0,r.jsx)("li",{children:(0,r.jsx)(o(),{href:t.href,children:(0,r.jsx)("div",{className:"".concat("px-5 py-2.5 hover:text-primary-main rounded text-headline-04 text-nutral-black-02"," ").concat(e===t.segment&&"bg-primary-exLight "),children:t.label})})},t.href))})}},30622:function(e,t,n){"use strict";/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var r=n(2265),a=Symbol.for("react.element"),o=Symbol.for("react.fragment"),i=Object.prototype.hasOwnProperty,l=r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,s={key:!0,ref:!0,__self:!0,__source:!0};function q(e,t,n){var r,o={},f=null,c=null;for(r in void 0!==n&&(f=""+n),void 0!==t.key&&(f=""+t.key),void 0!==t.ref&&(c=t.ref),t)i.call(t,r)&&!s.hasOwnProperty(r)&&(o[r]=t[r]);if(e&&e.defaultProps)for(r in t=e.defaultProps)void 0===o[r]&&(o[r]=t[r]);return{$$typeof:a,type:e,key:f,ref:c,props:o,_owner:l.current}}t.Fragment=o,t.jsx=q,t.jsxs=q},57437:function(e,t,n){"use strict";e.exports=n(30622)},61396:function(e,t,n){e.exports=n(68326)},24033:function(e,t,n){e.exports=n(50094)}},function(e){e.O(0,[8326,2971,2472,1744],function(){return e(e.s=78399)}),_N_E=e.O()}]);
