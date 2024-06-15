@@ -1,16 +1,16 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { HamburgerIcon } from '../../../public/assets/icons/menu';
-// TODO: ProfilIconGray01 제외하고 그 외 프로필 아이콘은 제거 예정 > 서버에서 전달 받음
 import { ProfilIconRed02 } from '../../../public/assets/icons/profile';
 import Container from '../Container';
 import Logo from './Logo';
 import WhButton from '../elements/WhButton';
 import { AddPlusIcon } from '../../../public/assets/icons/edit';
 import WhTooltip from '../elements/WhTooltip';
-import Link from 'next/link';
+
 // TODO: GNG profile icon 서버에서 받아서 표시
 export default function Header() {
   const router = useRouter();

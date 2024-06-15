@@ -38,6 +38,7 @@ function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
         type: imageFile.type,
       });
       setFile(convert);
+      console.log(file);
 
       const reader = new FileReader();
       reader.readAsDataURL(convert);
