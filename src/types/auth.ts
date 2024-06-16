@@ -7,11 +7,17 @@ export type AuthModalType =
   | 'checkEmail'
   | 'prefer';
 
-export interface UserSignUp {
+export interface UserSignIn {
   email: string;
   password: string;
+}
+
+export interface UserSignUp extends UserSignIn {
   birth: Date;
-  gender: 'male' | 'female';
+  isMale: boolean;
+}
+
+export interface UserSignUpForm extends UserSignUp {
   term: boolean;
 }
 

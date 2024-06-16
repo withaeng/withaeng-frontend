@@ -1,4 +1,3 @@
-import { ReactComponent } from './../../../../src/types/svg.d';
 export { ReactComponent as UpIcon } from './up.svg';
 export { ReactComponent as DownIcon } from './down.svg';
 export { ReactComponent as LeftIcon } from './left.svg';

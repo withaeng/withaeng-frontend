@@ -4,14 +4,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SignUpModalContent from '@/components/auth/sign-up/SignUpModalContent';
 import TermModalContent from '@/components/auth/sign-up/TermModalContent';
-import { UserSignUp } from '@/types/auth';
+import { UserSignUpForm } from '@/types/auth';
 import WhModal from '@/components/elements/modal/WhModal';
 
-const initFormData: UserSignUp = {
+const initFormData: UserSignUpForm = {
   email: '',
   password: '',
   birth: new Date(),
-  gender: 'male',
+  isMale: true,
   term: false,
 };
 
