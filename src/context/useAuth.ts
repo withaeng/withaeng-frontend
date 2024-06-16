@@ -1,7 +1,8 @@
-import { cookies } from 'next/headers';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { UserSignIn, UserSignUp } from '@/types/auth';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const signInApi = ({ email, password }: UserSignIn) =>
   fetch('/api/v1/auth/sign-in', {
@@ -18,6 +19,7 @@ const signUpApi = ({ email, password, isMale, birth }: UserSignUp) =>
 
 export default function useAuth() {
   const router = useRouter();
+  const [user, setUser] = useState();
 
   const signin = useMutation({
     mutationFn: (data: UserSignIn) => signInApi(data),
@@ -26,7 +28,8 @@ export default function useAuth() {
         return new Error(data.statusText);
       }
       console.log('성공? ', data);
-      cookies().set('accessToken', data.data.accessToken);
+      setCookie('accessToken', data.data.accessToken);
+      setUser(data.data);
       router.replace('/');
       return '로그인에 성공하셨습니다.';
     },
@@ -43,5 +46,10 @@ export default function useAuth() {
     onError: (err) => console.error(err),
   });
 
-  return { signin, signup };
+  const signout = () => {
+    setUser(undefined);
+    deleteCookie('accessToken');
+  };
+
+  return { user, signin, signup, signout };
 }

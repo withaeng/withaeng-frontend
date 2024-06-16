@@ -5,6 +5,7 @@ import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
 import WhCalendar from '@/components/elements/WhCalendar';
 import { UserSignUpForm } from '@/types/auth';
+import useAuth from '@/context/useAuth';
 import PasswordInput from '../PasswordInput';
 
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -13,13 +14,12 @@ export default function SignUpModalContent({
   form,
   setForm,
   setTermPage,
-  handleSubmit,
 }: {
   form: UserSignUpForm;
   setForm: React.Dispatch<React.SetStateAction<UserSignUpForm>>;
   setTermPage: (value: boolean) => void;
-  handleSubmit: () => void;
 }) {
+  const { signup } = useAuth();
   const handleSignUpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // FIXME: 입력이 올바르지 않은 경우 추가 작업
@@ -36,8 +36,7 @@ export default function SignUpModalContent({
       return;
     }
     console.log(form);
-
-    handleSubmit();
+    signup.mutate(form);
   };
 
   return (

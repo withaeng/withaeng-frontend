@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import SignUpModalContent from '@/components/auth/sign-up/SignUpModalContent';
 import TermModalContent from '@/components/auth/sign-up/TermModalContent';
 import { UserSignUpForm } from '@/types/auth';
@@ -16,7 +15,6 @@ const initFormData: UserSignUpForm = {
 };
 
 export default function SignUpModalPage() {
-  const router = useRouter();
   const [form, setForm] = useState(initFormData);
   const [termPage, setTermPage] = useState(false);
 
@@ -28,7 +26,6 @@ export default function SignUpModalPage() {
             form={form}
             setForm={setForm}
             setTermPage={setTermPage}
-            handleSubmit={() => router.replace('/checkEmail')}
           />
         ) : (
           <TermModalContent setForm={setForm} setTermPage={setTermPage} />
