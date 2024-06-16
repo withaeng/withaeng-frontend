@@ -34,6 +34,7 @@ export default function Page() {
           size='lg'
           placeholder='직접 내용입력'
           handleInputChange={handleInputChange1}
+          value={inputValue1}
         />
 
         <WhInput
@@ -41,6 +42,7 @@ export default function Page() {
           handleInputChange={handleInputChange1}
           isErr
           errorMsg='설명을 입력하세요.'
+          value={inputValue1}
         />
 
         <WhInput handleInputChange={handleInputChange1} size='lg' disabled />
@@ -55,6 +57,7 @@ export default function Page() {
           handleInputChange={handleInputChange2}
           size='md'
           placeholder='직접 내용입력'
+          value={inputValue2}
         />
 
         <WhInput
@@ -62,9 +65,15 @@ export default function Page() {
           size='md'
           errorMsg='설명을 입력하세요.'
           isErr
+          value={inputValue2}
         />
 
-        <WhInput handleInputChange={handleInputChange2} size='md' disabled />
+        <WhInput
+          handleInputChange={handleInputChange2}
+          size='md'
+          disabled
+          value={inputValue2}
+        />
       </div>
 
       {/* height 36 */}
@@ -77,6 +86,7 @@ export default function Page() {
           label='라벨 이름 sm'
           size='sm'
           placeholder='직접 내용입력'
+          value={inputValue3}
         />
         <WhInput
           handleInputChange={handleInputChange3}
@@ -85,7 +95,12 @@ export default function Page() {
           isErr
         />
 
-        <WhInput handleInputChange={handleInputChange3} size='sm' disabled />
+        <WhInput
+          handleInputChange={handleInputChange3}
+          size='sm'
+          disabled
+          value={inputValue3}
+        />
       </div>
     </div>
   );

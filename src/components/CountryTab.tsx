@@ -110,7 +110,7 @@ export default function CountryTab({
 
   return (
     <WhTab dataList={COUNTRY} value={tabValue} onChange={onTabChange}>
-      <div className='mt-[21px] mx-2.5 flex flex-wrap gap-5 max-w-[628px]'>
+      <div className='mt-[21px] mx-2.5 flex flex-wrap gap-3 max-w-[628px]'>
         {COUNTRY[index].subDatas?.map((datas) => (
           <WhChip
             key={datas.id}

@@ -8,11 +8,11 @@ import {
 } from '../../../public/assets/icons/arrow';
 
 const defaultTooltipCss =
-  'absolute flex justify-center items-center inline-block whitespace-nowrap px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
+  'absolute flex justify-center items-center inline-block whitespace-nowrap my-2 px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
 
 let positionCss = '';
 
-const defaultPointCss = 'absolute inline-block';
+const defaultPointCss = 'absolute inline-block my-2';
 let pointCss = '';
 
 interface TooltipProps {
@@ -49,7 +49,7 @@ export default function WhTooltip({
   return (
     <div>
       <div className='relative group'>
-        <div className='mx-2 text-secondary-main'>{children}</div>
+        <div className='text-secondary-main text-body-03'>{children}</div>
         {isShow && (
           <div>
             <p className={`${defaultTooltipCss} ${positionCss}`}>
@@ -69,7 +69,7 @@ export default function WhTooltip({
               </span>
             ) : (
               <span className={`${defaultPointCss} ${pointCss}`}>
-                <TooltipTopArrowIcon width={14} height={14} />
+                <TooltipTopArrowIcon width={14} height={14} className='mr-6' />
               </span>
             )}
           </div>
