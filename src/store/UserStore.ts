@@ -12,25 +12,24 @@ interface User {
   birth: string;
   circularPercentage: number;
 
-  mbti: string;
-  favorArea: string;
-  interest: [];
-  consumeType: string;
-  cantEat: [];
-  gender: string;
-  smoke: string;
-  drink: string;
+  mbti?: string;
+  preferTravelType: string; // 여행 선호지역
+  preferTravelThemes: string[]; // 여행 관심사
+  consumeStyle: string; // 소비 스타일
+  foodRestrictions: string[]; //못 먹는 음식
+  preferAccompanyGender: string; //동행자 타입
+  smokingType: string; //흡연
+  drinkingType: string; //음주
 }
 
 // 상태 저장소 생성
-export const useStore = create<{
+const useStore = create<{
   user: User | null;
   updateUser: (updateUser: Partial<User>) => void;
   fetchUser: () => Promise<void>;
 }>((set) => ({
   // 실API 추가 시
   // -> user : null, 초기상태 null로
-
   user: {
     name: '솔솔',
     score: '36.5',
@@ -41,6 +40,15 @@ export const useStore = create<{
     sex: '여성',
     birth: '2024.04.11',
     circularPercentage: 88,
+
+    mbti: 'ISTJ',
+    preferTravelType: '국내', // 여행 선호지역
+    preferTravelThemes: ['사진', '음식', '자연'], // 여행 관심사
+    consumeStyle: '가성비', // 소비 스타일
+    foodRestrictions: ['갑각류', '날 것', '밀가루'], // 못 먹는 음식
+    preferAccompanyGender: '여성', // 동행자 타입
+    smokingType: '자주 하는 편', // 흡연
+    drinkingType: '금주 중', // 음주
   },
   updateUser: (updateUser) =>
     set((state) => ({
@@ -60,36 +68,4 @@ export const useStore = create<{
   },
 }));
 
-// 동행자 정보 타입 정의
-interface Accompany {
-  status: string;
-  profileImageUrl: string;
-  nickname: string;
-  title: string;
-  tags: string[] | null;
-  startTripDate: string;
-  endTripDate: string;
-  accompanyCnt: number;
-  accompaniedCnt: number;
-  thumbnailImageUrl: string;
-}
-
-// 동행자 상태 저장소 생성
-export const useAccompanyStore = create<{
-  candidates: Accompany[];
-  fetchAccompany: () => Promise<void>;
-}>((set) => ({
-  candidates: [],
-  fetchAccompany: async () => {
-    try {
-      const response = await fetch('/api/accompany'); // 실제 API 경로로 수정하세요
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data: Accompany[] = await response.json();
-      set({ candidates: data });
-    } catch (error) {
-      console.error('Fetch accompany failed:', error);
-    }
-  },
-}));
+export default useStore;

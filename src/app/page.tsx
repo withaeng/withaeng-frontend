@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import WhTab, { TabData } from '@/components/elements/WhTab';
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 import WhCard from '@/components/elements/WhCard';
+import useAccompanyStore from '@/store/AccompanyStore';
 import HomeBannerImage from '../../public/assets/images/home-banner.webp';
 import PopularCityCard from './components/PopularCityCard';
 import { FilterIcon } from '../../public/assets/icons/system';
@@ -201,6 +202,15 @@ export default function HomePage() {
   const [continentId, setContinentId] = useState<string>('ALL');
   const [isFilterModalOpen, setIsFilterModalOpen] = useState<boolean>(false);
   const router = useRouter();
+  const { accompany, fetchAccompany } = useAccompanyStore();
+
+  useEffect(() => {
+    fetchAccompany();
+  }, [fetchAccompany]);
+
+  if (!accompany) {
+    return <div>loading</div>;
+  }
 
   const goToPopularCityPage = (cityName: string) => {
     router.push(`/popular-city/${cityName}`);

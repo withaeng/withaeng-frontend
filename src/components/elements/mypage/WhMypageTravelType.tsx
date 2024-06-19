@@ -1,12 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
+import useStore from '@/store/UserStore';
 import WhMoreButton from './WhMoreButton';
 
 export default function WhMypageTravelType() {
   const [chipList, setChipList] = useState<string[]>([]);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+
+  const { user, fetchUser } = useStore();
+
+  useEffect(() => {
+    fetchUser;
+  }, [fetchUser]);
 
   function handleChip(value: string) {
     if (!chipList.includes(value)) {
@@ -27,7 +34,7 @@ export default function WhMypageTravelType() {
     {
       id: 0,
       title: '당신의 MBTI는 무엇인가요?',
-      mbtiList: [
+      mbti: [
         { id: 0, type: 'ISTJ' },
         { id: 1, type: 'ISTP' },
         { id: 2, type: 'ISFJ' },
@@ -50,7 +57,7 @@ export default function WhMypageTravelType() {
     {
       id: 1,
       title: '여행 선호지역은 어디인가요?',
-      favorAreaList: [
+      preferTravelType: [
         { id: 0, type: '국내' },
         { id: 1, type: '해외', status: 'true' },
       ],
@@ -59,7 +66,7 @@ export default function WhMypageTravelType() {
     {
       id: 2,
       title: '여행 관심사는 어떻게 되세요?',
-      interestList: [
+      preferTravelThemes: [
         { id: 0, type: '사진' },
         { id: 1, type: '음식' },
         { id: 2, type: '관광지', status: 'true' },
@@ -78,7 +85,7 @@ export default function WhMypageTravelType() {
     {
       id: 3,
       title: '여행에서의 소비 스타일은 어때요?',
-      spendtypeList: [
+      consumeStyle: [
         { id: 0, type: '가성비' },
         { id: 1, type: '쓸 때 쓰는 스타일' },
         { id: 2, type: '황제투어', status: 'true' },
@@ -88,7 +95,7 @@ export default function WhMypageTravelType() {
     {
       id: 4,
       title: '못 먹는 음식 있으세요?',
-      dontFoodList: [
+      foodRestrictions: [
         { id: 0, type: '갑각류' },
         { id: 1, type: '해산물' },
         { id: 2, type: '매운 음식' },
@@ -106,7 +113,7 @@ export default function WhMypageTravelType() {
     {
       id: 5,
       title: '원하는 동행자의 성별이 있나요?',
-      genderList: [
+      preferAccompanyGender: [
         { id: 0, type: '남성' },
         { id: 1, type: '여성' },
         { id: 2, type: '상관 없음', status: 'true' },
@@ -116,7 +123,7 @@ export default function WhMypageTravelType() {
     {
       id: 6,
       title: '흡연은 어떻게 하세요?',
-      smokeList: [
+      smokingType: [
         { id: 0, type: '자주 하는 편' },
         { id: 1, type: '선택적 흡연' },
         { id: 2, type: '금연 중' },
@@ -127,7 +134,7 @@ export default function WhMypageTravelType() {
     {
       id: 7,
       title: '음주는 어떻게 하세요?',
-      drinkList: [
+      drinkingType: [
         { id: 0, type: '자주 하는 편' },
         { id: 1, type: '선택적 음주' },
         { id: 2, type: '금주 중', status: 'true' },
@@ -148,8 +155,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.mbtiList &&
-                item.mbtiList.map((option) => (
+              {item.mbti &&
+                item.mbti.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -169,8 +176,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.favorAreaList &&
-                item.favorAreaList.map((option) => (
+              {item.preferTravelType &&
+                item.preferTravelType.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -190,8 +197,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.interestList &&
-                item.interestList.map((option) => (
+              {item.preferTravelThemes &&
+                item.preferTravelThemes.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -211,8 +218,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.spendtypeList &&
-                item.spendtypeList.map((option) => (
+              {item.consumeStyle &&
+                item.consumeStyle.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -232,8 +239,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.dontFoodList &&
-                item.dontFoodList.map((option) => (
+              {item.foodRestrictions &&
+                item.foodRestrictions.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -253,8 +260,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.genderList &&
-                item.genderList.map((option) => (
+              {item.preferAccompanyGender &&
+                item.preferAccompanyGender.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -274,8 +281,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.smokeList &&
-                item.smokeList.map((option) => (
+              {item.smokingType &&
+                item.smokingType.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}
@@ -295,8 +302,8 @@ export default function WhMypageTravelType() {
           </h4>
           {myTravelType.map((item) => (
             <div key={item.id} className='flex gap-2 w-[510px] flex-wrap'>
-              {item.drinkList &&
-                item.drinkList.map((option) => (
+              {item.drinkingType &&
+                item.drinkingType.map((option) => (
                   <WhChip
                     key={option.id}
                     value={option.type}

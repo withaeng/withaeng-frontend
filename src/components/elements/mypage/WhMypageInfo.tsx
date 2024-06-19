@@ -6,7 +6,7 @@ import WhInput from '@/components/elements/WhInput';
 import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';
 import 'react-circular-progressbar/dist/styles.css';
 import CircleProgressBar from './CircleProgressBar';
-import { useStore } from '../../../store/UserStore';
+import useStore from '@/store/UserStore';
 
 export default function WhMypageInfo() {
   const { user, fetchUser } = useStore();
@@ -18,18 +18,6 @@ export default function WhMypageInfo() {
   if (!user) {
     return <div> Loading...</div>;
   }
-  // const itemList = {
-  //   id: '0',
-  //   name: '기묘림',
-  //   score: '36.5',
-  //   review: 3,
-  //   period: '1년 11개월',
-  //   nick: '기묘림',
-  //   introduce: '안녕하세요. 잘 부탁 드립니다.',
-  //   sex: '여성',
-  //   birth: '2024.04.11',
-  //   circularPercentage: 88,
-  // };
 
   const infoItems = [
     { value: user.score, label: '매너점수' },

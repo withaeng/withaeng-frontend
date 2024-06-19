@@ -8,7 +8,7 @@ import {
 } from '../../../public/assets/icons/arrow';
 
 const defaultTooltipCss =
-  'absolute flex justify-center items-center inline-block whitespace-nowrap my-2 px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
+  'z-30 absolute flex justify-center items-center inline-block whitespace-nowrap my-2 px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
 
 let positionCss = '';
 
