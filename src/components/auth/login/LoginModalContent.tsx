@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import useAuth from '@/context/useAuth';
+import useAuth from '@/hooks/useAuth';
 import WhButton from '@/components/elements/WhButton';
 import WhInput from '@/components/elements/WhInput';
 import {

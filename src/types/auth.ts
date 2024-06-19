@@ -26,3 +26,9 @@ export interface AuthModalProps {
   onClose: () => void;
   onOpen: (value: AuthModalType) => void;
 }
+
+export interface UserResponse {
+  userId: number;
+  email: string;
+  accessToken: string;
+}

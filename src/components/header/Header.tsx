@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import useAuth from '@/context/useAuth';
+import { getCookie } from 'cookies-next';
+import useAuth from '@/hooks/useAuth';
 import Container from '../Container';
 import Logo from './Logo';
 import WhButton from '../elements/WhButton';
@@ -16,9 +17,10 @@ const mypageGnbCss =
 
 // TODO: GNG profile icon 서버에서 받아서 표시
 export default function Header() {
-  const { user } = useAuth();
   const [isOpenMymenu, setIsOpenMymenu] = useState(false);
   const mymenuRef = useRef<HTMLUListElement>(null);
+  const session = getCookie('accessToken');
+  const { signout } = useAuth();
 
   // mymenu popover 기능
   useEffect(() => {
@@ -71,11 +73,9 @@ export default function Header() {
               ref={mymenuRef}
               className='py-2 bg-nutral-white-02 shadow-modal absolute top-15 right-0 w-[200px]'
             >
-              {user ? (
+              {session ? (
                 <>
-                  <li className='text-primary-pressing py-3 px-5'>
-                    같이행_이름명이노출됨
-                  </li>
+                  <li className='text-primary-pressing py-3 px-5'>같이행</li>
                   <Link href='/mypage'>
                     <li className={mypageGnbCss}>마이페이지</li>
                   </Link>
@@ -85,9 +85,13 @@ export default function Header() {
                   <Link href='/mypage'>
                     <li className={mypageGnbCss}>배지관리</li>
                   </Link>
-                  <Link href='/mypage'>
+                  <button
+                    type='button'
+                    className='w-full text-start'
+                    onClick={signout}
+                  >
                     <li className={mypageGnbCss}>로그아웃</li>
-                  </Link>
+                  </button>
                 </>
               ) : (
                 <>

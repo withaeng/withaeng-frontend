@@ -5,7 +5,7 @@ import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
 import WhCalendar from '@/components/elements/WhCalendar';
 import { UserSignUpForm } from '@/types/auth';
-import useAuth from '@/context/useAuth';
+import useAuth from '@/hooks/useAuth';
 import PasswordInput from '../PasswordInput';
 
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
