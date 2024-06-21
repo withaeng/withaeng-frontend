@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { UserResponse, UserSignIn, UserSignUp } from '@/types/auth';
 import { useMutation } from '@tanstack/react-query';
 import { ApiResponse } from '@/types/api';
-import { apiPost } from '@/utils/api';
+import { apiPost, apiPut } from '@/utils/api';
 
 /** sign in api */
 const signInApi = ({
@@ -29,7 +29,7 @@ const validateEmailApi = ({
   email: string;
   code: string;
 }): Promise<ApiResponse<{}>> =>
-  apiPost('/api/v1/auth/validate-email', { email, code });
+  apiPut('/api/v1/auth/validate-email', { email, code });
 
 export default function useAuth() {
   const router = useRouter();
