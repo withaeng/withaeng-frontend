@@ -1,28 +1,6 @@
 import WhChip from '@/components/elements/WhChip';
 import WhInput from '@/components/elements/WhInput';
-
-const mbtiList = [
-  { id: 0, value: 'ISTJ' },
-  { id: 1, value: 'ISTP' },
-  { id: 2, value: 'ISFJ' },
-  { id: 3, value: 'ISFP' },
-  { id: 4, value: 'INFJ' },
-  { id: 5, value: 'INTP' },
-  { id: 6, value: 'INFP' },
-  { id: 7, value: 'INTJ' },
-  { id: 8, value: 'ESFJ' },
-  { id: 9, value: 'ESFP' },
-  { id: 10, value: 'ESTJ' },
-  { id: 11, value: 'ENTP' },
-  { id: 12, value: 'ESTP' },
-  { id: 13, value: 'ENFP' },
-  { id: 14, value: 'ENTJ' },
-  { id: 15, value: 'ENFJ' },
-];
-const preferRegionList = [
-  { id: 0, value: '국내' },
-  { id: 1, value: '해외' },
-];
+import { mbtiList, preferTravelTypeList } from '@/types/user';
 
 export default function SignUpPreferStep1ModalContent({
   nickname,
@@ -36,7 +14,7 @@ export default function SignUpPreferStep1ModalContent({
   handleNickname: (value: string) => void;
   mbti: string[];
   handleMbtiChip: (value: string) => void;
-  preferRegion: string[];
+  preferRegion: string;
   handleRegionChip: (value: string) => void;
 }) {
   return (
@@ -75,7 +53,7 @@ export default function SignUpPreferStep1ModalContent({
         <div>
           <p className='mb-3'>여행 선호지역은 어디인가요?</p>
           <div className='flex gap-2 flex-wrap'>
-            {preferRegionList.map((item) => (
+            {preferTravelTypeList.map((item) => (
               <WhChip
                 key={item.id}
                 checked={preferRegion.includes(item.value)}

@@ -8,6 +8,7 @@ import Step3ModalContent from '@/components/auth/prefer/Step3ModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useRouter } from 'next/navigation';
+import useUser from '@/hooks/useUser';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
@@ -22,20 +23,35 @@ function StepBar({ value }: { value: number }): React.ReactNode {
 
 export default function PreferModalPage() {
   const router = useRouter();
+  const { updateUserDetail } = useUser();
   const [step, setStep] = useState(1);
 
   // step 1 : state
   const [nickname, setNickname] = useState<string>('');
   const [mbti, setMbti] = useState<string[]>([]);
-  const [preferRegion, setPreferRegion] = useState<string[]>([]);
+  const [preferRegion, setPreferRegion] = useState<string>('');
   // step 2 : state
   const [interests, setInterests] = useState<string[]>([]);
-  const [consume, setConsume] = useState<string[]>([]);
+  const [consume, setConsume] = useState<string>('');
   const [cantEat, setCantEat] = useState<string[]>([]);
   // step 3 : state
-  const [gender, setGender] = useState<string[]>([]);
-  const [smoking, setSmoking] = useState<string[]>([]);
-  const [drinking, setDrinking] = useState<string[]>([]);
+  const [gender, setGender] = useState<string>('');
+  const [smoking, setSmoking] = useState<string>('');
+  const [drinking, setDrinking] = useState<string>('');
+
+  const updateData = () => {
+    updateUserDetail.mutate({
+      nickname,
+      mbti,
+      preferTravelType: preferRegion,
+      preferTravelThemes: interests,
+      consumeStyle: consume,
+      foodRestrictions: cantEat,
+      preferAccompanyGender: gender,
+      smokingType: smoking,
+      drinkingType: drinking,
+    });
+  };
 
   // step 1 : function
   function handleNickname(value: string) {
@@ -50,11 +66,7 @@ export default function PreferModalPage() {
     }
   }
   function handleRegionChip(value: string) {
-    if (!preferRegion.includes(value)) {
-      setPreferRegion((prev) => [...prev, value]);
-    } else {
-      setPreferRegion((prev) => prev.filter((item) => item !== value));
-    }
+    setPreferRegion(value);
   }
   // step 2 : function
   function handleInterestsChip(value: string) {
@@ -65,11 +77,7 @@ export default function PreferModalPage() {
     }
   }
   function handleConsumeChip(value: string) {
-    if (!consume.includes(value)) {
-      setConsume((prev) => [...prev, value]);
-    } else {
-      setConsume((prev) => prev.filter((item) => item !== value));
-    }
+    setConsume(value);
   }
   function handleCantEatChip(value: string) {
     if (!cantEat.includes(value)) {
@@ -80,26 +88,19 @@ export default function PreferModalPage() {
   }
   // step 3 : function
   function handleGenderChip(value: string) {
-    if (!gender.includes(value)) {
-      setGender((prev) => [...prev, value]);
-    } else {
-      setGender((prev) => prev.filter((item) => item !== value));
-    }
+    setGender(value);
   }
   function handleSmokingChip(value: string) {
-    if (!smoking.includes(value)) {
-      setSmoking((prev) => [...prev, value]);
-    } else {
-      setSmoking((prev) => prev.filter((item) => item !== value));
-    }
+    setSmoking(value);
   }
   function handleDrinkingChip(value: string) {
-    if (!drinking.includes(value)) {
-      setDrinking((prev) => [...prev, value]);
-    } else {
-      setDrinking((prev) => prev.filter((item) => item !== value));
-    }
+    setDrinking(value);
   }
+
+  const handleClose = () => {
+    updateData();
+    router.replace('/');
+  };
 
   // change route
   const onPrevClick = () => {
@@ -107,18 +108,7 @@ export default function PreferModalPage() {
   };
   const onNextClick = () => {
     if (step === 3) {
-      console.log(`
-nickname : ${nickname}, 
-mbti : ${mbti}, 
-preferRegion : ${preferRegion}, 
-interests : ${interests}, 
-consume : ${consume}, 
-cantEat : ${cantEat}, 
-gender : ${gender}, 
-smoking : ${smoking}, 
-drinking : ${drinking}, 
-      `);
-      router.replace('/');
+      handleClose();
     } else {
       setStep((prev) => prev + 1);
     }
@@ -127,7 +117,7 @@ drinking : ${drinking},
   return (
     <WhModal
       isOpen
-      onClose={() => router.replace('/')}
+      onClose={handleClose}
       className='px-[85px] py-[72px] h-[800px]'
     >
       <div className='flex flex-col h-full'>
