@@ -1,143 +1,28 @@
 'use client';
 
 import Image from 'next/image';
-import WhButton from '../WhButton';
+import { useState } from 'react';
 import { Pencil20Icon } from '../../../../public/assets/icons/edit';
 import { PaperclipIcon } from '../../../../public/assets/icons/edit';
-import { CheckIcon } from '../../../../public/assets/icons/menu';
 import { ChatIcon } from '../../../../public/assets/icons/communicate';
-import { ReportIcon } from '../../../../public/assets/icons/communicate';
+// import {ChatIcon} from '../../../../public/assets/images/chat.png';
 import { UsersGroupIcon } from '../../../../public/assets/icons/communicate';
 import { CalendarCheckIcon } from '../../../../public/assets/icons/communicate';
 import { LinkIcon } from '../../../../public/assets/icons/edit';
 import { JoinTypeIcon } from '../../../../public/assets/icons/communicate';
 import { GenderIcon } from '../../../../public/assets/icons/communicate';
 import { MapPinIcon } from '../../../../public/assets/icons/communicate';
-import { Close20Icon } from '../../../../public/assets/icons/menu';
-import WhCard from '../WhCard';
 
 const listCss = 'flex items-center gap-6';
-
-const requestCss = 'flex gap-1 items-center mt-3';
 
 const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
 
 const detailBtn =
   'flex items-center gap-1 text-nutral-black-04 text-caption-01';
 
-const accompanyList = [
-  {
-    id: 2,
-    status: 'joining',
-    profileImageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    nickname: '도쿄피플',
-    title:
-      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-    tags: null,
-    startTripDate: '2024-07-15',
-    endTripDate: '2024-07-16',
-    accompanyCnt: 4,
-    accompaniedCnt: 2,
-    thumbnailImageUrl:
-      'https://images.unsplash.com/photo-1601699233172-1bb3354b845b?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    continent: 'EU',
-  },
-  {
-    id: 3,
-    status: 'joining',
-    profileImageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    nickname: '도쿄피플',
-    title:
-      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-    tags: ['태그 1', '태그 2', '태그 3'],
-    startTripDate: '2024-08-15',
-    endTripDate: '2024-08-16',
-    accompanyCnt: 4,
-    accompaniedCnt: 4,
-    thumbnailImageUrl:
-      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    continent: 'SEA',
-  },
-  {
-    id: 4,
-    status: 'joining',
-    profileImageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    nickname: '도쿄피플',
-    title:
-      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-    tags: ['태그 1', '태그 2', '태그 3'],
-    startTripDate: '2024-08-15',
-    endTripDate: '2024-08-16',
-    accompanyCnt: 4,
-    accompaniedCnt: 4,
-    thumbnailImageUrl:
-      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    continent: 'JP',
-  },
-  {
-    id: 5,
-    status: 'joining',
-    profileImageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    nickname: '도쿄피플',
-    title:
-      '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-    tags: ['태그 1', '태그 2', '태그 3'],
-    startTripDate: '2024-08-15',
-    endTripDate: '2024-08-16',
-    accompanyCnt: 4,
-    accompaniedCnt: 4,
-    thumbnailImageUrl:
-      'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    continent: 'NA',
-  },
-];
-
-const showAccompanyList = () => {
-  <>
-    {accompanyList.map((accompany) => (
-      <li key={accompany.id}>
-        <WhCard
-          status={accompany.status}
-          profileImageUrl={accompany.profileImageUrl}
-          nickname={accompany.nickname}
-          title={accompany.title}
-          tags={accompany.tags}
-          startTripDate={accompany.startTripDate}
-          endTripDate={accompany.endTripDate}
-          accompanyCnt={accompany.accompanyCnt}
-          accompaniedCnt={accompany.accompaniedCnt}
-          thumbnailImageUrl={accompany.thumbnailImageUrl}
-        />
-      </li>
-    ))}
-  </>;
-  return (
-    <>
-      {accompanyList.map((accompany) => (
-        <li key={accompany.id}>
-          <WhCard
-            status={accompany.status}
-            profileImageUrl={accompany.profileImageUrl}
-            nickname={accompany.nickname}
-            title={accompany.title}
-            tags={accompany.tags}
-            startTripDate={accompany.startTripDate}
-            endTripDate={accompany.endTripDate}
-            accompanyCnt={accompany.accompanyCnt}
-            accompaniedCnt={accompany.accompaniedCnt}
-            thumbnailImageUrl={accompany.thumbnailImageUrl}
-          />
-        </li>
-      ))}
-    </>
-  );
-};
-
 export default function WhDetailInfo() {
+  const [lookMore, setLookMore] = useState(false);
+
   const detailList = {
     id: '0',
     thumbnailImageUrl: '/assets/images/thumbnailImageUrl.png',
@@ -280,390 +165,176 @@ export default function WhDetailInfo() {
     ],
   };
 
-  const itemList = [
-    {
-      host: true,
-      id: 0,
-      status: 'joining',
-      period: '1년 11개월',
-      profileImageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      nickname: '도쿄피플',
-      title:
-        '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: [
-        { id: 0, title: '사진' },
-        { id: 1, title: '음식' },
-        { id: 2, title: '관광지' },
-        { id: 3, title: '자연' },
-        { id: 4, title: '카페' },
-        { id: 5, title: '박물관' },
-        { id: 6, title: '전시관' },
-        { id: 7, title: '미술관' },
-      ],
+  const isHost = false;
 
-      startTripDate: '1년 11개월',
-      endTripDate: '2024-03-16',
-      accompanyCnt: 3,
-      accompaniedCnt: 1,
-      thumbnailImageUrl:
-        'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-      host: true,
-      id: 1,
-      status: 'joining',
-      period: '1년 11개월',
-      profileImageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      nickname: '도쿄피플',
-      title:
-        '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: null,
-      startTripDate: '1년 11개월',
-      endTripDate: '2024-03-16',
-      accompanyCnt: 3,
-      accompaniedCnt: 1,
-      thumbnailImageUrl:
-        'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-      host: false,
-      id: 2,
-      status: 'joined',
-      period: '1년 11개월',
-      profileImageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      nickname: '도쿄피플',
-      title:
-        '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: null,
-      startTripDate: '30일',
-      endTripDate: '2024-07-16',
-      accompanyCnt: 4,
-      accompaniedCnt: 2,
-      thumbnailImageUrl:
-        'https://images.unsplash.com/photo-1601699233172-1bb3354b845b?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      host: true,
-      id: 2,
-      status: 'accompanied',
-      period: '1년 11개월',
-      profileImageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      nickname: '도쿄피플',
-      title:
-        '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: ['태그 1', '태그 2', '태그 3'],
-      startTripDate: '2024-08-15',
-      endTripDate: '2024-08-16',
-      accompanyCnt: 4,
-      accompaniedCnt: 4,
-      thumbnailImageUrl:
-        'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      host: false,
-      id: 2,
-      status: 'accompanied',
-      period: '1년 11개월',
-      profileImageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      nickname: '도쿄피플',
-      title:
-        '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
-      tags: ['태그 1', '태그 2', '태그 3'],
-      startTripDate: '2024-08-15',
-      endTripDate: '2024-08-16',
-      accompanyCnt: 4,
-      accompaniedCnt: 4,
-      thumbnailImageUrl:
-        'https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-  ];
-
-  const isHost = true;
+  const handleMoreClick = () => {
+    setLookMore(!lookMore);
+  };
 
   return (
-    <div className='flex flex-col items-center'>
-      <Image
-        src={detailList.thumbnailImageUrl}
-        width={1240}
-        height={460}
-        alt='profile-image'
-      />
-      <div className='flex gap-5 my-5 max-w-[1240px]'>
-        {/* left start */}
-        <div className='max-w-[847px]'>
-          <div>
-            <div className='flex items-center justify-between text-nutral-black-04 text-caption-02 mb-5'>
-              {/* left */}
-              <div className='flex gap-6'>
-                <span>게시 {detailList.regist_at}</span>
-                <span>조회수 {detailList.view}</span>
-              </div>
+    <div className='max-w-[847px]'>
+      <div className='px-5'>
+        <div className='flex items-center justify-between text-nutral-black-04 text-caption-02 mb-5'>
+          {/* left */}
+          <div className='flex gap-6'>
+            <span>게시 {detailList.regist_at}</span>
+            <span>조회수 {detailList.view}</span>
+          </div>
 
-              {/* right */}
-              <div className='flex gap-6'>
-                <ChatIcon />
-                <LinkIcon />
+          {/* right */}
+          <div className='flex gap-6'>
+            <ChatIcon />
+            <LinkIcon />
+          </div>
+        </div>
+        <div className='flex items-center  justify-between'>
+          <h1 className='text-nutral-black-02 text-headline-03'>
+            {detailList.title}
+          </h1>
+          <div className='flex gap-5'>
+            {isHost ? null : (
+              <div className={detailBtn}>
+                <Pencil20Icon />
+                <span>수정하기</span>
               </div>
-            </div>
-            <div className='flex items-center  justify-between'>
-              <h1 className='text-nutral-black-02 text-headline-03'>
-                {detailList.title}
-              </h1>
-              <div className='flex gap-5'>
-                {isHost && (
-                  <div className={detailBtn}>
-                    <Pencil20Icon />
-                    <span>수정하기</span>
-                  </div>
-                )}
-                <div className={detailBtn}>
-                  <ReportIcon />
-                  <span>신고하기</span>
-                </div>
-              </div>
-            </div>
-            <div className='flex gap-5'>
-              {detailList.tags.map((tag) => (
-                <span className='mt-2 text-primary-main text-subtitle-02'>
-                  {tag.title}
-                </span>
-              ))}
-            </div>
+            )}
+          </div>
+        </div>
+        <div className='flex gap-5'>
+          {detailList.tags.map((tag) => (
+            <span className='mt-2 text-primary-main text-subtitle-02'>
+              {tag.title}
+            </span>
+          ))}
+        </div>
 
-            <h2 className={titleCss}>동행 정보</h2>
-            <ul className='flex flex-col gap-3 text-nutral-black-03 text-subtitle-01 bg-nutral-white-02 p-5 max-h-[244px]'>
-              <li className={listCss}>
-                <MapPinIcon />
-                {detailList.location}
-              </li>
-              <li className='flex items-center'>
-                <UsersGroupIcon className='mr-6 ' />
-                동행 인원&nbsp;
-                <span>
-                  <span className='text-primary-main'>
-                    {' '}
-                    {detailList.companions}{' '}
-                  </span>
-                  / {detailList.companionsCount}
-                </span>
-                <Image
-                  className='inline object-cover rounded-full ml-2'
-                  src={detailList.profileImageUrl}
-                  width={24}
-                  height={24}
-                  alt='프로필 이미지'
-                />
-                <span className='text-nutral-black-05 ml-14'>
-                  호스트 승인 대기 인원 {detailList.wait}
-                </span>
-                <Image
-                  className='inline object-cover rounded-full ml-2'
-                  src={detailList.profileImageUrl}
-                  width={24}
-                  height={24}
-                  alt='프로필 이미지'
-                />
-              </li>
-              <li className={listCss}>
-                <CalendarCheckIcon />
-                {detailList.period}
-                {/* <span className='text-nutral-black-01'>
+        <h2 className={titleCss}>동행 정보</h2>
+        <ul className='flex flex-col gap-3 text-nutral-black-03 text-subtitle-01 bg-nutral-white-02 p-5 max-h-[244px]'>
+          <li className={listCss}>
+            <MapPinIcon />
+            {detailList.location}
+          </li>
+          <li className='flex items-center'>
+            <UsersGroupIcon className='mr-6 ' />
+            동행 인원&nbsp;
+            <span>
+              <span className='text-primary-main'>
+                {detailList.companions}/{detailList.companionsCount}
+              </span>
+            </span>
+            <Image
+              className='inline object-cover rounded-full ml-2'
+              src={detailList.profileImageUrl}
+              width={24}
+              height={24}
+              alt='프로필 이미지'
+            />
+            <span className='text-nutral-black-05 ml-14'>
+              호스트 승인 대기 인원 {detailList.wait}
+            </span>
+            <Image
+              className='inline object-cover rounded-full ml-2'
+              src={detailList.profileImageUrl}
+              width={24}
+              height={24}
+              alt='프로필 이미지'
+            />
+          </li>
+          <li className={listCss}>
+            <CalendarCheckIcon />
+            {detailList.period}
+            {/* <span className='text-nutral-black-01'>
                 호스트 승인 대기 인원 {detailList.wait}
               </span> */}
-              </li>
+          </li>
 
-              <li className={listCss}>
-                <JoinTypeIcon />
-                {detailList.age}
-              </li>
-              <li className={listCss}>
-                <GenderIcon />
-                {detailList.gender}
-              </li>
-              <li className={listCss}>
-                <PaperclipIcon />
-                {detailList.link}
-              </li>
-            </ul>
+          <li className={listCss}>
+            <JoinTypeIcon />
+            {detailList.age}
+          </li>
+          <li className={listCss}>
+            <GenderIcon />
+            {detailList.gender}
+          </li>
+          <li className={listCss}>
+            <PaperclipIcon />
+            {detailList.link}
+          </li>
+        </ul>
 
-            <h2 className={titleCss}>동행 내용</h2>
-            <div className='max-h-[170px] text-nutral-black-03 text-body-03'>
-              {detailList.content}
-            </div>
-          </div>
-          {/* 댓글 리스트 */}
-          <div>
-            <h2 className={titleCss}>
-              댓글&nbsp;<span className='text-primary-main'>N</span>
-            </h2>
-            <div className='flex flex-col gap-2'>
-              <div className='flex items-center gap-5'>
-                <Image
-                  className='inline object-cover rounded-full h-full'
-                  src={detailList.profileImageUrl}
-                  width={48}
-                  height={48}
-                  alt='프로필 이미지'
-                />
-                <div>
-                  <p className='text-nutral-black-02 text-Subtitle-01'>
-                    도쿄피플도쿄피플
-                  </p>
-                  <p className='text-caption-01 text-black-04 mt-[5px]'>
-                    1시간 전
-                  </p>
-                </div>
-              </div>
-              <p className='text-body-02 text-nutral-black-03'>
-                Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada
-                id duis purus pretium varius. ...더보기
-              </p>
-
-              <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
-                <input
-                  placeholder='답글을 입력해주세요. (최대 100자)'
-                  className=''
-                />
-                <span className='text-subtitle-02 text-primary-main'>
-                  댓글남기기
-                </span>
-              </div>
-
-              {/* reply */}
-              <div className='flex items-center gap-5 mt-10'>
-                <Image
-                  className='inline object-cover rounded-full h-full'
-                  src={detailList.profileImageUrl}
-                  width={48}
-                  height={48}
-                  alt='프로필 이미지'
-                />
-                <div>
-                  <p className='text-nutral-black-02 text-Subtitle-01'>
-                    다른 게스트
-                  </p>
-                  <p className='text-caption-01 text-black-04 mt-[5px]'>
-                    1시간 전
-                  </p>
-                </div>
-              </div>
-              <p className='text-body-02 text-nutral-black-03'>
-                Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada
-                id duis purus pretium varius. ...더보기
-              </p>
-              <p className='text-caption-01 text-primary-main'>답글달기</p>
-            </div>
-
-            {/* 댓글남기기  */}
-            <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
-              <input
-                placeholder='답글을 입력해주세요. (최대 100자)'
-                className=''
-              />
-              <span className='text-subtitle-02 text-primary-main'>
-                댓글남기기
-              </span>
-            </div>
-          </div>
+        <h2 className={titleCss}>동행 내용</h2>
+        <div className='max-h-[170px] text-nutral-black-03 text-body-03'>
+          {detailList.content}
         </div>
-        {/* left end */}
-
-        {/* right start */}
-        <div className='max-w-[393px]'>
-          <h3 className='mb-3 text-subtitle-01'>
-            {isHost ? '동행장' : `승인 요청 리스트 ${itemList.length}`}
-          </h3>
-          <div className='max-h-[412px] overflow-scroll'>
-            {detailList.itemList.map((accompany) => (
-              <div
-                className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'
-                key={accompany.nickname}
-              >
-                <div className='flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5'>
-                  <Image
-                    className='inline object-cover rounded-full h-full'
-                    src={accompany.profileImageUrl}
-                    width={48}
-                    height={48}
-                    alt='프로필 이미지'
-                  />
-                  <div>
-                    <p className='text-nutral-black-02 text-subtitle-01 mb-[5px]'>
-                      {accompany.nickname}
-                      <span className='ml-3 py-[2px] px-2 w-[43px] h-6 rounded-xl border border-primary-main text-primary-main text-subtitle-02'>
-                        51.5
-                      </span>
-                    </p>
-                    <p className='text-nutral-black-04 text-caption-01'>
-                      {accompany.age} &nbsp;∙&nbsp; {accompany.gender}
-                      &nbsp;∙&nbsp;{accompany.period}
-                    </p>
-
-                    {isHost ? (
-                      ''
-                    ) : (
-                      <div>
-                        {accompany.status === 'joining' && (
-                          <div className='flex gap-[10px] mt-3'>
-                            <WhButton
-                              fitContent
-                              size='sm'
-                              onClick={() => {}}
-                              outLine
-                            >
-                              취소
-                            </WhButton>
-                            <WhButton fitContent size='sm' onClick={() => {}}>
-                              승인
-                            </WhButton>
-                          </div>
-                        )}
-                        {accompany.status === 'joined' && (
-                          <div className={requestCss}>
-                            <CheckIcon
-                              width={20}
-                              height={20}
-                              stroke='#36C304'
-                            />
-                            <span className='text-caption-success text-body-03 mt-1'>
-                              승인하셨습니다. 벌써 기대가 되네요!
-                            </span>
-                          </div>
-                        )}
-                        {accompany.status !== 'joining' &&
-                          accompany.status !== 'joined' && (
-                            <div className={requestCss}>
-                              <Close20Icon stroke='#EC5C53' />
-                              <span className='text-caption-main  text-body-03 mt-1'>
-                                동행이 취소됐습니다.
-                              </span>
-                            </div>
-                          )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <WhButton size='md' onClick={() => {}}>
-            동행 확정
-          </WhButton>
-        </div>
-        {/* right end */}
       </div>
-      {/* 추천 동행 게시글 */}
-      <div className=''>
-        <h2 className={titleCss}>추천 동행 게시글</h2>
+      {/* 댓글 리스트 */}
+      <div>
+        <h2 className={titleCss}>
+          댓글&nbsp;<span className='text-primary-main'>N</span>
+        </h2>
+        <div className='flex flex-col gap-2'>
+          <div className='flex items-center gap-5'>
+            <Image
+              className='inline object-cover rounded-full h-full'
+              src={detailList.profileImageUrl}
+              width={48}
+              height={48}
+              alt='프로필 이미지'
+            />
+            <div>
+              <p className='text-nutral-black-02 text-Subtitle-01'>
+                도쿄피플도쿄피플
+              </p>
+              <p className='text-caption-01 text-black-04 mt-[5px]'>1시간 전</p>
+            </div>
+          </div>
+          <p className='text-body-02 text-nutral-black-03'>
+            Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada id
+            duis purus pretium varius. ...더보기
+          </p>
 
-        <section className='w-full h-full mb-[120px]'>
-          <ul className='flex flex-wrap gap-5'>{showAccompanyList()}</ul>
-        </section>
+          <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+            <input
+              placeholder='답글을 입력해주세요. (최대 100자)'
+              className=''
+            />
+            <span className='text-subtitle-02 text-primary-main'>
+              댓글남기기
+            </span>
+          </div>
+
+          {/* reply */}
+          <div className='flex items-center gap-5 mt-10'>
+            <Image
+              className='inline object-cover rounded-full h-full'
+              src={detailList.profileImageUrl}
+              width={48}
+              height={48}
+              alt='프로필 이미지'
+            />
+            <div>
+              <p className='text-nutral-black-02 text-Subtitle-01'>
+                다른 게스트
+              </p>
+              <p className='text-caption-01 text-black-04 mt-[5px]'>1시간 전</p>
+            </div>
+          </div>
+          <div className={`flex items-center  ${lookMore ? 'flex-wrap' : ''}`}>
+            <p className={`text-body-02 text-nutral-black-03  ${!lookMore && 'truncate'}`}>
+              {detailList.content}
+            </p>
+              <button type='button' onClick={handleMoreClick} className={`text-nutral-black-05 ${!lookMore && 'w-3/5'}`}>
+                {lookMore ? '접기' : '더보기'}
+              </button>
+          </div>
+          <p className='text-caption-01 text-primary-main'>답글달기</p>
+        </div>
+
+        {/* 댓글남기기  */}
+        <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+          <input placeholder='답글을 입력해주세요. (최대 100자)' className='' />
+          <span className='text-subtitle-02 text-primary-main'>댓글남기기</span>
+        </div>
       </div>
     </div>
   );
