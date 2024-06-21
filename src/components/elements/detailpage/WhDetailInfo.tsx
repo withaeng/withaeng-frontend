@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { Pencil20Icon } from '../../../../public/assets/icons/edit';
 import { PaperclipIcon } from '../../../../public/assets/icons/edit';
 import { ChatIcon } from '../../../../public/assets/icons/communicate';
-// import {ChatIcon} from '../../../../public/assets/images/chat.png';
 import { UsersGroupIcon } from '../../../../public/assets/icons/communicate';
 import { CalendarCheckIcon } from '../../../../public/assets/icons/communicate';
 import { LinkIcon } from '../../../../public/assets/icons/edit';
@@ -193,10 +192,10 @@ export default function WhDetailInfo() {
           </h1>
           <div className='flex gap-5'>
             {isHost ? null : (
-              <div className={detailBtn}>
+              <button type='button' className={detailBtn}>
                 <Pencil20Icon />
                 <span>수정하기</span>
-              </div>
+              </button>
             )}
           </div>
         </div>
@@ -288,19 +287,22 @@ export default function WhDetailInfo() {
               <p className='text-caption-01 text-black-04 mt-[5px]'>1시간 전</p>
             </div>
           </div>
-          <p className='text-body-02 text-nutral-black-03'>
-            Lorem ipsum dolor sit amet consectetur. Porta ut diam malesuada id
-            duis purus pretium varius. ...더보기
-          </p>
-
-          <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+          <div className={`flex items-center max-w-[735px]  ${lookMore ? 'flex-wrap' : ''}`}>
+            <p className={`text-body-02 text-nutral-black-03  ${!lookMore && 'truncate'}`}>
+              {detailList.content}
+            </p>
+              <button type='button' onClick={handleMoreClick} className={`text-nutral-black-05 ${!lookMore && 'w-4/5'}`}>
+                {lookMore ? '접기' : '더보기'}
+              </button>
+          </div>
+          <div className='w-[807px] flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
             <input
               placeholder='답글을 입력해주세요. (최대 100자)'
-              className=''
+              className='min-w-[700px] placeholder:text-nutral-white-04 placeholder:text-body-02 outline-0'
             />
-            <span className='text-subtitle-02 text-primary-main'>
+            <button type='button' className='text-subtitle-02 text-primary-main'>
               댓글남기기
-            </span>
+            </button>
           </div>
 
           {/* reply */}
@@ -319,11 +321,11 @@ export default function WhDetailInfo() {
               <p className='text-caption-01 text-black-04 mt-[5px]'>1시간 전</p>
             </div>
           </div>
-          <div className={`flex items-center  ${lookMore ? 'flex-wrap' : ''}`}>
+          <div className={`flex items-center max-w-[735px]  ${lookMore ? 'flex-wrap' : ''}`}>
             <p className={`text-body-02 text-nutral-black-03  ${!lookMore && 'truncate'}`}>
               {detailList.content}
             </p>
-              <button type='button' onClick={handleMoreClick} className={`text-nutral-black-05 ${!lookMore && 'w-3/5'}`}>
+              <button type='button' onClick={handleMoreClick} className={`text-nutral-black-05 ${!lookMore && 'w-4/5'}`}>
                 {lookMore ? '접기' : '더보기'}
               </button>
           </div>
@@ -331,8 +333,9 @@ export default function WhDetailInfo() {
         </div>
 
         {/* 댓글남기기  */}
-        <div className='flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
-          <input placeholder='답글을 입력해주세요. (최대 100자)' className='' />
+        <div className='w-[807px] flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04'>
+          <input placeholder='답글을 입력해주세요. (최대 100자)' className='min-w-[700px] placeholder:text-nutral-white-04 placeholder:text-body-02 outline-0'
+ />
           <span className='text-subtitle-02 text-primary-main'>댓글남기기</span>
         </div>
       </div>
