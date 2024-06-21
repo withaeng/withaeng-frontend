@@ -67,7 +67,11 @@ export default function WhModal({
         <div className='modal-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nutral-white-01 z-50 w-fit rounded shadow-modal'>
           <div className={`w-[680px] ${className}`}>
             {!hideCloseButton && (
-              <button type='button' aria-label='닫기 버튼' onClick={onClose}>
+              <button
+                type='button'
+                aria-label='닫기 버튼'
+                onClick={handleClose}
+              >
                 <CloseIcon
                   width={24}
                   height={24}

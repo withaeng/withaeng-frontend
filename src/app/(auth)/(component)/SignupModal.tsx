@@ -19,7 +19,7 @@ export default function SignUpModalPage() {
   const [termPage, setTermPage] = useState(false);
 
   return (
-    <WhModal isOpen onClose={() => router.back()}>
+    <WhModal isOpen>
       <div className='px-[105px] py-[72px] h-[800px]'>
         {!termPage ? (
           <SignUpModalContent
