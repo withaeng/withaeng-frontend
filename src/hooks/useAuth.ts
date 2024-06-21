@@ -21,6 +21,16 @@ const signUpApi = ({
 }: UserSignUp): Promise<ApiResponse<UserResponse>> =>
   apiPost('/api/v1/auth/sign-up', { email, password, isMale, birth });
 
+/** sign up api */
+const validateEmailApi = ({
+  email,
+  code,
+}: {
+  email: string;
+  code: string;
+}): Promise<ApiResponse<{}>> =>
+  apiPost('/api/v1/auth/validate-email', { email, code });
+
 export default function useAuth() {
   const router = useRouter();
 
@@ -61,5 +71,20 @@ export default function useAuth() {
     router.refresh();
   };
 
-  return { signin, signup, signout };
+  const validateEmail = useMutation({
+    mutationFn: (data: { email: string; code: string }) =>
+      validateEmailApi(data),
+    onSuccess: (data) => {
+      // TODO: 성공/실패 alert 추가
+      if (data.error) {
+        console.error(data.error.code + data.error.message);
+      } else {
+        console.log('성공?', data);
+        router.replace('/prefer');
+      }
+    },
+    onError: (err) => console.error(err),
+  });
+
+  return { signin, signup, signout, validateEmail };
 }
