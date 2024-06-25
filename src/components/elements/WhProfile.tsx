@@ -1,20 +1,18 @@
 'use client';
 
 import Image, { StaticImageData } from 'next/image';
-import SampleProfile from '../../../public/assets/images/profile.png';
+import { useState } from 'react';
 import {
   ThumbsDownIcon,
   ThumbsUpIcon,
 } from '../../../public/assets/icons/profile';
-import { useState } from 'react';
-
 
 interface WhProfileProps {
-  profileImage : StaticImageData | string;
-  nick : string;
-  age : number;
+  profileImage: StaticImageData | string;
+  nick: string;
+  age: number;
   gender: string;
-  score : number;
+  score: number;
   review: number;
   period: string;
   onLikeClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -24,8 +22,17 @@ interface WhProfileProps {
 const defaultBtnCss =
   'flex items-center gap-2 py-2 rounded-[20px] border border-nutral-white-03 bg-nutral-white-01 text-nutral-black-04 text-caption-01';
 
-export default function WhProfile({onLikeClick, onHateClick, profileImage, nick='', age, gender='', score, review, period='' }:WhProfileProps) {
-
+export default function WhProfile({
+  onLikeClick,
+  onHateClick,
+  profileImage,
+  nick = '',
+  age,
+  gender = '',
+  score,
+  review,
+  period = '',
+}: WhProfileProps) {
   const infoItems = [
     { value: score, label: '매너점수' },
     { value: review, label: '후기' },
@@ -47,20 +54,20 @@ export default function WhProfile({onLikeClick, onHateClick, profileImage, nick=
           height={56}
           alt='샘플 이미지'
         />
-        <p className='pb-[5px] text-subtitle-01 text-nutral-black-02'>
-          {nick}
-        </p>
+        <p className='pb-[5px] text-subtitle-01 text-nutral-black-02'>{nick}</p>
         <span className='text-nutral-black-04 text-caption-01'>
-          {age} {gender}
+          {age}&nbsp; ∙ &nbsp;{gender}
         </span>
-        <ul className='flex py-5 gap-4 text-center text-subtitle-02'>
+        <ul className='flex justify-center py-5 pl-4 gap-4 text-center'>
           {infoItems.map((item, index) => (
             <li
               key={item.value}
               className={`flex flex-col ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-4' : ''}`}
             >
-              <p className='mb-2'>{item.value}</p>
-              <span className='text-nutral-black-04 text-caption-01'>
+              <p className='mb-2 text-subtitle-02 text-nutral-black-02'>
+                {item.value}
+              </p>
+              <span className='text-nutral-black-04 text-caption-02'>
                 {item.label}
               </span>
             </li>
@@ -77,7 +84,6 @@ export default function WhProfile({onLikeClick, onHateClick, profileImage, nick=
             onMouseLeave={() => {
               setLikeBtnText('좋아요');
               setIsLikeHover(false);
-
             }}
             onClick={onLikeClick}
           >
