@@ -17,13 +17,18 @@ export default function WhAccompanyRequestInfo() {
   const { isOpen, onOpen, onClose } = useModal();
   const [modalType, setModalType] = useState('');
   const [selectedNickname, setSelectedNickname] = useState('');
+  const [lookMore, setLookMore] = useState(false);
 
-  const isHost = true;
+  const isHost = false;
 
   const handleOpenModal = (type: string, nickname: string) => {
     setModalType(type);
     setSelectedNickname(nickname);
     onOpen();
+  };
+
+  const handleMoreClick = () => {
+    setLookMore(!lookMore);
   };
 
   return (
@@ -33,7 +38,7 @@ export default function WhAccompanyRequestInfo() {
       </h3>
       {isHost ? (
         <div className='max-h-[412px] overflow-scroll'>
-          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'>
+          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded' >
             <div className='flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5'>
               <Image
                 className='object-cover rounded-full h-full'
@@ -54,8 +59,45 @@ export default function WhAccompanyRequestInfo() {
                   &nbsp;∙&nbsp;{detailList.host.period}
                 </p>
 
+                {/* content */}
+                <div
+                  className={`max-w-[261px] mt-3  ${lookMore ? 'flex-wrap' : ''}`}
+                >
+                  <p
+                    className={`text-body-03 text-nutral-black-03  ${!lookMore && 'truncate'}`}
+                  >
+                    {detailList.content}
+                  </p>
+                  <button
+                    type='button'
+                    onClick={handleMoreClick}
+                    className='text-nutral-black-05 text-body-03'
+                  >
+                    {lookMore ? '접기' : '더보기'}
+                  </button>
+                </div>
+
                 {isHost ? (
-                  ''
+                  <WhModal
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    isDismissible={false}
+                  >
+                    <WhModalHeader>동행에 참가하시겠어요?</WhModalHeader>
+                    <div className='mt-10 text-center mb-12'>
+                      <p className='text-nutral-black-04 text-body-02'>
+                        멋진 동행이 되길 기대할게요~!!
+                        <br />
+                        호스트의 승인 후, 취소 시 감점이 부과돼요.
+                      </p>
+                    </div>
+
+                    <WhModalButtonList
+                      leftLabel='아니오'
+                      onClick={onClose}
+                      label='네, 동행을 참가할게요.'
+                    />
+                  </WhModal>
                 ) : (
                   <>
                     <div>
@@ -145,9 +187,9 @@ export default function WhAccompanyRequestInfo() {
               </div>
             </div>
             <div className='flex flex-wrap py-5 px-3 gap-2'>
-            {detailList.host.tags.map((tag) => (
-              <WhChip key={tag.id}>{tag.title}</WhChip>
-            ))}
+              {detailList.host.tags.map((tag) => (
+                <WhChip key={tag.id}>{tag.title}</WhChip>
+              ))}
             </div>
           </div>
         </div>
@@ -156,7 +198,7 @@ export default function WhAccompanyRequestInfo() {
           {detailList.itemList.map((accompany) => (
             <div
               className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'
-              key={accompany.nickname}
+              key={`accompany.nickname-${accompany.id}`}
             >
               <div
                 className={`flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5 ${accompany.status !== 'joining' && accompany.status !== 'joined' ? `opacity-70` : 'null'} `}

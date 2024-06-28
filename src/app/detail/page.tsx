@@ -6,7 +6,6 @@ import WhAccompanyRequestInfo from '@/components/elements/detailpage/WhAccompany
 import WhCard from '@/components/elements/WhCard';
 import detailList from '@/data';
 
-
 const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
 
 const accompanyList = [
@@ -83,7 +82,7 @@ const accompanyList = [
 const showAccompanyList = () => {
   <>
     {accompanyList.map((accompany) => (
-      <li key={accompany.id}>
+      <li key={`${accompany.id}-${accompany.nickname}`}>
         <WhCard
           status={accompany.status}
           profileImageUrl={accompany.profileImageUrl}
@@ -102,7 +101,7 @@ const showAccompanyList = () => {
   return (
     <>
       {accompanyList.map((accompany) => (
-        <li key={accompany.id}>
+        <li key={`${accompany.id}-${accompany.nickname}`}>
           <WhCard
             status={accompany.status}
             profileImageUrl={accompany.profileImageUrl}
@@ -122,7 +121,6 @@ const showAccompanyList = () => {
 };
 
 export default function DetailPage() {
-
   return (
     <div className='flex flex-col items-center'>
       <Image
@@ -133,14 +131,14 @@ export default function DetailPage() {
       />
       <div className='flex gap-5 my-5'>
         {/* left */}
-       <WhDetailInfo />
+        <WhDetailInfo />
 
         {/* right */}
         <WhAccompanyRequestInfo />
       </div>
 
       {/* 추천 동행 게시글 */}
-      <div className=''>
+      <div>
         <h2 className={titleCss}>추천 동행 게시글</h2>
         <section className='w-full h-full mb-[120px]'>
           <ul className='flex flex-wrap gap-5'>{showAccompanyList()}</ul>

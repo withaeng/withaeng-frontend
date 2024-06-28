@@ -24,9 +24,9 @@ const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
 const detailBtn =
   'flex items-center gap-1 text-nutral-black-04 text-caption-01';
 
-export default function WhDetailInfo() {
-  const isHost = false;
+const isHost = false;
 
+export default function WhDetailInfo() {
   return (
     <div className='max-w-[847px]'>
       <div className='px-5'>
@@ -58,7 +58,7 @@ export default function WhDetailInfo() {
         </div>
         <div className='flex gap-5'>
           {detailList.tags.map((tag) => (
-            <span className='mt-2 text-primary-main text-subtitle-02'>
+            <span className='mt-2 text-primary-main text-subtitle-02' key={tag.id}>
               {tag.title}
             </span>
           ))}
@@ -121,7 +121,6 @@ export default function WhDetailInfo() {
         </div>
       </div>
 
-      
       <WhReplyContent />
     </div>
   );
