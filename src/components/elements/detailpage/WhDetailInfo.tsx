@@ -11,6 +11,8 @@ import { LinkIcon } from '../../../../public/assets/icons/edit';
 import { JoinTypeIcon } from '../../../../public/assets/icons/communicate';
 import { GenderIcon } from '../../../../public/assets/icons/communicate';
 import { MapPinIcon } from '../../../../public/assets/icons/communicate';
+import SampleProfile from '../../../../public/assets/images/profile.png';
+
 
 const listCss = 'flex items-center gap-6';
 
@@ -34,7 +36,7 @@ export default function WhDetailInfo() {
       { id: 2, title: '태그2' },
     ],
     profileImageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      SampleProfile,
     nickname: '도쿄피플1',
     name: '기묘림',
     score: '36.5',
@@ -64,7 +66,7 @@ export default function WhDetailInfo() {
         period: '1년 11개월',
 
         profileImageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          SampleProfile,
         nickname: '도쿄피플2',
         title:
           '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
@@ -85,7 +87,7 @@ export default function WhDetailInfo() {
         period: '1년 11개월',
 
         profileImageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          SampleProfile,
         nickname: '도쿄피플3',
         title:
           '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
@@ -106,7 +108,7 @@ export default function WhDetailInfo() {
         period: '1년 11개월',
 
         profileImageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          SampleProfile,
         nickname: '도쿄피플4',
         title:
           '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
@@ -128,7 +130,7 @@ export default function WhDetailInfo() {
         period: '1년 11개월',
 
         profileImageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          SampleProfile,
         nickname: '도쿄피플5',
         title:
           '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
@@ -149,7 +151,7 @@ export default function WhDetailInfo() {
         period: '1년 11개월',
 
         profileImageUrl:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        SampleProfile,
         nickname: '도쿄피플',
         title:
           '위드행 제목이 들어가며 최대 한 줄은 채웁니다. 위드행 제목이 들어가며 최대 한 줄은 채웁니다.',
@@ -242,9 +244,6 @@ export default function WhDetailInfo() {
           <li className={listCss}>
             <CalendarCheckIcon />
             {detailList.period}
-            {/* <span className='text-nutral-black-01'>
-                호스트 승인 대기 인원 {detailList.wait}
-              </span> */}
           </li>
 
           <li className={listCss}>

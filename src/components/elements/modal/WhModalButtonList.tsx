@@ -7,6 +7,7 @@ interface Props {
   prev?: boolean;
   onPrevChlick?: () => void;
   label: string;
+  leftLabel?: string;
   onClick: () => void;
 }
 
@@ -14,6 +15,7 @@ export default function WhModalButtonList({
   prev = false,
   onPrevChlick,
   label,
+  leftLabel,
   onClick,
 }: Props) {
   const router = useRouter();
@@ -38,6 +40,17 @@ export default function WhModalButtonList({
             </WhButton>
           </div>
         )}
+        {leftLabel && 
+          <div className='w-[100px]'>
+          <WhButton
+            size='lg'
+            outLine
+            onClick={onClick}
+          >
+            {leftLabel}
+          </WhButton>
+        </div>
+        }
         <div className='w-full'>
           <WhButton size='lg' onClick={onClick}>
             {label}
