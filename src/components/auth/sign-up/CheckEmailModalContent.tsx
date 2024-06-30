@@ -1,28 +1,12 @@
-'use client';
-
-import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
-import useAuth from '@/hooks/useAuth';
 
 const secondarySpanCss = 'text-secondary-main font-semibold underline';
 
-export default function CheckEmailModalComponent() {
-  const searchParams = useSearchParams();
-  const { validateEmail } = useAuth();
-  // FIXME: (임시 작업) validate email api를 다녀왔는지 확인하기 위함. 아니면 무한 렌더링에 빠져버림...
-  const [isChecked, setIsChecked] = useState(false);
-
-  if (!isChecked && searchParams.has('email') && searchParams.has('code')) {
-    const email = searchParams.get('email') ?? '';
-    const code = searchParams.get('code') ?? '';
-    validateEmail.mutate({ email, code });
-    setIsChecked(true);
-  }
-  if (!isChecked) return null;
-  const handleEmail = () => {
-    console.log('이메일 재전송');
-  };
+export default function CheckEmailModalComponent({
+  handleEmail,
+}: {
+  handleEmail: () => void;
+}) {
   return (
     <>
       <WhModalHeader>이메일을 확인해주세요.</WhModalHeader>
