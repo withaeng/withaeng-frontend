@@ -10,7 +10,6 @@ export default function SampleLayout({
 }) {
   return (
     <>
-      <Header />
       <section className='flex'>
         <nav className='flex flex-col w-1/6 px-2 py-2 bg-white shadow-sm'>
           <Link className={`${linkCss}`} href='/sample'>
