@@ -4,7 +4,8 @@ import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhInput from '@/components/elements/WhInput';
 import WhButton from '@/components/elements/WhButton';
 import WhCalendar from '@/components/elements/WhCalendar';
-import { UserSignUp } from '@/types/auth';
+import { UserSignUpForm } from '@/types/auth';
+import useAuth from '@/hooks/useAuth';
 import PasswordInput from '../PasswordInput';
 
 const secondarySpanCss = 'text-secondary-main text-subtitle-02';
@@ -13,13 +14,12 @@ export default function SignUpModalContent({
   form,
   setForm,
   setTermPage,
-  handleSubmit,
 }: {
-  form: UserSignUp;
-  setForm: React.Dispatch<React.SetStateAction<UserSignUp>>;
+  form: UserSignUpForm;
+  setForm: React.Dispatch<React.SetStateAction<UserSignUpForm>>;
   setTermPage: (value: boolean) => void;
-  handleSubmit: () => void;
 }) {
+  const { signup } = useAuth();
   const handleSignUpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // FIXME: 입력이 올바르지 않은 경우 추가 작업
@@ -36,8 +36,7 @@ export default function SignUpModalContent({
       return;
     }
     console.log(form);
-
-    handleSubmit();
+    signup.mutate(form);
   };
 
   return (
@@ -83,23 +82,19 @@ export default function SignUpModalContent({
           <div id='sign-up_gender' className='flex mt-3 gap-8'>
             <WhRadio
               id='male'
-              name='gender'
+              name='isMale'
               value='male'
-              checked={form.gender === 'male'}
-              onChange={(value) =>
-                setForm((prev) => ({ ...prev, gender: value }))
-              }
+              checked={form.isMale}
+              onChange={() => setForm((prev) => ({ ...prev, isMale: true }))}
             >
               남성
             </WhRadio>
             <WhRadio
               id='female'
-              name='gender'
+              name='isMale'
               value='female'
-              checked={form.gender === 'female'}
-              onChange={(value) =>
-                setForm((prev) => ({ ...prev, gender: value }))
-              }
+              checked={!form.isMale}
+              onChange={() => setForm((prev) => ({ ...prev, isMale: false }))}
             >
               여성
             </WhRadio>

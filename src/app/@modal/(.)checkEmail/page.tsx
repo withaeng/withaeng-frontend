@@ -1,5 +1,5 @@
 import CheckEmailModalPage from '@/app/(auth)/(component)/CheckEmailModal';
 
-export default function Page() {
-  <CheckEmailModalPage />;
+export default function CheckEmailPage() {
+  return <CheckEmailModalPage />;
 }

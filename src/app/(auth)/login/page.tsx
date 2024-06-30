@@ -1,5 +1,5 @@
 import LoginModalPage from '@/app/(auth)/(component)/LoginModal';
 
-export default function FindPasswordPage() {
+export default function LoginPage() {
   return <LoginModalPage />;
 }
