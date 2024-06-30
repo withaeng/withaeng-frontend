@@ -9,7 +9,7 @@ import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useRouter } from 'next/navigation';
 import useUser from '@/hooks/useUser';
-import { useUserStore } from '@/providers/userStoreProvider';
+import { useUserStore } from '@/providers/UserStoreProvider';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (

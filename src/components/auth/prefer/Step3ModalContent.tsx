@@ -1,5 +1,5 @@
 import WhChip from '@/components/elements/WhChip';
-import { useUserStore } from '@/providers/userStoreProvider';
+import { useUserStore } from '@/providers/UserStoreProvider';
 import {
   drinkingTypeList,
   preferAccompanyGenderList,

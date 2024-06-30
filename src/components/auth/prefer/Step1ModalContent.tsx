@@ -1,6 +1,6 @@
 import WhChip from '@/components/elements/WhChip';
 import WhInput from '@/components/elements/WhInput';
-import { useUserStore } from '@/providers/userStoreProvider';
+import { useUserStore } from '@/providers/UserStoreProvider';
 import { mbtiList, preferTravelTypeList } from '@/types/user';
 
 export default function SignUpPreferStep1ModalContent() {
