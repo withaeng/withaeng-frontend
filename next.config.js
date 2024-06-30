@@ -51,8 +51,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination:
-          'http://ec2-52-79-248-251.ap-northeast-2.compute.amazonaws.com:8080/:path*',
+        destination: process.env.API_BASE_URL + '/:path*',
       },
     ];
   },
