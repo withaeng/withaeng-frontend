@@ -1,25 +1,21 @@
 import WhChip from '@/components/elements/WhChip';
+import { useUserStore } from '@/providers/userStoreProvider';
 import {
   drinkingTypeList,
   preferAccompanyGenderList,
   smokingTypeList,
 } from '@/types/user';
 
-export default function SignUpPreferStep3ModalContent({
-  gender,
-  handleGenderChip,
-  smoking,
-  handleSmokingChip,
-  drinking,
-  handleDrinkingChip,
-}: {
-  gender: string;
-  handleGenderChip: (value: string) => void;
-  smoking: string;
-  handleSmokingChip: (value: string) => void;
-  drinking: string;
-  handleDrinkingChip: (value: string) => void;
-}) {
+export default function SignUpPreferStep3ModalContent() {
+  const {
+    preferAccompanyGender,
+    updatePreferAccompanyGender,
+    smokingType,
+    updateSmokingType,
+    drinkingType,
+    updateDrinkingType,
+  } = useUserStore((state) => state);
+
   return (
     <>
       <h3 className='text-headline-03 my-5'>
@@ -33,9 +29,9 @@ export default function SignUpPreferStep3ModalContent({
             {preferAccompanyGenderList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={gender.includes(item.value)}
+                checked={preferAccompanyGender.includes(item.value)}
                 value={item.value}
-                onClick={() => handleGenderChip(item.value)}
+                onClick={() => updatePreferAccompanyGender(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -48,9 +44,9 @@ export default function SignUpPreferStep3ModalContent({
             {smokingTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={smoking.includes(item.value)}
+                checked={smokingType.includes(item.value)}
                 value={item.value}
-                onClick={() => handleSmokingChip(item.value)}
+                onClick={() => updateSmokingType(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -63,9 +59,9 @@ export default function SignUpPreferStep3ModalContent({
             {drinkingTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={drinking.includes(item.value)}
+                checked={drinkingType.includes(item.value)}
                 value={item.value}
-                onClick={() => handleDrinkingChip(item.value)}
+                onClick={() => updateDrinkingType(item.value)}
               >
                 {item.value}
               </WhChip>

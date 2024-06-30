@@ -1,25 +1,21 @@
 import WhChip from '@/components/elements/WhChip';
+import { useUserStore } from '@/providers/userStoreProvider';
 import {
   consumeStyleList,
   foodRestrictionsList,
   preferTravelThemesList,
 } from '@/types/user';
 
-export default function SignUpPreferStep2ModalContent({
-  interests,
-  handleInterestsChip,
-  consume,
-  handleConsumeChip,
-  cantEat,
-  handleCantEatChip,
-}: {
-  interests: string[];
-  handleInterestsChip: (value: string) => void;
-  consume: string;
-  handleConsumeChip: (value: string) => void;
-  cantEat: string[];
-  handleCantEatChip: (value: string) => void;
-}) {
+export default function SignUpPreferStep2ModalContent() {
+  const {
+    preferTravelThemes,
+    updatePreferTravelThemes,
+    consumeStyle,
+    updateConsumeStyle,
+    foodRestrictions,
+    updateFoodRestrictions,
+  } = useUserStore((state) => state);
+
   return (
     <>
       <h3 className='text-headline-03 my-5'>
@@ -33,9 +29,9 @@ export default function SignUpPreferStep2ModalContent({
             {preferTravelThemesList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={interests.includes(item.value)}
+                checked={preferTravelThemes.includes(item.value)}
                 value={item.value}
-                onClick={() => handleInterestsChip(item.value)}
+                onClick={() => updatePreferTravelThemes(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -48,9 +44,9 @@ export default function SignUpPreferStep2ModalContent({
             {consumeStyleList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={consume.includes(item.value)}
+                checked={consumeStyle.includes(item.value)}
                 value={item.value}
-                onClick={() => handleConsumeChip(item.value)}
+                onClick={() => updateConsumeStyle(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -63,9 +59,9 @@ export default function SignUpPreferStep2ModalContent({
             {foodRestrictionsList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={cantEat.includes(item.value)}
+                checked={foodRestrictions.includes(item.value)}
                 value={item.value}
-                onClick={() => handleCantEatChip(item.value)}
+                onClick={() => updateFoodRestrictions(item.value)}
               >
                 {item.value}
               </WhChip>

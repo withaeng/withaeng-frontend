@@ -1,22 +1,18 @@
 import WhChip from '@/components/elements/WhChip';
 import WhInput from '@/components/elements/WhInput';
+import { useUserStore } from '@/providers/userStoreProvider';
 import { mbtiList, preferTravelTypeList } from '@/types/user';
 
-export default function SignUpPreferStep1ModalContent({
-  nickname,
-  handleNickname,
-  mbti,
-  handleMbtiChip,
-  preferRegion,
-  handleRegionChip,
-}: {
-  nickname: string;
-  handleNickname: (value: string) => void;
-  mbti: string[];
-  handleMbtiChip: (value: string) => void;
-  preferRegion: string;
-  handleRegionChip: (value: string) => void;
-}) {
+export default function SignUpPreferStep1ModalContent() {
+  const {
+    nickname,
+    updateNickname,
+    mbti,
+    updateMbti,
+    preferTravelType,
+    updatePreferTravelType,
+  } = useUserStore((state) => state);
+
   return (
     <>
       <h3 className='text-headline-03 my-5'>
@@ -27,7 +23,7 @@ export default function SignUpPreferStep1ModalContent({
         <div>
           <WhInput
             value={nickname}
-            handleInputChange={handleNickname}
+            handleInputChange={updateNickname}
             size='lg'
             placeholder='닉네임은 2자 ~ 10자 이내로 입력 가능합니다.'
             label='닉네임을 입력해주세요.'
@@ -43,7 +39,7 @@ export default function SignUpPreferStep1ModalContent({
                 key={item.id}
                 checked={mbti.includes(item.value)}
                 value={item.value}
-                onClick={() => handleMbtiChip(item.value)}
+                onClick={() => updateMbti(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -56,9 +52,9 @@ export default function SignUpPreferStep1ModalContent({
             {preferTravelTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={preferRegion.includes(item.value)}
+                checked={preferTravelType.includes(item.value)}
                 value={item.value}
-                onClick={() => handleRegionChip(item.value)}
+                onClick={() => updatePreferTravelType(item.value)}
               >
                 {item.value}
               </WhChip>
