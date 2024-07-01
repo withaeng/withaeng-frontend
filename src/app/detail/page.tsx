@@ -79,29 +79,10 @@ const accompanyList = [
   },
 ];
 
-const showAccompanyList = () => {
-  <>
-    {accompanyList.map((accompany) => (
-      <li key={`${accompany.id}-${accompany.nickname}`}>
-        <WhCard
-          status={accompany.status}
-          profileImageUrl={accompany.profileImageUrl}
-          nickname={accompany.nickname}
-          title={accompany.title}
-          tags={accompany.tags}
-          startTripDate={accompany.startTripDate}
-          endTripDate={accompany.endTripDate}
-          accompanyCnt={accompany.accompanyCnt}
-          accompaniedCnt={accompany.accompaniedCnt}
-          thumbnailImageUrl={accompany.thumbnailImageUrl}
-        />
-      </li>
-    ))}
-  </>;
-  return (
+const showAccompanyList = () => (
     <>
       {accompanyList.map((accompany) => (
-        <li key={`${accompany.id}-${accompany.nickname}`}>
+        <li key={`accompany-${accompany.id}`}>
           <WhCard
             status={accompany.status}
             profileImageUrl={accompany.profileImageUrl}
@@ -118,7 +99,6 @@ const showAccompanyList = () => {
       ))}
     </>
   );
-};
 
 export default function DetailPage() {
   return (

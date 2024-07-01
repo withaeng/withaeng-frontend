@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import {
-  Pencil20Icon,
+  PencilIcon,
   PaperclipIcon,
   LinkIcon,
 } from '../../../../public/assets/icons/edit';
@@ -30,7 +30,7 @@ export default function WhDetailInfo() {
   return (
     <div className='max-w-[847px]'>
       <div className='px-5'>
-        <div className='flex items-center justify-between text-nutral-black-04 text-caption-02 mb-5'>
+        <div className='flex items-center justify-between text-nutral-black-04 text-caption-02'>
           {/* left */}
           <div className='flex gap-6'>
             <span>게시 {detailList.regist_at}</span>
@@ -39,8 +39,8 @@ export default function WhDetailInfo() {
 
           {/* right */}
           <div className='flex gap-6'>
-            <ChatIcon />
-            <LinkIcon />
+            <ChatIcon className='pt-8'/>
+            <LinkIcon  className='pt-8'/>
           </div>
         </div>
         <div className='flex items-center  justify-between'>
@@ -50,7 +50,7 @@ export default function WhDetailInfo() {
           <div className='flex gap-5'>
             {isHost ? null : (
               <button type='button' className={detailBtn}>
-                <Pencil20Icon />
+                <PencilIcon />
                 <span>수정하기</span>
               </button>
             )}

@@ -17,7 +17,7 @@ export default function WhReplyContent() {
     setLookMore(!lookMore);
   };
   return (
-    <div>
+    <div className="px-5">
       <h2 className={titleCss}>
         댓글&nbsp;<span className='text-primary-main'>N</span>
       </h2>
