@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import Header from '@/components/header/Header';
+import Footer from '@/components/Footer';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2',
@@ -107,13 +109,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  modal,
+}: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return (
-    <html lang='ko' className={pretendard.className}>
-      <body>
-        <main>{children}</main>
+     <html lang='ko' className={pretendard.className}>
+      <body className='h-full flex flex-col'>
+        <Header />
+        <main className='flex-auto'>{children}</main>
+        <Footer />
+         {modal}
+        <div id='modal-root' />
       </body>
     </html>
   );

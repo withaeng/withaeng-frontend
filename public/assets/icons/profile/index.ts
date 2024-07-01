@@ -7,4 +7,5 @@ export { ReactComponent as ProfilIconGreen01 } from './green-01.svg';
 export { ReactComponent as ProfilIconGreen02 } from './green-02.svg';
 export { ReactComponent as ProfilIconPurple01 } from './purple-01.svg';
 export { ReactComponent as ProfilIconPurple02 } from './purple-02.svg';
-export { ReactComponent as ProfilIconGray01 } from './gray-01.svg';
+export { ReactComponent as ThumbsUpIcon } from './thumbs-up.svg';
+export { ReactComponent as ThumbsDownIcon } from './thumbs-down.svg';

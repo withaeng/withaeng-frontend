@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 interface Props {
   prev?: boolean;
-  onPrevChlick?: () => void;
+  onPrevClick?: () => void;
   label: string;
   leftLabel?: string;
   onClick: () => void;
@@ -13,7 +13,7 @@ interface Props {
 
 export default function WhModalButtonList({
   prev = false,
-  onPrevChlick,
+  onPrevClick,
   label,
   leftLabel,
   onClick,
@@ -26,15 +26,13 @@ export default function WhModalButtonList({
 
   return (
     <div className='flex justify-center'>
-      <div className='flex gap-5 w-[500px]'>
+      <div className='flex gap-5 w-full'>
         {prev && (
-          <div className='w-[100px]'>
+          <div className='basis-1/5'>
             <WhButton
               size='lg'
               outLine
-              onClick={() =>
-                onPrevChlick ? onPrevChlick() : handlePrevClick()
-              }
+              onClick={() => (onPrevClick ? onPrevClick() : handlePrevClick())}
             >
               이전
             </WhButton>
@@ -51,7 +49,7 @@ export default function WhModalButtonList({
           </WhButton>
         </div>
         }
-        <div className='w-full'>
+        <div className={`${prev ? 'basis-4/5' : 'w-full'}`}>
           <WhButton size='lg' onClick={onClick}>
             {label}
           </WhButton>
