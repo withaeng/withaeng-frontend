@@ -1,44 +1,18 @@
 import WhChip from '@/components/elements/WhChip';
 import WhInput from '@/components/elements/WhInput';
+import { useUserStore } from '@/providers/UserStoreProvider';
+import { mbtiList, preferTravelTypeList } from '@/types/user';
 
-const mbtiList = [
-  { id: 0, value: 'ISTJ' },
-  { id: 1, value: 'ISTP' },
-  { id: 2, value: 'ISFJ' },
-  { id: 3, value: 'ISFP' },
-  { id: 4, value: 'INFJ' },
-  { id: 5, value: 'INTP' },
-  { id: 6, value: 'INFP' },
-  { id: 7, value: 'INTJ' },
-  { id: 8, value: 'ESFJ' },
-  { id: 9, value: 'ESFP' },
-  { id: 10, value: 'ESTJ' },
-  { id: 11, value: 'ENTP' },
-  { id: 12, value: 'ESTP' },
-  { id: 13, value: 'ENFP' },
-  { id: 14, value: 'ENTJ' },
-  { id: 15, value: 'ENFJ' },
-];
-const preferRegionList = [
-  { id: 0, value: '국내' },
-  { id: 1, value: '해외' },
-];
+export default function SignUpPreferStep1ModalContent() {
+  const {
+    nickname,
+    updateNickname,
+    mbti,
+    updateMbti,
+    preferTravelType,
+    updatePreferTravelType,
+  } = useUserStore((state) => state);
 
-export default function SignUpPreferStep1ModalContent({
-  nickname,
-  handleNickname,
-  mbti,
-  handleMbtiChip,
-  preferRegion,
-  handleRegionChip,
-}: {
-  nickname: string;
-  handleNickname: (value: string) => void;
-  mbti: string[];
-  handleMbtiChip: (value: string) => void;
-  preferRegion: string[];
-  handleRegionChip: (value: string) => void;
-}) {
   return (
     <>
       <h3 className='text-headline-03 my-5'>
@@ -49,7 +23,7 @@ export default function SignUpPreferStep1ModalContent({
         <div>
           <WhInput
             value={nickname}
-            handleInputChange={handleNickname}
+            handleInputChange={updateNickname}
             size='lg'
             placeholder='닉네임은 2자 ~ 10자 이내로 입력 가능합니다.'
             label='닉네임을 입력해주세요.'
@@ -65,7 +39,7 @@ export default function SignUpPreferStep1ModalContent({
                 key={item.id}
                 checked={mbti.includes(item.value)}
                 value={item.value}
-                onClick={() => handleMbtiChip(item.value)}
+                onClick={() => updateMbti(item.value)}
               >
                 {item.value}
               </WhChip>
@@ -75,12 +49,12 @@ export default function SignUpPreferStep1ModalContent({
         <div>
           <p className='mb-3'>여행 선호지역은 어디인가요?</p>
           <div className='flex gap-2 flex-wrap'>
-            {preferRegionList.map((item) => (
+            {preferTravelTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={preferRegion.includes(item.value)}
+                checked={preferTravelType.includes(item.value)}
                 value={item.value}
-                onClick={() => handleRegionChip(item.value)}
+                onClick={() => updatePreferTravelType(item.value)}
               >
                 {item.value}
               </WhChip>

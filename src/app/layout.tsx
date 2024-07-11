@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/header/Header';
 import Footer from '@/components/Footer';
+import QueryConfigContext from '@/context/QueryConfigContext';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2',
@@ -115,13 +116,15 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-     <html lang='ko' className={pretendard.className}>
-      <body className='h-full flex flex-col'>
-        <Header />
-        <main className='flex-auto'>{children}</main>
-        <Footer />
-         {modal}
-        <div id='modal-root' />
+    <html lang='ko' className={pretendard.className}>
+      <body className='h-dvh flex flex-col'>
+        <QueryConfigContext>
+          <Header />
+          <main className='flex-auto grow'>{children}</main>
+          <Footer />
+          {modal}
+          <div id='modal-root' />
+        </QueryConfigContext>
       </body>
     </html>
   );
