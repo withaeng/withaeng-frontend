@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/header/Header';
-import Footer from '@/components/Footer';
+import Footer from '@/components/layouts/Footer';
 import QueryConfigContext from '@/context/QueryConfigContext';
 
 const pretendard = localFont({
@@ -11,7 +11,10 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: '같이행',
+  title: {
+    template: '같이행: %s',
+    default: '같이행',
+  },
   description: '1인 여행자를 위한 동행 서비스 커뮤니티, 같이의 가치 여행',
   icons: {
     icon: [
