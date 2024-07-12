@@ -30,8 +30,7 @@ function accompanyState(status: string): string {
   if (status === 'joined') {
     return '모집 완료';
   }
-    return '동행 완료';
-
+  return '동행 완료';
 }
 
 function accompanyStateBgColor(status: string): string {
@@ -42,8 +41,7 @@ function accompanyStateBgColor(status: string): string {
     return 'bg-caption-success';
   }
 
-    return 'bg-nutral-black-05';
-
+  return 'bg-nutral-black-05';
 }
 
 function accompaniedCss(status: string): string {
@@ -52,8 +50,7 @@ function accompaniedCss(status: string): string {
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
-    return baseCss;
-
+  return baseCss;
 }
 
 function labelCss(status: string): string {
@@ -93,15 +90,17 @@ export default function WhCard({
             height={32}
             alt='프로필 이미지'
           />
-          <span>{nickname}</span>
+          <span className='text-subtitle-02 text-nutral-black-05'>
+            {nickname}
+          </span>
         </div>
         <div className='flex gap-2 items-center'>
-          <span className='flex gap-1 items-center'>
+          <span className='flex gap-1 items-center text-caption-01 text-nutral-black-05'>
             <CalendarCheckGrayIcon />
             {dateFormat(startTripDate, 'MM.DD')}~
             {dateFormat(endTripDate, 'MM.DD')}
           </span>
-          <span className='flex gap-1 items-center'>
+          <span className='flex gap-1 items-center text-caption-01 text-nutral-black-05'>
             <UsersGroupGrayIcon />
             {accompanyCnt}/{accompaniedCnt}
           </span>
