@@ -1,10 +1,8 @@
-'use client';
-
-import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
-import EditProfileModal from '@/components/elements/mypage/EditProfileModal';
-import WhMypageHeader from '../../../components/elements/mypage/WhMypageHeader';
-import WhMypageTravelType from '../../../components/elements/mypage/WhMypageTravelType';
-import WhMypageInfo from '../../../components/elements/mypage/WhMypageInfo';
+import EditProfileModal from '../(component)/EditProfileModal';
+import WhMypageCard from '../(component)/WhMypageCard';
+import WhMypageHeader from '../(component)/WhMypageHeader';
+import WhMypageInfo from '../(component)/WhMypageInfo';
+import WhMypageTravelType from '../(component)/WhMypageTravelType';
 
 export default function Info() {
   return (

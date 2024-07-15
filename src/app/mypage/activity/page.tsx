@@ -1,13 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import WhBadge from '@/components/elements/WhBadge';
 import WhButton from '@/components/elements/WhButton';
 import WhCard from '@/components/elements/WhCard';
-import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
-import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
-import React, { useState } from 'react';
 import WhTooltip from '@/components/elements/WhTooltip';
 import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
+import WhMypageHeader from '../(component)/WhMypageHeader';
+import WhMypageCard from '../(component)/WhMypageCard';
 
 const badgeContainerCss =
   'bg-nutral-white-02 py-[3.75rem] px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';

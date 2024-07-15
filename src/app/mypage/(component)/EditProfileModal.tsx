@@ -1,12 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 import useModal from '@/components/elements/modal/useModal';
 import WhInput from '@/components/elements/WhInput';
-import { useState } from 'react';
-import WhTextarea from '../WhTextarea';
+import WhTextarea from '@/components/elements/WhTextarea';
 import ProfileImage from './ProfileImage';
 
 export default function EditProfileModal() {

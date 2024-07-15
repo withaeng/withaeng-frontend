@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import WhChip from '@/components/elements/WhChip';
-import WhMoreButton from './WhMoreButton';
+import WhMoreButton from '../../../components/WhMoreButton';
 
 export default function WhMypageTravelType() {
   const [chipList, setChipList] = useState<string[]>([]);

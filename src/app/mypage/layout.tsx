@@ -1,4 +1,4 @@
-import WhMypageNavMenu from '../../components/elements/mypage/WhMypageNavMenu';
+import WhMypageNavMenu from './(component)/WhMypageNavMenu';
 
 interface LayoutProps {
   children: React.ReactNode;

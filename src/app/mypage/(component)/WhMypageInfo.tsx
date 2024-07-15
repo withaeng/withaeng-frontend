@@ -1,5 +1,3 @@
-'use client';
-
 import WhTextarea from '@/components/elements/WhTextarea';
 import WhInput from '@/components/elements/WhInput';
 import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';
@@ -55,7 +53,13 @@ export default function WhMypageInfo() {
       </div>
       {/* right */}
       <div>
-        <WhInput label='닉네임' size='lg' value={itemList.nick} disabled handleInputChange={() => {}} />
+        <WhInput
+          label='닉네임'
+          size='lg'
+          value={itemList.nick}
+          disabled
+          handleInputChange={() => {}}
+        />
 
         <WhTextarea
           label='한 줄 자기소개'
@@ -65,7 +69,13 @@ export default function WhMypageInfo() {
 
         <div className='flex gap-5 w-[495px]'>
           <div className='w-[149px]'>
-            <WhInput label='성별' size='lg' disabled value={itemList.sex} handleInputChange={() => {}} />
+            <WhInput
+              label='성별'
+              size='lg'
+              disabled
+              value={itemList.sex}
+              handleInputChange={() => {}}
+            />
           </div>
           <div className='w-[326px]'>
             <WhInput

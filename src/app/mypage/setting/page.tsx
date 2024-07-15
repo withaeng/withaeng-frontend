@@ -1,8 +1,6 @@
-'use client';
-
-import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
-import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
-import WithdrawModal from '@/components/elements/mypage/Withdraw';
+import WhMypageCard from '../(component)/WhMypageCard';
+import WhMypageHeader from '../(component)/WhMypageHeader';
+import WithdrawModal from '../(component)/Withdraw';
 
 export default function Setting() {
   return (

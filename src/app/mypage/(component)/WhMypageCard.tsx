@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-
 interface Props {
-  linkText?: ReactNode;
+  linkText?: React.ReactNode;
   title: string;
   content?: string;
   children: React.ReactNode;

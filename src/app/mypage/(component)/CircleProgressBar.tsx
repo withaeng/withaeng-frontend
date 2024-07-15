@@ -1,10 +1,8 @@
-import React from 'react';
-
 const percentageWrapCss =
   'absolute bottom-0 bg-nutral-white-01  rounded-lg text-primary-main text-caption-01 py-[10px] px-1';
-
 const percentageLabelCss =
   'bg-primary-eexLight text-primary-main text-caption-01 py-1 px-3 max-h-[22px] rounded';
+
 interface CircleProgressBarProps {
   circularPercentage: number;
   circleWidth: number;
