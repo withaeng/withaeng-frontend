@@ -25,10 +25,12 @@ const useModal = () => {
   const confirm = (
     content: string,
     positiveText: string,
-    negativeText: string
+    negativeText: string,
+    title?: string
   ) => {
     setOpen(true);
     setType('confirm');
+    setTitle(title || '');
     setContent(content);
     setButtonPositiveText(positiveText);
     setButtonNegativeText(negativeText);

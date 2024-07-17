@@ -75,7 +75,6 @@ export default function ModalContainer() {
             </AlertModal>
           </Modal>
         )}
-        {/* 현재 css 미적용 */}
         {type === 'confirm' && (
           <Modal ref={modalRef}>
             <ConfirmModal
@@ -84,7 +83,16 @@ export default function ModalContainer() {
               onPositiveHandle={handlePositiveClose}
               onNegativeHandle={handleNegativeClose}
             >
-              {content}
+              <div className='w-full flex flex-col gap-5 justify-center items-center'>
+                {title && (
+                  <span className='text-headline-04 leading-[24px] text-nutral-black-02'>
+                    {title}
+                  </span>
+                )}
+                <span className='text-body-02 text-nutral-black-03'>
+                  {content}
+                </span>
+              </div>
             </ConfirmModal>
           </Modal>
         )}

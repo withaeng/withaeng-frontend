@@ -1,5 +1,6 @@
 import React from 'react';
 import WhButton from '../elements/WhButton';
+import { CloseIcon, HamburgerIcon } from '../../../public/assets/icons/menu';
 
 interface ConfirmModalProps {
   children: React.ReactNode;
@@ -17,20 +18,24 @@ export default function ConfirmModal({
   onPositiveHandle,
 }: ConfirmModalProps) {
   return (
-    <div>
-      <div className='ly_body'>{children}</div>
-      <div className='ly_footer'>
-        <div className='bl_btn'>
-          <ul className='el_reset bl_btn_list'>
-            <li className='bl_btn_item'>
-              <WhButton onClick={onNegativeHandle}>{negativeText}</WhButton>
-            </li>
-            <li className='bl_btn_item'>
-              <WhButton onClick={onPositiveHandle}>{negativeText}</WhButton>
-            </li>
-          </ul>
-        </div>
+    <>
+      <div className='absolute top-5 right-4 z-10'>
+        <CloseIcon
+          width={24}
+          height={24}
+          stroke='#000000'
+          onClick={onNegativeHandle}
+        />
       </div>
-    </div>
+      {children}
+      <div className='flex gap-3 mt-10'>
+        <WhButton fitContent onClick={onPositiveHandle}>
+          {positiveText}
+        </WhButton>
+        <WhButton fitContent outLine onClick={onNegativeHandle}>
+          {negativeText}
+        </WhButton>
+      </div>
+    </>
   );
 }
