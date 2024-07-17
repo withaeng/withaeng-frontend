@@ -1,3 +1,5 @@
+'use client';
+
 import WhTextarea from '@/components/elements/WhTextarea';
 import WhInput from '@/components/elements/WhInput';
 import sampleProfile from '../../../../public/assets/icons/profile/blue-01.svg';

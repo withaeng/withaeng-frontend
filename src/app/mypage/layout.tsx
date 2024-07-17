@@ -6,18 +6,14 @@ interface LayoutProps {
 
 export default function MypageLayout({ children }: LayoutProps) {
   return (
-    <div className='flex bg-nutral-white-02  gap-5 pt-[124px] overflow-auto h-dvh'>
+    <div className='flex justify-center bg-nutral-white-02 gap-5 pt-[124px] overflow-auto min-h-full'>
       {/* left */}
-      <div className='w-[305px] flex items-end flex-col grow'>
-        <div className='fixed flex flex-col'>
-          <WhMypageNavMenu />
-        </div>
+      <div className='w-[305px]'>
+        <WhMypageNavMenu />
       </div>
 
       {/* right */}
-      <div className='flex items-start flex-col grow '>
-        <main>{children}</main>
-      </div>
+      <div>{children}</div>
     </div>
   );
 }

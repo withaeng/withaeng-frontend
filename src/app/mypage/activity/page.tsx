@@ -111,7 +111,7 @@ export default function Activity() {
   };
 
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='flex flex-col gap-10 mb-10'>
       <WhMypageHeader title='내 활동' />
 
       <WhMypageCard title='매너 점수 & 나의 배지'>

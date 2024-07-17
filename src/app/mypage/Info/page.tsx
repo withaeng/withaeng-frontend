@@ -6,7 +6,7 @@ import WhMypageTravelType from '../(component)/WhMypageTravelType';
 
 export default function Info() {
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='flex flex-col gap-10 mb-10'>
       <WhMypageHeader title='내 정보 관리' />
 
       <WhMypageCard

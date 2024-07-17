@@ -4,7 +4,7 @@ import WithdrawModal from '../(component)/Withdraw';
 
 export default function Setting() {
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='flex flex-col gap-10 mb-10'>
       <WhMypageHeader title='설정' />
 
       <WhMypageCard
