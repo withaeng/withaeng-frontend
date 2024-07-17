@@ -7,7 +7,7 @@ import WhInput from '@/components/elements/WhInput';
 import {
   EyeHideIcon,
   EyeShowIcon,
-} from '../../../../public/assets/icons/system';
+} from '../../../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 const dividerStyle = 'h-0 w-full border border-nutral-white-03';

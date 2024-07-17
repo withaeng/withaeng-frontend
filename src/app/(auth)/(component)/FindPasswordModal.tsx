@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
-import FindPasswordModalContent from '@/components/auth/login/FindPasswordModalContent';
+import FindPasswordModalContent from '@/app/(auth)/(component)/components/login/FindPasswordModalContent';
 import useAuth from '@/hooks/useAuth';
 
 export default function FindPasswordModalPage() {

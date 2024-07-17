@@ -1,9 +1,12 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import WhInput from '../elements/WhInput';
-import { CheckIcon } from '../../../public/assets/icons/menu';
-import { EyeHideIcon, EyeShowIcon } from '../../../public/assets/icons/system';
+import WhInput from '../../../../components/elements/WhInput';
+import { CheckIcon } from '../../../../../public/assets/icons/menu';
+import {
+  EyeHideIcon,
+  EyeShowIcon,
+} from '../../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 

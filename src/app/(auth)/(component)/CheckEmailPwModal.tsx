@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
-import CheckEmailModalComponent from '@/components/auth/sign-up/CheckEmailModalContent';
+import CheckEmailModalComponent from '@/app/(auth)/(component)/components/sign-up/CheckEmailModalContent';
 import useAuth from '@/hooks/useAuth';
 
 export default function CheckEmailPwModalPage() {
