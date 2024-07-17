@@ -76,6 +76,7 @@ export default function WhProfile({
 
         <div className='flex gap-2'>
           <button
+            type='button'
             className={`hover:bg-primary-main hover:border-primary-main hover:text-nutral-white-01 ${defaultBtnCss} ${isLikeHover ? 'px-[11px]' : 'px-7'}`}
             onMouseEnter={() => {
               setLikeBtnText('매너점수 상승');
@@ -95,6 +96,7 @@ export default function WhProfile({
             {likeBtnText}
           </button>
           <button
+            type='button'
             className={`hover:bg-nutral-white-03  ${defaultBtnCss} ${isHateHover ? 'px-[11px]' : 'px-7'}`}
             onMouseEnter={() => {
               setHateBtnText('매너점수 하락');
