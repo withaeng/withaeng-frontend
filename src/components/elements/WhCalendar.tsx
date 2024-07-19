@@ -95,8 +95,8 @@ export default function WhCalendar({
             showIcon
             toggleCalendarOnIconClick
             icon={
-              <div className='absolute right-4'>
-                <CalendarIcon width={24} height={24} stroke='#BAB8B6' />
+              <div className='absolute top-1 right-1'>
+                <CalendarIcon width={20} height={20} stroke='#BAB8B6' />
               </div>
             }
             renderCustomHeader={({
