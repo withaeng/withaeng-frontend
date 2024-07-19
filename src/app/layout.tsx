@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/header/Header';
 import Footer from '@/components/layouts/Footer';
 import QueryConfigContext from '@/context/QueryConfigContext';
+import ModalContainer from '@/components/modals/ModalContainer';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2',
@@ -120,6 +121,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={pretendard.className}>
+      <head>
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css'
+        />
+        <script
+          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js'
+          async
+        />
+        <script
+          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js'
+          async
+        />
+      </head>
       <body className='h-dvh flex flex-col'>
         <QueryConfigContext>
           <Header />
@@ -127,6 +142,8 @@ export default function RootLayout({
           <Footer />
           {modal}
           <div id='modal-root' />
+          <div id='global-modal' />
+          <ModalContainer />
         </QueryConfigContext>
       </body>
     </html>
