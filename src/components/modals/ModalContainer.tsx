@@ -8,6 +8,8 @@ import Modal from '@/components/Modal';
 import { usePathname } from 'next/navigation';
 import ConfirmModal from '@/components/modals/ConfirmModal';
 import AlertModal from '@/components/modals/AlertModal';
+import FilterModal from '@/components/modals/FilterModal';
+import { TAccompanyFilter } from '@/types/accompany';
 
 export default function ModalContainer() {
   const { open, type, title, content, positiveText, negativeText, handler } =
@@ -33,7 +35,6 @@ export default function ModalContainer() {
     if (modalRef.current) {
       setOpen(false);
       handler?.(true);
-
       window.UIkit.modal(modalRef.current).hide();
     }
   };
@@ -42,6 +43,14 @@ export default function ModalContainer() {
     if (modalRef.current) {
       setOpen(false);
       handler?.(false);
+      window.UIkit.modal(modalRef.current).hide();
+    }
+  };
+
+  const handleFilterClose = (res: TAccompanyFilter) => {
+    if (modalRef.current) {
+      setOpen(false);
+      handler?.(res);
       window.UIkit.modal(modalRef.current).hide();
     }
   };
@@ -94,6 +103,11 @@ export default function ModalContainer() {
                 </span>
               </div>
             </ConfirmModal>
+          </Modal>
+        )}
+        {type === 'filter' && (
+          <Modal ref={modalRef}>
+            <FilterModal onHandle={handleFilterClose} />
           </Modal>
         )}
       </div>,

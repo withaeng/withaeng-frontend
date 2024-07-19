@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type Type = '' | 'alert' | 'confirm';
+type Type = '' | 'alert' | 'confirm' | 'filter';
 export type Handler<T = unknown> = (value: T | PromiseLike<T>) => void;
 
 interface ModalState<T = any> {

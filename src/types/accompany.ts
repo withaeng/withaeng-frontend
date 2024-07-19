@@ -29,3 +29,12 @@ export type TPopularCity = {
   cityEng: string;
   bannerImageUrl: string;
 };
+
+export type TAccompanyFilter = {
+  city: { id: string; value: string }[];
+  gender: { id: string; value: string }[];
+  startDate: Date | null;
+  endDate: Date | null;
+  companion?: number | number[] | null;
+  age?: number | number[] | null;
+};

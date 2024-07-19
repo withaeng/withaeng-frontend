@@ -1,5 +1,6 @@
 'use client';
 
+import useModal from '@/hooks/useModal';
 import { ReactElement, useCallback, useState } from 'react';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyPost } from '@/types/accompany';
@@ -64,6 +65,7 @@ export default function AccompanyPostList({
   continentList,
   accompanyList,
 }: AccompanyPostListProps) {
+  const { filter } = useModal();
   const [continent, setContinent] = useState<string>(continentList[0].id);
   const handleChangeTabValue = useCallback(
     (tabId: string) => {
@@ -72,8 +74,11 @@ export default function AccompanyPostList({
     [continent]
   );
 
-  const openFilterModal = () => {
-    // TODO open filter modal
+  const openFilterModal = async () => {
+    const res = await filter();
+
+    // TODO: set filter label
+    console.log('openFilterModal', res);
   };
   return (
     <WhTab

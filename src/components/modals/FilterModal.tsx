@@ -1,31 +1,28 @@
-'use client';
-
+import WhButton from '@/components/elements/WhButton';
+import React, { useState } from 'react';
+import dateUtil from '@/utils/dateUtil';
+import WhChip from '@/components/elements/WhChip';
 import WhCalendar from '@/components/elements/WhCalendar';
 import WhCheckbox from '@/components/elements/WhCheckbox';
-import WhChip from '@/components/elements/WhChip';
 import WhSlider from '@/components/elements/WhSlider';
-import WhModal from '@/components/elements/modal/WhModal';
-import useModal from '@/components/elements/modal/useModal';
-import dateUtil from '@/utils/dateUtil';
-import { useState } from 'react';
+import { TAccompanyFilter } from '@/types/accompany';
 import { ReloadArrowIcon } from '../../../public/assets/icons/arrow';
 
 interface FilterModalProps {
-  isOpen: boolean;
+  onHandle?: (value: TAccompanyFilter) => void;
 }
 
-// TODO
 const cityList = [
-  { id: 'seoul', value: '서울' },
-  { id: 'jeju', value: '제주도' },
-  { id: 'busan', value: '부산' },
-  { id: 'daegu', value: '대구' },
+  { id: 'SEOUL', value: '서울' },
+  { id: 'JEJU', value: '제주도' },
+  { id: 'BUSAN', value: '부산' },
+  { id: 'DAEGU', value: '대구' },
 ];
 
 const genderList = [
-  { id: 'm', value: '남성' },
-  { id: 'f', value: '여성' },
-  { id: 'all', value: '누구나' },
+  { id: 'M', value: '남성' },
+  { id: 'F', value: '여성' },
+  { id: 'ALL', value: '누구나' },
 ];
 
 const ageMarks = {
@@ -77,59 +74,83 @@ const selectedAgeRange = (age: number | number[]): string => {
   return `${age}살`;
 };
 
-export default function FilterModal({ isOpen }: FilterModalProps) {
-  const { onClose } = useModal();
+export default function FilterModal({ onHandle }: FilterModalProps) {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [today, setToday] = useState<boolean>(false);
   const [age, setAge] = useState<number | number[] | undefined>();
   const [companion, setCompanion] = useState<number | number[]>();
-  const [filteredCityList, setFilteredCityList] = useState<
+  const [companionFree, setCompanionFree] = useState<boolean>(false);
+  const [ageFree, setAgeFree] = useState<boolean>(false);
+  const [selectedCityList, setSelectededCityList] = useState<
     { id: string; value: string }[]
   >([]);
-  const [filteredGenderList, setFilteredGenderList] = useState<
+  const [selectedGenderList, setSelectedGenderList] = useState<
     { id: string; value: string }[]
   >([]);
 
   const isIncludes = (type: string, value: string): boolean => {
     if (type === 'city') {
-      return filteredCityList.findIndex((el) => el.id === value) >= 0;
+      return selectedCityList.findIndex((el) => el.id === value) >= 0;
     }
-    return filteredGenderList.findIndex((el) => el.id === value) >= 0;
+    return selectedGenderList.findIndex((el) => el.id === value) >= 0;
   };
 
   const selectCity = (city: { id: string; value: string }) => {
     if (!isIncludes('city', city.id)) {
-      if (filteredCityList.length >= 3) return;
-
-      setFilteredCityList([...filteredCityList, city]);
+      if (selectedCityList.length >= 3) return;
+      setSelectededCityList([...selectedCityList, city]);
     } else {
-      setFilteredCityList(filteredCityList.filter((el) => el.id !== city.id));
+      setSelectededCityList(selectedCityList.filter((el) => el.id !== city.id));
     }
   };
 
   const selectGender = (gender: { id: string; value: string }) => {
     if (!isIncludes('gender', gender.id)) {
-      setFilteredGenderList([...filteredGenderList, gender]);
+      setSelectedGenderList([...selectedGenderList, gender]);
     } else {
-      setFilteredGenderList(
-        filteredGenderList.filter((el) => el.id !== gender.id)
+      setSelectedGenderList(
+        selectedGenderList.filter((el) => el.id !== gender.id)
       );
     }
   };
 
   const resetFilter = () => {
-    setFilteredCityList([]);
-    setFilteredGenderList([]);
+    setSelectededCityList([]);
+    setSelectedGenderList([]);
     setStartDate(null);
     setEndDate(null);
     setAge(undefined);
     setCompanion(undefined);
     setToday(false);
+    setCompanionFree(false);
+    setAgeFree(false);
+  };
+
+  const onHandleToday = (value: boolean) => {
+    const t = new Date();
+    if (value) {
+      setStartDate(t);
+      setEndDate(t);
+    }
+    setToday(value);
+  };
+
+  const onHandelSubmit = () => {
+    const res: TAccompanyFilter = {
+      city: selectedCityList,
+      gender: selectedGenderList,
+      startDate,
+      endDate,
+      companion: companionFree ? null : companion,
+      age: ageFree ? null : age,
+    };
+
+    onHandle?.(res);
   };
 
   return (
-    <WhModal isOpen={isOpen} onClose={onClose}>
+    <>
       <div className='flex justify-between pb-5 border-b border-b-nutral-white-03'>
         <h1 className='text-headline-03 text-nutral-black-01'>필터</h1>
         <span
@@ -140,7 +161,7 @@ export default function FilterModal({ isOpen }: FilterModalProps) {
           초기화
         </span>
       </div>
-      <div className='flex gap-10 flex-col mt-5'>
+      <div className='h-[619px] flex gap-10 flex-col mt-5 overflow-auto'>
         <section className='w-full flex gap-5 flex-col'>
           <div>
             <span className={tilteCss}>여행지</span>
@@ -181,7 +202,7 @@ export default function FilterModal({ isOpen }: FilterModalProps) {
             id='today'
             value='today'
             checked={today}
-            onChange={setToday}
+            onChange={onHandleToday}
           >
             당일
           </WhCheckbox>
@@ -204,6 +225,14 @@ export default function FilterModal({ isOpen }: FilterModalProps) {
             value={companion}
             onChange={setCompanion}
           />
+          <WhCheckbox
+            id='companion-free'
+            value='companion-free'
+            checked={companionFree}
+            onChange={setCompanionFree}
+          >
+            상관없음
+          </WhCheckbox>
         </section>
         <section className='w-full flex gap-5 flex-col'>
           <div>
@@ -221,6 +250,14 @@ export default function FilterModal({ isOpen }: FilterModalProps) {
             value={age}
             onChange={setAge}
           />
+          <WhCheckbox
+            id='age-free'
+            value='age-free'
+            checked={ageFree}
+            onChange={setAgeFree}
+          >
+            상관없음
+          </WhCheckbox>
         </section>
         <section className='w-full flex gap-5 flex-col'>
           <span className={tilteCss}>성별</span>
@@ -238,6 +275,9 @@ export default function FilterModal({ isOpen }: FilterModalProps) {
           </div>
         </section>
       </div>
-    </WhModal>
+      <div className='mt-10 w-[512px] my-0 mx-auto'>
+        <WhButton onClick={onHandelSubmit}>확인</WhButton>
+      </div>
+    </>
   );
 }

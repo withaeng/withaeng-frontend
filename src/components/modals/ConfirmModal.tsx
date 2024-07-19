@@ -1,6 +1,6 @@
 import React from 'react';
 import WhButton from '../elements/WhButton';
-import { CloseIcon, HamburgerIcon } from '../../../public/assets/icons/menu';
+import { CloseIcon } from '../../../public/assets/icons/menu';
 
 interface ConfirmModalProps {
   children: React.ReactNode;

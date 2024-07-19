@@ -1,4 +1,5 @@
 import { useModalActions } from '@/stores/modalStore';
+import { TAccompanyFilter } from '@/types/accompany';
 
 const useModal = () => {
   const {
@@ -39,9 +40,18 @@ const useModal = () => {
     });
   };
 
+  const filter = () => {
+    setOpen(true);
+    setType('filter');
+    return new Promise<TAccompanyFilter>((res) => {
+      setHandler(res);
+    });
+  };
+
   return {
     alert,
     confirm,
+    filter,
   };
 };
 
