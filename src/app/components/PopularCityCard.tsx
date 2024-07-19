@@ -7,7 +7,7 @@ interface PopularCityCardProps {
 
 export default function PopularCityCard({ item }: PopularCityCardProps) {
   return (
-    <div className='flex flex-col cursor-pointer text-left'>
+    <div className='w-fit flex flex-col cursor-pointer text-left'>
       <Image
         className='rounded w-[305px] h-[290px] object-cover'
         src={item.bannerImageUrl}

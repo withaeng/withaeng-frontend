@@ -46,7 +46,7 @@ function accompanyStateBgColor(status: string): string {
 
 function accompaniedCss(status: string): string {
   const baseCss =
-    'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
+    'w-[305px] xs:max-lg:w-[360px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
@@ -71,13 +71,12 @@ export default function WhCard({
 }: CardProps) {
   return (
     <div className={accompaniedCss(status)}>
-      <section className='relative w-full h-[152px]'>
+      <section className='relative w-full h-[152px] xs:max-lg:h-[180px]'>
         <Image
           className='object-cover rounded w-full h-full'
           src={thumbnailImageUrl}
-          width={298}
-          height={152}
           alt='동행 썸네일 이미지'
+          fill
         />
         <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>

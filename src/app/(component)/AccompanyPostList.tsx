@@ -97,7 +97,7 @@ export default function AccompanyPostList({
         </button>
       </section>
       <section className='w-full h-full mb-[120px]'>
-        <ul className='flex flex-wrap gap-5'>
+        <ul className='flex flex-wrap gap-5 m-0 pl-0'>
           {accompanyPostList(accompanyList, continent)}
         </ul>
       </section>

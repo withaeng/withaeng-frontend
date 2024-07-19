@@ -17,13 +17,13 @@ export default function Page() {
     <div className='max-w-7xl flex flex-col gap-[60px] items-center my-0 mx-auto'>
       <HomeBanner />
       <section className='w-full'>
-        <span className='text-nutral-black-01 text-headline-04 text-left'>
-          🚩 인기가 가장 많은 동행 여행지를 소개합니다.
+        <span className='xs:max-lg:pl-4 text-nutral-black-01 text-headline-04 text-left'>
+          🚩 인기 많은 동행 여행지를 소개합니다.
         </span>
         <PopularCityList list={popularCityList} />
       </section>
       <section className='w-full'>
-        <span className='text-nutral-black-01 text-headline-04 text-left'>
+        <span className='xs:max-lg:pl-4 text-nutral-black-01 text-headline-04 text-left'>
           🛫 원하는 여행지를 설정하세요.
         </span>
         <AccompanyPostList
