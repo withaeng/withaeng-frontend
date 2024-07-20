@@ -18,7 +18,7 @@ export default function CheckEmailModalComponent({
         그렇다면{' '}
         <button
           type='button'
-          onChange={handleEmail}
+          onClick={handleEmail}
           className={`${secondarySpanCss}`}
         >
           이메일 재전송

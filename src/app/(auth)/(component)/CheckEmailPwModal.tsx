@@ -10,9 +10,11 @@ export default function CheckEmailPwModalPage() {
   const param = useSearchParams();
   console.log(param.get('email'));
 
-  const handleEmail = () => {
+  const handleEmail = async () => {
     console.log('이메일 재전송');
-    sendEmailPw.mutate({ email: param.get('email')! });
+    await sendEmailPw.mutateAsync({ email: param.get('email')! }).then(() => {
+      console.log('이메일 재전송이 완료되었습니다.');
+    });
   };
 
   return (

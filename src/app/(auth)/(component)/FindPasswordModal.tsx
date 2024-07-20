@@ -5,16 +5,20 @@ import { useRouter } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
 import FindPasswordModalContent from '@/app/(auth)/(component)/components/login/FindPasswordModalContent';
 import useAuth from '@/hooks/useAuth';
+import useQueryString from '@/hooks/useQueryString';
 
 export default function FindPasswordModalPage() {
   const router = useRouter();
   const [email, setEamil] = useState('');
   const { sendEmailPw } = useAuth();
+  const { createQueryString } = useQueryString();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('비밀번호 찾기 이메일 전송');
-    sendEmailPw.mutate({ email });
+    await sendEmailPw.mutateAsync({ email }).then(() => {
+      router.replace(`/checkEmailPw?${createQueryString('email', email)}`);
+    });
   };
 
   return (
