@@ -158,11 +158,9 @@ export default function Activity() {
 
         <div className='flex gap-3 mt-8'>
           <h4 className='text-subtitle-01 text-neutral-black-02'>나의 배지</h4>
-          <p className='text-nutral-black-04 text-subtitle-02'>
-            <span className='text-primary-main text-body-03'>
-              {badgeList.length}&nbsp;
-            </span>
-            / 12
+          <p className='text-nutral-black-04 text-subtitle-01'>
+            <span className='text-primary-main'>{badgeList.length}&nbsp;</span>/
+            12
           </p>
         </div>
 
