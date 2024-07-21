@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/header/Header';
 import Footer from '@/components/Footer';
 import QueryConfigContext from '@/context/QueryConfigContext';
+import ModalContainer from '@/components/modals/ModalContainer';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2',
@@ -117,13 +118,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={pretendard.className}>
-      <body className='h-dvh flex flex-col'>
+      <body className='relative top-0 left-0 h-dvh flex flex-col'>
         <QueryConfigContext>
           <Header />
           <main className='flex-auto grow'>{children}</main>
           <Footer />
           {modal}
           <div id='modal-root' />
+          <div id='global-modal' className='fixed w-full h-full top-0 left-0' />
+          <ModalContainer />
         </QueryConfigContext>
       </body>
     </html>
