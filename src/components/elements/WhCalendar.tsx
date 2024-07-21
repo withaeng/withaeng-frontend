@@ -51,12 +51,14 @@ interface CalendarProps {
   onChange: (value: Date | null) => void;
   size?: 'lg' | 'md' | 'sm';
   value?: Date | null;
+  disabled?: boolean;
 }
 
 export default function WhCalendar({
   onChange,
   size = 'md',
   value,
+  disabled = false,
 }: CalendarProps) {
   const dateChange = (date: Date | string | null) => {
     onChange(dayjs(date).toDate());
@@ -99,6 +101,7 @@ export default function WhCalendar({
                 <CalendarIcon width={24} height={24} stroke='#BAB8B6' />
               </div>
             }
+            disabled={disabled}
             renderCustomHeader={({
               date,
               changeMonth,
