@@ -39,6 +39,16 @@ const sendEmailChangePWApi = ({
 }): Promise<ApiResponse<{}>> =>
   apiPost('/api/v1/auth/send-email-for-change-password', { email });
 
+/** change pw api */
+const ChangePasswordApi = ({
+  email,
+  password,
+  code,
+}: UserSignIn & {
+  code: string;
+}): Promise<ApiResponse<{}>> =>
+  apiPost('/api/v1/auth/change-password', { email, password, code });
+
 export default function useAuth() {
   const router = useRouter();
 
@@ -54,7 +64,7 @@ export default function useAuth() {
         router.replace('/');
       }
     },
-    onError: (err) => console.error(err),
+    onError: console.error,
   });
 
   const signup = useMutation({
@@ -69,7 +79,7 @@ export default function useAuth() {
         router.replace('/checkEmail');
       }
     },
-    onError: (err) => console.error(err),
+    onError: console.error,
   });
 
   const signout = () => {
@@ -91,7 +101,7 @@ export default function useAuth() {
         router.replace('/prefer');
       }
     },
-    onError: (err) => console.error(err),
+    onError: console.error,
   });
 
   const sendEmailPw = useMutation({
@@ -104,8 +114,29 @@ export default function useAuth() {
         console.log('비밀번호 변경 이메일 전송 성공?', data, variables.email);
       }
     },
-    onError: (err) => console.error(err),
+    onError: console.error,
   });
 
-  return { signin, signup, signout, validateEmail, sendEmailPw };
+  const changePassword = useMutation({
+    mutationFn: (data: UserSignIn & { code: string }) =>
+      ChangePasswordApi(data),
+    onSuccess: (data) => {
+      // TODO: 성공/실패 alert 추가
+      if (data.error) {
+        console.error(data.error.code + data.error.message);
+      } else {
+        console.log('비밀번호 변경 성공?', data);
+      }
+    },
+    onError: console.error,
+  });
+
+  return {
+    signin,
+    signup,
+    signout,
+    validateEmail,
+    sendEmailPw,
+    changePassword,
+  };
 }

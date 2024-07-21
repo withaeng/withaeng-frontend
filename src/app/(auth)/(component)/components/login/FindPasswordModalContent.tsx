@@ -15,7 +15,7 @@ export default function FindPasswordModalContent({
 }: Props) {
   return (
     <>
-      <WhModalHeader>비밀번호 찾기.</WhModalHeader>
+      <WhModalHeader>비밀번호 찾기</WhModalHeader>
       <form
         onSubmit={handleSubmit}
         className='flex flex-col gap-10 mx-5 mt-5 text-center'
