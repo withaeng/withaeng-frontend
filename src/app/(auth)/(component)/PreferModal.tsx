@@ -2,25 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Step1ModalContent from '@/components/auth/prefer/Step1ModalContent';
 import Step2ModalContent from '@/components/auth/prefer/Step2ModalContent';
 import Step3ModalContent from '@/components/auth/prefer/Step3ModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
-import { useRouter } from 'next/navigation';
+import StepBar from '@/components/StepBar';
 import useUser from '@/hooks/useUser';
 import { useUserStore } from '@/providers/UserStoreProvider';
-
-function StepBar({ value }: { value: number }): React.ReactNode {
-  return (
-    <div className='h-0.5 w-full bg-primary-exLight mt-2'>
-      <div
-        className='h-full bg-primary-main transition-all'
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
 
 export default function PreferModalPage() {
   const router = useRouter();

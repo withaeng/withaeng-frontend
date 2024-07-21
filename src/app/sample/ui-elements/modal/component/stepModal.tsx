@@ -5,17 +5,7 @@ import WhButton from '@/components/elements/WhButton';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import useModal from '@/components/elements/modal/useModal';
-
-function StepBar({ value }: { value: number }): React.ReactNode {
-  return (
-    <div className='h-0.5 w-full bg-primary-exLight mt-2'>
-      <div
-        className='h-full bg-primary-main transition-all'
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
+import StepBar from '@/components/StepBar';
 
 export default function StepModal() {
   const [step, setStep] = useState(1);
@@ -71,4 +61,3 @@ export default function StepModal() {
     </div>
   );
 }
- 

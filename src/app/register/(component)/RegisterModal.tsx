@@ -4,22 +4,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
+import StepBar from '@/components/StepBar';
 import { AccompanyData } from '@/types/accompany';
 import Step1ModalContent from './Step1ModalContent';
 import Step2ModalContent from './Step2ModalContent';
 import Step3ModalContent from './Step3ModalContent';
 import Step0ModalContent from './Step0ModalContent';
-
-function StepBar({ value }: { value: number }): React.ReactNode {
-  return (
-    <div className='h-0.5 w-full bg-primary-exLight mt-2'>
-      <div
-        className='h-full bg-primary-main transition-all'
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
 
 const initAccompany = {
   title: '',
