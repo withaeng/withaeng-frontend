@@ -29,12 +29,26 @@ export default function ModalContainer() {
     }
   }, [path]);
 
+  const initModalRef = (displayValue: string) => {
+    if (modalRoot && modalRef && modalRef.current) {
+      if (displayValue === 'none') {
+        document
+          .getElementsByTagName('body')[0]
+          .classList.remove('overflow-y-hidden');
+      } else {
+        document
+          .getElementsByTagName('body')[0]
+          .classList.add('overflow-y-hidden');
+      }
+      modalRoot.style.display = displayValue;
+    }
+  };
+
   const handlePositiveClose = () => {
     if (modalRef.current) {
       setOpen(false);
       handler?.(true);
-
-      window.UIkit.modal(modalRef.current).hide();
+      initModalRef('none');
     }
   };
 
@@ -42,20 +56,23 @@ export default function ModalContainer() {
     if (modalRef.current) {
       setOpen(false);
       handler?.(false);
-      window.UIkit.modal(modalRef.current).hide();
+      initModalRef('none');
     }
   };
 
   useEffect(() => {
     if (modalRoot && modalRef.current && open) {
-      window.UIkit.modal(modalRef.current).show();
+      initModalRef('block');
+    }
+    if (modalRoot && modalRef.current && !open) {
+      initModalRef('none');
     }
   }, [modalRoot, modalRef, open]);
 
   return (
     modalRoot &&
     ReactDOM.createPortal(
-      <div>
+      <>
         {type === 'alert' && (
           <Modal ref={modalRef}>
             <AlertModal
@@ -96,7 +113,7 @@ export default function ModalContainer() {
             </ConfirmModal>
           </Modal>
         )}
-      </div>,
+      </>,
       modalRoot
     )
   );

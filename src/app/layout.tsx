@@ -118,28 +118,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={pretendard.className}>
-      <head>
-        <link
-          rel='stylesheet'
-          href='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css'
-        />
-        <script
-          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js'
-          async
-        />
-        <script
-          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js'
-          async
-        />
-      </head>
-      <body className='h-dvh flex flex-col'>
+      <body className='relative top-0 left-0 h-dvh flex flex-col'>
         <QueryConfigContext>
           <Header />
           <main className='flex-auto grow'>{children}</main>
           <Footer />
           {modal}
           <div id='modal-root' />
-          <div id='global-modal' />
+          <div id='global-modal' className='fixed w-full h-full top-0 left-0' />
           <ModalContainer />
         </QueryConfigContext>
       </body>

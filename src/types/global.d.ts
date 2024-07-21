@@ -1,7 +1,3 @@
-declare global {
-  interface Window {
-    UIkit: any;
-  }
-}
+declare global {}
 
 export default global;
