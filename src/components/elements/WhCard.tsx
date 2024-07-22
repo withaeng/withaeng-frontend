@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import dateUtil from '@/utils/dateUtil';
+import Link from 'next/link';
 import {
   CalendarCheckGrayIcon,
   UsersGroupGrayIcon,
@@ -7,6 +8,7 @@ import {
 
 interface CardProps {
   // TODO: api 반환 값에 맞춰 변경될 예정
+  id: string;
   status: string; // 모집 상태
   profileImageUrl: string; // 호스트 프로필 이미지
   nickname: string; // 유저 닉네임
@@ -30,8 +32,7 @@ function accompanyState(status: string): string {
   if (status === 'joined') {
     return '모집 완료';
   }
-    return '동행 완료';
-
+  return '동행 완료';
 }
 
 function accompanyStateBgColor(status: string): string {
@@ -42,8 +43,7 @@ function accompanyStateBgColor(status: string): string {
     return 'bg-caption-success';
   }
 
-    return 'bg-nutral-black-05';
-
+  return 'bg-nutral-black-05';
 }
 
 function accompaniedCss(status: string): string {
@@ -52,8 +52,7 @@ function accompaniedCss(status: string): string {
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
-    return baseCss;
-
+  return baseCss;
 }
 
 function labelCss(status: string): string {
@@ -61,6 +60,7 @@ function labelCss(status: string): string {
 }
 
 export default function WhCard({
+  id,
   status,
   profileImageUrl,
   nickname,
@@ -73,52 +73,55 @@ export default function WhCard({
   thumbnailImageUrl,
 }: CardProps) {
   return (
-    <div className={accompaniedCss(status)}>
-      <section className='relative w-full h-[152px]'>
-        <Image
-          className='object-cover rounded w-full h-full'
-          src={thumbnailImageUrl}
-          width={298}
-          height={152}
-          alt='동행 썸네일 이미지'
-        />
-        <span className={labelCss(status)}>{accompanyState(status)}</span>
-      </section>
-      <section className='flex justify-between text-nutral-black-05 text-caption-01'>
-        <div className='flex gap-2 items-center h-8 text-subtitle-02'>
+    // <Link href={`/detail/${id}`}>
+    <Link href='/detail'>
+      <div className={accompaniedCss(status)}>
+        <section className='relative w-full h-[152px]'>
           <Image
-            className='inline object-cover rounded-full h-full'
-            src={profileImageUrl}
-            width={32}
-            height={32}
-            alt='프로필 이미지'
+            className='object-cover rounded w-full h-full'
+            src={thumbnailImageUrl}
+            width={298}
+            height={152}
+            alt='동행 썸네일 이미지'
           />
-          <span>{nickname}</span>
-        </div>
-        <div className='flex gap-2 items-center'>
-          <span className='flex gap-1 items-center'>
-            <CalendarCheckGrayIcon />
-            {dateFormat(startTripDate, 'MM.DD')}~
-            {dateFormat(endTripDate, 'MM.DD')}
-          </span>
-          <span className='flex gap-1 items-center'>
-            <UsersGroupGrayIcon />
-            {accompanyCnt}/{accompaniedCnt}
-          </span>
-        </div>
-      </section>
-      <section className='mt-1 max-w-full overflow-hidden text-ellipsis whitespace-nowrap'>
-        <span className='text-subtitle-02 text-nutral-black-03'>{title}</span>
-      </section>
-      {tags !== null && (
-        <section className='mt-2 flex gap-3 pb-2'>
-          {tags.map((tag) => (
-            <span key={tag} className='text-caption-01 text-primary-main'>
-              {tag}
-            </span>
-          ))}
+          <span className={labelCss(status)}>{accompanyState(status)}</span>
         </section>
-      )}
-    </div>
+        <section className='flex justify-between text-nutral-black-05 text-caption-01'>
+          <div className='flex gap-2 items-center h-8 text-subtitle-02'>
+            <Image
+              className='inline object-cover rounded-full h-full'
+              src={profileImageUrl}
+              width={32}
+              height={32}
+              alt='프로필 이미지'
+            />
+            <span>{nickname}</span>
+          </div>
+          <div className='flex gap-2 items-center'>
+            <span className='flex gap-1 items-center'>
+              <CalendarCheckGrayIcon />
+              {dateFormat(startTripDate, 'MM.DD')}~
+              {dateFormat(endTripDate, 'MM.DD')}
+            </span>
+            <span className='flex gap-1 items-center'>
+              <UsersGroupGrayIcon />
+              {accompanyCnt}/{accompaniedCnt}
+            </span>
+          </div>
+        </section>
+        <section className='mt-1 max-w-full overflow-hidden text-ellipsis whitespace-nowrap'>
+          <span className='text-subtitle-02 text-nutral-black-03'>{title}</span>
+        </section>
+        {tags !== null && (
+          <section className='mt-2 flex gap-3 pb-2'>
+            {tags.map((tag) => (
+              <span key={tag} className='text-caption-01 text-primary-main'>
+                {tag}
+              </span>
+            ))}
+          </section>
+        )}
+      </div>
+    </Link>
   );
 }

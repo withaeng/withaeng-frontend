@@ -8,6 +8,12 @@ import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import SampleProfile from '../../../../public/assets/images/profile.png';
 
 export default function Page() {
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+  });
+
   const itemList = {
     id: '0',
     score: 51.5,
@@ -42,12 +48,6 @@ export default function Page() {
       isOpen: false,
     });
   };
-
-  const [modalConfig, setModalConfig] = useState({
-    isOpen: false,
-    title: '',
-    message: '',
-  });
 
   return (
     <div className='flex my-[200px] items-center justify-center m-auto'>

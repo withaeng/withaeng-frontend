@@ -38,7 +38,7 @@ export default function WhAccompanyRequestInfo() {
       </h3>
       {isHost ? (
         <div className='max-h-[412px] overflow-scroll'>
-          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded' >
+          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'>
             <div className='flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5'>
               <Image
                 className='object-cover rounded-full h-full'
@@ -272,14 +272,17 @@ export default function WhAccompanyRequestInfo() {
                             </div>
                           )}
                       </div>
-
+                      {/* 
+                      TODO :  1. fix/modal  머지 되면 pull받아 모달 오픈 시 스크롤 방지 적용,
+                      TODO :  2. 텍스트 수정할 내용없음, modal (마진, 패딩)간격 조절
+                      */}
                       <WhModal
                         isOpen={isOpen && modalType === 'approve'}
                         onClose={onClose}
                         isDismissible={false}
                       >
                         <WhModalHeader>
-                          {selectedNickname}님의 동행을 승인할까요?
+                          ‘{selectedNickname}’ 님의 동행을 취소할까요?
                         </WhModalHeader>
                         <div className='mt-10 text-center mb-12'>
                           <p className='text-nutral-black-04  text-body-02'>
@@ -299,11 +302,11 @@ export default function WhAccompanyRequestInfo() {
                         isDismissible={false}
                       >
                         <WhModalHeader>
-                          {selectedNickname}님의 동행을 취소할까요?
+                          ‘{selectedNickname}’ 님의 동행을 취소할까요?
                         </WhModalHeader>
                         <div className='mt-10 text-center mb-12'>
                           <p className='text-nutral-black-04 text-body-02'>
-                            취소한 후에는 다시 되돌릴 수 없습니다.
+                            취소한 후에는 선택 변경이 불가능해요.
                           </p>
                         </div>
                         <WhModalButtonList
