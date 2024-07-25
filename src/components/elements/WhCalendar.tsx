@@ -14,7 +14,7 @@ const pretendard = localFont({
 });
 
 const defaultInputCss =
-  'w-full !px-4 !py-3 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'w-full !px-4 !py-3 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
 let sizeCss = '';
