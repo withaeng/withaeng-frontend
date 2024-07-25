@@ -18,7 +18,7 @@ export default function Info() {
       </WhMypageCard>
 
       <WhMypageCard
-        title='프로필'
+        title='나의 여행 타입은?'
         content='나의 여행 타입을 설정하여 보다 좋은 파트너를 찾으세요.'
         linkText='수정'
       >
