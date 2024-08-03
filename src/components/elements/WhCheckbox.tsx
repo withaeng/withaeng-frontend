@@ -31,15 +31,15 @@ function setCheckboxIcon(
     ) : (
       <CheckedMd className='cursor-pointer' />
     );
-  } else if (indeterminate) {
+  }
+  if (indeterminate) {
     return size === 'sm' ? (
       <IndeterminateSm className='cursor-pointer' />
     ) : (
       <IndeterminateMd className='cursor-pointer' />
     );
-  } else {
-    return null;
   }
+  return null;
 }
 
 const defaultCheckboxCss =

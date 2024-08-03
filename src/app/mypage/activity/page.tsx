@@ -106,7 +106,7 @@ export default function Activity() {
   const [selectedTab, setSelectedTab] = useState('tab1');
   const filled = 36.5;
 
-  const changeTab = (tabId) => {
+  const changeTab = (tabId: string) => {
     setSelectedTab(tabId);
   };
 

@@ -2,13 +2,13 @@
 
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import WhModalHeader from '@/components/elements/modal/WhModalHeader';
-import { UserSignUp } from '@/types/auth';
+import { UserSignUpForm } from '@/types/auth';
 
 export default function TermContent({
   setForm,
   setTermPage,
 }: {
-  setForm: React.Dispatch<React.SetStateAction<UserSignUp>>;
+  setForm: React.Dispatch<React.SetStateAction<UserSignUpForm>>;
   setTermPage: (value: boolean) => void;
 }) {
   const onClick = () => {

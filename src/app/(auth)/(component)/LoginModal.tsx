@@ -1,25 +1,16 @@
-'use client';
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import LoginModalContent from '@/components/auth/login/LoginModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
+import { ReactComponent as LogoImage } from '../../../../public/assets/images/withaeng-logo-transparent-h42.svg';
 
 export default function LoginModalPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
-
   return (
-    <WhModal isOpen onClose={() => router.back()}>
+    <WhModal isOpen>
       <div className='px-[101px] py-[116px]'>
-        <LoginModalContent
-          email={email}
-          pw={pw}
-          handleEmail={setEmail}
-          handlePw={setPw}
-        />
+        <div className='mb-12 flex justify-center'>
+          <LogoImage />
+        </div>
+        <LoginModalContent />
         <div className='flex justify-between mt-5 mx-11 text-nutral-black-03'>
           <Link href='/findPassword' replace>
             <button type='button' className='text-body-03'>

@@ -55,7 +55,7 @@ export default function WhMypageInfo() {
       </div>
       {/* right */}
       <div>
-        <WhInput label='닉네임' size='lg' value={itemList.nick} disabled />
+        <WhInput label='닉네임' size='lg' value={itemList.nick} disabled handleInputChange={() => {}} />
 
         <WhTextarea
           label='한 줄 자기소개'
@@ -65,7 +65,7 @@ export default function WhMypageInfo() {
 
         <div className='flex gap-5 w-[495px]'>
           <div className='w-[149px]'>
-            <WhInput label='성별' size='lg' disabled value={itemList.sex} />
+            <WhInput label='성별' size='lg' disabled value={itemList.sex} handleInputChange={() => {}} />
           </div>
           <div className='w-[326px]'>
             <WhInput
@@ -73,6 +73,7 @@ export default function WhMypageInfo() {
               size='lg'
               disabled
               value={itemList.birth}
+              handleInputChange={() => {}}
             />
           </div>
         </div>
