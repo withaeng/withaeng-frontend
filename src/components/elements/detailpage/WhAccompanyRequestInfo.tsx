@@ -38,7 +38,7 @@ export default function WhAccompanyRequestInfo() {
       </h3>
       {isHost ? (
         <div className='max-h-[412px] overflow-scroll'>
-          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded' >
+          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'>
             <div className='flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5'>
               <Image
                 className='object-cover rounded-full h-full'
@@ -76,7 +76,7 @@ export default function WhAccompanyRequestInfo() {
                     {lookMore ? '접기' : '더보기'}
                   </button>
                 </div>
-
+                {/* 
                 {isHost ? (
                   <WhModal
                     isOpen={isOpen}
@@ -183,7 +183,7 @@ export default function WhAccompanyRequestInfo() {
                       />
                     </WhModal>
                   </>
-                )}
+                )} */}
               </div>
             </div>
             <div className='flex flex-wrap py-5 px-3 gap-2'>
