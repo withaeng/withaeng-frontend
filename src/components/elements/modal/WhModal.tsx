@@ -36,7 +36,13 @@ export default function WhModal({
 
   useEffect(() => {
     setElement(document.getElementById('modal-root')!);
-  }, []);
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   if (typeof window !== 'object') {
     return null;
