@@ -49,6 +49,9 @@ const page = () => (
     <Link href='/sample/ui-elements/slider' className={`${linkCss}`}>
       common Slider
     </Link>
+    <Link href='/sample/ui-elements/fliter-label' className={`${linkCss}`}>
+      common FilterLabel
+    </Link>
   </div>
 );
 
