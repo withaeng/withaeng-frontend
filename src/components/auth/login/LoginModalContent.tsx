@@ -10,7 +10,7 @@ import {
 } from '../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
-const dividerStyle = 'h-0 w-full border border-nutral-white-03';
+const dividerStyle = 'max-xl:hidden h-0 w-full border border-nutral-white-03';
 
 export default function LoginModalContent() {
   const [showPw, setShowPw] = useState(false);
@@ -30,7 +30,7 @@ export default function LoginModalContent() {
         <span className='w-full text-nutral-black-01'>로그인 / 회원가입</span>
         <div className={dividerStyle} />
       </div>
-      <form onSubmit={login} className='mt-11 mx-11 flex flex-col gap-5'>
+      <form onSubmit={login} className='mt-10 mx-11 flex flex-col gap-5'>
         <WhInput
           type='email'
           value={email}

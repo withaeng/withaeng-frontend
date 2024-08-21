@@ -7,7 +7,7 @@ export default function LoginModalPage() {
   return (
     <WhModal isOpen>
       <div className='px-10 py-[125px] xl:px-[101px] xl:py-[116px]'>
-        <div className='mb-12 flex justify-center'>
+        <div className='mb-5 xl:mb-12 flex justify-center'>
           <LogoImage />
         </div>
         <LoginModalContent />
@@ -18,11 +18,13 @@ export default function LoginModalPage() {
             </button>
           </Link>
           <div className='flex gap-2 items-center'>
-            <p className='text-body-03'>아직 회원이 아니신가요?</p>
+            <p className='text-body-03 max-xl:hidden'>
+              아직 회원이 아니신가요?
+            </p>
             <Link href='/signup' replace>
               <button
                 type='button'
-                className='text-secondary-main text-body-03'
+                className='xl:text-secondary-main text-subtitle-02 xl:text-body-03'
               >
                 회원가입
               </button>
