@@ -97,7 +97,7 @@ const detailList = {
     },
     {
       host: true,
-      id: 2,
+      id: 3,
       age: '30대',
       status: 'accompanied',
       gender: '남성',
@@ -119,7 +119,7 @@ const detailList = {
 
     {
       host: false,
-      id: 2,
+      id: 4,
       status: 'accompanied',
       gender: '여성',
       period: '1년 11개월',
@@ -146,7 +146,16 @@ const detailList = {
     score: '36.5',
     content:
       '자기소개글이 나옵니다. 2줄까지 나오고, 2줄 이상으로 작성시 버튼이 있습니다, 자기소개글이 나옵니다. 2줄까지 나오고, 2줄 이상으로 작성시 버튼이 있습니다자기소개글이 나옵니다. 2줄까지 나오고, 2줄 이상으로 작성시 버튼이 있습니다',
-    tags: [ { id: 0, title: '사진' }, { id: 1, title: '음식' }, { id: 2, title: '관광지' }, { id: 3, title: '자연' }, { id: 4, title: '카페' } ,  { id: 5, title: '박물관' },  { id: 5, title: '전시관' }, { id: 6, title: '미술관' } ],
+    tags: [
+      { id: 0, title: '사진' },
+      { id: 1, title: '음식' },
+      { id: 2, title: '관광지' },
+      { id: 3, title: '자연' },
+      { id: 4, title: '카페' },
+      { id: 5, title: '박물관' },
+      { id: 5, title: '전시관' },
+      { id: 6, title: '미술관' },
+    ],
   },
 };
 

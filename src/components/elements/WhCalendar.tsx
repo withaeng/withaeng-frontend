@@ -14,7 +14,7 @@ const pretendard = localFont({
 });
 
 const defaultInputCss =
-  'w-full !px-4 !py-3 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'w-full !px-4 !py-3 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
 let sizeCss = '';
@@ -51,12 +51,14 @@ interface CalendarProps {
   onChange: (value: Date | null) => void;
   size?: 'lg' | 'md' | 'sm';
   value?: Date | null;
+  disabled?: boolean;
 }
 
 export default function WhCalendar({
   onChange,
   size = 'md',
   value,
+  disabled = false,
 }: CalendarProps) {
   const dateChange = (date: Date | string | null) => {
     onChange(dayjs(date).toDate());
@@ -99,6 +101,7 @@ export default function WhCalendar({
                 <CalendarIcon width={24} height={24} stroke='#BAB8B6' />
               </div>
             }
+            disabled={disabled}
             renderCustomHeader={({
               date,
               changeMonth,
