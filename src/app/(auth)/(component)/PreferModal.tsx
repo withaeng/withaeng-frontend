@@ -73,7 +73,7 @@ export default function PreferModalPage() {
     <WhModal
       isOpen
       onClose={handleClose}
-      className='px-[85px] py-[72px] h-[800px]'
+      className='px-4 py-5 xl:px-[85px] xl:py-[72px] h-fit xl:h-[800px]'
     >
       <div className='flex flex-col h-full'>
         <p className='text-nutral-black-04 text-right'>

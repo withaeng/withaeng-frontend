@@ -68,7 +68,7 @@ export default function LoginModalContent() {
           }
         />
         <WhButton type='submit' size='lg'>
-          로그인하기
+          로그인
         </WhButton>
       </form>
     </div>

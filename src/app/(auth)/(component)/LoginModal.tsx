@@ -6,7 +6,7 @@ import { ReactComponent as LogoImage } from '../../../../public/assets/images/wi
 export default function LoginModalPage() {
   return (
     <WhModal isOpen>
-      <div className='px-[101px] py-[116px]'>
+      <div className='px-10 py-[125px] xl:px-[101px] xl:py-[116px]'>
         <div className='mb-12 flex justify-center'>
           <LogoImage />
         </div>

@@ -19,7 +19,7 @@ export default function FindPasswordModalPage() {
 
   return (
     <WhModal isOpen onClose={() => router.back()}>
-      <div className='px-[105px] py-[72px]'>
+      <div className='px-4 py-5 xl:px-[105px] xl:py-[72px]'>
         <FindPasswordModalContent
           email={email}
           setEmail={setEamil}
