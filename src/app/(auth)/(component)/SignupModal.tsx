@@ -20,7 +20,7 @@ export default function SignUpModalPage() {
 
   return (
     <WhModal isOpen>
-      <div className='px-4 py-5 xl:px-[105px] xl:py-[72px] h-[642px] xl:h-[800px]'>
+      <div className='px-4 py-5 xl:px-[105px] h-full xl:py-[72px] xl:h-[800px]'>
         {!termPage ? (
           <SignUpModalContent
             form={form}

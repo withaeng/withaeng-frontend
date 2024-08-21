@@ -15,11 +15,11 @@ export default function SignUpPreferStep1ModalContent() {
 
   return (
     <>
-      <h3 className='text-headline-03 my-5'>
+      <h3 className='text-headline-04 xl:text-headline-03 my-5'>
         닉네임, 본인의 여행 스타일을 선택해주세요. <br />
         선택된 여행 취향에 맞게 추천 해드려요 :)
       </h3>
-      <div className='flex flex-col gap-10 mb-11'>
+      <div className='flex flex-col gap-10 mb-11 overflow-auto'>
         <div>
           <WhInput
             value={nickname}
