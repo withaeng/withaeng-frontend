@@ -6,10 +6,28 @@ import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import { FilterIcon } from '../../../public/assets/icons/system';
+import WhFilterLabel from '@/components/elements/WhFilterLabel';
+import dayjs from 'dayjs';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
   accompanyList: TAccompanyPost[];
+}
+
+function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
+  const startDt = dayjs(startDate);
+  const endDt = dayjs(endDate);
+  const duration = endDt.diff(startDt, 'days') + 1;
+
+  let start_date_str = '';
+
+  if (duration > 0) {
+    start_date_str = `${startDt.format('YY.MM.DD')}~${endDt.format('YY.MM.DD')}`;
+  } else {
+    start_date_str = startDt.format('YY.MM.DD');
+  }
+
+  return `${start_date_str}(${duration}일)`;
 }
 
 const accompanyPostList = (
@@ -67,6 +85,7 @@ export default function AccompanyPostList({
 }: AccompanyPostListProps) {
   const { filter } = useModal();
   const [continent, setContinent] = useState<string>(continentList[0].id);
+  const [filterLabelList, setFilterLabelList] = useState<string[]>([]);
   const handleChangeTabValue = useCallback(
     (tabId: string) => {
       setContinent(tabId);
@@ -76,7 +95,42 @@ export default function AccompanyPostList({
 
   const openFilterModal = async () => {
     const res = await filter();
+    const list: string[] = [];
 
+    // 동행인원
+    if (res.companion && Array.isArray(res.companion)) {
+      if (res.companion.length > 1) {
+        list.push(
+          `동행인원 : ${res.companion[0]}~${res.companion[res.companion.length - 1]}명`
+        );
+      } else {
+        list.push(`동행인원 : ${res.companion[0]}명`);
+      }
+    }
+
+    // 동행일정
+    if (res.startDate && !res.endDate) {
+      list.push(`동행일정 : ${formatSchedule(res.startDate)}`);
+    }
+    if (res.startDate && res.endDate) {
+      list.push(`동행일정 : ${formatSchedule(res.startDate, res.endDate)}`);
+    }
+
+    // 연령대
+    if (res.age && Array.isArray(res.age)) {
+      if (res.age.length > 1) {
+        list.push(`연령대 : ${res.age[0]}~${res.age[res.age.length - 1]}살`);
+      } else {
+        list.push(`연령대 : ${res.age[0]}살`);
+      }
+    }
+
+    // 성별
+    if (res.gender && Array.isArray(res.gender)) {
+      list.push(`성별 : ${res.gender.map((item) => item.value).join(',')}`);
+    }
+
+    setFilterLabelList([...list]);
     // TODO: set filter label
     console.log('openFilterModal', res);
   };
@@ -86,15 +140,22 @@ export default function AccompanyPostList({
       value={continent}
       onChange={handleChangeTabValue}
     >
-      <section className='mt-3 mb-5'>
+      <section className='mt-3 mb-5 flex gap-3'>
         <button
           type='button'
-          className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 text-nutral-black-03 border border-nutral-white-03 transition text-subtitle-02 flex items-center justify-center gap-1'
+          className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 border border-nutral-white-03 transition flex items-center justify-center gap-1'
           onClick={openFilterModal}
         >
           <FilterIcon width={20} height={20} fill='#737373' />
-          필터
+          <span className='text-nutral-black-03 text-caption-01'>필터</span>
         </button>
+        <>
+          <div className='border-r border-nutral-white-03' />
+          {filterLabelList.map((label) => (
+            <WhFilterLabel label={label} key={label} />
+          ))}
+        </>
+        {/* )} */}
       </section>
       <section className='w-full h-full mb-[120px]'>
         <ul className='flex flex-wrap gap-5 m-0 pl-0'>
