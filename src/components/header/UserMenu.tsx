@@ -16,7 +16,7 @@ function UserDropDownMenu({ session }: { session: CookieValueTypes }) {
 
   if (!session) {
     return (
-      <>
+      <div className='*:focus:shadow-none'>
         <DropdownMenu.Label className='text-primary-pressing py-3 px-5'>
           로그인이 필요합니다.
         </DropdownMenu.Label>
@@ -29,12 +29,12 @@ function UserDropDownMenu({ session }: { session: CookieValueTypes }) {
             로그인 / 회원가입
           </button>
         </DropdownMenu.Item>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className='*:focus:shadow-none'>
       <DropdownMenu.Label className='text-primary-pressing py-3 px-5'>
         같이행
       </DropdownMenu.Label>
@@ -70,7 +70,7 @@ function UserDropDownMenu({ session }: { session: CookieValueTypes }) {
           로그아웃
         </button>
       </DropdownMenu.Item>
-    </>
+    </div>
   );
 }
 
@@ -78,7 +78,7 @@ export default function UserMenu() {
   const session: CookieValueTypes = getCookie('accessToken');
 
   return (
-    <div className='xl:px-4 xl:py-3 xl:border rounded-full xl:border-nutral-white-03 relative'>
+    <div className='xl:px-4 xl:py-3 xl:border rounded-full xl:border-nutral-white-03 relative *:focus:shadow-none'>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button
