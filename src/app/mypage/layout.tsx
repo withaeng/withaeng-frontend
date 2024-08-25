@@ -6,11 +6,9 @@ interface LayoutProps {
 
 export default function MypageLayout({ children }: LayoutProps) {
   return (
-    <div className='flex justify-center bg-nutral-white-02 gap-5 pt-[124px] overflow-auto min-h-full'>
+    <div className='max-xl:px-4 pt-5 flex max-xl:flex-col justify-center xl:bg-nutral-white-02 gap-5 xl:pt-[124px] overflow-auto min-h-full'>
       {/* left */}
-      <div className='w-[305px]'>
-        <WhMypageNavMenu />
-      </div>
+      <WhMypageNavMenu />
 
       {/* right */}
       <div>{children}</div>
