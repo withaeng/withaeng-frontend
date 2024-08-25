@@ -10,7 +10,7 @@ import WhMypageHeader from '../(component)/WhMypageHeader';
 import WhMypageCard from '../(component)/WhMypageCard';
 
 const badgeContainerCss =
-  'bg-nutral-white-02 py-[3.75rem] px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
+  'bg-nutral-white-02 px-4 py-2 xl:py-[3.75rem] xl:px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
 
 const badgeList = [
   {
@@ -112,14 +112,16 @@ export default function Activity() {
 
   return (
     <div className='flex flex-col gap-10 mb-10'>
-      <WhMypageHeader title='내 활동' />
+      <div className='max-xl:hidden'>
+        <WhMypageHeader title='내 활동' />
+      </div>
 
       <WhMypageCard title='매너 점수 & 나의 배지'>
         <div className='flex items-center gap-3'>
           <h4 className='text-subtitle-01 text-neutral-black-02'>
             나의 매너 점수
           </h4>
-          <div className='flex items-center text-nutral-black-04 text-body-03'>
+          <div className='hidden xl:flex items-center text-nutral-black-04 text-body-03'>
             잘 하고 있어요!&nbsp;
             <span className='text-body-03 text-primary-main'>
               {50 - filled}
@@ -135,19 +137,20 @@ export default function Activity() {
           </div>
         </div>
 
-        <p className='text-body-03 text-nutral-black-05 mt-2    '>
-          <span className=' text-nutral-black-04'>매너 점수란?&nbsp;</span>
+        <p className='text-caption-01 xl:text-body-03 text-nutral-black-05 mt-2'>
+          <span className='text-caption-01 xl:text-body-03 text-nutral-black-04'>
+            매너 점수란?&nbsp;
+          </span>
           여러분이 더 안전하고 신뢰할 수 있는 환경에서 서비스를 이용할 수 있도록
-          돕기 위해 마련되었습니다.
-          <br />
+          돕기 위해 마련되었습니다. <br className='max-xl:hidden' />
           매너 점수를 높이기 위해서는 항상 성실하고 정중하게 행동해 주세요!
         </p>
         <div className='flex gap-3 items-center max-w-[586px] mt-6'>
           <span className='text-primary-main text-subtitle-01'>{filled}</span>
 
-          <div className='w-[500px] rounded-2xl bg-nutral-white-02 h-6'>
+          <div className='w-[500px] rounded-2xl bg-nutral-white-02 h-3 xl:h-6'>
             <div
-              className='h-6 rounded-2xl bg-primary-main'
+              className='h-3 xl:h-6 rounded-2xl bg-primary-main'
               style={{ width: `${filled}%` }}
             />
             <MannerArrowIcon className='ml-[172px] mt-[7px]' />
@@ -164,14 +167,17 @@ export default function Activity() {
           </p>
         </div>
 
-        <p className='text-nutral-black-04 text-body-03 mb-5 mt-[.5625rem]'>
+        <p className='text-nutral-black-04 text-caption-01 xl:text-body-03 mb-5 mt-[.5625rem]'>
           동행 상대가 보내준 나의 점수와 서비스를 통해 얻은 나의 배지를 확인 할
           수 있어요.
         </p>
 
         <section className={`${badgeContainerCss}`}>
           {badgeList.map((item) => (
-            <div className='flex flex-col items-center gap-4' key={item.value}>
+            <div
+              className='flex flex-col items-center gap-1 xl:gap-4'
+              key={item.value}
+            >
               <WhBadge key={item.name} name={item.name} />
               <span className='text-subtitle-01 text-nutral-black-02'>
                 {item.value}
@@ -181,7 +187,7 @@ export default function Activity() {
         </section>
       </WhMypageCard>
       <WhMypageCard title='동행 내역'>
-        <div className='flex my-8 gap-7 text-subtitle-01'>
+        <div className='flex mb-3 xl:mb-8 gap-7 text-subtitle-01'>
           {tabList.map((tab) => (
             <button
               key={tab.id}
@@ -215,7 +221,7 @@ export default function Activity() {
           ))}
         </div>
 
-        <div className='flex rounded bg-nutral-white-02'>
+        <div className='flex rounded bg-nutral-white-02 overflow-y-auto'>
           {selectedTab === 'tab1' &&
             (accompanyList.length > 0 ? (
               accompanyList
