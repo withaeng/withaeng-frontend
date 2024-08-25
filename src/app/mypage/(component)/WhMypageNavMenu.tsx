@@ -6,7 +6,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 export default function MypageNavMenu() {
   const segment: string | null = useSelectedLayoutSegment() || 'Info';
   const defaultNavCss =
-    'px-5 py-2.5 hover:text-primary-main rounded text-headline-04 text-nutral-black-02 bg-nutral-white-02';
+    'px-3 xl:px-5 py-2.5 hover:text-primary-main rounded text-subtitle-02 xl:text-headline-04 text-nutral-black-02 bg-nutral-white-02';
 
   const navItem = [
     {
@@ -27,7 +27,7 @@ export default function MypageNavMenu() {
   ];
 
   return (
-    <ul className='flex xl:flex-col max-xl:text-center gap-2 text-subtitle-02 xl:text-headline-04 w-full xl:w-[305px] xl:gap-[14px]'>
+    <ul className='flex xl:flex-col max-xl:text-center gap-2 w-full xl:w-[305px] xl:gap-[14px]'>
       {navItem.map((item) => (
         <li key={item.href} className='w-full'>
           <Link href={item.href}>
