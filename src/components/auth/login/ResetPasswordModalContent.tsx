@@ -20,8 +20,12 @@ export default function ResetPasswordModalContent({
 
   return (
     <form onSubmit={handleSignUpSubmit} className='flex flex-col h-full'>
-      <WhModalHeader>회원가입 정보 입력</WhModalHeader>
-      <PasswordInput password={password} setPassword={setPassword} />
+      <WhModalHeader>비밀번호 재설정</WhModalHeader>
+      <PasswordInput
+        password={password}
+        setPassword={setPassword}
+        label='비밀번호 재설정'
+      />
       <WhButton size='lg' type='submit'>
         동의합니다.
       </WhButton>

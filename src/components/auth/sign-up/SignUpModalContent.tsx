@@ -52,12 +52,14 @@ export default function SignUpModalContent({
           }
           size='lg'
           placeholder='이메일'
+          required
         />
         <PasswordInput
           password={form.password}
           setPassword={(value) =>
             setForm((prev) => ({ ...prev, password: value }))
           }
+          label='비밀번호'
         />
         <div>
           <label htmlFor='sign-up_birth'>
