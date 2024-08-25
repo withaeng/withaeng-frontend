@@ -27,7 +27,7 @@ export default function WhMypageInfo() {
   ];
 
   return (
-    <div className='flex gap-[60px] justify-center'>
+    <div className='flex flex-col xl:flex-row gap-[60px] justify-center'>
       {/* left */}
       <div className='flex flex-col justify-center items-center'>
         <CircleProgressBar
@@ -69,8 +69,8 @@ export default function WhMypageInfo() {
           disabled
         />
 
-        <div className='flex gap-5 w-[495px]'>
-          <div className='w-[149px]'>
+        <div className='flex flex-col xl:flex-row gap-5 xl:w-[495px]'>
+          <div className='xl:w-[149px]'>
             <WhInput
               label='성별'
               size='lg'
@@ -79,7 +79,7 @@ export default function WhMypageInfo() {
               handleInputChange={() => {}}
             />
           </div>
-          <div className='w-[326px]'>
+          <div className='xl:w-[326px]'>
             <WhInput
               label='생년월일'
               size='lg'

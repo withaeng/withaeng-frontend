@@ -7,7 +7,7 @@ interface Props {
 }
 
 const defaultCardCss =
-  'flex items-center justify-between pb-5 mb-8 border-b border-nutral-white-03';
+  'flex items-center justify-between pb-5 xl:mb-8 xl:border-b border-nutral-white-03';
 
 export default function WhMypageCard({
   onClick,
@@ -17,7 +17,7 @@ export default function WhMypageCard({
   children,
 }: Props) {
   return (
-    <div className='bg-nutral-white-01 w-fit py-7 px-10 shadow-modal min-w-[955px]'>
+    <div className='bg-nutral-white-01 w-full xl:w-fit xl:py-7 xl:px-10 xl:shadow-modal xl:min-w-[955px]'>
       <div className={`${defaultCardCss}`}>
         <div>
           <h4 className='text-nutral-black-02 text-headline-04'>{title}</h4>
