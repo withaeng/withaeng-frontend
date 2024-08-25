@@ -40,7 +40,7 @@ const sendEmailChangePWApi = ({
   apiPost('/api/v1/auth/send-email-for-change-password', { email });
 
 /** change pw api */
-const ChangePasswordApi = ({
+const changePasswordApi = ({
   email,
   password,
   code,
@@ -119,7 +119,7 @@ export default function useAuth() {
 
   const changePassword = useMutation({
     mutationFn: (data: UserSignIn & { code: string }) =>
-      ChangePasswordApi(data),
+      changePasswordApi(data),
     onSuccess: (data) => {
       // TODO: 성공/실패 alert 추가
       if (data.error) {
