@@ -27,10 +27,12 @@ export default function LoginModalContent() {
     <div>
       <div className='flex gap-5 items-center text-center'>
         <div className={dividerStyle} />
-        <span className='w-full text-nutral-black-01'>로그인 / 회원가입</span>
+        <span className='w-full text-nutral-black-01 text-[12px]'>
+          로그인 / 회원가입
+        </span>
         <div className={dividerStyle} />
       </div>
-      <form onSubmit={login} className='mt-10 mx-11 flex flex-col gap-5'>
+      <form onSubmit={login} className='mt-10 xl:mx-10 flex flex-col gap-5'>
         <WhInput
           type='email'
           value={email}

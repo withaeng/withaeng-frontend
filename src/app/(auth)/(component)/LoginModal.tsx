@@ -11,7 +11,7 @@ export default function LoginModalPage() {
           <LogoImage />
         </div>
         <LoginModalContent />
-        <div className='flex justify-between mt-5 mx-11 text-nutral-black-03'>
+        <div className='flex justify-between mt-5 xl:mx-10 text-nutral-black-03'>
           <Link href='/findPassword' replace>
             <button type='button' className='text-body-03'>
               비밀번호 찾기
