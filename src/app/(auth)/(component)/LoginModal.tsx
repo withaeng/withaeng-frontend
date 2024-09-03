@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import LoginModalContent from '@/components/auth/login/LoginModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
-import { ReactComponent as LogoImage } from '../../../../public/assets/images/withaeng-logo-transparent-h42.svg';
+import { ReactComponent as LogoImage } from '../../../../public/assets/images/withaeng-logo-main.svg';
 
 export default function LoginModalPage() {
   return (
