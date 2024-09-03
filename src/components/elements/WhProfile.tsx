@@ -35,7 +35,7 @@ export default function WhProfile({
 }: WhProfileProps) {
   const infoItems = [
     { value: score, label: '매너점수' },
-    { value: review, label: '후기' },
+    { value: review, label: '동행 횟수' },
     { value: period, label: '접속 기간' },
   ];
 
@@ -45,8 +45,8 @@ export default function WhProfile({
   const [isHateHover, setIsHateHover] = useState(false);
 
   return (
-    <div className='relative flex justify-center bg-nutral-white-02 rounded shadow-modal min-w-64 pb-5 pt-10 px-[14px]'>
-      <div className='flex flex-col justify-center items-center'>
+    <div className='relative flex min-w-64 justify-center rounded bg-nutral-white-02 px-[14px] pb-5 pt-10 shadow-modal'>
+      <div className='flex flex-col items-center justify-center'>
         <Image
           className='absolute -top-7 rounded-full'
           src={profileImage}
@@ -55,10 +55,10 @@ export default function WhProfile({
           alt='샘플 이미지'
         />
         <p className='pb-[5px] text-subtitle-01 text-nutral-black-02'>{nick}</p>
-        <span className='text-nutral-black-04 text-caption-01'>
+        <span className='text-caption-01 text-nutral-black-04'>
           {age}&nbsp; ∙ &nbsp;{gender}
         </span>
-        <ul className='flex justify-center py-5 pl-4 gap-4 text-center'>
+        <ul className='flex justify-center gap-4 py-5 pl-4 text-center'>
           {infoItems.map((item, index) => (
             <li
               key={item.value}
@@ -67,7 +67,7 @@ export default function WhProfile({
               <p className='mb-2 text-subtitle-02 text-nutral-black-02'>
                 {item.value}
               </p>
-              <span className='text-nutral-black-04 text-caption-02'>
+              <span className='text-caption-02 text-nutral-black-04'>
                 {item.label}
               </span>
             </li>
@@ -77,7 +77,7 @@ export default function WhProfile({
         <div className='flex gap-2'>
           <button
             type='button'
-            className={`hover:bg-primary-main hover:border-primary-main hover:text-nutral-white-01 ${defaultBtnCss} ${isLikeHover ? 'px-[11px]' : 'px-7'}`}
+            className={`hover:border-primary-main hover:bg-primary-main hover:text-nutral-white-01 ${defaultBtnCss} ${isLikeHover ? 'px-[11px]' : 'px-7'}`}
             onMouseEnter={() => {
               setLikeBtnText('매너점수 상승');
               setIsLikeHover(true);
@@ -97,7 +97,7 @@ export default function WhProfile({
           </button>
           <button
             type='button'
-            className={`hover:bg-nutral-white-03  ${defaultBtnCss} ${isHateHover ? 'px-[11px]' : 'px-7'}`}
+            className={`hover:bg-nutral-white-03 ${defaultBtnCss} ${isHateHover ? 'px-[11px]' : 'px-7'}`}
             onMouseEnter={() => {
               setHateBtnText('매너점수 하락');
               setIsHateHover(true);

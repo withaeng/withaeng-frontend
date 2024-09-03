@@ -17,19 +17,21 @@ export default function WhMypageCard({
   children,
 }: Props) {
   return (
-    <div className='bg-nutral-white-01 w-full xl:w-fit xl:py-7 xl:px-10 xl:shadow-modal xl:min-w-[955px]'>
+    <div className='w-full bg-nutral-white-01 xl:w-fit xl:min-w-[955px] xl:px-10 xl:py-7 xl:shadow-modal'>
       <div className={`${defaultCardCss}`}>
         <div>
-          <h4 className='text-nutral-black-02 text-headline-04'>{title}</h4>
+          <h4 className='text-headline-04 text-nutral-black-02'>{title}</h4>
           {content && (
-            <p className='text-body-03 text-nutral-black-05 mt-1'>{content}</p>
+            <p className='mt-3 text-body-03 text-nutral-black-05 xl:mt-1'>
+              {content}
+            </p>
           )}
         </div>
         {linkText && (
           <button
             type='button'
             onClick={onClick}
-            className='text-secondary-main text-subtitle-02'
+            className='text-subtitle-02 text-secondary-main'
           >
             {linkText}
           </button>
