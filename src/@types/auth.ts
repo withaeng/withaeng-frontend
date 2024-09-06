@@ -1,3 +1,9 @@
+type UserSimpleResponse = {
+  id: string;
+  email: string;
+  nickname: string;
+};
+
 /* 비밀번호 재설정 req body */
 export interface ChangePasswordRequest {
   email: string;
@@ -34,3 +40,5 @@ export interface ValidateEmailRequest {
   email: string;
   code: string;
 }
+
+export type { UserSimpleResponse };
