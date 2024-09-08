@@ -1,16 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import WhBadge from '@/components/elements/WhBadge';
 import WhButton from '@/components/elements/WhButton';
 import WhCard from '@/components/elements/WhCard';
-import WhMypageCard from '@/components/elements/mypage/WhMypageCard';
-import WhMypageHeader from '@/components/elements/mypage/WhMypageHeader';
-import React, { useState } from 'react';
 import WhTooltip from '@/components/elements/WhTooltip';
 import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
+import WhMypageHeader from '../(component)/WhMypageHeader';
+import WhMypageCard from '../(component)/WhMypageCard';
 
 const badgeContainerCss =
-  'bg-nutral-white-02 py-[3.75rem] px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
+  'bg-nutral-white-02 px-4 py-2 xl:py-[3.75rem] xl:px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
 
 const badgeList = [
   {
@@ -111,15 +111,17 @@ export default function Activity() {
   };
 
   return (
-    <div className='flex flex-col gap-10'>
-      <WhMypageHeader title='내 활동' />
+    <div className='mb-10 flex flex-col gap-10'>
+      <div className='max-xl:hidden'>
+        <WhMypageHeader title='내 활동' />
+      </div>
 
       <WhMypageCard title='매너 점수 & 나의 배지'>
         <div className='flex items-center gap-3'>
-          <h4 className='text-subtitle-01 text-neutral-black-02'>
+          <h4 className='text-neutral-black-02 text-subtitle-01'>
             나의 매너 점수
           </h4>
-          <div className='flex items-center text-nutral-black-04 text-body-03'>
+          <div className='hidden items-center text-body-03 text-nutral-black-04 xl:flex'>
             잘 하고 있어요!&nbsp;
             <span className='text-body-03 text-primary-main'>
               {50 - filled}
@@ -135,45 +137,47 @@ export default function Activity() {
           </div>
         </div>
 
-        <p className='text-body-03 text-nutral-black-05 mt-2    '>
-          <span className=' text-nutral-black-04'>매너 점수란?&nbsp;</span>
+        <p className='mt-2 text-caption-01 text-nutral-black-05 xl:text-body-03'>
+          <span className='text-caption-01 text-nutral-black-04 xl:text-body-03'>
+            매너 점수란?&nbsp;
+          </span>
           여러분이 더 안전하고 신뢰할 수 있는 환경에서 서비스를 이용할 수 있도록
-          돕기 위해 마련되었습니다.
-          <br />
+          돕기 위해 마련되었습니다. <br className='max-xl:hidden' />
           매너 점수를 높이기 위해서는 항상 성실하고 정중하게 행동해 주세요!
         </p>
-        <div className='flex gap-3 items-center max-w-[586px] mt-6'>
-          <span className='text-primary-main text-subtitle-01'>{filled}</span>
+        <div className='mt-6 flex max-w-[586px] items-center gap-3'>
+          <span className='text-subtitle-01 text-primary-main'>{filled}</span>
 
-          <div className='w-[500px] rounded-2xl bg-nutral-white-02 h-6'>
+          <div className='h-3 w-[500px] rounded-2xl bg-nutral-white-02 xl:h-6'>
             <div
-              className='h-6 rounded-2xl bg-primary-main'
+              className='h-3 rounded-2xl bg-primary-main xl:h-6'
               style={{ width: `${filled}%` }}
             />
             <MannerArrowIcon className='ml-[172px] mt-[7px]' />
           </div>
 
-          <span className='text-nutral-white-04 text-body-02'>100</span>
+          <span className='text-body-02 text-nutral-white-04'>100</span>
         </div>
 
-        <div className='flex gap-3 mt-8'>
-          <h4 className='text-subtitle-01 text-neutral-black-02'>나의 배지</h4>
-          <p className='text-nutral-black-04 text-subtitle-02'>
-            <span className='text-primary-main text-body-03'>
-              {badgeList.length}&nbsp;
-            </span>
-            / 12
+        <div className='mt-8 flex gap-3'>
+          <h4 className='text-neutral-black-02 text-subtitle-01'>나의 배지</h4>
+          <p className='text-subtitle-01 text-nutral-black-04'>
+            <span className='text-primary-main'>{badgeList.length}&nbsp;</span>/
+            12
           </p>
         </div>
 
-        <p className='text-nutral-black-04 text-body-03 mb-5 mt-[.5625rem]'>
+        <p className='mb-5 mt-3 text-body-03 text-nutral-black-04 xl:mt-2'>
           동행 상대가 보내준 나의 점수와 서비스를 통해 얻은 나의 배지를 확인 할
           수 있어요.
         </p>
 
         <section className={`${badgeContainerCss}`}>
           {badgeList.map((item) => (
-            <div className='flex flex-col items-center gap-4' key={item.value}>
+            <div
+              className='flex flex-col items-center gap-1 xl:gap-4'
+              key={item.value}
+            >
               <WhBadge key={item.name} name={item.name} />
               <span className='text-subtitle-01 text-nutral-black-02'>
                 {item.value}
@@ -183,7 +187,7 @@ export default function Activity() {
         </section>
       </WhMypageCard>
       <WhMypageCard title='동행 내역'>
-        <div className='flex my-8 gap-7 text-subtitle-01'>
+        <div className='mb-3 flex gap-7 text-subtitle-01 xl:mb-8'>
           {tabList.map((tab) => (
             <button
               key={tab.id}
@@ -191,16 +195,16 @@ export default function Activity() {
               onClick={() => changeTab(tab.id)}
               className={`${
                 selectedTab === tab.id
-                  ? ' text-nutral-black-03'
-                  : ' text-nutral-white-04'
+                  ? 'text-nutral-black-03'
+                  : 'text-nutral-white-04'
               } `}
             >
               {tab.title}
               <span
                 className={`ml-2 ${
                   selectedTab === tab.id
-                    ? ' text-primary-main '
-                    : ' text-nutral-white-04'
+                    ? 'text-primary-main'
+                    : 'text-nutral-white-04'
                 } `}
               >
                 {tab.id === 'tab1' &&
@@ -217,7 +221,7 @@ export default function Activity() {
           ))}
         </div>
 
-        <div className='flex rounded bg-nutral-white-02'>
+        <div className='flex overflow-y-auto rounded bg-nutral-white-02'>
           {selectedTab === 'tab1' &&
             (accompanyList.length > 0 ? (
               accompanyList
@@ -226,7 +230,7 @@ export default function Activity() {
                     item.status === 'joining' || item.status === 'joined'
                 )
                 .map((accompany) => (
-                  <div className='px-5 pt-6 pb-8' key={accompany.id}>
+                  <div className='px-5 pb-8 pt-6' key={accompany.id}>
                     <WhCard
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
@@ -244,7 +248,7 @@ export default function Activity() {
             ) : (
               <div className='flex flex-col items-center justify-center py-20'>
                 <div>
-                  <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
+                  <p className='mb-3 text-center text-subtitle-02 text-nutral-black-05'>
                     {selectedTab === 'tab1' ? '진행 중인' : '완료한'}
                     &nbsp; 동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?
@@ -263,7 +267,7 @@ export default function Activity() {
               accompanyList
                 .filter((item) => item.status === 'accompanied')
                 .map((accompany) => (
-                  <div className='px-5 pt-6 pb-8' key={accompany.id}>
+                  <div className='px-5 pb-8 pt-6' key={accompany.id}>
                     <WhCard
                       status={accompany.status}
                       profileImageUrl={accompany.profileImageUrl}
@@ -281,7 +285,7 @@ export default function Activity() {
             ) : (
               <div className='flex flex-col items-center justify-center py-20'>
                 <div>
-                  <p className='mb-3 text-center text-nutral-black-05 text-subtitle-02'>
+                  <p className='mb-3 text-center text-subtitle-02 text-nutral-black-05'>
                     {selectedTab === 'tab2' ? '진행 중인' : '완료한'}
                     &nbsp; 동행이 없어요. <br />
                     동행할 콘텐츠를 찾아볼까요?

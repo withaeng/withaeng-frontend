@@ -12,7 +12,7 @@ export default function WithdrawModal() {
       <button
         type='button'
         onClick={onOpen}
-        className='text-secondary-light text-subtitle-02'
+        className='text-secondary-exLight text-subtitle-02'
       >
         회원탈퇴
       </button>

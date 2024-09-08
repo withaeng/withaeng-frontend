@@ -19,7 +19,7 @@ export default function CheckEmailPwModalPage() {
 
   return (
     <WhModal isOpen>
-      <div className='px-[84px] py-[72px]'>
+      <div className='px-4 py-5 xl:px-[84px] xl:py-[72px]'>
         <CheckEmailModalComponent handleEmail={handleEmail} />
       </div>
     </WhModal>

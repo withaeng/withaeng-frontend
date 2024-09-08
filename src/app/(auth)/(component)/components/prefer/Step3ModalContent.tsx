@@ -18,7 +18,7 @@ export default function SignUpPreferStep3ModalContent() {
 
   return (
     <>
-      <h3 className='text-headline-03 my-5'>
+      <h3 className='text-headline-04 xl:text-headline-03 my-5'>
         마지막 단계에요! <br />
         짝짝짝~
       </h3>

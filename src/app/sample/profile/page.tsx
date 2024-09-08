@@ -7,17 +7,23 @@ import WhModalHeader from '@/components/elements/modal/WhModalHeader';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import SampleProfile from '../../../../public/assets/images/profile.png';
 
+const itemList = {
+  id: '0',
+  score: 51.5,
+  review: 3,
+  period: '1년 11개월',
+  nick: '솔솔솔',
+  age: 20,
+  gender: '여성',
+  profileImage: SampleProfile,
+};
+
 export default function Page() {
-  const itemList = {
-    id: '0',
-    score: 51.5,
-    review: 3,
-    period: '1년 11개월',
-    nick: '솔솔솔',
-    age: 20,
-    gender: '여성',
-    profileImage: SampleProfile,
-  };
+  const [modalConfig, setModalConfig] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+  });
 
   const handleLikeClick = () => {
     setModalConfig({
@@ -42,12 +48,6 @@ export default function Page() {
       isOpen: false,
     });
   };
-
-  const [modalConfig, setModalConfig] = useState({
-    isOpen: false,
-    title: '',
-    message: '',
-  });
 
   return (
     <div className='flex my-[200px] items-center justify-center m-auto'>

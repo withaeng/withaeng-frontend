@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, useRef, useState } from 'react';
 import Image from 'next/image';
 import imageCompression from 'browser-image-compression';
