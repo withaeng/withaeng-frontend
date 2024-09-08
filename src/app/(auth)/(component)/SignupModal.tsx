@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import SignUpModalContent from '@/components/auth/sign-up/SignUpModalContent';
-import TermModalContent from '@/components/auth/sign-up/TermModalContent';
+import SignUpModalContent from '@/app/(auth)/(component)/components/sign-up/SignUpModalContent';
+import TermModalContent from '@/app/(auth)/(component)/components/sign-up/TermModalContent';
 import { UserSignUpForm } from '@/types/auth';
 import WhModal from '@/components/elements/modal/WhModal';
 

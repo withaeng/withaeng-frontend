@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Step1ModalContent from '@/components/auth/prefer/Step1ModalContent';
-import Step2ModalContent from '@/components/auth/prefer/Step2ModalContent';
-import Step3ModalContent from '@/components/auth/prefer/Step3ModalContent';
+import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
+import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
+import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { useRouter } from 'next/navigation';

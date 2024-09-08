@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useAuth from '@/hooks/useAuth';
 import WhModal from '@/components/elements/modal/WhModal';
-import CheckEmailModalComponent from '@/components/auth/sign-up/CheckEmailModalContent';
+import CheckEmailModalComponent from '@/app/(auth)/(component)/components/sign-up/CheckEmailModalContent';
 
 export default function CheckEmailModalPage() {
   const searchParams = useSearchParams();
