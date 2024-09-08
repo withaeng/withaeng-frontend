@@ -1,4 +1,4 @@
-import WhMypageNavMenu from '../../components/elements/mypage/WhMypageNavMenu';
+import WhMypageNavMenu from './(component)/WhMypageNavMenu';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -6,18 +6,12 @@ interface LayoutProps {
 
 export default function MypageLayout({ children }: LayoutProps) {
   return (
-    <div className='flex bg-nutral-white-02  gap-5 pt-[124px] overflow-auto h-dvh'>
+    <div className='max-xl:px-4 pt-5 flex max-xl:flex-col justify-start xl:justify-center xl:bg-nutral-white-02 gap-10 xl:gap-5 xl:pt-[124px] overflow-auto min-h-full'>
       {/* left */}
-      <div className='w-[305px] flex items-end flex-col grow'>
-        <div className='fixed flex flex-col'>
-          <WhMypageNavMenu />
-        </div>
-      </div>
+      <WhMypageNavMenu />
 
       {/* right */}
-      <div className='flex items-start flex-col grow '>
-        <main>{children}</main>
-      </div>
+      <div>{children}</div>
     </div>
   );
 }
