@@ -18,7 +18,7 @@ export default function SignUpPreferStep2ModalContent() {
 
   return (
     <>
-      <h3 className='text-headline-03 my-5'>
+      <h3 className='text-headline-04 xl:text-headline-03 my-5'>
         잘하고 계세요 :) <br />
         조금만 화이팅 해주세요!
       </h3>
