@@ -20,8 +20,10 @@ export default function WithdrawModal() {
         isOpen={isOpen}
         onClose={onClose}
         isDismissible={false}
-        className='px-[84px] py-[72px]'
+        className='px-4 py-5 xl:px-[84px] xl:py-[72px] flex flex-col justify-between'
       >
+        <div>
+
         <WhModalHeader>
           <span className='text-headline-04 text-primary-main'>같이행 </span>
           서비스를 정말로 탈퇴하실건가요? 😥
@@ -34,6 +36,7 @@ export default function WithdrawModal() {
             <br />
             그래도 탈퇴하시는건가요?
           </p>
+        </div>
         </div>
         <WhModalButtonList onClick={onClose} label='네, 탈퇴할래요.' />
       </WhModal>
