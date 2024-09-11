@@ -312,9 +312,9 @@ export default function WhMypageTravelType() {
       </div>
       {isMoreOpen && (
         <div
-          className='absolute w-full h-28 bottom-0'
+          className='absolute w-full bottom-0'
           style={{
-            background: `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.83) 80.5%, #FFFFFF 100%)`,
+            boxShadow: `0px 0px 100px 100px rgba(255,255,255,1)`
           }}
         />
       )}
