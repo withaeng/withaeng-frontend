@@ -39,11 +39,11 @@ export default function WhMypageInfo() {
         <p className='py-[13px] text-headline-04 text-primary-main'>
           {itemList.name}
         </p>
-        <ul className='flex gap-6 rounded bg-nutral-white-02 px-4 py-5 text-center text-subtitle-01'>
+        <ul className='max-xl:w-full flex gap-6 justify-stretch rounded bg-nutral-white-02 px-4 py-5 text-center text-subtitle-01'>
           {infoItems.map((item, index) => (
             <li
               key={item.value}
-              className={`flex flex-col ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-6' : ''}`}
+              className={`max-xl:w-full flex flex-col ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-6' : ''}`}
             >
               <p className='mb-2'>{item.value}</p>
               <span className='text-body-03 text-nutral-black-03'>
