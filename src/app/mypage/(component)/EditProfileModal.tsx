@@ -42,13 +42,13 @@ export default function EditProfileModal() {
           isOpen={isOpen}
           onClose={onClose}
           isDismissible={false}
-          className='px-[84px] py-[72px]'
+          className='px-4 py-5 xl:px-[84px] xl:py-[72px]'
         >
           <WhModalHeader>프로필 수정</WhModalHeader>
-          <div className='flex flex-col my-[54px] justify-center items-center'>
+          <div className='flex flex-col my-10 xl:my-[54px] justify-center items-center'>
             <ProfileImage profileImg={null} isModalOpen={isOpen} />
           </div>
-          <div className='mb-[91px]'>
+          <div className='xl:mb-[91px]'>
             <WhInput
               label='닉네임'
               size='lg'
