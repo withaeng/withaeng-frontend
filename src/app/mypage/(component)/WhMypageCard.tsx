@@ -7,7 +7,7 @@ interface Props {
 }
 
 const defaultCardCss =
-  'flex items-center justify-between pb-5 xl:mb-8 xl:border-b border-nutral-white-03';
+  'relative flex items-end justify-between pb-5 xl:mb-8 xl:border-b border-nutral-white-03';
 
 export default function WhMypageCard({
   onClick,
@@ -31,7 +31,7 @@ export default function WhMypageCard({
           <button
             type='button'
             onClick={onClick}
-            className='text-subtitle-02 text-secondary-main'
+            className='max-xl:absolute max-xl:right-0 max-xl:top-0 text-subtitle-02 text-secondary-main'
           >
             {linkText}
           </button>
