@@ -19,6 +19,7 @@ let inputSizeCss = '';
 
 interface InputProps {
   disabled?: boolean;
+  required?: boolean;
   placeholder?: string;
   label?: string;
   isErr?: boolean;
@@ -35,6 +36,7 @@ interface InputProps {
 
 export default function WhInput({
   disabled = false,
+  required = false,
   size = 'md',
   placeholder = '내용을 입력해주세요.',
   label = '',
@@ -78,6 +80,7 @@ export default function WhInput({
         {label && (
           <label htmlFor='레이블 이름' className={defaultLabelCss}>
             {label}
+            {required && <span className='text-caption-main'> *</span>}
           </label>
         )}
         <div className='flex items-center'>
@@ -92,6 +95,7 @@ export default function WhInput({
             onChange={handleChange}
             minLength={minLength}
             maxLength={maxLength}
+            required={required}
           />
           <div className={`${closeBtnCss}`}>
             {endAdornment}

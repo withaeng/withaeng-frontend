@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useAuth from '@/hooks/useAuth';
 import WhModal from '@/components/elements/modal/WhModal';
-import CheckEmailModalComponent from '@/components/auth/sign-up/CheckEmailModalContent';
+import CheckEmailModalComponent from '@/app/(auth)/(component)/components/sign-up/CheckEmailModalContent';
 
 export default function CheckEmailModalPage() {
   const searchParams = useSearchParams();
@@ -25,7 +25,7 @@ export default function CheckEmailModalPage() {
 
   return (
     <WhModal isOpen>
-      <div className='px-[84px] py-[72px]'>
+      <div className='px-4 py-5 xl:px-[84px] xl:py-[72px]'>
         <CheckEmailModalComponent handleEmail={handleEmail} />
       </div>
     </WhModal>

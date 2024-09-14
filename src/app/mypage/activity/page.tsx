@@ -9,9 +9,6 @@ import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
 import WhMypageHeader from '../(component)/WhMypageHeader';
 import WhMypageCard from '../(component)/WhMypageCard';
 
-const badgeContainerCss =
-  'bg-nutral-white-02 px-4 py-2 xl:py-[3.75rem] xl:px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
-
 const badgeList = [
   {
     name: 'continuous_attendance_1day',
@@ -30,10 +27,6 @@ const badgeList = [
     value: '연속 출석 100일',
   },
   {
-    name: 'accompany_once',
-    value: '동행 참여 1회',
-  },
-  {
     name: 'accompany_7times',
     value: '동행 참여 7회',
   },
@@ -42,8 +35,12 @@ const badgeList = [
     value: '동행 참여 30회',
   },
   {
-    name: 'lock',
-    value: '동행 성공 100회',
+    name: 'accompany_completed_once',
+    value: '동행 성공 1회',
+  },
+  {
+    name: 'accompany_completed_7times',
+    value: '동행 성공 7회',
   },
 ];
 
@@ -172,14 +169,14 @@ export default function Activity() {
           수 있어요.
         </p>
 
-        <section className={`${badgeContainerCss}`}>
+        <section className='grid grid-cols-3 gap-1 overflow-scroll rounded bg-nutral-white-02 px-4 py-2 xl:gap-12 xl:px-[4.375rem] xl:py-[3.75rem]'>
           {badgeList.map((item) => (
             <div
               className='flex flex-col items-center gap-1 xl:gap-4'
               key={item.value}
             >
-              <WhBadge key={item.name} name={item.name} />
-              <span className='text-subtitle-01 text-nutral-black-02'>
+              <WhBadge name={item.name} />
+              <span className='text-subtitle-02 text-nutral-black-02 xl:text-subtitle-01'>
                 {item.value}
               </span>
             </div>

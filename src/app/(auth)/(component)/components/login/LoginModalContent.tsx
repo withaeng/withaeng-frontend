@@ -7,10 +7,10 @@ import WhInput from '@/components/elements/WhInput';
 import {
   EyeHideIcon,
   EyeShowIcon,
-} from '../../../../public/assets/icons/system';
+} from '../../../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
-const dividerStyle = 'h-0 w-full border border-nutral-white-03';
+const dividerStyle = 'max-xl:hidden h-0 w-full border border-nutral-white-03';
 
 export default function LoginModalContent() {
   const [showPw, setShowPw] = useState(false);
@@ -27,10 +27,12 @@ export default function LoginModalContent() {
     <div>
       <div className='flex gap-5 items-center text-center'>
         <div className={dividerStyle} />
-        <span className='w-full text-nutral-black-01'>로그인 / 회원가입</span>
+        <span className='w-full text-nutral-black-01 text-[12px]'>
+          로그인 / 회원가입
+        </span>
         <div className={dividerStyle} />
       </div>
-      <form onSubmit={login} className='mt-11 mx-11 flex flex-col gap-5'>
+      <form onSubmit={login} className='mt-10 xl:mx-10 flex flex-col gap-5'>
         <WhInput
           type='email'
           value={email}
@@ -68,7 +70,7 @@ export default function LoginModalContent() {
           }
         />
         <WhButton type='submit' size='lg'>
-          로그인하기
+          로그인
         </WhButton>
       </form>
     </div>

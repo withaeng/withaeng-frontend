@@ -60,7 +60,7 @@ export default function WhModal({
       mountOnEnter
       unmountOnExit
       classNames='modal-transition'
-      className='absolute top-0 left-0 w-dvw h-dvh'
+      className='fixed top-0 left-0 w-dvw h-dvh'
     >
       <div ref={nodeRef}>
         <div
@@ -68,20 +68,16 @@ export default function WhModal({
           className='w-full h-full bg-[#000000] opacity-20 z-40'
           onClick={isDismissible ? handleClose : undefined}
         />
-        <div className='modal-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nutral-white-01 z-50 w-fit rounded shadow-modal'>
-          <div className={`w-[680px] ${className}`}>
+        <div className='modal-content absolute max-xl:bottom-0 max-xl:h-[576px] w-full xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2 bg-nutral-white-01 z-50 xl:w-fit rounded-t-[20px] xl:rounded shadow-modal'>
+          <div className={`w-full xl:w-[680px] h-full ${className}`}>
             {!hideCloseButton && (
               <button
                 type='button'
                 aria-label='닫기 버튼'
                 onClick={handleClose}
+                className='absolute top-5 right-5'
               >
-                <CloseIcon
-                  width={24}
-                  height={24}
-                  stroke='#333333'
-                  className='absolute top-5 right-5'
-                />
+                <CloseIcon width={24} height={24} stroke='#333333' />
               </button>
             )}
             {children}

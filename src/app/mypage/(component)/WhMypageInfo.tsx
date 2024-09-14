@@ -22,12 +22,12 @@ export default function WhMypageInfo() {
 
   const infoItems = [
     { value: itemList.score, label: '매너점수' },
-    { value: itemList.review, label: '동행 횟수' },
+    { value: itemList.review, label: '후기' },
     { value: itemList.period, label: '접속 기간' },
   ];
 
   return (
-    <div className='flex flex-col justify-center gap-5 xl:flex-row xl:gap-15'>
+    <div className='flex justify-center gap-[60px]'>
       {/* left */}
       <div className='flex flex-col items-center justify-center'>
         <CircleProgressBar
@@ -69,8 +69,8 @@ export default function WhMypageInfo() {
           disabled
         />
 
-        <div className='flex flex-col gap-5 xl:w-[495px] xl:flex-row'>
-          <div className='xl:w-[149px]'>
+        <div className='flex w-[495px] gap-5'>
+          <div className='w-[149px]'>
             <WhInput
               label='성별'
               size='lg'
@@ -79,7 +79,7 @@ export default function WhMypageInfo() {
               handleInputChange={() => {}}
             />
           </div>
-          <div className='xl:w-[326px]'>
+          <div className='w-[326px]'>
             <WhInput
               label='생년월일'
               size='lg'

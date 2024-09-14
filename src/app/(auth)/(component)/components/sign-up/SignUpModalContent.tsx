@@ -42,7 +42,7 @@ export default function SignUpModalContent({
   return (
     <form onSubmit={handleSignUpSubmit} className='flex flex-col h-full'>
       <WhModalHeader>회원가입 정보 입력</WhModalHeader>
-      <div className='grow flex flex-col gap-10 mt-10 mx-[15px]'>
+      <div className='grow flex flex-col gap-5 mt-5 xl:gap-10 xl:mt-10 xl:mx-[15px]'>
         <WhInput
           type='email'
           label='이메일'
@@ -52,12 +52,14 @@ export default function SignUpModalContent({
           }
           size='lg'
           placeholder='이메일'
+          required
         />
         <PasswordInput
           password={form.password}
           setPassword={(value) =>
             setForm((prev) => ({ ...prev, password: value }))
           }
+          label='비밀번호'
         />
         <div>
           <label htmlFor='sign-up_birth'>

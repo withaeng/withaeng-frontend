@@ -1,18 +1,23 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import WhInput from '../elements/WhInput';
-import { CheckIcon } from '../../../public/assets/icons/menu';
-import { EyeHideIcon, EyeShowIcon } from '../../../public/assets/icons/system';
+import WhInput from '../../../../components/elements/WhInput';
+import { CheckIcon } from '../../../../../public/assets/icons/menu';
+import {
+  EyeHideIcon,
+  EyeShowIcon,
+} from '../../../../../public/assets/icons/system';
 
 const buttonStyle = 'w-full h-full flex justify-center items-center';
 
 export default function PasswordInput({
   password,
   setPassword,
+  label,
 }: {
   password: string;
   setPassword: (value: string) => void;
+  label: string;
 }) {
   const [showPw, setShowPw] = useState(false);
   const isMinWords = useCallback(
@@ -56,8 +61,9 @@ export default function PasswordInput({
         handleInputChange={setPassword}
         size='lg'
         placeholder='비밀번호를 입력하세요.'
-        label='비밀번호'
+        label={label}
         isClearable={false}
+        required
         isErr={
           password.length > 0 ? !isMinWords() || !isCombination() : undefined
         }
