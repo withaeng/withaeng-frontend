@@ -52,9 +52,11 @@ export default function Step2ModalContent({
   };
 
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>어떤 동행을 원하세요?? 👀</h3>
-      <div className='flex flex-col gap-10 grow overflow-auto'>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        어떤 동행을 원하세요?? 👀
+      </h3>
+      <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <div className='flex justify-between'>
             <p className='mb-5'>원하는 동행 연령을 설정해주세요.</p>
@@ -84,7 +86,7 @@ export default function Step2ModalContent({
         </div>
         <div>
           <p className='mb-3'>원하는 동행 성별을 설정해주세요.</p>
-          <div className='flex gap-2 items-center'>
+          <div className='flex items-center gap-2'>
             {genderList.map((genderItem) => (
               <WhChip
                 key={genderItem.id}

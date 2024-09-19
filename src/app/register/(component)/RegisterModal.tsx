@@ -48,15 +48,15 @@ export default function RegisterModal() {
     <WhModal
       isOpen
       onClose={() => router.back()}
-      className='px-[85px] py-[72px] h-[800px]'
+      className='h-full max-h-[800px] overflow-auto px-4 pb-5 pt-15 xl:h-[800px] xl:px-[85px] xl:py-[72px]'
       isDismissible={false}
     >
-      <div className='flex flex-col h-full'>
+      <div className='flex h-full flex-col'>
         {step > 0 && <StepBar value={(step / 3) * 100} />}
         {step === 0 && (
           <>
             <Step0ModalContent />
-            <div className='mt-12'>
+            <div className='mt-5 xl:mt-12'>
               <WhModalButtonList onClick={onNextClick} label='같이행 등록' />
             </div>
           </>
@@ -64,7 +64,7 @@ export default function RegisterModal() {
         {step === 1 && (
           <>
             <Step1ModalContent form={form} setForm={setForm} />
-            <div className='mt-12'>
+            <div className='mt-5 xl:mt-12'>
               <WhModalButtonList
                 prev
                 onPrevClick={onPrevClick}
@@ -77,7 +77,7 @@ export default function RegisterModal() {
         {step === 2 && (
           <>
             <Step2ModalContent form={form} setForm={setForm} />
-            <div className='mt-12'>
+            <div className='mt-5 xl:mt-12'>
               <WhModalButtonList
                 prev
                 onPrevClick={onPrevClick}
@@ -90,7 +90,7 @@ export default function RegisterModal() {
         {step === 3 && (
           <>
             <Step3ModalContent form={form} setForm={setForm} />
-            <div className='mt-12'>
+            <div className='mt-5 xl:mt-12'>
               <WhModalButtonList
                 prev
                 onPrevClick={onPrevClick}

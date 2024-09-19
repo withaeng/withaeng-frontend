@@ -2,9 +2,9 @@ import { RegisterGrapicSvg } from '../../../../public/assets/icons/edit';
 
 export default function Step0ModalContent() {
   return (
-    <div className='grow flex flex-col overflow-hidden text-center'>
+    <div className='flex grow flex-col overflow-auto text-center'>
       <div className='flex flex-col gap-10'>
-        <h1 className='text-headline-03'>
+        <h1 className='text-headline-04 xl:text-headline-03'>
           잠깐! 🤚
           <br />
           작성 전 알아두셔야 할 부분이 있어요.
@@ -15,7 +15,7 @@ export default function Step0ModalContent() {
           게스트의 동행 신청이 있을 시 게시글의 수정 및 삭제가 불가능합니다.
         </p>
       </div>
-      <div className='flex items-center justify-center grow'>
+      <div className='flex grow items-center justify-center'>
         <RegisterGrapicSvg />
       </div>
     </div>

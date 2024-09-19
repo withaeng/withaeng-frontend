@@ -33,9 +33,11 @@ export default function Step1ModalContent({
   };
 
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>동행 등록을 진행해볼까요? 😃</h3>
-      <div className='flex flex-col gap-10 grow overflow-auto'>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        동행 등록을 진행해볼까요? 😃
+      </h3>
+      <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <p>도시를 선택해주세요.</p>
           <CountryTab
@@ -62,7 +64,7 @@ export default function Step1ModalContent({
         </div>
         <div>
           <p className='mb-3'>여행 일정을 선택해주세요.</p>
-          <div className='flex gap-[22px] items-center mb-4'>
+          <div className='mb-4 flex items-center gap-[22px]'>
             <WhCalendar
               value={form.startTripDate}
               onChange={(value: Date | null) =>
