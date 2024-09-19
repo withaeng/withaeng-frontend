@@ -27,7 +27,7 @@ export default function WhMypageInfo() {
   ];
 
   return (
-    <div className='flex justify-center gap-[60px]'>
+    <div className='flex flex-col justify-center gap-[60px] xl:flex-row'>
       {/* left */}
       <div className='flex flex-col items-center justify-center'>
         <CircleProgressBar
@@ -39,11 +39,11 @@ export default function WhMypageInfo() {
         <p className='py-[13px] text-headline-04 text-primary-main'>
           {itemList.name}
         </p>
-        <ul className='flex gap-6 rounded bg-nutral-white-02 px-4 py-5 text-center text-subtitle-01'>
+        <ul className='flex justify-stretch gap-6 rounded bg-nutral-white-02 px-4 py-5 text-center text-subtitle-01 max-xl:w-full'>
           {infoItems.map((item, index) => (
             <li
               key={item.value}
-              className={`flex flex-col ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-6' : ''}`}
+              className={`flex flex-col max-xl:w-full ${index < infoItems.length - 1 ? 'border-r border-nutral-white-03 pr-6' : ''}`}
             >
               <p className='mb-2'>{item.value}</p>
               <span className='text-body-03 text-nutral-black-03'>
@@ -69,8 +69,8 @@ export default function WhMypageInfo() {
           disabled
         />
 
-        <div className='flex w-[495px] gap-5'>
-          <div className='w-[149px]'>
+        <div className='flex flex-col gap-5 xl:w-[495px] xl:flex-row'>
+          <div className='xl:w-[149px]'>
             <WhInput
               label='성별'
               size='lg'
@@ -79,7 +79,7 @@ export default function WhMypageInfo() {
               handleInputChange={() => {}}
             />
           </div>
-          <div className='w-[326px]'>
+          <div className='xl:w-[326px]'>
             <WhInput
               label='생년월일'
               size='lg'
