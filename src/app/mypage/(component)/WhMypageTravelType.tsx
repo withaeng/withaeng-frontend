@@ -139,15 +139,15 @@ export default function WhMypageTravelType() {
   return (
     <div className='relative'>
       <div
-        className={`flex flex-col gap-10 overflow-hidden  ${isMoreOpen ? 'h-[429px]' : ''}`}
+        className={`flex flex-col gap-10 overflow-hidden ${isMoreOpen ? 'h-[429px]' : ''}`}
       >
         {/* MBTI 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             당신의 MBTI는 무엇인가요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.mbtiList &&
                 item.mbtiList.map((option) => (
                   <WhChip
@@ -164,11 +164,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 여행 선호지역 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             여행 선호지역은 어디인가요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.favorAreaList &&
                 item.favorAreaList.map((option) => (
                   <WhChip
@@ -185,11 +185,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 여행 관심사 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             여행 관심사는 어떻게 되세요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.interestList &&
                 item.interestList.map((option) => (
                   <WhChip
@@ -206,11 +206,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 소비 스타일 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             여행에서의 소비 스타일은 어때요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.spendtypeList &&
                 item.spendtypeList.map((option) => (
                   <WhChip
@@ -227,11 +227,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 못 먹는 음식 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             못 먹는 음식 있으세요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.dontFoodList &&
                 item.dontFoodList.map((option) => (
                   <WhChip
@@ -248,11 +248,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 동행자 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             원하는 동행자의 성별이 있나요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.genderList &&
                 item.genderList.map((option) => (
                   <WhChip
@@ -269,11 +269,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 흡연 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             흡연은 어떻게 하세요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.smokeList &&
                 item.smokeList.map((option) => (
                   <WhChip
@@ -290,11 +290,11 @@ export default function WhMypageTravelType() {
         </div>
         {/* 음주 타입 */}
         <div>
-          <h4 className='text-body-02 text-neutral-black-02 pb-3'>
+          <h4 className='text-neutral-black-02 pb-3 text-body-02'>
             음주는 어떻게 하세요?
           </h4>
           {myTravelType.map((item) => (
-            <div key={item.id} className='flex gap-2 xl:w-[510px] flex-wrap'>
+            <div key={item.id} className='flex flex-wrap gap-2 xl:w-[510px]'>
               {item.drinkList &&
                 item.drinkList.map((option) => (
                   <WhChip
@@ -312,9 +312,9 @@ export default function WhMypageTravelType() {
       </div>
       {isMoreOpen && (
         <div
-          className='absolute w-full h-28 bottom-0'
+          className='absolute bottom-0 w-full'
           style={{
-            background: `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.83) 80.5%, #FFFFFF 100%)`,
+            boxShadow: `0px 0px 100px 100px rgba(255,255,255,1)`,
           }}
         />
       )}
