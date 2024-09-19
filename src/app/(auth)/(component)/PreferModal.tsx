@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
 import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
 import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
