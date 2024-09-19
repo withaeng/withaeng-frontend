@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import Step1ModalContent from '@/components/auth/prefer/Step1ModalContent';
-import Step2ModalContent from '@/components/auth/prefer/Step2ModalContent';
-import Step3ModalContent from '@/components/auth/prefer/Step3ModalContent';
+import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
+import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
+import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import StepBar from '@/components/StepBar';
@@ -62,19 +61,20 @@ export default function PreferModalPage() {
   return (
     <WhModal
       isOpen
+      hideCloseButton
       onClose={handleClose}
-      className='px-[85px] py-[72px] h-[800px]'
+      className='px-4 py-5 xl:h-[800px] xl:px-[85px] xl:py-[72px]'
     >
-      <div className='flex flex-col h-full'>
-        <p className='text-nutral-black-04 text-right'>
-          <Link href='/' replace>
+      <div className='flex h-full flex-col'>
+        <p className='text-right text-nutral-black-04'>
+          <Link className='max-xl:text-caption-01' href='/' replace>
             건너뛰기
           </Link>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (
           <>
-            <div className='grow'>
+            <div className='grow overflow-auto'>
               <Step1ModalContent />
             </div>
             <WhModalButtonList onClick={onNextClick} label='다음' />
@@ -82,7 +82,7 @@ export default function PreferModalPage() {
         )}
         {step === 2 && (
           <>
-            <div className='grow'>
+            <div className='grow overflow-auto'>
               <Step2ModalContent />
             </div>
             <WhModalButtonList
@@ -95,7 +95,7 @@ export default function PreferModalPage() {
         )}
         {step === 3 && (
           <>
-            <div className='grow'>
+            <div className='grow overflow-auto'>
               <Step3ModalContent />
             </div>
             <WhModalButtonList

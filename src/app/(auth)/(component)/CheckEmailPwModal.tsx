@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import WhModal from '@/components/elements/modal/WhModal';
-import CheckEmailModalComponent from '@/components/auth/sign-up/CheckEmailModalContent';
+import CheckEmailModalComponent from '@/app/(auth)/(component)/components/sign-up/CheckEmailModalContent';
 import useAuth from '@/hooks/useAuth';
 
 export default function CheckEmailPwModalPage() {
@@ -10,14 +10,16 @@ export default function CheckEmailPwModalPage() {
   const param = useSearchParams();
   console.log(param.get('email'));
 
-  const handleEmail = () => {
+  const handleEmail = async () => {
     console.log('이메일 재전송');
-    sendEmailPw.mutate({ email: param.get('email')! });
+    await sendEmailPw.mutateAsync({ email: param.get('email')! }).then(() => {
+      console.log('이메일 재전송이 완료되었습니다.');
+    });
   };
 
   return (
     <WhModal isOpen>
-      <div className='px-[84px] py-[72px]'>
+      <div className='px-4 py-5 xl:px-[84px] xl:py-[72px]'>
         <CheckEmailModalComponent handleEmail={handleEmail} />
       </div>
     </WhModal>
