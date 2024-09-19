@@ -5,7 +5,10 @@ import WhBadge from '@/components/elements/WhBadge';
 import WhButton from '@/components/elements/WhButton';
 import WhCard from '@/components/elements/WhCard';
 import WhTooltip from '@/components/elements/WhTooltip';
-import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
+import {
+  MannerArrow8Icon,
+  MannerArrowIcon,
+} from '../../../../public/assets/icons/arrow';
 import WhMypageHeader from '../(component)/WhMypageHeader';
 import WhMypageCard from '../(component)/WhMypageCard';
 
@@ -143,14 +146,25 @@ export default function Activity() {
           매너 점수를 높이기 위해서는 항상 성실하고 정중하게 행동해 주세요!
         </p>
         <div className='mt-6 flex max-w-[586px] items-center gap-3'>
-          <span className='text-subtitle-01 text-primary-main'>{filled}</span>
+          <span className='text-body-03 text-primary-main xl:text-subtitle-01'>
+            {filled}
+          </span>
 
-          <div className='h-3 w-[500px] rounded-2xl bg-nutral-white-02 xl:h-6'>
+          <div className='relative h-3 w-[500px] rounded-2xl bg-nutral-white-02 xl:h-6'>
             <div
               className='h-3 rounded-2xl bg-primary-main xl:h-6'
               style={{ width: `${filled}%` }}
             />
-            <MannerArrowIcon className='ml-[172px] mt-[7px]' />
+            <MannerArrowIcon
+              className='absolute -bottom-5 left-[46%] max-xl:hidden'
+              fill={filled < 46 ? '#DAD8D6' : '#FFA500'}
+            />
+            <MannerArrow8Icon
+              className='absolute -bottom-3 left-[46%] xl:hidden'
+              fill={filled < 46 ? '#DAD8D6' : '#FFA500'}
+              width={8}
+              height={8}
+            />
           </div>
 
           <span className='text-body-02 text-nutral-white-04'>100</span>
