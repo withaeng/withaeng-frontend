@@ -32,46 +32,49 @@ export default function WhAccompanyRequestInfo() {
   };
 
   return (
-    <div className='w-[393px]'>
-      <h3 className='mb-3 text-subtitle-01'>
-        {isHost ? '동행장' : `승인 요청 리스트 ${detailList.itemList.length}`}
+    <div className='w-[393px] max-xl:w-full'>
+      <h3 className='mb-3 text-subtitle-01 max-xl:px-4'>
+        {isHost ? '동행장' : `승인 요청 리스트`}
+        <span className='text-primary-main'>
+          &nbsp;{detailList.itemList.length}
+        </span>
       </h3>
       {isHost ? (
         <div className='max-h-[412px] overflow-scroll'>
-          <div className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'>
+          <div className='overflow-auto rounded bg-nutral-white-02 px-5 pt-8'>
             <div className='flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5'>
               <Image
-                className='object-cover rounded-full h-full'
+                className='h-full rounded-full object-cover'
                 src={detailList.host.profileImageUrl}
                 width={48}
                 height={48}
                 alt='프로필 이미지'
               />
               <div>
-                <p className='text-nutral-black-02 text-subtitle-01 mb-[5px]'>
+                <p className='mb-[5px] text-subtitle-01 text-nutral-black-02'>
                   {detailList.host.nick}
-                  <span className='ml-3 py-[2px] px-2 w-[43px] h-6 rounded-xl border border-primary-main text-primary-main text-subtitle-02'>
+                  <span className='ml-3 h-6 w-[43px] rounded-xl border border-primary-main px-2 py-[2px] text-subtitle-02 text-primary-main'>
                     {detailList.host.score}
                   </span>
                 </p>
-                <p className='text-nutral-black-04 text-caption-01'>
+                <p className='text-caption-01 text-nutral-black-04'>
                   {detailList.host.age} &nbsp;∙&nbsp; {detailList.host.sex}
                   &nbsp;∙&nbsp;{detailList.host.period}
                 </p>
 
                 {/* content */}
                 <div
-                  className={`max-w-[261px] mt-3  ${lookMore ? 'flex-wrap' : ''}`}
+                  className={`mt-3 max-w-[261px] ${lookMore ? 'flex-wrap' : ''}`}
                 >
                   <p
-                    className={`text-body-03 text-nutral-black-03  ${!lookMore && 'truncate'}`}
+                    className={`text-body-03 text-nutral-black-03 ${!lookMore && 'truncate'}`}
                   >
                     {detailList.content}
                   </p>
                   <button
                     type='button'
                     onClick={handleMoreClick}
-                    className='text-nutral-black-05 text-body-03'
+                    className='text-body-03 text-nutral-black-05'
                   >
                     {lookMore ? '접기' : '더보기'}
                   </button>
@@ -186,7 +189,7 @@ export default function WhAccompanyRequestInfo() {
                 )} */}
               </div>
             </div>
-            <div className='flex flex-wrap py-5 px-3 gap-2'>
+            <div className='flex flex-wrap gap-2 px-3 py-5'>
               {detailList.host.tags.map((tag) => (
                 <WhChip key={tag.id}>{tag.title}</WhChip>
               ))}
@@ -197,27 +200,27 @@ export default function WhAccompanyRequestInfo() {
         <div className='max-h-[412px] overflow-scroll'>
           {detailList.itemList.map((accompany) => (
             <div
-              className=' overflow-auto pt-8 px-5 bg-nutral-white-02 rounded'
+              className='overflow-auto rounded bg-nutral-white-02 px-5 pt-8'
               key={`accompany.nickname-${accompany.id}`}
             >
               <div
                 className={`flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5 ${accompany.status !== 'joining' && accompany.status !== 'joined' ? `opacity-70` : 'null'} `}
               >
                 <Image
-                  className='object-cover rounded-full h-full'
+                  className='h-full rounded-full object-cover'
                   src={accompany.profileImageUrl}
                   width={48}
                   height={48}
                   alt='프로필 이미지'
                 />
                 <div>
-                  <p className='text-nutral-black-02 text-subtitle-01 mb-[5px]'>
+                  <p className='mb-[5px] text-subtitle-01 text-nutral-black-02'>
                     {accompany.nickname}
-                    <span className='ml-3 py-[2px] px-2 w-[43px] h-6 rounded-xl border border-primary-main text-primary-main text-subtitle-02'>
+                    <span className='ml-3 h-6 w-[43px] rounded-xl border border-primary-main px-2 py-[2px] text-subtitle-02 text-primary-main'>
                       {accompany.score}
                     </span>
                   </p>
-                  <p className='text-nutral-black-04 text-caption-01'>
+                  <p className='text-caption-01 text-nutral-black-04'>
                     {accompany.age} &nbsp;∙&nbsp; {accompany.gender}
                     &nbsp;∙&nbsp;{accompany.period}
                   </p>
@@ -228,7 +231,7 @@ export default function WhAccompanyRequestInfo() {
                     <>
                       <div>
                         {accompany.status === 'joining' && (
-                          <div className='flex gap-[10px] mt-3'>
+                          <div className='mt-3 flex gap-[10px]'>
                             <WhButton
                               fitContent
                               size='sm'
@@ -257,7 +260,7 @@ export default function WhAccompanyRequestInfo() {
                               height={20}
                               stroke='#36C304'
                             />
-                            <span className='text-caption-success text-body-03 mt-1'>
+                            <span className='mt-1 text-body-03 text-caption-success'>
                               승인하셨습니다. 벌써 기대가 되네요!
                             </span>
                           </div>
@@ -266,7 +269,7 @@ export default function WhAccompanyRequestInfo() {
                           accompany.status !== 'joined' && (
                             <div className={requestCss}>
                               <Close20Icon stroke='#2b1917' />
-                              <span className='text-caption-main  text-body-03 mt-1'>
+                              <span className='mt-1 text-body-03 text-caption-main'>
                                 동행이 취소됐습니다.
                               </span>
                             </div>
@@ -281,8 +284,8 @@ export default function WhAccompanyRequestInfo() {
                         <WhModalHeader>
                           {selectedNickname}님의 동행을 승인할까요?
                         </WhModalHeader>
-                        <div className='mt-10 text-center mb-12'>
-                          <p className='text-nutral-black-04  text-body-02'>
+                        <div className='mb-12 mt-10 text-center'>
+                          <p className='text-body-02 text-nutral-black-04'>
                             승인한 후에는 취소가 불가능해요.
                           </p>
                         </div>
@@ -301,8 +304,8 @@ export default function WhAccompanyRequestInfo() {
                         <WhModalHeader>
                           {selectedNickname}님의 동행을 취소할까요?
                         </WhModalHeader>
-                        <div className='mt-10 text-center mb-12'>
-                          <p className='text-nutral-black-04 text-body-02'>
+                        <div className='mb-12 mt-10 text-center'>
+                          <p className='text-body-02 text-nutral-black-04'>
                             취소한 후에는 다시 되돌릴 수 없습니다.
                           </p>
                         </div>

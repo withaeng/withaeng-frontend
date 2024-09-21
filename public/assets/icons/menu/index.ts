@@ -1,3 +1,4 @@
+import { ReactComponent } from './../../../../src/types/svg.d';
 export { ReactComponent as BellIcon } from './bell.svg';
 export { ReactComponent as BookmarkIcon } from './bookmark.svg';
 export { ReactComponent as CheckIcon } from './check.svg';
@@ -10,3 +11,4 @@ export { ReactComponent as SearchIcon } from './search.svg';
 export { ReactComponent as SettingIcon } from './setting.svg';
 export { ReactComponent as ShareIosIcon } from './share-ios.svg';
 export { ReactComponent as TagIcon } from './tag.svg';
+export { ReactComponent as Kebab } from './kebab.svg';

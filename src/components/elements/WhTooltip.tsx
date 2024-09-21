@@ -8,7 +8,7 @@ import {
 } from '../../../public/assets/icons/arrow';
 
 const defaultTooltipCss =
-  'absolute flex justify-center items-center inline-block whitespace-nowrap my-2 px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
+  'z-10 absolute flex justify-center items-center inline-block whitespace-nowrap my-2 px-4 py-2 text-nutral-white-01 bg-secondary-main rounded';
 
 let positionCss = '';
 
@@ -48,8 +48,8 @@ export default function WhTooltip({
 
   return (
     <div>
-      <div className='relative group'>
-        <div className='text-secondary-main text-body-03'>{children}</div>
+      <div className='group relative'>
+        <div className='text-body-03 text-secondary-main'>{children}</div>
         {isShow && (
           <div>
             <p className={`${defaultTooltipCss} ${positionCss}`}>
