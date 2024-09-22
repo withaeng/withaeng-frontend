@@ -6,9 +6,9 @@ import {
   PencilIcon,
   PaperclipIcon,
   LinkIcon,
+  RemoveIcon,
 } from '../../../../public/assets/icons/edit';
 import {
-  ChatIcon,
   UsersGroupIcon,
   CalendarCheckIcon,
   JoinTypeIcon,
@@ -17,14 +17,15 @@ import {
 } from '../../../../public/assets/icons/communicate';
 import detailList from '../../../data';
 import WhReplyContent from './WhReplyContent';
+import WhModal from '../modal/WhModal';
+import WhModalHeader from '../modal/WhModalHeader';
+import WhModalButtonList from '../modal/WhModalButtonList';
+import useModal from '../modal/useModal';
 
 const listCss = 'flex items-center gap-6 text-subtitle-01 text-nutral-black-03';
 
 const titleCss =
   'text-nutral-black-01 text-headline-04 mt-[60px] max-xl:mt-10 mb-5 max-xl:mb-0 max-xl:pl-4';
-
-const detailBtn =
-  'flex items-center gap-1 text-nutral-black-04 text-caption-01';
 
 const topInfoTextCss = 'text-caption-02 text-nutral-black-04';
 
@@ -34,17 +35,22 @@ const moreLookTextCss =
 const isHost = false;
 
 export default function WhDetailInfo() {
+  const { isOpen, onOpen, onClose } = useModal();
   const [lookMore, setLookMore] = useState(false);
 
   const handleMoreClick = () => {
     setLookMore(!lookMore);
   };
 
+  const handleRemoveClick = () => {
+    onOpen();
+  };
+
   return (
     <div className='max-w-[847px] max-xl:w-full'>
       <div className='px-5 max-xl:px-0'>
         <div className='max-xl:px-4'>
-          <div className='flex items-center justify-between text-caption-02'>
+          <div className='mb-[13px] flex items-center justify-between text-caption-02'>
             {/* left */}
             <div className='flex gap-6'>
               <span className={topInfoTextCss}>
@@ -58,23 +64,51 @@ export default function WhDetailInfo() {
 
             {/* right */}
             <div className='flex gap-6'>
-              <ChatIcon className='pt-8' />
-              <LinkIcon className='pt-8' />
+              <button type='button'>
+                <LinkIcon />
+              </button>
+              <button type='button'>
+                <PencilIcon />
+              </button>
+              <button type='button' onClick={handleRemoveClick}>
+                <RemoveIcon />
+              </button>
             </div>
           </div>
+
+          {/* 게시물 삭제 모달 */}
+          <WhModal
+            isOpen={isOpen}
+            onClose={onClose}
+            isDismissible={false}
+            className='flex flex-col justify-between px-4 py-5 xl:px-[84px] xl:py-[72px]'
+          >
+            <div>
+              <WhModalHeader>게시글을 삭제하시겠어요?</WhModalHeader>
+              <p className='mb-12 mt-10 text-center text-body-02 text-nutral-black-04'>
+                삭제한 후에는 되돌릴 수 없습니다.
+              </p>
+            </div>
+            <WhModalButtonList
+              leftLabel='아니오'
+              onClick={onClose}
+              label='네, 삭제할게요.'
+            />
+          </WhModal>
           <div className='flex items-center justify-between'>
             <h1 className='flex-wrap truncate text-headline-03 text-nutral-black-02 max-xl:text-headline-04'>
               {detailList.title}
             </h1>
             <div className='flex gap-5'>
               {isHost ? null : (
-                <button type='button' className={detailBtn}>
+                <button type='button' className='min-xl:hidden'>
                   <PencilIcon />
                 </button>
               )}
             </div>
           </div>
         </div>
+
         <div className='flex gap-5 max-xl:hidden'>
           {detailList.tags.map((tag) => (
             <span

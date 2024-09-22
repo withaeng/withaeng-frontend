@@ -280,16 +280,16 @@ export default function WhAccompanyRequestInfo() {
                         isOpen={isOpen && modalType === 'approve'}
                         onClose={onClose}
                         isDismissible={false}
+                        className='flex flex-col justify-between px-4 py-5 xl:px-[84px] xl:py-[72px]'
                       >
-                        <WhModalHeader>
-                          {selectedNickname}님의 동행을 승인할까요?
-                        </WhModalHeader>
-                        <div className='mb-12 mt-10 text-center'>
-                          <p className='text-body-02 text-nutral-black-04'>
+                        <div>
+                          <WhModalHeader>
+                            {selectedNickname}님의 동행을 승인할까요?
+                          </WhModalHeader>
+                          <p className='mb-10 mt-5 text-center text-body-02 text-nutral-black-04'>
                             승인한 후에는 취소가 불가능해요.
                           </p>
                         </div>
-
                         <WhModalButtonList
                           leftLabel='아니오'
                           onClick={onClose}
@@ -300,13 +300,14 @@ export default function WhAccompanyRequestInfo() {
                         isOpen={isOpen && modalType === 'cancel'}
                         onClose={onClose}
                         isDismissible={false}
+                        className='flex flex-col justify-between px-4 py-5 xl:px-[84px] xl:py-[72px]'
                       >
-                        <WhModalHeader>
-                          {selectedNickname}님의 동행을 취소할까요?
-                        </WhModalHeader>
-                        <div className='mb-12 mt-10 text-center'>
-                          <p className='text-body-02 text-nutral-black-04'>
-                            취소한 후에는 다시 되돌릴 수 없습니다.
+                        <div>
+                          <WhModalHeader>
+                            {selectedNickname}님의 동행을 취소할까요?
+                          </WhModalHeader>
+                          <p className='mb-10 mt-5 text-center text-body-02 text-nutral-black-04'>
+                            취소한 후에는 선택 변경이 불가능해요.
                           </p>
                         </div>
                         <WhModalButtonList

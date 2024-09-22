@@ -8,3 +8,4 @@ export { ReactComponent as RegisterGrapicSvg } from './register-graphic.svg';
 export { ReactComponent as RemoveMinusIcon } from './remove-minus.svg';
 export { ReactComponent as SendIcon } from './send.svg';
 export { ReactComponent as TrashcanIcon } from './trashcan.svg';
+export { ReactComponent as RemoveIcon } from './remove.svg';
