@@ -35,6 +35,9 @@ export type TAccompanyFilter = {
   gender: { id: string; value: string }[];
   startDate: Date | null;
   endDate: Date | null;
-  companion?: number | number[] | null;
-  age?: number | number[] | null;
+  isToday: boolean;
+  companion?: number | number[];
+  companionFree: boolean;
+  age?: number | number[];
+  ageFree: boolean;
 };

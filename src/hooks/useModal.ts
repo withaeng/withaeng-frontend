@@ -10,6 +10,7 @@ const useModal = () => {
     setButtonPositiveText,
     setButtonNegativeText,
     setHandler,
+    setProps,
   } = useModalActions();
 
   const alert = (content: string, positiveText: string, title?: string) => {
@@ -40,8 +41,9 @@ const useModal = () => {
     });
   };
 
-  const filter = () => {
+  const filter = (props: TAccompanyFilter) => {
     setOpen(true);
+    setProps(props);
     setType('filter');
     return new Promise<TAccompanyFilter>((res) => {
       setHandler(res);

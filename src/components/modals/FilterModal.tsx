@@ -1,5 +1,5 @@
 import WhButton from '@/components/elements/WhButton';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dateUtil from '@/utils/dateUtil';
 import WhChip from '@/components/elements/WhChip';
 import WhCalendar from '@/components/elements/WhCalendar';
@@ -9,6 +9,7 @@ import { TAccompanyFilter } from '@/types/accompany';
 import { ReloadArrowIcon } from '../../../public/assets/icons/arrow';
 
 interface FilterModalProps {
+  options: TAccompanyFilter;
   onHandle?: (value: TAccompanyFilter) => void;
 }
 
@@ -54,6 +55,7 @@ const selectedDateRange = (today: boolean, startDate: Date, endDate: Date) => {
   return `${dateUtil.dateFormat(startDate.toString())} ~
                 ${dateUtil.dateFormat(endDate.toString())}`;
 };
+
 const selectedCompanionRange = (companion: number | number[]): string => {
   if (Array.isArray(companion)) {
     if (companion.length === 2 && companion[0] === companion[1]) {
@@ -74,8 +76,8 @@ const selectedAgeRange = (age: number | number[]): string => {
   return `${age}살`;
 };
 
-export default function FilterModal({ onHandle }: FilterModalProps) {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
+export default function FilterModal({ options, onHandle }: FilterModalProps) {
+  const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [today, setToday] = useState<boolean>(false);
   const [age, setAge] = useState<number | number[] | undefined>();
@@ -93,7 +95,7 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
     if (type === 'city') {
       return selectedCityList.findIndex((el) => el.id === value) >= 0;
     }
-    return selectedGenderList.findIndex((el) => el.id === value) >= 0;
+    return selectedGenderList?.findIndex((el) => el.id === value) >= 0;
   };
 
   const selectCity = (city: { id: string; value: string }) => {
@@ -136,40 +138,89 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
     setToday(value);
   };
 
+  const handleSetCompanion = (value: number | number[]) => {
+    if (companionFree) {
+      setCompanion(undefined);
+    } else {
+      setCompanion(value);
+    }
+  };
+
+  const handleSetCompanionFree = (value: boolean) => {
+    if (value) {
+      setCompanion(undefined);
+    }
+    setCompanionFree(value);
+  };
+
+  const handleSetAge = (value: number | number[]) => {
+    if (companionFree) {
+      setAge(undefined);
+    } else {
+      setAge(value);
+    }
+  };
+
+  const handleSetAgeFree = (value: boolean) => {
+    if (value) {
+      setAge(undefined);
+    }
+    setAgeFree(value);
+  };
+
   const onHandelSubmit = () => {
     const res: TAccompanyFilter = {
       city: selectedCityList,
       gender: selectedGenderList,
       startDate,
       endDate,
-      companion: companionFree ? null : companion,
-      age: ageFree ? null : age,
+      isToday: today,
+      companion,
+      companionFree,
+      age,
+      ageFree,
     };
 
     onHandle?.(res);
   };
 
+  useEffect(() => {
+    if (options === null) {
+      resetFilter();
+    } else {
+      setSelectededCityList(options.city);
+      setSelectedGenderList(options.gender);
+      setStartDate(options.startDate);
+      setEndDate(options.endDate);
+      setAge(options.age);
+      setCompanion(options.companion);
+      setToday(options.isToday);
+      setCompanionFree(options.companionFree);
+      setAgeFree(options.ageFree);
+    }
+  }, [options]);
+
   return (
     <>
-      <div className='flex justify-between pb-5 border-b border-b-nutral-white-03'>
+      <div className='flex justify-between border-b border-b-nutral-white-03 pb-5'>
         <h1 className='text-headline-03 text-nutral-black-01'>필터</h1>
         <span
-          className='flex items-center gap-1.5 text-body-03 text-nutral-black-04 cursor-pointer'
+          className='flex cursor-pointer items-center gap-1.5 text-body-03 text-nutral-black-04'
           onClick={resetFilter}
         >
           <ReloadArrowIcon />
           초기화
         </span>
       </div>
-      <div className='h-[619px] flex gap-10 flex-col mt-5 overflow-auto'>
-        <section className='w-full flex gap-5 flex-col'>
+      <div className='mt-5 flex h-[619px] flex-col gap-10 overflow-auto'>
+        <section className='flex w-full flex-col gap-5'>
           <div>
             <span className={tilteCss}>여행지</span>
             <span className={descriptionCss}>
               (최대 3개 도시까지 선택 가능합니다.)
             </span>
           </div>
-          <div className='flex gap-5 flex-wrap'>
+          <div className='flex flex-wrap gap-5'>
             {cityList.map((city) => (
               <WhChip
                 key={city.id}
@@ -182,7 +233,7 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
             ))}
           </div>
         </section>
-        <section className='w-full flex gap-5 flex-col'>
+        <section className='flex w-full flex-col gap-5'>
           <div>
             <span className={tilteCss}>동행 일정</span>
             {startDate && endDate && (
@@ -191,9 +242,9 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
               </span>
             )}
 
-            {today && <span className={descriptionCss}>(댱일)</span>}
+            {today && <span className={descriptionCss}>(당일)</span>}
           </div>
-          <div className='flex items-center gap-[22px] z-[100]'>
+          <div className='z-[100] flex items-center gap-[22px]'>
             <WhCalendar value={startDate} onChange={setStartDate} />
             ~
             <WhCalendar value={endDate} onChange={setEndDate} />
@@ -207,7 +258,7 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
             당일
           </WhCheckbox>
         </section>
-        <section className='w-full flex gap-5 flex-col'>
+        <section className='flex w-full flex-col gap-5'>
           <div>
             <span className={tilteCss}>동행 인원</span>
             {companion && (
@@ -223,18 +274,18 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
             step={1}
             marks={companionMarks}
             value={companion}
-            onChange={setCompanion}
+            onChange={handleSetCompanion}
           />
           <WhCheckbox
             id='companion-free'
             value='companion-free'
             checked={companionFree}
-            onChange={setCompanionFree}
+            onChange={handleSetCompanionFree}
           >
             상관없음
           </WhCheckbox>
         </section>
-        <section className='w-full flex gap-5 flex-col'>
+        <section className='flex w-full flex-col gap-5'>
           <div>
             <span className={tilteCss}>연령대</span>
             {age && (
@@ -248,20 +299,20 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
             step={5}
             marks={ageMarks}
             value={age}
-            onChange={setAge}
+            onChange={handleSetAge}
           />
           <WhCheckbox
             id='age-free'
             value='age-free'
             checked={ageFree}
-            onChange={setAgeFree}
+            onChange={handleSetAgeFree}
           >
             상관없음
           </WhCheckbox>
         </section>
-        <section className='w-full flex gap-5 flex-col'>
+        <section className='flex w-full flex-col gap-5'>
           <span className={tilteCss}>성별</span>
-          <div className='flex gap-5 flex-wrap'>
+          <div className='flex flex-wrap gap-5'>
             {genderList.map((gender) => (
               <WhChip
                 key={gender.id}
@@ -275,7 +326,7 @@ export default function FilterModal({ onHandle }: FilterModalProps) {
           </div>
         </section>
       </div>
-      <div className='mt-10 w-[512px] my-0 mx-auto'>
+      <div className='mx-auto my-0 mt-10 w-[512px]'>
         <WhButton onClick={onHandelSubmit}>확인</WhButton>
       </div>
     </>

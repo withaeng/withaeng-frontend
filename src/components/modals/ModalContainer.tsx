@@ -12,9 +12,17 @@ import FilterModal from '@/components/modals/FilterModal';
 import { TAccompanyFilter } from '@/types/accompany';
 
 export default function ModalContainer() {
-  const { open, type, title, content, positiveText, negativeText, handler } =
-    useModalStore();
-  const { setOpen, setType } = useModalActions();
+  const {
+    open,
+    type,
+    title,
+    content,
+    positiveText,
+    negativeText,
+    handler,
+    props,
+  } = useModalStore();
+  const { setOpen, setType, setProps } = useModalActions();
   const [modalRoot, setModalRoot] = useState<HTMLDivElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
   const path = usePathname();
@@ -28,6 +36,7 @@ export default function ModalContainer() {
     if (path !== initPath) {
       setType('');
       setOpen(false);
+      setProps(null);
     }
   }, [path]);
 
@@ -50,6 +59,7 @@ export default function ModalContainer() {
   const handleFilterClose = (res: TAccompanyFilter) => {
     if (modalRef.current) {
       setOpen(false);
+      setProps(null);
       handler?.(res);
       window.UIkit.modal(modalRef.current).hide();
     }
@@ -71,7 +81,7 @@ export default function ModalContainer() {
               buttonText={positiveText}
               onHandle={handlePositiveClose}
             >
-              <div className='w-full flex flex-col gap-5 justify-center items-center'>
+              <div className='flex w-full flex-col items-center justify-center gap-5'>
                 {title && (
                   <span className='text-headline-04 leading-[24px] text-nutral-black-02'>
                     {title}
@@ -92,7 +102,7 @@ export default function ModalContainer() {
               onPositiveHandle={handlePositiveClose}
               onNegativeHandle={handleNegativeClose}
             >
-              <div className='w-full flex flex-col gap-5 justify-center items-center'>
+              <div className='flex w-full flex-col items-center justify-center gap-5'>
                 {title && (
                   <span className='text-headline-04 leading-[24px] text-nutral-black-02'>
                     {title}
@@ -107,7 +117,7 @@ export default function ModalContainer() {
         )}
         {type === 'filter' && (
           <Modal ref={modalRef}>
-            <FilterModal onHandle={handleFilterClose} />
+            <FilterModal onHandle={handleFilterClose} options={props} />
           </Modal>
         )}
       </div>,
