@@ -140,14 +140,14 @@ export default function AccompanyPostList({
       value={continent}
       onChange={handleChangeTabValue}
     >
-      <section className='mt-3 mb-5 flex gap-3'>
+      <section className='mb-5 mt-3 flex gap-3'>
         <button
           type='button'
-          className='py-1 pl-1.5 pr-2 rounded-[20px] bg-nutral-white-01 border border-nutral-white-03 transition flex items-center justify-center gap-1'
+          className='flex items-center justify-center gap-1 rounded-[20px] border border-nutral-white-03 bg-nutral-white-01 py-1 pl-1.5 pr-2 transition'
           onClick={openFilterModal}
         >
           <FilterIcon width={20} height={20} fill='#737373' />
-          <span className='text-nutral-black-03 text-caption-01'>필터</span>
+          <span className='text-caption-01 text-nutral-black-03'>필터</span>
         </button>
         <>
           <div className='border-r border-nutral-white-03' />
@@ -155,10 +155,9 @@ export default function AccompanyPostList({
             <WhFilterLabel label={label} key={label} />
           ))}
         </>
-        {/* )} */}
       </section>
-      <section className='w-full h-full mb-[120px]'>
-        <ul className='flex flex-wrap gap-5 m-0 pl-0'>
+      <section className='mb-[120px] flex h-full w-full justify-center'>
+        <ul className='flex flex-wrap gap-5 pl-0 max-sm:justify-center'>
           {accompanyPostList(accompanyList, continent)}
         </ul>
       </section>

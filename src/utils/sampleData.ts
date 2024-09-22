@@ -4,39 +4,68 @@ import { TabData } from '@/components/elements/WhTab';
 const popularCityList: TPopularCity[] = [
   {
     id: 1,
-    city: '서울',
-    cityEng: 'SEOUL',
-    country: '대한민국',
-    continent: '국내',
-    bannerImageUrl:
-      'https://images.unsplash.com/photo-1519010470956-6d877008eaa4?q=80&w=2749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 2,
-    city: '도쿄',
-    cityEng: 'TOKYO',
-    country: '일본',
-    continent: '동아시아',
-    bannerImageUrl:
-      'https://images.unsplash.com/photo-1519010470956-6d877008eaa4?q=80&w=2749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 3,
-    city: '다낭',
-    cityEng: 'DANANG',
-    country: '베트남',
-    continent: '동남아시아',
-    bannerImageUrl:
-      'https://images.unsplash.com/photo-1519010470956-6d877008eaa4?q=80&w=2749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 4,
     city: '제주도',
     cityEng: 'JEJU',
     country: '대한민국',
     continent: '국내',
-    bannerImageUrl:
-      'https://images.unsplash.com/photo-1519010470956-6d877008eaa4?q=80&w=2749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    bannerImageUrl: '/assets/images/popular-city/JEJU.webp',
+  },
+  {
+    id: 2,
+    city: '서울',
+    cityEng: 'SEOUL',
+    country: '대한민국',
+    continent: '국내',
+    bannerImageUrl: '/assets/images/popular-city/SEOUL.webp',
+  },
+  {
+    id: 3,
+    city: '도쿄',
+    cityEng: 'TOKYO',
+    country: '일본',
+    continent: '동아시아',
+    bannerImageUrl: '/assets/images/popular-city/TOKYO.webp',
+  },
+  {
+    id: 4,
+    city: '파리',
+    cityEng: 'PARIS',
+    country: '프랑스',
+    continent: '유럽',
+    bannerImageUrl: '/assets/images/popular-city/PARIS.webp',
+  },
+  {
+    id: 5,
+    city: '런던',
+    cityEng: 'LONDON',
+    country: '영국',
+    continent: '유럽',
+    bannerImageUrl: '/assets/images/popular-city/LONDON.webp',
+  },
+  {
+    id: 6,
+    city: '하노이',
+    cityEng: 'HANOI',
+    country: '베트남',
+    continent: '동남아시아',
+    bannerImageUrl: '/assets/images/popular-city/HANOI.webp',
+  },
+
+  {
+    id: 7,
+    city: '베네치아',
+    cityEng: 'VENEZIA',
+    country: '이탈리아',
+    continent: '유럽',
+    bannerImageUrl: '/assets/images/popular-city/VENEZIA.webp',
+  },
+  {
+    id: 8,
+    city: '방콕',
+    cityEng: 'BANGKOK',
+    country: '태국',
+    continent: '동남아시아',
+    bannerImageUrl: '/assets/images/popular-city/BANGKOK.webp',
   },
 ];
 
