@@ -32,8 +32,10 @@ export default function WhDropdown({
   dataList,
 }: DropdownProps) {
   const [open, setOpen] = useState(false);
-  const handleChange = (value: string) => {
-    onChange && onChange(value);
+  const handleChange = (changeData: string) => {
+    if(onChange) {
+      onChange(changeData);
+    }
     setOpen(false);
   };
   const index = dataList?.findIndex((data) => data.id === value);
@@ -46,10 +48,10 @@ export default function WhDropdown({
         className={`${defaultLabelCss} ${open && focusLabelCss}`}
         disabled={disabled}
       >
-        {value && dataList && index ? (
+        {value && dataList && index && index >= 0 ? (
           <span>{dataList[index].name}</span>
         ) : (
-          <span className='text-nutral-white-04'>{'옵션을 선택해주세요.'}</span>
+          <span className='text-nutral-white-04'>옵션을 선택해주세요.</span>
         )}
         {open ? (
           <ChevronUpIcon width={20} height={20} stroke='#737373' />
@@ -63,6 +65,7 @@ export default function WhDropdown({
             {dataList?.map((data) => (
               <li key={data.id}>
                 <button
+                  type='button'
                   className={`${defaultCss} ${value === data.id && focusCss}`}
                   onClick={() => handleChange(data.id)}
                 >

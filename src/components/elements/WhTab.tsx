@@ -37,7 +37,7 @@ export default function WhTab({
             </button>
           </li>
         ))}
-        <li className='w-full border-b border-nutral-white-03'></li>
+        <li className='w-full border-b border-nutral-white-03' />
       </ul>
       {children}
     </div>

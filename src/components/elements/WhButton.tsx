@@ -17,8 +17,9 @@ interface ButtonProps {
   outLine?: boolean;
   disabled?: boolean;
   fitContent?: boolean;
-  size: 'lg' | 'md' | 'sm';
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  size?: 'lg' | 'md' | 'sm';
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function WhButton({
@@ -28,6 +29,7 @@ export default function WhButton({
   fitContent = false,
   size = 'md',
   onClick,
+  type = 'button',
 }: ButtonProps) {
   if (size === 'lg') {
     btnSizeCss = 'py-3 max-h-11';
@@ -39,7 +41,7 @@ export default function WhButton({
 
   return (
     <button
-      type='button'
+      type={type}
       disabled={disabled}
       onClick={onClick}
       className={`

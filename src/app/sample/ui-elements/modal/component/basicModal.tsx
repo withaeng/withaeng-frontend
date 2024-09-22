@@ -15,12 +15,9 @@ export default function BasicModal() {
       <WhButton size='md' fitContent onClick={onOpen}>
         기본 모달
       </WhButton>
-      <WhModal isOpen={isOpen} onClose={onClose}>
+      <WhModal isOpen={isOpen} onClose={onClose} className='px-20 py-16'>
         <WhModalHeader>모달 헤더 입니다.</WhModalHeader>
-
-        <div className='flex flex-col gap-10 mt-10 mx-[15px]'>
-          모달 내용입니다.
-        </div>
+        <div className='flex flex-col gap-10 my-10 mx-5'>모달 내용입니다.</div>
         <WhModalButtonList onClick={onClose} label='닫기' />
       </WhModal>
     </div>

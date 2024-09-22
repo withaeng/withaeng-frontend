@@ -8,6 +8,5 @@ export { ReactComponent as MoreHorizontalIcon } from './more-horizontal.svg';
 export { ReactComponent as MoreVerticalIcon } from './more-vertical.svg';
 export { ReactComponent as SearchIcon } from './search.svg';
 export { ReactComponent as SettingIcon } from './setting.svg';
-export { ReactComponent as ShareAndroidIcon } from './share-android.svg';
 export { ReactComponent as ShareIosIcon } from './share-ios.svg';
 export { ReactComponent as TagIcon } from './tag.svg';

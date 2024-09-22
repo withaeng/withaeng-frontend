@@ -14,6 +14,7 @@ const config: Config = {
       secondary: {
         main: '#3652AD',
         light: '#718EED',
+        exLight: '#BECDFF',
       },
       nutral: {
         black: {
@@ -146,6 +147,14 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      spacing: {
+        '15': '3.75rem',
+        '18': '4.5rem',
+        '19': '4.75rem',
+        '21': '5.25rem',
+        '26': '6.5rem',
+        '29': '7.25rem',
       },
     },
   },

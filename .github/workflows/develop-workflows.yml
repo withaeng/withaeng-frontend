@@ -21,7 +21,7 @@ jobs: # 실행 작업 코드
         env:
           API_TOKEN_GITHUB: ${{ secrets.REPO_OWNER_ACCESS_TOKEN }}
         with:
-          source-directory: "output"
+          source-directory: 'output'
           destination-github-username: SOL-hub
           destination-repository-name: withaeng-frontend
           user-email: ${{ secrets.REPO_OWNER_EMAIL }}

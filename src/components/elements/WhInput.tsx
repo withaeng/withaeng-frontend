@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeleteFillIcon } from '../../../public/assets/icons/system';
 
 const defaultInputCss =
-  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:border-0';
+  'w-full pl-4 py-3 pr-12 text-body-02 placeholder:text-body-02 placeholder:text-nutral-white-03 rounded disabled:bg-nutral-white-02 disabled:text-nutral-white-04 disabled:border-0';
 
 const isFocusBorderCss =
   'focus:outline-primary-pressing border-nutral-white-03 border';
@@ -25,6 +25,12 @@ interface InputProps {
   errorMsg?: string;
   handleInputChange: (value: string) => void;
   size?: 'lg' | 'md' | 'sm';
+  value?: string;
+  type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url';
+  isClearable?: boolean;
+  endAdornment?: React.ReactNode;
+  minLength?: number;
+  maxLength?: number;
 }
 
 export default function WhInput({
@@ -35,8 +41,14 @@ export default function WhInput({
   isErr = false,
   errorMsg = '',
   handleInputChange,
+  value = '',
+  type = 'text',
+  isClearable = true,
+  endAdornment,
+  minLength,
+  maxLength,
 }: InputProps) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value);
 
   if (size === 'lg') {
     inputSizeCss = 'h-11';
@@ -45,6 +57,10 @@ export default function WhInput({
   } else if (size === 'sm') {
     inputSizeCss = 'h-9';
   }
+
+  useEffect(() => {
+    setInputValue(value || '');
+  }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -58,15 +74,15 @@ export default function WhInput({
 
   return (
     <div>
-      <div className='flex flex-col my-6 relative '>
+      <div className='flex flex-col relative'>
         {label && (
-          <label htmlFor='레이블 이름' className={`${defaultLabelCss}`}>
+          <label htmlFor='레이블 이름' className={defaultLabelCss}>
             {label}
           </label>
         )}
         <div className='flex items-center'>
           <input
-            type='text'
+            type={type}
             className={`${inputSizeCss} ${defaultInputCss} ${
               isErr ? `${isErrorCss}` : `${isFocusBorderCss}`
             }`}
@@ -74,15 +90,17 @@ export default function WhInput({
             placeholder={placeholder}
             value={inputValue}
             onChange={handleChange}
+            minLength={minLength}
+            maxLength={maxLength}
           />
-          {inputValue && (
-            <DeleteFillIcon
-              className={`${closeBtnCss}`}
-              onClick={handleClear}
-            />
-          )}
+          <div className={`${closeBtnCss}`}>
+            {endAdornment}
+            {!disabled && isClearable && inputValue && (
+              <DeleteFillIcon onClick={handleClear} />
+            )}
+          </div>
         </div>
-        {isErr && <span className={errorMsgCss}>{errorMsg}</span>}
+        {isErr && errorMsg && <span className={errorMsgCss}>{errorMsg}</span>}
       </div>
     </div>
   );

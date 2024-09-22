@@ -26,21 +26,24 @@ function dateFormat(date: string, format: string): string {
 function accompanyState(status: string): string {
   if (status === 'joining') {
     return '모집 중';
-  } else if (status === 'joined') {
-    return '모집 완료';
-  } else {
-    return '동행 완료';
   }
+  if (status === 'joined') {
+    return '모집 완료';
+  }
+    return '동행 완료';
+
 }
 
 function accompanyStateBgColor(status: string): string {
   if (status === 'joining') {
     return 'bg-secondary-main';
-  } else if (status === 'joined') {
-    return 'bg-caption-success';
-  } else {
-    return 'bg-nutral-black-05';
   }
+  if (status === 'joined') {
+    return 'bg-caption-success';
+  }
+
+    return 'bg-nutral-black-05';
+
 }
 
 function accompaniedCss(status: string): string {
@@ -48,9 +51,9 @@ function accompaniedCss(status: string): string {
     'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
-  } else {
-    return baseCss;
   }
+    return baseCss;
+
 }
 
 function labelCss(status: string): string {
