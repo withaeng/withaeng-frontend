@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/header/Header';
-import Footer from '@/components/Footer';
+import Footer from '@/components/layouts/Footer';
 import QueryConfigContext from '@/context/QueryConfigContext';
+import ModalContainer from '@/components/modals/ModalContainer';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2',
@@ -11,7 +12,10 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: '같이행',
+  title: {
+    template: '같이행: %s',
+    default: '같이행',
+  },
   description: '1인 여행자를 위한 동행 서비스 커뮤니티, 같이의 가치 여행',
   icons: {
     icon: [
@@ -117,6 +121,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={pretendard.className}>
+      <head>
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css'
+        />
+        <script
+          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js'
+          async
+        />
+        <script
+          src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js'
+          async
+        />
+      </head>
       <body className='h-dvh flex flex-col'>
         <QueryConfigContext>
           <Header />
@@ -124,6 +142,8 @@ export default function RootLayout({
           <Footer />
           {modal}
           <div id='modal-root' />
+          <div id='global-modal' />
+          <ModalContainer />
         </QueryConfigContext>
       </body>
     </html>

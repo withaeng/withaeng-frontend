@@ -30,8 +30,7 @@ function accompanyState(status: string): string {
   if (status === 'joined') {
     return '모집 완료';
   }
-    return '동행 완료';
-
+  return '동행 완료';
 }
 
 function accompanyStateBgColor(status: string): string {
@@ -42,8 +41,7 @@ function accompanyStateBgColor(status: string): string {
     return 'bg-caption-success';
   }
 
-    return 'bg-nutral-black-05';
-
+  return 'bg-nutral-black-05';
 }
 
 function accompaniedCss(status: string): string {
@@ -52,8 +50,7 @@ function accompaniedCss(status: string): string {
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
-    return baseCss;
-
+  return baseCss;
 }
 
 function labelCss(status: string): string {
@@ -74,34 +71,35 @@ export default function WhCard({
 }: CardProps) {
   return (
     <div className={accompaniedCss(status)}>
-      <section className='relative w-full h-[152px]'>
+      <section className='relative h-[152px] w-full'>
         <Image
-          className='object-cover rounded w-full h-full'
+          className='h-full w-full rounded object-cover'
           src={thumbnailImageUrl}
-          width={298}
-          height={152}
           alt='동행 썸네일 이미지'
+          fill
         />
         <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>
-      <section className='flex justify-between text-nutral-black-05 text-caption-01'>
-        <div className='flex gap-2 items-center h-8 text-subtitle-02'>
+      <section className='flex justify-between text-caption-01 text-nutral-black-05'>
+        <div className='flex h-8 items-center gap-2 text-subtitle-02'>
           <Image
-            className='inline object-cover rounded-full h-full'
+            className='inline h-full rounded-full object-cover'
             src={profileImageUrl}
             width={32}
             height={32}
             alt='프로필 이미지'
           />
-          <span>{nickname}</span>
+          <span className='text-subtitle-02 text-nutral-black-05'>
+            {nickname}
+          </span>
         </div>
-        <div className='flex gap-2 items-center'>
-          <span className='flex gap-1 items-center'>
+        <div className='flex items-center gap-2'>
+          <span className='flex items-center gap-1 text-caption-01 text-nutral-black-05'>
             <CalendarCheckGrayIcon />
             {dateFormat(startTripDate, 'MM.DD')}~
             {dateFormat(endTripDate, 'MM.DD')}
           </span>
-          <span className='flex gap-1 items-center'>
+          <span className='flex items-center gap-1 text-caption-01 text-nutral-black-05'>
             <UsersGroupGrayIcon />
             {accompanyCnt}/{accompaniedCnt}
           </span>
