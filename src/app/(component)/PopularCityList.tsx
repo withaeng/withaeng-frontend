@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Slider from 'react-slick';
 import { TPopularCity } from '@/types/accompany';
 import PopularCityCard from '@/app/(component)/PopularCityCard';
@@ -10,7 +11,6 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '../../../public/assets/icons/arrow';
-import { useCallback, useState } from 'react';
 
 interface PopularCityListProps {
   list: TPopularCity[];
@@ -22,6 +22,7 @@ function NextArrow(props: any) {
     <button
       onClick={onClick}
       className='absolute right-1 top-[50%] z-10 -translate-y-2/4 rounded-full border border-nutral-white-03 bg-nutral-white-01 p-2 max-xl:hidden'
+      aria-label='다음 버튼'
     >
       <ChevronRightIcon width={24} height={24} stroke='#737373' />
     </button>
@@ -34,6 +35,7 @@ function PrevArrow(props: any) {
     <button
       onClick={onClick}
       className='absolute left-1 top-[50%] z-10 -translate-y-2/4 rounded-full border border-nutral-white-03 bg-nutral-white-01 p-2 max-xl:hidden'
+      aria-label='이전 버튼'
     >
       <ChevronLeftIcon width={24} height={24} stroke='#737373' />
     </button>
@@ -43,13 +45,13 @@ function PrevArrow(props: any) {
 export default function PopularCityList({ list }: PopularCityListProps) {
   const [index, setIndex] = useState<number>(0);
 
-  const handleAfterChange = (index: number) => {
-    setIndex(index);
+  const handleAfterChange = (idx: number) => {
+    setIndex(idx);
   };
 
   const settings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 5,
     variableWidth: true,
     infinite: false,
     draggable: false,

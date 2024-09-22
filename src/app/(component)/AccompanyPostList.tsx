@@ -1,13 +1,13 @@
 'use client';
 
+import dayjs from 'dayjs';
 import useModal from '@/hooks/useModal';
 import { ReactElement, useCallback, useState } from 'react';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
-import { FilterIcon } from '../../../public/assets/icons/system';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
-import dayjs from 'dayjs';
+import { FilterIcon } from '../../../public/assets/icons/system';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
@@ -19,15 +19,15 @@ function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
   const endDt = dayjs(endDate);
   const duration = endDt.diff(startDt, 'days') + 1;
 
-  let start_date_str = '';
+  let startDateStr = '';
 
   if (duration > 0) {
-    start_date_str = `${startDt.format('YY.MM.DD')}~${endDt.format('YY.MM.DD')}`;
+    startDateStr = `${startDt.format('YY.MM.DD')}~${endDt.format('YY.MM.DD')}`;
   } else {
-    start_date_str = startDt.format('YY.MM.DD');
+    startDateStr = startDt.format('YY.MM.DD');
   }
 
-  return `${start_date_str}(${duration}일)`;
+  return `${startDateStr}(${duration}일)`;
 }
 
 const accompanyPostList = (
@@ -149,12 +149,10 @@ export default function AccompanyPostList({
           <FilterIcon width={20} height={20} fill='#737373' />
           <span className='text-caption-01 text-nutral-black-03'>필터</span>
         </button>
-        <>
-          <div className='border-r border-nutral-white-03' />
-          {filterLabelList.map((label) => (
-            <WhFilterLabel label={label} key={label} />
-          ))}
-        </>
+        <div className='border-r border-nutral-white-03' />
+        {filterLabelList.map((label) => (
+          <WhFilterLabel label={label} key={label} />
+        ))}
       </section>
       <section className='mb-[120px] flex h-full w-full justify-center'>
         <ul className='flex flex-wrap gap-5 pl-0 max-sm:justify-center'>
