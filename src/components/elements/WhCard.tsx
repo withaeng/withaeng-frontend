@@ -46,7 +46,7 @@ function accompanyStateBgColor(status: string): string {
 
 function accompaniedCss(status: string): string {
   const baseCss =
-    'w-[305px] xs:max-lg:w-[360px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
+    'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
@@ -71,19 +71,19 @@ export default function WhCard({
 }: CardProps) {
   return (
     <div className={accompaniedCss(status)}>
-      <section className='relative w-full h-[152px] xs:max-lg:h-[180px]'>
+      <section className='relative h-[152px] w-full'>
         <Image
-          className='object-cover rounded w-full h-full'
+          className='h-full w-full rounded object-cover'
           src={thumbnailImageUrl}
           alt='동행 썸네일 이미지'
           fill
         />
         <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>
-      <section className='flex justify-between text-nutral-black-05 text-caption-01'>
-        <div className='flex gap-2 items-center h-8 text-subtitle-02'>
+      <section className='flex justify-between text-caption-01 text-nutral-black-05'>
+        <div className='flex h-8 items-center gap-2 text-subtitle-02'>
           <Image
-            className='inline object-cover rounded-full h-full'
+            className='inline h-full rounded-full object-cover'
             src={profileImageUrl}
             width={32}
             height={32}
@@ -93,13 +93,13 @@ export default function WhCard({
             {nickname}
           </span>
         </div>
-        <div className='flex gap-2 items-center'>
-          <span className='flex gap-1 items-center text-caption-01 text-nutral-black-05'>
+        <div className='flex items-center gap-2'>
+          <span className='flex items-center gap-1 text-caption-01 text-nutral-black-05'>
             <CalendarCheckGrayIcon />
             {dateFormat(startTripDate, 'MM.DD')}~
             {dateFormat(endTripDate, 'MM.DD')}
           </span>
-          <span className='flex gap-1 items-center text-caption-01 text-nutral-black-05'>
+          <span className='flex items-center gap-1 text-caption-01 text-nutral-black-05'>
             <UsersGroupGrayIcon />
             {accompanyCnt}/{accompaniedCnt}
           </span>
