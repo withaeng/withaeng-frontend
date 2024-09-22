@@ -106,7 +106,7 @@ export default function DetailPage() {
   return (
     <div className='flex flex-col items-center'>
       <div className='relative'>
-        <Kebab className='absolute right-6 top-4 cursor-pointer' />
+        <Kebab className='absolute right-6 top-4 cursor-pointer xl:hidden' />
         <Image
           src={detailList.thumbnailImageUrl}
           width={1280}

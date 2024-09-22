@@ -63,7 +63,7 @@ export default function WhDetailInfo() {
             </div>
 
             {/* right */}
-            <div className='flex gap-6'>
+            <div className='flex gap-6 max-xl:hidden'>
               <button type='button'>
                 <LinkIcon />
               </button>
@@ -101,7 +101,7 @@ export default function WhDetailInfo() {
             </h1>
             <div className='flex gap-5'>
               {isHost ? null : (
-                <button type='button' className='min-xl:hidden'>
+                <button type='button' className='xl:hidden'>
                   <PencilIcon />
                 </button>
               )}
