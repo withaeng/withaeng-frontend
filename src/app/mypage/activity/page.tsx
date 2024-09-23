@@ -5,12 +5,12 @@ import WhBadge from '@/components/elements/WhBadge';
 import WhButton from '@/components/elements/WhButton';
 import WhCard from '@/components/elements/WhCard';
 import WhTooltip from '@/components/elements/WhTooltip';
-import { MannerArrowIcon } from '../../../../public/assets/icons/arrow';
+import {
+  MannerArrow8Icon,
+  MannerArrowIcon,
+} from '../../../../public/assets/icons/arrow';
 import WhMypageHeader from '../(component)/WhMypageHeader';
 import WhMypageCard from '../(component)/WhMypageCard';
-
-const badgeContainerCss =
-  'bg-nutral-white-02 px-4 py-2 xl:py-[3.75rem] xl:px-[4.375rem] rounded max-h-[37.5rem] overflow-scroll h-[61rem] grid grid-cols-3 gap-12';
 
 const badgeList = [
   {
@@ -30,10 +30,6 @@ const badgeList = [
     value: '연속 출석 100일',
   },
   {
-    name: 'accompany_once',
-    value: '동행 참여 1회',
-  },
-  {
     name: 'accompany_7times',
     value: '동행 참여 7회',
   },
@@ -42,8 +38,12 @@ const badgeList = [
     value: '동행 참여 30회',
   },
   {
-    name: 'lock',
-    value: '동행 성공 100회',
+    name: 'accompany_completed_once',
+    value: '동행 성공 1회',
+  },
+  {
+    name: 'accompany_completed_7times',
+    value: '동행 성공 7회',
   },
 ];
 
@@ -146,14 +146,25 @@ export default function Activity() {
           매너 점수를 높이기 위해서는 항상 성실하고 정중하게 행동해 주세요!
         </p>
         <div className='mt-6 flex max-w-[586px] items-center gap-3'>
-          <span className='text-subtitle-01 text-primary-main'>{filled}</span>
+          <span className='text-body-03 text-primary-main xl:text-subtitle-01'>
+            {filled}
+          </span>
 
-          <div className='h-3 w-[500px] rounded-2xl bg-nutral-white-02 xl:h-6'>
+          <div className='relative h-3 w-[500px] rounded-2xl bg-nutral-white-02 xl:h-6'>
             <div
               className='h-3 rounded-2xl bg-primary-main xl:h-6'
               style={{ width: `${filled}%` }}
             />
-            <MannerArrowIcon className='ml-[172px] mt-[7px]' />
+            <MannerArrowIcon
+              className='absolute -bottom-5 left-[46%] max-xl:hidden'
+              fill={filled < 46 ? '#DAD8D6' : '#FFA500'}
+            />
+            <MannerArrow8Icon
+              className='absolute -bottom-3 left-[46%] xl:hidden'
+              fill={filled < 46 ? '#DAD8D6' : '#FFA500'}
+              width={8}
+              height={8}
+            />
           </div>
 
           <span className='text-body-02 text-nutral-white-04'>100</span>
@@ -172,14 +183,14 @@ export default function Activity() {
           수 있어요.
         </p>
 
-        <section className={`${badgeContainerCss}`}>
+        <section className='grid grid-cols-3 gap-1 overflow-scroll rounded bg-nutral-white-02 px-4 py-2 xl:gap-12 xl:px-[4.375rem] xl:py-[3.75rem]'>
           {badgeList.map((item) => (
             <div
               className='flex flex-col items-center gap-1 xl:gap-4'
               key={item.value}
             >
-              <WhBadge key={item.name} name={item.name} />
-              <span className='text-subtitle-01 text-nutral-black-02'>
+              <WhBadge name={item.name} />
+              <span className='text-subtitle-02 text-nutral-black-02 xl:text-subtitle-01'>
                 {item.value}
               </span>
             </div>

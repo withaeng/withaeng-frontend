@@ -12,7 +12,7 @@ interface WhProfileProps {
 }
 
 const editBtnCss =
-  'absolute top-1/3 right-1/3 mr-9 bg-nutral-white-01 rounded-full p-[11px] shadow-modal cursor-pointer';
+  'absolute bottom-0 -right-14 mr-9 bg-nutral-white-01 rounded-full p-[11px] shadow-modal cursor-pointer';
 
 function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
   const filePickerRef = useRef<HTMLInputElement>(null);
@@ -55,8 +55,7 @@ function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
   };
 
   return (
-    <>
-      <div>
+    <div className='relative'>
         <div className='rounded-full w-[120px] h-[120px] overflow-hidden'>
           {previewFile ? (
             <Image
@@ -82,13 +81,12 @@ function ImageUpload({ profileImg, isModalOpen }: WhProfileProps) {
             style={{ display: 'none' }}
           />
         </div>
+        {isModalOpen && (
+          <div className={editBtnCss}>
+            <PencilIcon onClick={pickImageHandler} />
+          </div>
+        )}
       </div>
-      {isModalOpen && (
-        <div className={editBtnCss}>
-          <PencilIcon onClick={pickImageHandler} />
-        </div>
-      )}
-    </>
   );
 }
 

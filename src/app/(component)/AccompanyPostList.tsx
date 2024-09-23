@@ -159,6 +159,11 @@ export default function AccompanyPostList({
     console.log('openFilterModal', res);
   };
 
+  const handleDeleteFilterOption = (label: string) => {
+    // TODO setFilterInfo() 기능 구현
+    setFilterLabelList(filterLabelList.filter((lb) => lb !== label));
+  };
+
   return (
     <div className='max-xl:pl-4'>
       <WhTab
@@ -167,21 +172,24 @@ export default function AccompanyPostList({
         onChange={handleChangeTabValue}
       >
         <section className='mb-5 mt-3 flex gap-3'>
-          <button
-            type='button'
-            className='flex items-center justify-center gap-1 rounded-[20px] border border-nutral-white-03 bg-nutral-white-01 py-1 pl-1.5 pr-2 transition'
-            onClick={openFilterModal}
-          >
-            <FilterIcon width={20} height={20} fill='#737373' />
-            <span className='text-caption-01 text-nutral-black-03'>필터</span>
-          </button>
-          {filterLabelList.length > 0 && (
-            <div className='border-r border-nutral-white-03' />
-          )}
+          <WhFilterLabel label='필터' icon='left' onClick={openFilterModal} />
 
           {filterLabelList.map((label) => (
-            <WhFilterLabel label={label} key={label} />
+            <WhFilterLabel
+              label={label}
+              key={label}
+              icon='right'
+              onDelete={handleDeleteFilterOption}
+            />
           ))}
+
+          {filterLabelList.length > 0 && (
+            <WhFilterLabel
+              label='전체 초기화'
+              icon='none'
+              onClick={() => setFilterLabelList([])}
+            />
+          )}
         </section>
         <section className='mb-[120px] flex h-full w-full justify-center'>
           <ul className='flex flex-wrap gap-5 pl-0 max-sm:justify-center'>
