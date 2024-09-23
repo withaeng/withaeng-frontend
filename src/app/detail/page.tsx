@@ -6,7 +6,7 @@ import WhAccompanyRequestInfo from '@/components/elements/detailpage/WhAccompany
 import WhCard from '@/components/elements/WhCard';
 import detailList from '@/data';
 import WhReplyContent from '@/components/elements/detailpage/WhReplyContent';
-import { Kebab } from '../../../public/assets/icons/menu';
+import WhDetailMenu from '../../components/elements/detailpage/WhDetailMenu';
 
 const titleCss =
   'text-nutral-black-01 text-headline-04 mt-[60px] max-xl:mt-10 mb-5';
@@ -107,7 +107,10 @@ export default function DetailPage() {
   return (
     <div className='flex flex-col items-center'>
       <div className='relative'>
-        <Kebab className='absolute right-6 top-4 cursor-pointer xl:hidden' />
+        <div className='absolute right-6 top-4 cursor-pointer xl:hidden'>
+          <WhDetailMenu />
+        </div>
+
         <Image
           src={detailList.thumbnailImageUrl}
           width={1280}
