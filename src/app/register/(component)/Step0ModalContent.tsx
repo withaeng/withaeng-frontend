@@ -1,4 +1,4 @@
-import { RegisterGrapicSvg } from '../../../../public/assets/icons/edit';
+import Image from 'next/image';
 
 export default function Step0ModalContent() {
   return (
@@ -16,7 +16,12 @@ export default function Step0ModalContent() {
         </p>
       </div>
       <div className='flex grow items-center justify-center'>
-        <RegisterGrapicSvg />
+        <Image
+          alt='동행 등록 시작'
+          src='/assets/images/register-graphic.webp'
+          width={364}
+          height={300}
+        />
       </div>
     </div>
   );
