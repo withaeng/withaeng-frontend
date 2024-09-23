@@ -16,7 +16,6 @@ import {
   MapPinIcon,
 } from '../../../../public/assets/icons/communicate';
 import detailList from '../../../data';
-import WhReplyContent from './WhReplyContent';
 import WhModal from '../modal/WhModal';
 import WhModalHeader from '../modal/WhModalHeader';
 import WhModalButtonList from '../modal/WhModalButtonList';
@@ -187,8 +186,12 @@ export default function WhDetailInfo() {
             </span>
           ))}
         </div>
-        <div className='max-h-[735px] flex-col items-center max-xl:px-4'>
-          <div className='max-h-[170px] text-body-03 text-nutral-black-03'>
+        <div className='flex-col items-center max-xl:px-4'>
+          <div
+            className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${
+              lookMore ? 'max-h-full' : 'max-h-[55px]'
+            }`}
+          >
             {detailList.content}
           </div>
           <button
@@ -200,8 +203,6 @@ export default function WhDetailInfo() {
           </button>
         </div>
       </div>
-
-      <WhReplyContent />
     </div>
   );
 }

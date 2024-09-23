@@ -140,12 +140,12 @@ export default function WhReplyContent() {
         </div>
       </div>
 
-      {/* Modal display logic */}
       {modalConfig.isOpen && modalConfig.type === 'profile' && (
         <WhModal
           isOpen={modalConfig.isOpen}
           onClose={closeModal}
           className='flex flex-col justify-between px-4 py-5 xl:px-[84px] xl:py-[72px]'
+          hideCloseButton
         >
           <WhProfile
             profileImage={itemList.profileImage}

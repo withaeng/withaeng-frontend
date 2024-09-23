@@ -5,6 +5,7 @@ import WhDetailInfo from '@/components/elements/detailpage/WhDetailInfo';
 import WhAccompanyRequestInfo from '@/components/elements/detailpage/WhAccompanyRequestInfo';
 import WhCard from '@/components/elements/WhCard';
 import detailList from '@/data';
+import WhReplyContent from '@/components/elements/detailpage/WhReplyContent';
 import { Kebab } from '../../../public/assets/icons/menu';
 
 const titleCss =
@@ -114,12 +115,15 @@ export default function DetailPage() {
           alt='profile-image'
         />
       </div>
-      <div className='my-5 flex gap-5 max-xl:w-full max-xl:flex-wrap'>
-        {/* left */}
-        <WhDetailInfo />
+      <div className='max-xl:w-full'>
+        <div className='my-5 flex gap-5 max-xl:flex-wrap'>
+          {/* left */}
+          <WhDetailInfo />
 
-        {/* right */}
-        <WhAccompanyRequestInfo />
+          {/* right */}
+          <WhAccompanyRequestInfo />
+        </div>
+        <WhReplyContent />
       </div>
       {/* 추천 동행 게시글 */}
       <div className='max-xl:w-full max-xl:flex-wrap max-xl:px-4'>
