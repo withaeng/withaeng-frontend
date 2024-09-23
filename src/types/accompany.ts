@@ -25,6 +25,7 @@ export type TPopularCity = {
   id: number;
   continent: string;
   country: string;
+  countryEng: string;
   city: string;
   cityEng: string;
   bannerImageUrl: string;
