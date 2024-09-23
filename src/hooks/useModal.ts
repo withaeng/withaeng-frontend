@@ -45,7 +45,7 @@ const useModal = () => {
     setOpen(true);
     setProps(props);
     setType('filter');
-    return new Promise<TAccompanyFilter>((res) => {
+    return new Promise<TAccompanyFilter | null>((res) => {
       setHandler(res);
     });
   };

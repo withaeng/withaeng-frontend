@@ -7,7 +7,6 @@ import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
-import { FilterIcon } from '../../../public/assets/icons/system';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
@@ -106,6 +105,10 @@ export default function AccompanyPostList({
 
   const openFilterModal = async () => {
     const res = await filter(filterInfo);
+    if (res === null) {
+      return;
+    }
+
     setFilterInfo(res);
 
     const list: string[] = [];

@@ -7,10 +7,11 @@ import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhSlider from '@/components/elements/WhSlider';
 import { TAccompanyFilter } from '@/types/accompany';
 import { ReloadArrowIcon } from '../../../public/assets/icons/arrow';
+import { CloseIcon } from '../../../public/assets/icons/menu';
 
 interface FilterModalProps {
   options: TAccompanyFilter;
-  onHandle?: (value: TAccompanyFilter) => void;
+  onHandle?: (value: TAccompanyFilter | null) => void;
 }
 
 const cityList = [
@@ -45,7 +46,8 @@ const companionMarks = {
   8: '8',
 };
 
-const tilteCss = 'text-headline-04 text-nutral-black-02';
+const tilteCss =
+  'text-headline-04 text-nutral-black-02 max-xl:text-subtitle-01';
 const descriptionCss = 'text-subtitle-02 text-nutral-black-05 ml-2';
 
 const selectedDateRange = (today: boolean, startDate: Date, endDate: Date) => {
@@ -184,6 +186,11 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
     onHandle?.(res);
   };
 
+  const onHandleClose = () => {
+    resetFilter();
+    onHandle?.(null);
+  };
+
   useEffect(() => {
     if (options === null) {
       resetFilter();
@@ -202,132 +209,143 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
 
   return (
     <>
-      <div className='flex justify-between border-b border-b-nutral-white-03 pb-5'>
-        <h1 className='text-headline-03 text-nutral-black-01'>필터</h1>
-        <span
-          className='flex cursor-pointer items-center gap-1.5 text-body-03 text-nutral-black-04'
-          onClick={resetFilter}
-        >
-          <ReloadArrowIcon />
-          초기화
-        </span>
+      <div className='mb-5 flex justify-end' onClick={onHandleClose}>
+        <CloseIcon width={24} height={24} stroke='#333333' />
       </div>
-      <div className='mt-5 flex h-[619px] flex-col gap-10 overflow-auto'>
-        <section className='flex w-full flex-col gap-5'>
-          <div>
-            <span className={tilteCss}>여행지</span>
-            <span className={descriptionCss}>
-              (최대 3개 도시까지 선택 가능합니다.)
-            </span>
-          </div>
-          <div className='flex flex-wrap gap-5'>
-            {cityList.map((city) => (
-              <WhChip
-                key={city.id}
-                value={city.value}
-                checked={isIncludes('city', city.id)}
-                onClick={() => selectCity(city)}
-              >
-                {city.value}
-              </WhChip>
-            ))}
-          </div>
-        </section>
-        <section className='flex w-full flex-col gap-5'>
-          <div>
-            <span className={tilteCss}>동행 일정</span>
-            {startDate && endDate && (
+      <div className='max-xl:h-[378px]'>
+        <div className='flex items-center justify-between border-b border-b-nutral-white-03 pb-5'>
+          <h1 className='m-0 text-headline-03 text-nutral-black-01'>필터</h1>
+          <span
+            className='flex cursor-pointer items-center gap-1.5 text-body-03 text-nutral-black-04'
+            onClick={resetFilter}
+          >
+            <ReloadArrowIcon />
+            초기화
+          </span>
+        </div>
+        <div className='mt-5 flex h-[232px] flex-col gap-10 overflow-auto xl:h-[619px]'>
+          <section className='flex w-full flex-col gap-5'>
+            <div>
+              <span className={tilteCss}>여행지</span>
               <span className={descriptionCss}>
-                {selectedDateRange(today, startDate, endDate)}
+                (최대 3개 도시까지 선택 가능합니다.)
               </span>
-            )}
+            </div>
+            <div className='flex flex-wrap gap-5'>
+              {cityList.map((city) => (
+                <WhChip
+                  key={city.id}
+                  value={city.value}
+                  checked={isIncludes('city', city.id)}
+                  onClick={() => selectCity(city)}
+                >
+                  {city.value}
+                </WhChip>
+              ))}
+            </div>
+          </section>
+          <section className='flex w-full flex-col gap-5'>
+            <div>
+              <span className={tilteCss}>동행 일정</span>
+              {startDate && endDate && (
+                <span className={descriptionCss}>
+                  {selectedDateRange(today, startDate, endDate)}
+                </span>
+              )}
 
-            {today && <span className={descriptionCss}>(당일)</span>}
-          </div>
-          <div className='z-[100] flex items-center gap-[22px]'>
-            <WhCalendar value={startDate} onChange={setStartDate} />
-            ~
-            <WhCalendar value={endDate} onChange={setEndDate} />
-          </div>
-          <WhCheckbox
-            id='today'
-            value='today'
-            checked={today}
-            onChange={onHandleToday}
-          >
-            당일
-          </WhCheckbox>
-        </section>
-        <section className='flex w-full flex-col gap-5'>
-          <div>
-            <span className={tilteCss}>동행 인원</span>
-            {companion && (
-              <span className={descriptionCss}>
-                {selectedCompanionRange(companion)}
-              </span>
-            )}
-          </div>
-          <WhSlider
-            range
-            min={3}
-            max={8}
-            step={1}
-            marks={companionMarks}
-            value={companion}
-            onChange={handleSetCompanion}
-          />
-          <WhCheckbox
-            id='companion-free'
-            value='companion-free'
-            checked={companionFree}
-            onChange={handleSetCompanionFree}
-          >
-            상관없음
-          </WhCheckbox>
-        </section>
-        <section className='flex w-full flex-col gap-5'>
-          <div>
-            <span className={tilteCss}>연령대</span>
-            {age && (
-              <span className={descriptionCss}>{selectedAgeRange(age)}</span>
-            )}
-          </div>
-          <WhSlider
-            range
-            min={20}
-            max={50}
-            step={5}
-            marks={ageMarks}
-            value={age}
-            onChange={handleSetAge}
-          />
-          <WhCheckbox
-            id='age-free'
-            value='age-free'
-            checked={ageFree}
-            onChange={handleSetAgeFree}
-          >
-            상관없음
-          </WhCheckbox>
-        </section>
-        <section className='flex w-full flex-col gap-5'>
-          <span className={tilteCss}>성별</span>
-          <div className='flex flex-wrap gap-5'>
-            {genderList.map((gender) => (
-              <WhChip
-                key={gender.id}
-                value={gender.value}
-                checked={isIncludes('gender', gender.id)}
-                onClick={() => selectGender(gender)}
-              >
-                {gender.value}
-              </WhChip>
-            ))}
-          </div>
-        </section>
-      </div>
-      <div className='mx-auto my-0 mt-10 w-[512px]'>
-        <WhButton onClick={onHandelSubmit}>확인</WhButton>
+              {today && <span className={descriptionCss}>(당일)</span>}
+            </div>
+            <div className='z-[100] flex items-center gap-[22px] max-xl:gap-3'>
+              <WhCalendar value={startDate} onChange={setStartDate} />
+              ~
+              <WhCalendar value={endDate} onChange={setEndDate} />
+            </div>
+            <WhCheckbox
+              id='today'
+              value='today'
+              checked={today}
+              onChange={onHandleToday}
+            >
+              당일
+            </WhCheckbox>
+          </section>
+          <section className='flex w-full flex-col gap-5'>
+            <div>
+              <span className={tilteCss}>동행 인원</span>
+              {companion && (
+                <span className={descriptionCss}>
+                  {selectedCompanionRange(companion)}
+                </span>
+              )}
+            </div>
+            <div className='max-xl:mr-3'>
+              <WhSlider
+                range
+                min={3}
+                max={8}
+                step={1}
+                marks={companionMarks}
+                value={companion}
+                onChange={handleSetCompanion}
+              />
+            </div>
+            <WhCheckbox
+              id='companion-free'
+              value='companion-free'
+              checked={companionFree}
+              onChange={handleSetCompanionFree}
+            >
+              상관없음
+            </WhCheckbox>
+          </section>
+          <section className='flex w-full flex-col gap-5'>
+            <div>
+              <span className={tilteCss}>연령대</span>
+              {age && (
+                <span className={descriptionCss}>{selectedAgeRange(age)}</span>
+              )}
+            </div>
+            <div className='max-xl:mr-3'>
+              <WhSlider
+                range
+                min={20}
+                max={50}
+                step={5}
+                marks={ageMarks}
+                value={age}
+                onChange={handleSetAge}
+              />
+            </div>
+            <WhCheckbox
+              id='age-free'
+              value='age-free'
+              checked={ageFree}
+              onChange={handleSetAgeFree}
+            >
+              상관없음
+            </WhCheckbox>
+          </section>
+          <section className='flex w-full flex-col gap-5'>
+            <span className={tilteCss}>성별</span>
+            <div className='flex flex-wrap gap-5'>
+              {genderList.map((gender) => (
+                <WhChip
+                  key={gender.id}
+                  value={gender.value}
+                  checked={isIncludes('gender', gender.id)}
+                  onClick={() => selectGender(gender)}
+                >
+                  {gender.value}
+                </WhChip>
+              ))}
+            </div>
+          </section>
+        </div>
+        <div className='mx-auto my-0 mt-10 w-[512px] max-xl:mt-[34px] max-xl:w-full'>
+          <WhButton onClick={onHandelSubmit} size='lg'>
+            확인
+          </WhButton>
+        </div>
       </div>
     </>
   );
