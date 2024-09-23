@@ -17,7 +17,7 @@ const ageMarks = {
 const genderList = [
   { id: 'male', name: '남성' },
   { id: 'female', name: '여성' },
-  { id: 'all', name: '누구나 가능' },
+  { id: 'all', name: '누구든 가능' },
 ];
 
 export default function Step2ModalContent({
@@ -62,7 +62,7 @@ export default function Step2ModalContent({
             <p className='mb-5'>원하는 동행 연령을 설정해주세요.</p>
             <span className='text-subtitle-02'>{ageText()}</span>
           </div>
-          <div className='mb-12'>
+          <div className='mb-8 xl:mb-12'>
             <WhSlider
               range
               min={20}

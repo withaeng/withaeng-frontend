@@ -50,7 +50,7 @@ export default function Step1ModalContent({
           />
         </div>
         <div>
-          <p className='mb-3'>인원을 설정해주세요. (본인 포함)</p>
+          <p className='mb-3'>동행 인원을 설정해주세요. (본인 포함)</p>
           <WhDropdown
             value={form.accompanyCnt.toString()}
             onChange={(value: string) =>
@@ -64,7 +64,7 @@ export default function Step1ModalContent({
         </div>
         <div>
           <p className='mb-3'>여행 일정을 선택해주세요.</p>
-          <div className='mb-4 flex items-center gap-[22px]'>
+          <div className='mb-4 flex items-center gap-2 xl:gap-[22px]'>
             <WhCalendar
               value={form.startTripDate}
               onChange={(value: Date | null) =>
