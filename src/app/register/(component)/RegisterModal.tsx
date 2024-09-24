@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
-import { AccompanyData } from '@/types/accompany';
+import { CreateAccompanyRequest } from '@/@types/accompany';
 import Step1ModalContent from './Step1ModalContent';
 import Step2ModalContent from './Step2ModalContent';
 import Step3ModalContent from './Step3ModalContent';
@@ -12,7 +13,7 @@ import Step0ModalContent from './Step0ModalContent';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
-    <div className='h-0.5 w-full bg-primary-exLight mt-2'>
+    <div className='mt-2 h-0.5 w-full bg-primary-exLight'>
       <div
         className='h-full bg-primary-main transition-all'
         style={{ width: `${value}%` }}
@@ -27,19 +28,20 @@ const initAccompany = {
   continent: '',
   country: '',
   city: '',
-  startTripDate: new Date(),
-  endTripDate: new Date(),
-  bannerImageUrl: '',
-  accompanyCnt: 0,
-  openKakaoUrl: '',
-  age: [20, 50],
-  gender: '',
+  startTripDate: dayjs().format('YYYY-MM-DD'),
+  endTripDate: dayjs().format('YYYY-MM-DD'),
+  memberCount: 0,
   tags: [],
+  openKakaoUrl: '',
+  startAccompanyAge: 20,
+  endAccompanyAge: 50,
+  preferGender: 'NO_PREFERENCE',
+  hasImage: false,
 };
 
 export default function RegisterModal() {
   const router = useRouter();
-  const [form, setForm] = useState<AccompanyData>(initAccompany);
+  const [form, setForm] = useState<CreateAccompanyRequest>(initAccompany);
   const [step, setStep] = useState(0);
 
   // change route
@@ -58,10 +60,10 @@ export default function RegisterModal() {
     <WhModal
       isOpen
       onClose={() => router.back()}
-      className='px-[85px] py-[72px] h-[800px]'
+      className='h-[800px] px-[85px] py-[72px]'
       isDismissible={false}
     >
-      <div className='flex flex-col h-full'>
+      <div className='flex h-full flex-col'>
         {step > 0 && <StepBar value={(step / 3) * 100} />}
         {step === 0 && (
           <>

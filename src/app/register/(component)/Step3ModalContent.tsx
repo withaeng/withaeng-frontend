@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import Image from 'next/image';
 import WhInput from '@/components/elements/WhInput';
-import { AccompanyData } from '@/types/accompany';
 
 import { EditorContent, useEditor } from '@tiptap/react';
 import FontSize from '@/app/sample/editor/TiptapFontSizeExtension';
@@ -15,14 +14,15 @@ import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import ResizableImageExtension from '@/app/sample/editor/TiptapImageResize';
 import '@/app/sample/editor/tiptap.css';
+import { CreateAccompanyRequest } from '@/@types/accompany';
 import { CameraIcon } from '../../../../public/assets/icons/edit';
 
 export default function Step3ModalContent({
   form,
   setForm,
 }: {
-  form: AccompanyData;
-  setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
+  form: CreateAccompanyRequest;
+  setForm: React.Dispatch<React.SetStateAction<CreateAccompanyRequest>>;
 }) {
   const [newTag, setNewTag] = useState('');
   const [image, setImage] = useState('');
@@ -85,16 +85,16 @@ export default function Step3ModalContent({
     return null;
   }
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>마지막이에요! 힘내주세요!! ✈️</h3>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-10 text-headline-03'>마지막이에요! 힘내주세요!! ✈️</h3>
       <div className='flex flex-col gap-4 overflow-auto'>
         <button
           type='button'
-          className='w-full h-[216px] relative'
+          className='relative h-[216px] w-full'
           onClick={handleOpenInput}
         >
           {image ? (
-            <div className='flex items-center justify-center w-full h-full overflow-hidden'>
+            <div className='flex h-full w-full items-center justify-center overflow-hidden'>
               <Image
                 width={510}
                 height={216}
@@ -104,7 +104,7 @@ export default function Step3ModalContent({
               />
             </div>
           ) : (
-            <div className='bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'>
+            <div className='flex flex-col items-center justify-center gap-2.5 bg-nutral-white-02 py-15'>
               <CameraIcon />
               <p className='text-center text-caption-03 text-nutral-white-04'>
                 사진을 업로드해주세요. <br />
@@ -130,21 +130,21 @@ export default function Step3ModalContent({
           value={form.title}
         />
 
-        <div className='prose max-w-none tiptap'>
+        <div className='tiptap prose max-w-none'>
           <TiptapRegisterToolbar editor={editor} />
           <EditorContent
-            className='w-full prose-p:m-0 border-nutral-white-04 border h-[30rem] overflow-auto p-5 *:outline-none *:h-full'
+            className='h-[30rem] w-full overflow-auto border border-nutral-white-04 p-5 *:h-full *:outline-none prose-p:m-0'
             editor={editor}
           />
         </div>
-        <div className='border-b border-nutral-white-03 p-2 flex gap-2 mb-2'>
+        <div className='mb-2 flex gap-2 border-b border-nutral-white-03 p-2'>
           <ul className='flex gap-3'>
             {form.tags.length > 0 &&
               form.tags.map((tag) => (
                 <li key={tag}>
                   <button
                     type='button'
-                    className='shrink-0 px-4 py-2 rounded-full bg-primary-main text-nutral-white-01 hover:bg-primary-light text-caption-01'
+                    className='shrink-0 rounded-full bg-primary-main px-4 py-2 text-caption-01 text-nutral-white-01 hover:bg-primary-light'
                     onClick={() => delTags(tag)}
                   >
                     {tag}
@@ -155,7 +155,7 @@ export default function Step3ModalContent({
           {form.tags.length < 3 && (
             <input
               type='text'
-              className='outline-none grow py-1'
+              className='grow py-1 outline-none'
               value={newTag}
               maxLength={10}
               onChange={(e) => setNewTag(e.target.value)}

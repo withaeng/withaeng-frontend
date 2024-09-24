@@ -3,8 +3,9 @@ import CountryTab from '@/components/CountryTab';
 import WhCalendar from '@/components/elements/WhCalendar';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhDropdown from '@/components/elements/WhDropdown';
-import { AccompanyData } from '@/types/accompany';
 import WhInput from '@/components/elements/WhInput';
+import { CreateAccompanyRequest } from '@/@types/accompany';
+import dayjs from 'dayjs';
 
 const dataList = [
   { id: '2', name: '2명' },
@@ -16,15 +17,15 @@ export default function Step1ModalContent({
   form,
   setForm,
 }: {
-  form: AccompanyData;
-  setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
+  form: CreateAccompanyRequest;
+  setForm: React.Dispatch<React.SetStateAction<CreateAccompanyRequest>>;
 }) {
   const [tabCountry, setTabCountry] = useState('0');
   const [isDayTrip, setIsDayTrip] = useState(false);
 
   const handleDayTrip = () => {
     if (isDayTrip) {
-      setForm((prev: AccompanyData) => ({
+      setForm((prev: CreateAccompanyRequest) => ({
         ...prev,
         endTripDate: prev.startTripDate,
       }));
@@ -33,9 +34,9 @@ export default function Step1ModalContent({
   };
 
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>동행 등록을 진행해볼까요? 😃</h3>
-      <div className='flex flex-col gap-10 grow overflow-auto'>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-10 text-headline-03'>동행 등록을 진행해볼까요? 😃</h3>
+      <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <p>도시를 선택해주세요.</p>
           <CountryTab
@@ -43,18 +44,21 @@ export default function Step1ModalContent({
             onTabChange={setTabCountry}
             value={form.country ?? ''}
             onChange={(value: string) =>
-              setForm((prev: AccompanyData) => ({ ...prev, country: value }))
+              setForm((prev: CreateAccompanyRequest) => ({
+                ...prev,
+                country: value,
+              }))
             }
           />
         </div>
         <div>
           <p className='mb-3'>인원을 설정해주세요. (본인 포함)</p>
           <WhDropdown
-            value={form.accompanyCnt.toString()}
+            value={form.memberCount.toString()}
             onChange={(value: string) =>
-              setForm((prev: AccompanyData) => ({
+              setForm((prev: CreateAccompanyRequest) => ({
                 ...prev,
-                accompanyCnt: Number(value),
+                memberCount: Number(value),
               }))
             }
             dataList={dataList}
@@ -62,13 +66,13 @@ export default function Step1ModalContent({
         </div>
         <div>
           <p className='mb-3'>여행 일정을 선택해주세요.</p>
-          <div className='flex gap-[22px] items-center mb-4'>
+          <div className='mb-4 flex items-center gap-[22px]'>
             <WhCalendar
-              value={form.startTripDate}
+              value={dayjs(form.startTripDate).toDate()}
               onChange={(value: Date | null) =>
-                setForm((prev: AccompanyData) => ({
+                setForm((prev: CreateAccompanyRequest) => ({
                   ...prev,
-                  startTripDate: value ?? undefined,
+                  startTripDate: dayjs(value).format('YYYY-MM-DD') ?? undefined,
                 }))
               }
             />
@@ -76,11 +80,12 @@ export default function Step1ModalContent({
               <>
                 <span className='text-headline-04 text-nutral-black-05'>~</span>
                 <WhCalendar
-                  value={form.endTripDate}
+                  value={dayjs(form.endTripDate).toDate()}
                   onChange={(value: Date | null) =>
-                    setForm((prev: AccompanyData) => ({
+                    setForm((prev: CreateAccompanyRequest) => ({
                       ...prev,
-                      startTripDate: value ?? undefined,
+                      endTripDate:
+                        dayjs(value).format('YYYY-MM-DD') ?? undefined,
                     }))
                   }
                 />
@@ -101,7 +106,7 @@ export default function Step1ModalContent({
           <WhInput
             value={form.openKakaoUrl}
             handleInputChange={(value: string) =>
-              setForm((prev: AccompanyData) => ({
+              setForm((prev: CreateAccompanyRequest) => ({
                 ...prev,
                 openKakaoUrl: value,
               }))

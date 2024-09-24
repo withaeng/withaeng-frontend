@@ -342,13 +342,13 @@ export interface CreateAccompanyRequest {
   city: string;
   startTripDate: string;
   endTripDate: string;
-  bannerImageUrl: string;
   memberCount: number;
-  tagIds?: number[];
+  tags: string[];
   openKakaoUrl: string;
-  startAccompanyAge: AccompanyAge;
-  endAccompanyAge: AccompanyAge;
-  preferGender: AccompanyGender;
+  startAccompanyAge: number;
+  endAccompanyAge: number;
+  preferGender: string;
+  hasImage: boolean;
 }
 
 /* 동행 목적지 */

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import WhCheckbox from '@/components/elements/WhCheckbox';
 import WhChip from '@/components/elements/WhChip';
 import WhSlider from '@/components/elements/WhSlider';
-import { AccompanyData } from '@/types/accompany';
+import { CreateAccompanyRequest } from '@/@types/accompany';
 
 const ageMarks = {
   20: '20',
@@ -15,33 +15,30 @@ const ageMarks = {
 };
 
 const genderList = [
-  { id: 'male', name: '남성' },
-  { id: 'female', name: '여성' },
-  { id: 'all', name: '누구나 가능' },
+  { id: 'MALE', name: '남성' },
+  { id: 'FEMALE', name: '여성' },
+  { id: 'NO_PREFERENCE', name: '누구나 가능' },
 ];
 
 export default function Step2ModalContent({
   form,
   setForm,
 }: {
-  form: AccompanyData;
-  setForm: React.Dispatch<React.SetStateAction<AccompanyData>>;
+  form: CreateAccompanyRequest;
+  setForm: React.Dispatch<React.SetStateAction<CreateAccompanyRequest>>;
 }) {
   const [isAllAge, setIsAllAge] = useState(false);
   const ageText = () => {
     if (isAllAge) {
       return '누구나 환영';
     }
-    if (!Array.isArray(form.age)) {
-      if (form.age < 50) return `${form.age}세`;
-      return `${form.age}세 이상`;
+    if (form.startAccompanyAge === form.endAccompanyAge) {
+      if (form.startAccompanyAge < 50) return `${form.startAccompanyAge}세`;
+      return `${form.startAccompanyAge}세 이상`;
     }
-    if (form.age[0] === form.age[1]) {
-      if (form.age[0] < 50) return `${form.age[0]}세`;
-      return `${form.age[0]}세 이상`;
-    }
-    if (form.age[1] < 50) return `${form.age[0]}세 ~ ${form.age[1]}세`;
-    return `${form.age[0]}세 ~ ${form.age[1]}세 이상`;
+    if (form.endAccompanyAge < 50)
+      return `${form.startAccompanyAge}세 ~ ${form.endAccompanyAge}세`;
+    return `${form.startAccompanyAge}세 ~ ${form.endAccompanyAge}세 이상`;
   };
 
   const handleAllAge = () => {
@@ -52,9 +49,9 @@ export default function Step2ModalContent({
   };
 
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>어떤 동행을 원하세요?? 👀</h3>
-      <div className='flex flex-col gap-10 grow overflow-auto'>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-10 text-headline-03'>어떤 동행을 원하세요?? 👀</h3>
+      <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <div className='flex justify-between'>
             <p className='mb-5'>원하는 동행 연령을 설정해주세요.</p>
@@ -68,7 +65,7 @@ export default function Step2ModalContent({
               step={5}
               defaultValue={[20, 50]}
               marks={ageMarks}
-              value={form.age}
+              value={[form.startAccompanyAge, form.endAccompanyAge]}
               disabled={isAllAge}
               onChange={(value) => setForm((prev) => ({ ...prev, age: value }))}
             />
@@ -84,11 +81,11 @@ export default function Step2ModalContent({
         </div>
         <div>
           <p className='mb-3'>원하는 동행 성별을 설정해주세요.</p>
-          <div className='flex gap-2 items-center'>
+          <div className='flex items-center gap-2'>
             {genderList.map((genderItem) => (
               <WhChip
                 key={genderItem.id}
-                checked={form.gender === genderItem.id}
+                checked={form.preferGender === genderItem.id}
                 value={genderItem.id}
                 onClick={(value) =>
                   setForm((prev) => ({ ...prev, gender: value }))
