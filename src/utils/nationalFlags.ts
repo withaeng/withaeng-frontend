@@ -1,4 +1,4 @@
-const flags = [
+export const flags = [
   { country: 'AFGHANISTAN', flag: '🇦🇫' },
   { country: 'ÅLAND_ISLANDS', flag: '🇦🇽' },
   { country: 'ALBANIA', flag: '🇦🇱' },
@@ -242,4 +242,4 @@ const flags = [
   { country: 'ZIMBABWE', flag: '🇿🇼' },
 ];
 
-export { flags };
+export default { flags };

@@ -71,7 +71,7 @@ export default function WhCard({
 }: CardProps) {
   return (
     <div className={accompaniedCss(status)}>
-      <section className='relative h-[152px] w-full'>
+      <section className='relative h-[152px] w-full max-xl:h-[180px]'>
         <Image
           className='h-full w-full rounded object-cover'
           src={thumbnailImageUrl}
@@ -108,15 +108,14 @@ export default function WhCard({
       <section className='mt-1 max-w-full overflow-hidden text-ellipsis whitespace-nowrap'>
         <span className='text-subtitle-02 text-nutral-black-03'>{title}</span>
       </section>
-      {tags !== null && (
-        <section className='mt-2 flex gap-3 pb-2'>
-          {tags.map((tag) => (
+      <section className='mt-2 flex gap-3 pb-2'>
+        {tags !== null &&
+          tags.map((tag) => (
             <span key={tag} className='text-caption-01 text-primary-main'>
               {tag}
             </span>
           ))}
-        </section>
-      )}
+      </section>
     </div>
   );
 }

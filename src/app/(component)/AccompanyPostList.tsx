@@ -1,32 +1,16 @@
 'use client';
 
-import dayjs from 'dayjs';
 import useModal from '@/hooks/useModal';
 import { ReactElement, useCallback, useState } from 'react';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
+import dateUtil from '@/utils/dateUtil';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
   accompanyList: TAccompanyPost[];
-}
-
-function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
-  const startDt = dayjs(startDate);
-  const endDt = dayjs(endDate);
-  const duration = endDt.diff(startDt, 'days') + 1;
-
-  let startDateStr = '';
-
-  if (duration > 0) {
-    startDateStr = `${startDt.format('YY.MM.DD')}~${endDt.format('YY.MM.DD')}`;
-  } else {
-    startDateStr = startDt.format('YY.MM.DD');
-  }
-
-  return `${startDateStr}(${duration}일)`;
 }
 
 const accompanyPostList = (
@@ -146,10 +130,12 @@ export default function AccompanyPostList({
 
     // 동행일정
     if (res.isToday && res.startDate && !res.endDate) {
-      list.push(`동행일정 : ${formatSchedule(res.startDate)}`);
+      list.push(`동행일정 : ${dateUtil.formatSchedule(res.startDate)}`);
     }
     if (res.startDate && res.endDate) {
-      list.push(`동행일정 : ${formatSchedule(res.startDate, res.endDate)}`);
+      list.push(
+        `동행일정 : ${dateUtil.formatSchedule(res.startDate, res.endDate)}`
+      );
     }
 
     // 연령대
