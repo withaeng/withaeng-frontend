@@ -156,7 +156,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
   };
 
   const handleSetAge = (value: number | number[]) => {
-    if (companionFree) {
+    if (ageFree) {
       setAge(undefined);
     } else {
       setAge(value);
@@ -228,7 +228,8 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
             <div>
               <span className={tilteCss}>여행지</span>
               <span className={descriptionCss}>
-                (최대 3개 도시까지 선택 가능합니다.)
+                {selectedCityList.map((el) => el.value).join(',')} (최대 3개
+                도시까지 선택 가능합니다.)
               </span>
             </div>
             <div className='flex flex-wrap gap-5'>
@@ -257,8 +258,12 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
             </div>
             <div className='z-[100] flex items-center gap-[22px] max-xl:gap-3'>
               <WhCalendar value={startDate} onChange={setStartDate} />
-              ~
-              <WhCalendar value={endDate} onChange={setEndDate} />
+              {!today && (
+                <>
+                  ~
+                  <WhCalendar value={endDate} onChange={setEndDate} />
+                </>
+              )}
             </div>
             <WhCheckbox
               id='today'
@@ -287,6 +292,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
                 marks={companionMarks}
                 value={companion}
                 onChange={handleSetCompanion}
+                disabled={companionFree}
               />
             </div>
             <WhCheckbox
@@ -314,6 +320,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
                 marks={ageMarks}
                 value={age}
                 onChange={handleSetAge}
+                disabled={ageFree}
               />
             </div>
             <WhCheckbox
@@ -325,7 +332,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
               상관없음
             </WhCheckbox>
           </section>
-          <section className='flex w-full flex-col gap-5'>
+          <section className='flex w-full flex-col gap-5 max-xl:mb-[116px]'>
             <span className={tilteCss}>성별</span>
             <div className='flex flex-wrap gap-5'>
               {genderList.map((gender) => (
@@ -341,7 +348,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
             </div>
           </section>
         </div>
-        <div className='mx-auto my-0 mt-10 w-[512px] max-xl:mt-[34px] max-xl:w-full'>
+        <div className='mx-auto my-0 mt-10 w-[512px] max-xl:mt-5 max-xl:w-full'>
           <WhButton onClick={onHandelSubmit} size='lg'>
             확인
           </WhButton>

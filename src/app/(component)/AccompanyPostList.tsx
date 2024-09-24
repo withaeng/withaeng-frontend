@@ -99,6 +99,18 @@ export default function AccompanyPostList({
   const handleChangeTabValue = useCallback(
     (tabId: string) => {
       setContinent(tabId);
+      setFilterLabelList([]);
+      setFilterInfo({
+        age: undefined,
+        ageFree: false,
+        city: [],
+        companion: undefined,
+        companionFree: false,
+        endDate: null,
+        gender: [],
+        isToday: false,
+        startDate: new Date(),
+      });
     },
     [continent]
   );
@@ -174,7 +186,7 @@ export default function AccompanyPostList({
         value={continent}
         onChange={handleChangeTabValue}
       >
-        <section className='mb-5 mt-3 flex gap-3'>
+        <section className='mb-5 mt-3 flex gap-3 overflow-auto'>
           <WhFilterLabel label='필터' icon='left' onClick={openFilterModal} />
 
           {filterLabelList.map((label) => (
@@ -195,7 +207,7 @@ export default function AccompanyPostList({
           )}
         </section>
         <section className='mb-[120px] flex h-full w-full justify-center'>
-          <ul className='flex flex-wrap gap-5 pl-0 max-sm:justify-center'>
+          <ul className='m-0 flex flex-wrap gap-5 pl-0 max-xl:mr-4 max-sm:justify-center'>
             {accompanyPostList(accompanyList, continent)}
           </ul>
         </section>
