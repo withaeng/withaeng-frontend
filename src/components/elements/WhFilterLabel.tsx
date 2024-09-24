@@ -54,7 +54,7 @@ export default function WhFilterLabel({
 }: WhFilterLabelProps) {
   return (
     <div
-      className={`group inline-flex w-fit cursor-pointer items-center gap-1 py-1 text-caption-01 ${paddingStyle(icon)} ${containerStyle(icon)} `}
+      className={`group inline-flex w-fit min-w-fit cursor-pointer items-center gap-1 py-1 *:text-caption-01 ${paddingStyle(icon)} ${containerStyle(icon)} `}
       onClick={onClick}
     >
       {icon === 'left' && (
