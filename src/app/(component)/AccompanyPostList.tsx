@@ -37,7 +37,7 @@ const accompanyPostList = (
     return (
       <>
         {accompanyList.map((accompany) => (
-          <li key={accompany.id}>
+          <li key={accompany.id} className='w-full'>
             <WhCard
               status={accompany.status}
               profileImageUrl={accompany.userProfileImageUrl}
@@ -206,8 +206,8 @@ export default function AccompanyPostList({
             />
           )}
         </section>
-        <section className='mb-[120px] flex h-full w-full justify-center'>
-          <ul className='m-0 flex flex-wrap gap-5 pl-0 max-xl:mr-4 max-sm:justify-center'>
+        <section className='max-xl:[calc(100%+1rem)] mb-[120px] flex h-full justify-center max-xl:-ml-4'>
+          <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
             {accompanyPostList(accompanyList, continent)}
           </ul>
         </section>

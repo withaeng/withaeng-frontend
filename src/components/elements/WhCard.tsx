@@ -46,7 +46,7 @@ function accompanyStateBgColor(status: string): string {
 
 function accompaniedCss(status: string): string {
   const baseCss =
-    'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition';
+    'w-[305px] flex flex-col gap-1 p-2 rounded-md bg-nutral-white-01 hover:shadow-modal cursor-pointer hover:opacity-90 transition max-xl:w-full';
   if (status === 'accompanied') {
     return `${baseCss} opacity-60`;
   }
