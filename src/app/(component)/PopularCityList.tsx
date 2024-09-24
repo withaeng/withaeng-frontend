@@ -85,7 +85,7 @@ export default function PopularCityList({ list }: PopularCityListProps) {
   };
 
   return (
-    <ul className='m-0 pl-0 pt-5 max-xl:pl-5'>
+    <ul className='m-0 overflow-hidden pl-0 pt-5 max-xl:pl-5'>
       <Slider {...settings}>
         {list?.map((item) => (
           <Link href={`/popular-city/${item.cityEng}`} key={item.id}>

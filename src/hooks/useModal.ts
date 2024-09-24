@@ -41,11 +41,11 @@ const useModal = () => {
     });
   };
 
-  const filter = (props: TAccompanyFilter) => {
+  const filter = (props: TAccompanyFilter | null) => {
     setOpen(true);
     setProps(props);
     setType('filter');
-    return new Promise<TAccompanyFilter>((res) => {
+    return new Promise<TAccompanyFilter | null>((res) => {
       setHandler(res);
     });
   };

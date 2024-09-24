@@ -18,9 +18,13 @@ export default function ChangePasswordModalContent({
       <WhModalHeader>비밀번호 재설정</WhModalHeader>
       <form
         onSubmit={handleSubmit}
-        className='flex flex-col gap-10 mx-5 mt-5 text-center'
+        className='mx-5 mt-5 flex flex-col gap-10 text-center'
       >
-        <PasswordInput password={password} setPassword={setPassword} />
+        <PasswordInput
+          password={password}
+          setPassword={setPassword}
+          label='비밀번호 재설정'
+        />
         <WhButton size='lg' type='submit' disabled={!password}>
           비밀번호 재설정 완료
         </WhButton>

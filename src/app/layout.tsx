@@ -135,14 +135,14 @@ export default function RootLayout({
           async
         />
       </head>
-      <body className='h-dvh flex flex-col'>
+      <body className='flex h-dvh flex-col'>
         <QueryConfigContext>
           <Header />
           <main className='flex-auto grow'>{children}</main>
           <Footer />
           {modal}
           <div id='modal-root' />
-          <div id='global-modal' />
+          <div id='global-modal' className='h-full w-full' />
           <ModalContainer />
         </QueryConfigContext>
       </body>

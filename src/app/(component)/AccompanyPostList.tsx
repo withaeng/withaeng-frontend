@@ -7,7 +7,6 @@ import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
-import { FilterIcon } from '../../../public/assets/icons/system';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
@@ -38,7 +37,7 @@ const accompanyPostList = (
     return (
       <>
         {accompanyList.map((accompany) => (
-          <li key={accompany.id}>
+          <li key={accompany.id} className='w-full'>
             <WhCard
               status={accompany.status}
               profileImageUrl={accompany.userProfileImageUrl}
@@ -100,12 +99,28 @@ export default function AccompanyPostList({
   const handleChangeTabValue = useCallback(
     (tabId: string) => {
       setContinent(tabId);
+      setFilterLabelList([]);
+      setFilterInfo({
+        age: undefined,
+        ageFree: false,
+        city: [],
+        companion: undefined,
+        companionFree: false,
+        endDate: null,
+        gender: [],
+        isToday: false,
+        startDate: new Date(),
+      });
     },
     [continent]
   );
 
   const openFilterModal = async () => {
     const res = await filter(filterInfo);
+    if (res === null) {
+      return;
+    }
+
     setFilterInfo(res);
 
     const list: string[] = [];
@@ -159,6 +174,11 @@ export default function AccompanyPostList({
     console.log('openFilterModal', res);
   };
 
+  const handleDeleteFilterOption = (label: string) => {
+    // TODO setFilterInfo() 기능 구현
+    setFilterLabelList(filterLabelList.filter((lb) => lb !== label));
+  };
+
   return (
     <div className='max-xl:pl-4'>
       <WhTab
@@ -166,25 +186,28 @@ export default function AccompanyPostList({
         value={continent}
         onChange={handleChangeTabValue}
       >
-        <section className='mb-5 mt-3 flex gap-3'>
-          <button
-            type='button'
-            className='flex items-center justify-center gap-1 rounded-[20px] border border-nutral-white-03 bg-nutral-white-01 py-1 pl-1.5 pr-2 transition'
-            onClick={openFilterModal}
-          >
-            <FilterIcon width={20} height={20} fill='#737373' />
-            <span className='text-caption-01 text-nutral-black-03'>필터</span>
-          </button>
-          {filterLabelList.length > 0 && (
-            <div className='border-r border-nutral-white-03' />
-          )}
+        <section className='mb-5 mt-3 flex gap-3 overflow-auto'>
+          <WhFilterLabel label='필터' icon='left' onClick={openFilterModal} />
 
           {filterLabelList.map((label) => (
-            <WhFilterLabel label={label} key={label} />
+            <WhFilterLabel
+              label={label}
+              key={label}
+              icon='right'
+              onDelete={handleDeleteFilterOption}
+            />
           ))}
+
+          {filterLabelList.length > 0 && (
+            <WhFilterLabel
+              label='전체 초기화'
+              icon='none'
+              onClick={() => setFilterLabelList([])}
+            />
+          )}
         </section>
-        <section className='mb-[120px] flex h-full w-full justify-center'>
-          <ul className='flex flex-wrap gap-5 pl-0 max-sm:justify-center'>
+        <section className='max-xl:[calc(100%+1rem)] mb-[120px] flex h-full justify-center max-xl:-ml-4'>
+          <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
             {accompanyPostList(accompanyList, continent)}
           </ul>
         </section>
