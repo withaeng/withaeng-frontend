@@ -7,6 +7,7 @@ import WhModal from '../modal/WhModal';
 import WhModalHeader from '../modal/WhModalHeader';
 import WhModalButtonList from '../modal/WhModalButtonList';
 import useModal from '../modal/useModal';
+import ReplyMenu from './ReplyMenu';
 
 const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
 
@@ -113,6 +114,8 @@ export default function WhReplyContent() {
               </p>
               <p className='text-black-04 mt-[5px] text-caption-01'>1시간 전</p>
             </div>
+
+            <ReplyMenu />
           </div>
           <div
             className={`flex max-w-[735px] items-center ${lookMore ? 'flex-wrap' : ''}`}

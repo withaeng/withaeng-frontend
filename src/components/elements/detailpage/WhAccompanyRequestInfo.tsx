@@ -337,7 +337,7 @@ export default function WhAccompanyRequestInfo() {
               key={`accompany.nickname-${accompany.id}`}
             >
               <div
-                className={`flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5 ${accompany.status !== 'joining' && accompany.status !== 'joined' ? `opacity-70` : 'null'} `}
+                className={`flex gap-5 border-b border-b-nutral-white-03 px-3 pb-5 ${accompany.status !== 'joining' && accompany.status !== 'joined' ? `opacity-20` : 'null'} `}
               >
                 <Image
                   className='h-full cursor-pointer rounded-full object-cover'

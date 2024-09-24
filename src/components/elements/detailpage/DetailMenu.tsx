@@ -34,7 +34,7 @@ function DropDownMenu({ isHost }: DropDownMenuProps) {
             className={menuListCss}
           >
             <LinkIcon width={20} height={20} />
-            공유
+            <span>공유</span>
           </button>
         </DropdownMenu.Item>
         <DropdownMenu.Label>
@@ -75,14 +75,14 @@ function DropDownMenu({ isHost }: DropDownMenuProps) {
           className={menuListCss}
         >
           <LinkIcon width={20} height={20} />
-          공유
+          <span>공유</span>
         </button>
       </DropdownMenu.Item>
     </div>
   );
 }
 
-export default function WhDetailMenu() {
+export default function DetailMenu() {
   return (
     <div className='relative'>
       <DropdownMenu.Root>
