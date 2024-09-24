@@ -9,7 +9,7 @@ import WhModalButtonList from '../modal/WhModalButtonList';
 import useModal from '../modal/useModal';
 import ReplyMenu from './ReplyMenu';
 
-const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
+const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mt-10 mb-5 ';
 
 const replyInputWrapCss =
   'max-xl:w-full w-[807px] flex justify-between items-center mt-3 py-2 px-4 border border-nutral-white-03 rounded placeholder:text-nutral-white-04';
@@ -83,8 +83,9 @@ export default function WhReplyContent() {
   return (
     <div className='relative'>
       <div className='px-5 max-xl:pl-4'>
-        <h2 className={titleCss}>
-          댓글&nbsp;<span className='text-primary-main'>N</span>
+        <h2 className={`${titleCss} max-xl:text-subtitle-01`}>
+          댓글&nbsp;
+          <span className='text-primary-main max-xl:text-subtitle-01'>N</span>
         </h2>
 
         {/* 모바일 때 보이는 댓글창 */}
@@ -99,22 +100,25 @@ export default function WhReplyContent() {
         </div>
 
         <div className='flex flex-col gap-2'>
-          <div className='flex items-center gap-5'>
-            <Image
-              className='inline h-full cursor-pointer rounded-full object-cover'
-              src={detailList.profileImageUrl}
-              width={48}
-              height={48}
-              alt='프로필 이미지'
-              onClick={handleProfileClick}
-            />
-            <div>
-              <p className='text-Subtitle-01 text-nutral-black-02'>
-                도쿄피플도쿄피플
-              </p>
-              <p className='text-black-04 mt-[5px] text-caption-01'>1시간 전</p>
+          <div className='flex w-[807px] items-center justify-between max-xl:w-full'>
+            <div className='flex items-center gap-5'>
+              <Image
+                className='inline h-full cursor-pointer rounded-full object-cover'
+                src={detailList.profileImageUrl}
+                width={48}
+                height={48}
+                alt='프로필 이미지'
+                onClick={handleProfileClick}
+              />
+              <div className='flex flex-col justify-between'>
+                <p className='text-Subtitle-01 text-nutral-black-02'>
+                  도쿄피플도쿄피플
+                </p>
+                <p className='text-black-04 mt-[5px] text-caption-01'>
+                  1시간 전
+                </p>
+              </div>
             </div>
-
             <ReplyMenu />
           </div>
           <div
@@ -126,7 +130,7 @@ export default function WhReplyContent() {
             <button
               type='button'
               onClick={handleMoreClick}
-              className={`${moreLookTextCss} ${!lookMore && 'w-4/5'}`}
+              className={`${moreLookTextCss} whitespace-nowrap ${!lookMore && 'w-4/5'}`}
             >
               {lookMore ? '접기' : '더보기'}
             </button>

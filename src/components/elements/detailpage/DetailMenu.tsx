@@ -22,7 +22,7 @@ interface DropDownMenuProps {
 function DropDownMenu({ isHost }: DropDownMenuProps) {
   const router = useRouter();
 
-  if (!isHost) {
+  if (isHost) {
     // 호스트 시점의 메뉴
     return (
       <div className={menuItemCss}>
@@ -33,7 +33,7 @@ function DropDownMenu({ isHost }: DropDownMenuProps) {
             aria-label='공유'
             className={menuListCss}
           >
-            <LinkIcon width={20} height={20} />
+            <LinkIcon />
             <span>공유</span>
           </button>
         </DropdownMenu.Item>
@@ -44,19 +44,18 @@ function DropDownMenu({ isHost }: DropDownMenuProps) {
             aria-label='수정'
             className={menuListCss}
           >
-            <PencilIcon width={20} height={20} />
+            <PencilIcon />
             수정
           </button>
         </DropdownMenu.Label>
         <DropdownMenu.Item>
-          {/* <RemoveIcon width={20} height={20} fill='#737373' /> */}
           <button
             type='button'
             onClick={() => router.push('/delete')}
             aria-label='삭제'
             className={menuListCss}
           >
-            <RemoveIcon width={20} height={20} />
+            <RemoveIcon width={24} height={24} />
             <span className='text-subtitle-02 text-caption-main'>삭제</span>
           </button>
         </DropdownMenu.Item>
@@ -92,7 +91,7 @@ export default function DetailMenu() {
             className='cursor-pointer items-center'
             aria-label='상세페이지 메뉴 열기'
           >
-            <Kebab />
+            <Kebab fill='white' />
           </button>
         </DropdownMenu.Trigger>
 

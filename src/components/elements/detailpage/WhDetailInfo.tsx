@@ -20,11 +20,12 @@ import WhModal from '../modal/WhModal';
 import WhModalHeader from '../modal/WhModalHeader';
 import WhModalButtonList from '../modal/WhModalButtonList';
 import useModal from '../modal/useModal';
+import { ArrowIcon } from '../../../../public/assets/icons/arrow';
 
 const listCss = 'flex items-center gap-6 text-subtitle-01 text-nutral-black-03';
 
 const titleCss =
-  'text-nutral-black-01 text-headline-04 mt-[60px] max-xl:mt-10 mb-5 max-xl:mb-0 max-xl:pl-4';
+  'text-nutral-black-01 text-headline-04 max-xl:text-subtitle-01';
 
 const topInfoTextCss = 'text-caption-02 text-nutral-black-04';
 
@@ -36,6 +37,8 @@ const isHost = false;
 export default function WhDetailInfo() {
   const { isOpen, onOpen, onClose } = useModal();
   const [lookMore, setLookMore] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false); // 추가된 상태
+  const [isListOpen, setIsListOpen] = useState(false);
 
   const handleMoreClick = () => {
     setLookMore(!lookMore);
@@ -45,11 +48,17 @@ export default function WhDetailInfo() {
     onOpen();
   };
 
+  const toggleEditMode = () => {
+    setIsEditMode(!isEditMode); // Edit 모드 토글
+  };
+
+  const toggleListVisibility = () => setIsListOpen((prev) => !prev);
+
   return (
     <div className='max-w-[847px] max-xl:w-full'>
       <div className='px-5 max-xl:px-0'>
         <div className='max-xl:px-4'>
-          <div className='mb-[13px] flex items-center justify-between text-caption-02'>
+          <div className='flex items-center justify-between text-caption-02'>
             {/* left */}
             <div className='flex gap-6'>
               <span className={topInfoTextCss}>
@@ -66,11 +75,11 @@ export default function WhDetailInfo() {
               <button type='button'>
                 <LinkIcon />
               </button>
-              <button type='button'>
+              <button type='button' onClick={toggleEditMode}>
                 <PencilIcon />
               </button>
               <button type='button' onClick={handleRemoveClick}>
-                <RemoveIcon />
+                <RemoveIcon width={24} height={24} />
               </button>
             </div>
           </div>
@@ -94,32 +103,38 @@ export default function WhDetailInfo() {
               label='네, 삭제할게요.'
             />
           </WhModal>
+
           <div className='flex items-center justify-between'>
-            <h1 className='flex-wrap truncate text-headline-03 text-nutral-black-02 max-xl:text-headline-04'>
-              {detailList.title}
-            </h1>
-            <div className='flex gap-5'>
-              {isHost ? null : (
-                <button type='button' className='xl:hidden'>
-                  <PencilIcon />
-                </button>
-              )}
-            </div>
+            {!isEditMode && (
+              <h1 className='mt-[13px] w-4/5 flex-wrap truncate text-headline-03 text-nutral-black-02 max-xl:text-headline-04'>
+                {detailList.title}
+              </h1>
+            )}
+            {isHost ? null : (
+              <button
+                type='button'
+                className='xl:mt-[13px] xl:hidden'
+                onClick={toggleEditMode}
+              >
+                {!isEditMode && <PencilIcon />}
+              </button>
+            )}
           </div>
         </div>
 
-        <div className='flex gap-5 max-xl:hidden'>
-          {detailList.tags.map((tag) => (
-            <span
-              className='mt-2 text-subtitle-02 text-primary-main'
-              key={tag.id}
-            >
-              {tag.title}
-            </span>
-          ))}
-        </div>
+        {isEditMode && (
+          <div className='mt-3 h-11 rounded border border-nutral-white-03 px-4 py-[13.5px] max-xl:mx-4'>
+            <input
+              type='input'
+              placeholder='호스트가 작성한 타이틀 2줄까지 노출...'
+              className='w-5/6 truncate text-nutral-black-03 outline-none'
+            />
+          </div>
+        )}
 
-        <h2 className={`${titleCss} max-xl:mb-3`}>동행 정보</h2>
+        <div className='mb-5 mt-[60px] flex items-center justify-between max-xl:mb-0 max-xl:mt-10 max-xl:pl-4'>
+          <h2 className={`${titleCss} max-xl:mb-3`}>동행 정보</h2>
+        </div>
         <ul className='flex flex-col gap-3 bg-nutral-white-02 p-5'>
           <li className={listCss}>
             <MapPinIcon />
@@ -173,35 +188,42 @@ export default function WhDetailInfo() {
             {detailList.link}
           </li>
         </ul>
-
-        <h2 className={titleCss}>동행 내용</h2>
+        <div className='mb-5 mt-[60px] flex items-center justify-between max-xl:mb-0 max-xl:mt-10 max-xl:pl-4 max-xl:pr-4'>
+          <h2 className={titleCss}>동행 내용</h2>
+          <ArrowIcon
+            className='cursor-pointer xl:hidden'
+            onClick={toggleListVisibility}
+          />
+        </div>
         {/* 모바일에서는 여기서 태그가 나옴 */}
-        <div className='min-xl:hidden flex gap-5 max-xl:px-4 max-xl:py-3'>
-          {detailList.tags.map((tag) => (
-            <span
-              className='mt-2 text-subtitle-02 text-primary-main'
-              key={tag.id}
-            >
-              {tag.title}
-            </span>
-          ))}
-        </div>
-        <div className='flex-col items-center max-xl:px-4'>
-          <div
-            className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${
-              lookMore ? 'max-h-full' : 'max-h-[55px]'
-            }`}
-          >
-            {detailList.content}
-          </div>
-          <button
-            type='button'
-            onClick={handleMoreClick}
-            className={moreLookTextCss}
-          >
-            {lookMore ? '접기' : '더보기'}
-          </button>
-        </div>
+        {isListOpen && (
+          <>
+            <div className='min-xl:hidden flex gap-5 max-xl:px-4 max-xl:py-3'>
+              {detailList.tags.map((tag) => (
+                <span
+                  className='mt-2 text-subtitle-02 text-primary-main'
+                  key={tag.id}
+                >
+                  {tag.title}
+                </span>
+              ))}
+            </div>
+            <div className='flex-col items-center max-xl:px-4'>
+              <div
+                className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${lookMore ? 'max-h-full' : 'max-h-[55px]'}`}
+              >
+                {detailList.content}
+              </div>
+              <button
+                type='button'
+                onClick={handleMoreClick}
+                className={moreLookTextCss}
+              >
+                {lookMore ? '접기' : '더보기'}
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
