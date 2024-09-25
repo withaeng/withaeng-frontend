@@ -16,10 +16,10 @@ const signInApi = ({
 const signUpApi = ({
   email,
   password,
-  isMale,
+  gender,
   birth,
 }: UserSignUp): Promise<ApiResponse<UserResponse>> =>
-  apiPost('/api/v1/auth/sign-up', { email, password, isMale, birth });
+  apiPost('/api/v1/auth/sign-up', { email, password, gender, birth });
 
 /** validate email api */
 const validateEmailApi = ({
@@ -59,9 +59,10 @@ export default function useAuth() {
       if (data.error) {
         console.error(data.error.code + data.error.message);
       } else {
-        console.log('성공?');
+        console.log('성공?', data.data.accessToken);
         setCookie('accessToken', data.data.accessToken);
         router.replace('/');
+        router.refresh();
       }
     },
     onError: console.error,
@@ -76,7 +77,7 @@ export default function useAuth() {
       } else {
         console.log('성공?', data);
         setCookie('accessToken', data.data.accessToken);
-        router.replace('/checkEmail');
+        router.replace('/check-email');
       }
     },
     onError: console.error,
