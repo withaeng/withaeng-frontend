@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
 import { CreateAccompanyRequest } from '@/@types/accompany';
+import useAccompany from '@/hooks/useAccompany';
 import Step1ModalContent from './Step1ModalContent';
 import Step2ModalContent from './Step2ModalContent';
 import Step3ModalContent from './Step3ModalContent';
@@ -37,10 +38,12 @@ const initAccompany = {
   endAccompanyAge: 50,
   preferGender: 'NO_PREFERENCE',
   hasImage: false,
+  imageFile: undefined,
 };
 
 export default function RegisterModal() {
   const router = useRouter();
+  const { registerPost } = useAccompany();
   const [form, setForm] = useState<CreateAccompanyRequest>(initAccompany);
   const [step, setStep] = useState(0);
 
@@ -50,7 +53,7 @@ export default function RegisterModal() {
   };
   const onNextClick = () => {
     if (step === 3) {
-      router.replace('/');
+      registerPost.mutate(form);
     } else {
       setStep((prev) => prev + 1);
     }

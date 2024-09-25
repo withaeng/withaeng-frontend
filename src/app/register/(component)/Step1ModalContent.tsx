@@ -39,6 +39,7 @@ export default function Step1ModalContent({
       <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <p>도시를 선택해주세요.</p>
+          {/* TODO: 도시 setFrom 데이터 변경필요. */}
           <CountryTab
             tabValue={tabCountry}
             onTabChange={setTabCountry}

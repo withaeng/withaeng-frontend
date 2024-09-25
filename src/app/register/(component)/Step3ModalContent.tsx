@@ -69,11 +69,18 @@ export default function Step3ModalContent({
 
   const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
+      setForm((prev) => ({ ...prev, imageFile: undefined, hasImage: false }));
       return;
     }
     const { files } = e.target;
     const uploadFile = files[0];
+    setForm((prev) => ({
+      ...prev,
+      imageFile: uploadFile,
+      hasImage: !!uploadFile,
+    }));
     console.log(uploadFile);
+
     const reader = new FileReader();
     reader.readAsDataURL(uploadFile);
     reader.onloadend = () => {

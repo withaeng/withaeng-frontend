@@ -43,10 +43,30 @@ export default function Step2ModalContent({
 
   const handleAllAge = () => {
     if (!isAllAge) {
-      setForm((prev) => ({ ...prev, age: [20, 50] }));
+      setForm((prev) => ({
+        ...prev,
+        startAccompanyAge: 0,
+        endAccompanyAge: 99,
+      }));
     }
     setIsAllAge((prev) => !prev);
   };
+
+  const onChangeAgeSlider = (value: number | number[]) =>
+    setForm((prev) => {
+      if (typeof value === 'number') {
+        return {
+          ...prev,
+          startAccompanyAge: value,
+          endAccompanyAge: value,
+        };
+      }
+      return {
+        ...prev,
+        startAccompanyAge: value[0],
+        endAccompanyAge: value[1],
+      };
+    });
 
   return (
     <div className='flex grow flex-col overflow-hidden'>
@@ -67,7 +87,7 @@ export default function Step2ModalContent({
               marks={ageMarks}
               value={[form.startAccompanyAge, form.endAccompanyAge]}
               disabled={isAllAge}
-              onChange={(value) => setForm((prev) => ({ ...prev, age: value }))}
+              onChange={onChangeAgeSlider}
             />
           </div>
           <WhCheckbox
@@ -88,7 +108,7 @@ export default function Step2ModalContent({
                 checked={form.preferGender === genderItem.id}
                 value={genderItem.id}
                 onClick={(value) =>
-                  setForm((prev) => ({ ...prev, gender: value }))
+                  setForm((prev) => ({ ...prev, preferGender: value }))
                 }
               >
                 {genderItem.name}

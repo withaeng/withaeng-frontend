@@ -349,6 +349,12 @@ export interface CreateAccompanyRequest {
   endAccompanyAge: number;
   preferGender: string;
   hasImage: boolean;
+  imageFile: File | undefined; // 실제로 req에 필요한 데이터는 아님.
+}
+/* 동행 게시글 생성 response */
+export interface CreateAccompanyResponse {
+  id: number;
+  preSignedUrl: string;
 }
 
 /* 동행 목적지 */
