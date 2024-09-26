@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
 import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
 import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
@@ -13,7 +12,7 @@ import { useUserStore } from '@/providers/UserStoreProvider';
 
 function StepBar({ value }: { value: number }): React.ReactNode {
   return (
-    <div className='h-0.5 w-full bg-primary-exLight mt-2'>
+    <div className='mt-2 h-0.5 w-full bg-primary-exLight'>
       <div
         className='h-full bg-primary-main transition-all'
         style={{ width: `${value}%` }}
@@ -24,7 +23,7 @@ function StepBar({ value }: { value: number }): React.ReactNode {
 
 export default function PreferModalPage() {
   const router = useRouter();
-  const { updateUserDetail } = useUser();
+  const { updateUserNickname, updateUserPrefer } = useUser();
   const [step, setStep] = useState(1);
   const {
     nickname,
@@ -33,20 +32,18 @@ export default function PreferModalPage() {
     preferTravelThemes,
     consumeStyle,
     foodRestrictions,
-    preferAccompanyGender,
     smokingType,
     drinkingType,
   } = useUserStore((state) => state);
 
   const updateData = () => {
-    updateUserDetail.mutate({
-      nickname,
+    updateUserNickname.mutate({ nickname });
+    updateUserPrefer.mutate({
       mbti,
       preferTravelType,
       preferTravelThemes,
       consumeStyle,
       foodRestrictions,
-      preferAccompanyGender,
       smokingType,
       drinkingType,
     });
@@ -74,13 +71,17 @@ export default function PreferModalPage() {
       isOpen
       hideCloseButton
       onClose={handleClose}
-      className='px-4 py-5 xl:px-[85px] xl:py-[72px] xl:h-[800px]'
+      className='px-4 py-5 xl:h-[800px] xl:px-[85px] xl:py-[72px]'
     >
-      <div className='flex flex-col h-full'>
-        <p className='text-nutral-black-04 text-right'>
-          <Link className='max-xl:text-caption-01' href='/' replace>
+      <div className='flex h-full flex-col'>
+        <p className='text-right text-nutral-black-04'>
+          <button
+            type='button'
+            onClick={handleClose}
+            className='max-xl:text-caption-01'
+          >
             건너뛰기
-          </Link>
+          </button>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (

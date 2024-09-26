@@ -1,5 +1,5 @@
 import { createStore } from 'zustand/vanilla';
-import { UserDetail } from '@/types/user';
+import { UserDetail, UserNickname } from '@/types/user';
 
 export type UserActions = {
   updateNickname: (nickname: string) => void;
@@ -8,26 +8,26 @@ export type UserActions = {
   updatePreferTravelThemes: (preferTravelThemes: string) => void;
   updateConsumeStyle: (consumeStyle: string) => void;
   updateFoodRestrictions: (foodRestrictions: string) => void;
-  updatePreferAccompanyGender: (preferAccompanyGender: string) => void;
   updateSmokingType: (smokingType: string) => void;
   updateDrinkingType: (drinkingType: string) => void;
 };
 
-export type UserStore = UserDetail & UserActions;
+export type UserStore = UserDetail & UserNickname & UserActions;
 
-export const defaultInitState: UserDetail = {
+export const defaultInitState: UserDetail & UserNickname = {
   nickname: '',
   mbti: [],
   preferTravelType: '',
   preferTravelThemes: [],
   consumeStyle: '',
   foodRestrictions: [],
-  preferAccompanyGender: '',
   smokingType: '',
   drinkingType: '',
 };
 
-export const createUserStore = (initState: UserDetail = defaultInitState) =>
+export const createUserStore = (
+  initState: UserDetail & UserNickname = defaultInitState
+) =>
   createStore<UserStore>()((set) => ({
     ...initState,
     updateNickname: (nickname) => set(() => ({ nickname })),
@@ -67,8 +67,6 @@ export const createUserStore = (initState: UserDetail = defaultInitState) =>
           foodRestrictions: [...state.foodRestrictions, foodRestrictions],
         };
       }),
-    updatePreferAccompanyGender: (preferAccompanyGender) =>
-      set(() => ({ preferAccompanyGender })),
     updateSmokingType: (smokingType) => set(() => ({ smokingType })),
     updateDrinkingType: (drinkingType) => set(() => ({ drinkingType })),
   }));
