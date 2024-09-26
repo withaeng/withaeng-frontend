@@ -102,7 +102,9 @@ export default function WhAccompanyRequestInfo() {
           </span>
         </h3>
         <ArrowIcon
-          className='cursor-pointer xl:hidden'
+          className={`transform cursor-pointer transition-transform duration-300 xl:hidden ${
+            isListOpen ? 'rotate-180' : 'rotate-0'
+          }`}
           onClick={toggleListVisibility}
         />
       </div>

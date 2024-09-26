@@ -205,7 +205,9 @@ export default function WhDetailInfo() {
         <div className='mb-5 mt-[60px] flex items-center justify-between max-xl:mb-0 max-xl:mt-10 max-xl:pl-4 max-xl:pr-4'>
           <h2 className={titleCss}>동행 내용</h2>
           <ArrowIcon
-            className='cursor-pointer xl:hidden'
+            className={`transform cursor-pointer transition-transform duration-300 xl:hidden ${
+              isListOpen ? 'rotate-180' : 'rotate-0'
+            }`}
             onClick={toggleListVisibility}
           />
         </div>
@@ -228,7 +230,6 @@ export default function WhDetailInfo() {
                   onKeyUp={addTags}
                   placeholder='태그를 입력해주세요. (최대 3개)'
                 />
-                {/* )} */}
               </div>
             </div>
           ) : (
@@ -243,7 +244,7 @@ export default function WhDetailInfo() {
                   </span>
                 ))}
               </div>
-              <div>
+              <div className='max-xl:px-4'>
                 <div
                   className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${lookMore ? 'max-h-full' : 'max-h-[55px]'}`}
                 >
