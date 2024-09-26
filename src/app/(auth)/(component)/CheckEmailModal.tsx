@@ -8,7 +8,7 @@ import CheckEmailModalComponent from '@/app/(auth)/(component)/components/sign-u
 
 export default function CheckEmailModalPage() {
   const searchParams = useSearchParams();
-  const { validateEmail } = useAuth();
+  const { validateEmail, resendEmail } = useAuth();
   // FIXME: (임시 작업) validate email api를 다녀왔는지 확인하기 위함. 아니면 무한 렌더링에 빠져버림...
   const [isChecked, setIsChecked] = useState(false);
 
@@ -21,6 +21,7 @@ export default function CheckEmailModalPage() {
 
   const handleEmail = () => {
     console.log('이메일 재전송');
+    resendEmail.mutate({ email: searchParams.has('email') });
   };
 
   return (

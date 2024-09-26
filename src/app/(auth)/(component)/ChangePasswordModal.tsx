@@ -9,20 +9,17 @@ import useAuth from '@/hooks/useAuth';
 export default function ChangePasswordModalPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [code, setCode] = useState('');
   const { changePassword } = useAuth();
-
-  if (searchParams.has('email') && searchParams.has('code')) {
-    setEmail(searchParams.get('email') ?? '');
-    setCode(searchParams.get('code') ?? '');
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('비밀번호 변경');
-    changePassword.mutate({ email, password, code });
+    changePassword.mutate({
+      email: searchParams.has('email'),
+      password,
+      code: searchParams.has('code'),
+    });
   };
 
   return (

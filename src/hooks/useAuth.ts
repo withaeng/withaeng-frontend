@@ -21,6 +21,13 @@ const signUpApi = ({
 }: UserSignUp): Promise<ApiResponse<UserResponse>> =>
   apiPost('/api/v1/auth/sign-up', { email, password, gender, birth });
 
+/** resend email for sign up api */
+const resendEmailApi = ({
+  email,
+}: {
+  email: string;
+}): Promise<ApiResponse<{}>> => apiPost('/api/v1/auth/re-send', { email });
+
 /** validate email api */
 const validateEmailApi = ({
   email,
@@ -47,7 +54,7 @@ const changePasswordApi = ({
 }: UserSignIn & {
   code: string;
 }): Promise<ApiResponse<{}>> =>
-  apiPost('/api/v1/auth/change-password', { email, password, code });
+  apiPut('/api/v1/auth/change-password', { email, password, code });
 
 export default function useAuth() {
   const router = useRouter();
@@ -70,14 +77,27 @@ export default function useAuth() {
 
   const signup = useMutation({
     mutationFn: (data: UserSignUp) => signUpApi(data),
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       // TODO: 성공/실패 alert 추가
       if (data.error) {
         console.error(data.error.code + data.error.message);
       } else {
         console.log('성공?', data);
         setCookie('accessToken', data.data.accessToken);
-        router.replace('/check-email');
+        router.replace(`/check-email?email=${variables.email}`);
+      }
+    },
+    onError: console.error,
+  });
+
+  const resendEmail = useMutation({
+    mutationFn: (data: { email: string }) => resendEmailApi(data),
+    onSuccess: (data) => {
+      // TODO: 성공/실패 alert 추가
+      if (data.error) {
+        console.error(data.error.code + data.error.message);
+      } else {
+        console.log('성공?', data);
       }
     },
     onError: console.error,
@@ -127,6 +147,7 @@ export default function useAuth() {
         console.error(data.error.code + data.error.message);
       } else {
         console.log('비밀번호 변경 성공?', data);
+        router.replace('/complete-password');
       }
     },
     onError: console.error,
@@ -135,6 +156,7 @@ export default function useAuth() {
   return {
     signin,
     signup,
+    resendEmail,
     signout,
     validateEmail,
     sendEmailPw,
