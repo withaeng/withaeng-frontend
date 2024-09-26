@@ -21,6 +21,7 @@ import WhModalHeader from '../modal/WhModalHeader';
 import WhModalButtonList from '../modal/WhModalButtonList';
 import useModal from '../modal/useModal';
 import { ArrowIcon } from '../../../../public/assets/icons/arrow';
+import WhTextarea from '../WhTextarea';
 
 const listCss = 'flex items-center gap-6 text-subtitle-01 text-nutral-black-03';
 
@@ -38,7 +39,8 @@ export default function WhDetailInfo() {
   const { isOpen, onOpen, onClose } = useModal();
   const [lookMore, setLookMore] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false); // 추가된 상태
-  const [isListOpen, setIsListOpen] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(true);
+  const [editTag, setEditTag] = useState('');
 
   const handleMoreClick = () => {
     setLookMore(!lookMore);
@@ -53,6 +55,20 @@ export default function WhDetailInfo() {
   };
 
   const toggleListVisibility = () => setIsListOpen((prev) => !prev);
+
+  const addTags = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // if (e.key === 'Enter' && newTag !== '' && !form.tags.includes(newTag)) {
+    //   setForm((prev) => ({ ...prev, tags: [...prev.tags, newTag] }));
+    //   setNewTag('');
+    // }
+  };
+
+  const delTags = (delTag: string) => {
+    // setForm((prev) => ({
+    //   ...prev,
+    //   tags: prev.tags.filter((tag) => tag !== delTag),
+    // }));
+  };
 
   return (
     <div className='max-w-[847px] max-xl:w-full'>
@@ -121,7 +137,6 @@ export default function WhDetailInfo() {
             )}
           </div>
         </div>
-
         {isEditMode && (
           <div className='mt-3 h-11 rounded border border-nutral-white-03 px-4 py-[13.5px] max-xl:mx-4'>
             <input
@@ -131,7 +146,6 @@ export default function WhDetailInfo() {
             />
           </div>
         )}
-
         <div className='mb-5 mt-[60px] flex items-center justify-between max-xl:mb-0 max-xl:mt-10 max-xl:pl-4'>
           <h2 className={`${titleCss} max-xl:mb-3`}>동행 정보</h2>
         </div>
@@ -196,34 +210,55 @@ export default function WhDetailInfo() {
           />
         </div>
         {/* 모바일에서는 여기서 태그가 나옴 */}
-        {isListOpen && (
-          <>
-            <div className='min-xl:hidden flex gap-5 max-xl:px-4 max-xl:py-3'>
-              {detailList.tags.map((tag) => (
-                <span
-                  className='mt-2 text-subtitle-02 text-primary-main'
-                  key={tag.id}
-                >
-                  {tag.title}
-                </span>
-              ))}
-            </div>
-            <div className='flex-col items-center max-xl:px-4'>
-              <div
-                className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${lookMore ? 'max-h-full' : 'max-h-[55px]'}`}
-              >
-                {detailList.content}
+        {isListOpen &&
+          (isEditMode ? (
+            <div className='max-xl:px-4'>
+              {/* Edit Mode Content */}
+              <div>
+                <WhTextarea value={detailList?.content || ''} />
               </div>
-              <button
-                type='button'
-                onClick={handleMoreClick}
-                className={moreLookTextCss}
-              >
-                {lookMore ? '접기' : '더보기'}
-              </button>
+              <div className='border-b border-secondary-light py-2'>
+                {/* {form.tags.length < 3 && ( */}
+                <input
+                  type='text'
+                  className='grow placeholder-secondary-light outline-none'
+                  value={editTag}
+                  maxLength={10}
+                  onChange={(e) => setEditTag(e.target.value)}
+                  onKeyUp={addTags}
+                  placeholder='태그를 입력해주세요. (최대 3개)'
+                />
+                {/* )} */}
+              </div>
             </div>
-          </>
-        )}
+          ) : (
+            <div className='flex flex-col'>
+              <div className='min-xl:hidden flex gap-5 max-xl:px-4 max-xl:py-3'>
+                {detailList.tags.map((tag) => (
+                  <span
+                    className='mt-2 text-subtitle-02 text-primary-main'
+                    key={tag.id}
+                  >
+                    {tag.title}
+                  </span>
+                ))}
+              </div>
+              <div>
+                <div
+                  className={`overflow-hidden text-body-03 text-nutral-black-03 transition-all duration-200 ${lookMore ? 'max-h-full' : 'max-h-[55px]'}`}
+                >
+                  {detailList?.content || ''}
+                </div>
+                <button
+                  type='button'
+                  onClick={handleMoreClick}
+                  className={moreLookTextCss}
+                >
+                  {lookMore ? '접기' : '더보기'}
+                </button>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

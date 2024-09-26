@@ -33,7 +33,7 @@ export default function WhAccompanyRequestInfo() {
   const [selectedNickname, setSelectedNickname] = useState('');
   const [lookMore, setLookMore] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [isListOpen, setIsListOpen] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(true);
   const isHost = false;
   const isWait = true;
 
