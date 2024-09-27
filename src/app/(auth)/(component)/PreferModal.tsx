@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
 import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
 import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
@@ -14,7 +12,7 @@ import { useUserStore } from '@/providers/UserStoreProvider';
 
 export default function PreferModalPage() {
   const router = useRouter();
-  const { updateUserDetail } = useUser();
+  const { updateUserNickname, updateUserPrefer } = useUser();
   const [step, setStep] = useState(1);
   const {
     nickname,
@@ -23,20 +21,18 @@ export default function PreferModalPage() {
     preferTravelThemes,
     consumeStyle,
     foodRestrictions,
-    preferAccompanyGender,
     smokingType,
     drinkingType,
   } = useUserStore((state) => state);
 
   const updateData = () => {
-    updateUserDetail.mutate({
-      nickname,
+    updateUserNickname.mutate({ nickname });
+    updateUserPrefer.mutate({
       mbti,
       preferTravelType,
       preferTravelThemes,
       consumeStyle,
       foodRestrictions,
-      preferAccompanyGender,
       smokingType,
       drinkingType,
     });
@@ -68,9 +64,13 @@ export default function PreferModalPage() {
     >
       <div className='flex h-full flex-col'>
         <p className='text-right text-nutral-black-04'>
-          <Link className='max-xl:text-caption-01' href='/' replace>
+          <button
+            type='button'
+            onClick={handleClose}
+            className='max-xl:text-caption-01'
+          >
             건너뛰기
-          </Link>
+          </button>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (
