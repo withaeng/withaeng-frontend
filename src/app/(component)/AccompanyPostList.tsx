@@ -2,15 +2,16 @@
 
 import dayjs from 'dayjs';
 import useModal from '@/hooks/useModal';
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 import WhTab, { TabData } from '@/components/elements/WhTab';
 import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
+import useAccompany from '@/hooks/useAccompany';
+import WhNodata from '@/components/elements/WhNodata';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
-  accompanyList: TAccompanyPost[];
 }
 
 function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
@@ -30,60 +31,43 @@ function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
 }
 
 const accompanyPostList = (
-  accompanyList: TAccompanyPost[],
-  continent: string
-): ReactElement => {
-  if (continent === 'ALL') {
-    return (
-      <>
-        {accompanyList.map((accompany) => (
-          <li key={accompany.id} className='w-full'>
-            <WhCard
-              status={accompany.status}
-              profileImageUrl={accompany.userProfileImageUrl}
-              nickname={accompany.userNickname}
-              title={accompany.title}
-              tags={accompany.tags}
-              startTripDate={accompany.startTripDate}
-              endTripDate={accompany.endTripDate}
-              accompanyCnt={accompany.memberCount}
-              accompaniedCnt={accompany.joinedCount}
-              thumbnailImageUrl={accompany.bannerImageUrl}
-            />
-          </li>
-        ))}
-      </>
-    );
-  }
-  return (
-    <>
-      {accompanyList
-        .filter((el) => el.destination.continent === continent)
-        .map((accompany) => (
-          <li key={accompany.id}>
-            <WhCard
-              status={accompany.status}
-              profileImageUrl={accompany.userProfileImageUrl}
-              nickname={accompany.userNickname}
-              title={accompany.title}
-              tags={accompany.tags}
-              startTripDate={accompany.startTripDate}
-              endTripDate={accompany.endTripDate}
-              accompanyCnt={accompany.memberCount}
-              accompaniedCnt={accompany.joinedCount}
-              thumbnailImageUrl={accompany.bannerImageUrl}
-            />
-          </li>
-        ))}
-    </>
-  );
-};
+  continent: string,
+  accompanyList: TAccompanyPost[]
+): ReactElement => (
+  <>
+    {accompanyList.map((accompany) => (
+      <li key={accompany.id} className='w-full'>
+        <WhCard
+          status={accompany.status}
+          profileImageUrl={accompany.userProfileImageUrl}
+          nickname={accompany.userNickname}
+          title={accompany.title}
+          tags={accompany.tags}
+          startTripDate={accompany.startTripDate}
+          endTripDate={accompany.endTripDate}
+          accompanyCnt={accompany.memberCount}
+          accompaniedCnt={accompany.joinedCount}
+          thumbnailImageUrl={accompany.bannerImageUrl}
+        />
+      </li>
+    ))}
+  </>
+);
 export default function AccompanyPostList({
   continentList,
-  accompanyList,
 }: AccompanyPostListProps) {
+  const { getAccompanyList, getDestinationList } = useAccompany();
+
+  const { data: allDestinationList, refetch: allDestinationListRefetch } =
+    getDestinationList;
+  const { data: allAccompanyList, refetch: allAccompanyListRefetch } =
+    getAccompanyList;
   const { filter } = useModal();
-  const [continent, setContinent] = useState<string>(continentList[0].id);
+  const [accompanyList, setAccompanyList] = useState<TAccompanyPost[]>([]);
+  const [filteredAccompanyList, setFilteredAccompanyList] = useState<
+    TAccompanyPost[]
+  >([]);
+  const [continent, setContinent] = useState<string>('');
   const [filterInfo, setFilterInfo] = useState<TAccompanyFilter>({
     age: undefined,
     ageFree: false,
@@ -111,7 +95,29 @@ export default function AccompanyPostList({
         isToday: false,
         startDate: new Date(),
       });
+
+      if (tabId === 'ALL') {
+        setFilteredAccompanyList(accompanyList);
+      } else if (tabId === 'KOREA') {
+        setFilteredAccompanyList(
+          accompanyList.filter((el) => el.destination.country === 'KOREA')
+        );
+      } else if (tabId === 'JAPAN') {
+        setFilteredAccompanyList(
+          accompanyList.filter((el) => el.destination.country === 'JAPAN')
+        );
+      } else {
+        setFilteredAccompanyList(
+          accompanyList.filter(
+            (el) =>
+              el.destination.continent === tabId &&
+              el.destination.country !== 'KOREA' &&
+              el.destination.country !== 'JAPAN'
+          )
+        );
+      }
     },
+
     [continent]
   );
 
@@ -179,6 +185,38 @@ export default function AccompanyPostList({
     setFilterLabelList(filterLabelList.filter((lb) => lb !== label));
   };
 
+  const setData = async () => {
+    if (!sessionStorage.getItem('destinations')) {
+      await allDestinationListRefetch();
+    }
+    await allAccompanyListRefetch();
+
+    setContinent(continentList[0].id);
+  };
+
+  useEffect(() => {
+    setData();
+  }, []);
+
+  useEffect(() => {
+    if (allAccompanyList?.data) {
+      setFilteredAccompanyList(allAccompanyList?.data);
+      setAccompanyList(allAccompanyList?.data);
+    }
+  }, [allAccompanyList?.data]);
+
+  useEffect(() => {
+    if (!allDestinationList?.data) {
+      return;
+    }
+    if (!sessionStorage.getItem('destinations')) {
+      sessionStorage.setItem(
+        'destinations',
+        JSON.stringify(allDestinationList?.data || [])
+      );
+    }
+  }, [allDestinationList?.data]);
+
   return (
     <div className='max-xl:pl-4'>
       <WhTab
@@ -208,7 +246,11 @@ export default function AccompanyPostList({
         </section>
         <section className='max-xl:[calc(100%+1rem)] mb-[120px] flex h-full justify-center max-xl:-ml-4'>
           <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
-            {accompanyPostList(accompanyList, continent)}
+            {filteredAccompanyList.length > 0 ? (
+              accompanyPostList(continent, filteredAccompanyList)
+            ) : (
+              <WhNodata />
+            )}
           </ul>
         </section>
       </WhTab>

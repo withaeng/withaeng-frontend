@@ -72,23 +72,32 @@ export default function WhCard({
   return (
     <div className={accompaniedCss(status)}>
       <section className='relative h-[152px] w-full'>
-        <Image
-          className='h-full w-full rounded object-cover'
-          src={thumbnailImageUrl}
-          alt='동행 썸네일 이미지'
-          fill
-        />
+        {thumbnailImageUrl?.startsWith("/") || thumbnailImageUrl?.startsWith("http") || thumbnailImageUrl?.startsWith("https") ? (
+          <Image
+            className='h-full w-full rounded object-cover'
+            src={thumbnailImageUrl}
+            alt='동행 썸네일 이미지'
+            fill
+          />
+        ) : (
+          <img className='absolute left-0 top-0 h-full w-full rounded object-cover' src={thumbnailImageUrl} alt='동행 썸네일 이미지' />
+        )}
+
         <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>
       <section className='flex justify-between text-caption-01 text-nutral-black-05'>
-        <div className='flex h-8 items-center gap-2 text-subtitle-02'>
-          <Image
-            className='inline h-full rounded-full object-cover'
-            src={profileImageUrl}
-            width={32}
-            height={32}
-            alt='프로필 이미지'
-          />
+        <div className='relative flex h-8 items-center gap-2 text-subtitle-02'>
+          {profileImageUrl?.startsWith("/") || profileImageUrl?.startsWith("http") || profileImageUrl?.startsWith("https") ? (
+            <Image
+              className='inline h-full rounded-full object-cover'
+              src={profileImageUrl}
+              width={32}
+              height={32}
+              alt='프로필 이미지'
+            />
+          ) : (
+            <img className='absolute left-0 top-0 h-full w-full rounded object-cover' src='' alt='동행 썸네일 이미지' />
+          )}
           <span className='text-subtitle-02 text-nutral-black-05'>
             {nickname}
           </span>
