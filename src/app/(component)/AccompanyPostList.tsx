@@ -4,7 +4,11 @@ import dayjs from 'dayjs';
 import useModal from '@/hooks/useModal';
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import WhTab, { TabData } from '@/components/elements/WhTab';
-import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
+import {
+  TAccompanyFilter,
+  TAccompanyPost,
+  TAccompanySearch,
+} from '@/types/accompany';
 import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
 import useAccompany from '@/hooks/useAccompany';
@@ -30,10 +34,7 @@ function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
   return `${startDateStr}(${duration}일)`;
 }
 
-const accompanyPostList = (
-  continent: string,
-  accompanyList: TAccompanyPost[]
-): ReactElement => (
+const accompanyPostList = (accompanyList: TAccompanyPost[]): ReactElement => (
   <>
     {accompanyList.map((accompany) => (
       <li key={accompany.id} className='w-full'>
@@ -56,12 +57,6 @@ const accompanyPostList = (
 export default function AccompanyPostList({
   continentList,
 }: AccompanyPostListProps) {
-  const { getAccompanyList, getDestinationList } = useAccompany();
-
-  const { data: allDestinationList, refetch: allDestinationListRefetch } =
-    getDestinationList;
-  const { data: allAccompanyList, refetch: allAccompanyListRefetch } =
-    getAccompanyList;
   const { filter } = useModal();
   const [accompanyList, setAccompanyList] = useState<TAccompanyPost[]>([]);
   const [filteredAccompanyList, setFilteredAccompanyList] = useState<
@@ -80,8 +75,36 @@ export default function AccompanyPostList({
     startDate: new Date(),
   });
   const [filterLabelList, setFilterLabelList] = useState<string[]>([]);
+  const [searchParams, setSearchParams] = useState<TAccompanySearch>({
+    city: '',
+    continent: '',
+    country: '',
+    endDate: '',
+    maxAllowedAge: 'MIN',
+    maxMemberCount: 0,
+    minAllowedAge: 'MIN',
+    minMemberCount: 0,
+    page: 1,
+    preferGender: 'NO_PREFERENCE',
+    size: 8,
+    sort: '',
+    startDate: '',
+    status: '',
+  });
+
+  const { getAccompanyList, getDestinationList, getAccompanySearch } =
+    useAccompany();
+
+  const { data: allDestinationList, refetch: allDestinationListRefetch } =
+    getDestinationList;
+  const { data: allAccompanyList, refetch: allAccompanyListRefetch } =
+    getAccompanyList;
+
+  const { data: searchedAccompanyList, refetch: accompanySearchRefetch } =
+    getAccompanySearch(searchParams);
+
   const handleChangeTabValue = useCallback(
-    (tabId: string) => {
+    async (tabId: string) => {
       setContinent(tabId);
       setFilterLabelList([]);
       setFilterInfo({
@@ -116,6 +139,8 @@ export default function AccompanyPostList({
           )
         );
       }
+      const queryString = '';
+      await accompanySearchRefetch();
     },
 
     [continent]
@@ -247,7 +272,7 @@ export default function AccompanyPostList({
         <section className='max-xl:[calc(100%+1rem)] mb-[120px] flex h-full justify-center max-xl:-ml-4'>
           <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
             {filteredAccompanyList.length > 0 ? (
-              accompanyPostList(continent, filteredAccompanyList)
+              accompanyPostList(filteredAccompanyList)
             ) : (
               <WhNodata />
             )}
