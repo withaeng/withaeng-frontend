@@ -13,17 +13,6 @@ import Step2ModalContent from './Step2ModalContent';
 import Step3ModalContent from './Step3ModalContent';
 import Step0ModalContent from './Step0ModalContent';
 
-function StepBar({ value }: { value: number }): React.ReactNode {
-  return (
-    <div className='mt-2 h-0.5 w-full bg-primary-exLight'>
-      <div
-        className='h-full bg-primary-main transition-all'
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
-
 const initAccompany = {
   title: '',
   content: '',
