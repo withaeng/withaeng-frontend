@@ -86,6 +86,28 @@
   height: 8px;
   background: transparent;
 }
+@media not all and (min-width: 1280px) {
+  .rc-slider {
+    width: 92%;
+  }
+  .rc-slider-step,
+  .rc-slider-rail,
+  .rc-slider-track,
+  .rc-slider-tracks {
+    height: 5px;
+  }
+  .rc-slider-handle {
+    width: 15px;
+    height: 15px;
+    margin-top: -5px;
+  }
+  .rc-slider-mark-text {
+    font-size: x-small;
+  }
+  .rc-slider-mark {
+    top: 8px;
+  }
+}
 .rc-slider-disabled .rc-slider-track {
   background-color: #dad8d6;
 }
