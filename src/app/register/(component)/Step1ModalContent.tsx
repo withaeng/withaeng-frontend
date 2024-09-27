@@ -35,7 +35,9 @@ export default function Step1ModalContent({
 
   return (
     <div className='flex grow flex-col overflow-hidden'>
-      <h3 className='my-10 text-headline-03'>동행 등록을 진행해볼까요? 😃</h3>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        동행 등록을 진행해볼까요? 😃
+      </h3>
       <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <p>도시를 선택해주세요.</p>
@@ -53,7 +55,7 @@ export default function Step1ModalContent({
           />
         </div>
         <div>
-          <p className='mb-3'>인원을 설정해주세요. (본인 포함)</p>
+          <p className='mb-3'>동행 인원을 설정해주세요. (본인 포함)</p>
           <WhDropdown
             value={form.memberCount.toString()}
             onChange={(value: string) =>
@@ -67,7 +69,7 @@ export default function Step1ModalContent({
         </div>
         <div>
           <p className='mb-3'>여행 일정을 선택해주세요.</p>
-          <div className='mb-4 flex items-center gap-[22px]'>
+          <div className='mb-4 flex items-center gap-2 xl:gap-[22px]'>
             <WhCalendar
               value={dayjs(form.startTripDate).toDate()}
               onChange={(value: Date | null) =>

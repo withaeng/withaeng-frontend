@@ -70,14 +70,16 @@ export default function Step2ModalContent({
 
   return (
     <div className='flex grow flex-col overflow-hidden'>
-      <h3 className='my-10 text-headline-03'>어떤 동행을 원하세요?? 👀</h3>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        어떤 동행을 원하세요?? 👀
+      </h3>
       <div className='flex grow flex-col gap-10 overflow-auto'>
         <div>
           <div className='flex justify-between'>
             <p className='mb-5'>원하는 동행 연령을 설정해주세요.</p>
             <span className='text-subtitle-02'>{ageText()}</span>
           </div>
-          <div className='mb-12'>
+          <div className='mb-8 xl:mb-12'>
             <WhSlider
               range
               min={20}

@@ -16,6 +16,7 @@ import ResizableImageExtension from '@/app/sample/editor/TiptapImageResize';
 import '@/app/sample/editor/tiptap.css';
 import { CreateAccompanyRequest } from '@/@types/accompany';
 import { CameraIcon } from '../../../../public/assets/icons/edit';
+import { CloseIcon } from '../../../../public/assets/icons/menu';
 
 export default function Step3ModalContent({
   form,
@@ -80,7 +81,7 @@ export default function Step3ModalContent({
       hasImage: !!uploadFile,
     }));
     console.log(uploadFile);
-
+    if (!uploadFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(uploadFile);
     reader.onloadend = () => {
@@ -88,39 +89,53 @@ export default function Step3ModalContent({
     };
   };
 
+  const handleDeleteImage = () => {
+    setImage('');
+  };
+
   if (!editor) {
     return null;
   }
   return (
     <div className='flex grow flex-col overflow-hidden'>
-      <h3 className='my-10 text-headline-03'>마지막이에요! 힘내주세요!! ✈️</h3>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        마지막이에요! 힘내주세요!! ✈️
+      </h3>
       <div className='flex flex-col gap-4 overflow-auto'>
-        <button
-          type='button'
-          className='relative h-[216px] w-full'
-          onClick={handleOpenInput}
-        >
+        <div className='relative h-[216px] w-full'>
           {image ? (
-            <div className='flex h-full w-full items-center justify-center overflow-hidden'>
+            <div className='relative flex h-full w-full items-center justify-center overflow-hidden'>
               <Image
-                width={510}
+                width={533}
                 height={216}
-                className='object-cover'
+                className='object-contain'
                 src={image}
                 alt='배너 이미지'
               />
+              <button
+                type='button'
+                aria-label='닫기 버튼'
+                onClick={handleDeleteImage}
+                className='absolute right-3 top-3'
+              >
+                <CloseIcon width={24} height={24} stroke='#FFFFFF' />
+              </button>
             </div>
           ) : (
-            <div className='flex flex-col items-center justify-center gap-2.5 bg-nutral-white-02 py-15'>
+            <button
+              type='button'
+              className='flex w-full flex-col items-center justify-center gap-2.5 bg-nutral-white-02 py-15'
+              onClick={handleOpenInput}
+            >
               <CameraIcon />
               <p className='text-center text-caption-03 text-nutral-white-04'>
                 사진을 업로드해주세요. <br />
                 업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
               </p>
               <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
-            </div>
+            </button>
           )}
-        </button>
+        </div>
         <input
           ref={bannerImage}
           id='banner-image'
