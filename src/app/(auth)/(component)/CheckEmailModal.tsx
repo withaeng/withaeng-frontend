@@ -21,7 +21,7 @@ export default function CheckEmailModalPage() {
 
   const handleEmail = () => {
     console.log('이메일 재전송');
-    resendEmail.mutate({ email: searchParams.has('email') });
+    resendEmail.mutate({ email: searchParams.get('email') });
   };
 
   return (
