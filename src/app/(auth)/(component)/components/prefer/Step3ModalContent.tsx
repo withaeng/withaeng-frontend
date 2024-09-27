@@ -19,9 +19,9 @@ export default function SignUpPreferStep3ModalContent() {
             {smokingTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={smokingType.includes(item.value)}
-                value={item.value}
-                onClick={() => updateSmokingType(item.value)}
+                checked={smokingType.includes(item.id)}
+                value={item.id}
+                onClick={() => updateSmokingType(item.id)}
               >
                 {item.value}
               </WhChip>
@@ -34,9 +34,9 @@ export default function SignUpPreferStep3ModalContent() {
             {drinkingTypeList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={drinkingType.includes(item.value)}
-                value={item.value}
-                onClick={() => updateDrinkingType(item.value)}
+                checked={drinkingType.includes(item.id)}
+                value={item.id}
+                onClick={() => updateDrinkingType(item.id)}
               >
                 {item.value}
               </WhChip>

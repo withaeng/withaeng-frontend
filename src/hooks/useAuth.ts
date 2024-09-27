@@ -67,7 +67,7 @@ export default function useAuth() {
         console.error(data.error.code + data.error.message);
       } else {
         console.log('성공?', data.data.accessToken);
-        setCookie('accessToken', data.data.accessToken);
+        setCookie('accessToken', `Bearer ${data.data.accessToken}`);
         router.replace('/');
         router.refresh();
       }
@@ -83,7 +83,7 @@ export default function useAuth() {
         console.error(data.error.code + data.error.message);
       } else {
         console.log('성공?', data);
-        setCookie('accessToken', data.data.accessToken);
+        setCookie('accessToken', `Bearer ${data.data.accessToken}`);
         router.replace(`/check-email?email=${variables.email}`);
       }
     },

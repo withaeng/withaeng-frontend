@@ -18,20 +18,20 @@ export default function SignUpPreferStep2ModalContent() {
 
   return (
     <>
-      <h3 className='text-headline-04 xl:text-headline-03 my-5'>
+      <h3 className='my-5 text-headline-04 xl:text-headline-03'>
         잘하고 계세요 :) <br />
         조금만 화이팅 해주세요!
       </h3>
-      <div className='flex flex-col gap-10 mb-11'>
+      <div className='mb-11 flex flex-col gap-10'>
         <div>
           <p className='mb-3'>여행 관심사는 어떻게 되세요?</p>
-          <div className='flex gap-2 flex-wrap'>
+          <div className='flex flex-wrap gap-2'>
             {preferTravelThemesList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={preferTravelThemes.includes(item.value)}
-                value={item.value}
-                onClick={() => updatePreferTravelThemes(item.value)}
+                checked={preferTravelThemes.includes(item.id)}
+                value={item.id}
+                onClick={() => updatePreferTravelThemes(item.id)}
               >
                 {item.value}
               </WhChip>
@@ -40,13 +40,13 @@ export default function SignUpPreferStep2ModalContent() {
         </div>
         <div>
           <p className='mb-3'>여행에서의 소비 스타일은 어때요?</p>
-          <div className='flex gap-2 flex-wrap'>
+          <div className='flex flex-wrap gap-2'>
             {consumeStyleList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={consumeStyle.includes(item.value)}
-                value={item.value}
-                onClick={() => updateConsumeStyle(item.value)}
+                checked={consumeStyle.includes(item.id)}
+                value={item.id}
+                onClick={() => updateConsumeStyle(item.id)}
               >
                 {item.value}
               </WhChip>
@@ -55,13 +55,13 @@ export default function SignUpPreferStep2ModalContent() {
         </div>
         <div>
           <p className='mb-3'>못 먹는 음식 있으세요?</p>
-          <div className='flex gap-2 flex-wrap'>
+          <div className='flex flex-wrap gap-2'>
             {foodRestrictionsList.map((item) => (
               <WhChip
                 key={item.id}
-                checked={foodRestrictions.includes(item.value)}
-                value={item.value}
-                onClick={() => updateFoodRestrictions(item.value)}
+                checked={foodRestrictions.includes(item.id)}
+                value={item.id}
+                onClick={() => updateFoodRestrictions(item.id)}
               >
                 {item.value}
               </WhChip>
