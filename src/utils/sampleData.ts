@@ -81,7 +81,7 @@ const continentList: TabData[] = [
   { id: 'KOREA', title: '국내' },
   { id: 'JAPAN', title: '일본' },
   { id: 'EAST_ASIA', title: '동아시아' },
-  { id: 'SOUTH_EAST_ASIA', title: '동남아시아' },
+  { id: 'SOUTHEAST_ASIA', title: '동남아시아' },
   { id: 'EUROPE', title: '유럽' },
   { id: 'NORTH_AMERICA', title: '북미' },
   { id: 'SOUTH_AMERICA', title: '남미' },

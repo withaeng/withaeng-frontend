@@ -1,3 +1,5 @@
+import { AccompanyAge, AccompanyGender } from '@/@types/accompany';
+
 export interface TAccompanyPost {
   id: number;
   userId: number;
@@ -41,4 +43,21 @@ export type TAccompanyFilter = {
   companionFree: boolean;
   age?: number | number[];
   ageFree: boolean;
+};
+
+export type TAccompanySearch = {
+  page: number;
+  size: number;
+  sort: string;
+  status: string;
+  continent: string;
+  country: string;
+  city: string;
+  startDate: string;
+  endDate: string;
+  minMemberCount: number;
+  maxMemberCount: number;
+  minAllowedAge: AccompanyAge;
+  maxAllowedAge: AccompanyAge;
+  preferGender: AccompanyGender;
 };

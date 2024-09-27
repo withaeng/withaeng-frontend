@@ -71,24 +71,33 @@ export default function WhCard({
 }: CardProps) {
   return (
     <div className={accompaniedCss(status)}>
-      <section className='relative h-[152px] w-full max-xl:h-[180px]'>
-        <Image
-          className='h-full w-full rounded object-cover'
-          src={thumbnailImageUrl}
-          alt='동행 썸네일 이미지'
-          fill
-        />
+      <section className='relative h-[152px] w-full'>
+        {thumbnailImageUrl?.startsWith("/") || thumbnailImageUrl?.startsWith("http") || thumbnailImageUrl?.startsWith("https") ? (
+          <Image
+            className='h-full w-full rounded object-cover'
+            src={thumbnailImageUrl}
+            alt='동행 썸네일 이미지'
+            fill
+          />
+        ) : (
+          <img className='absolute left-0 top-0 h-full w-full rounded object-cover' src={thumbnailImageUrl} alt='동행 썸네일 이미지' />
+        )}
+
         <span className={labelCss(status)}>{accompanyState(status)}</span>
       </section>
       <section className='flex justify-between text-caption-01 text-nutral-black-05'>
-        <div className='flex h-8 items-center gap-2 text-subtitle-02'>
-          <Image
-            className='inline h-full rounded-full object-cover'
-            src={profileImageUrl}
-            width={32}
-            height={32}
-            alt='프로필 이미지'
-          />
+        <div className='relative flex h-8 items-center gap-2 text-subtitle-02'>
+          {profileImageUrl?.startsWith("/") || profileImageUrl?.startsWith("http") || profileImageUrl?.startsWith("https") ? (
+            <Image
+              className='inline h-full rounded-full object-cover'
+              src={profileImageUrl}
+              width={32}
+              height={32}
+              alt='프로필 이미지'
+            />
+          ) : (
+            <img className='absolute left-0 top-0 h-full w-full rounded object-cover' src='' alt='동행 썸네일 이미지' />
+          )}
           <span className='text-subtitle-02 text-nutral-black-05'>
             {nickname}
           </span>
@@ -108,14 +117,15 @@ export default function WhCard({
       <section className='mt-1 max-w-full overflow-hidden text-ellipsis whitespace-nowrap'>
         <span className='text-subtitle-02 text-nutral-black-03'>{title}</span>
       </section>
-      <section className='mt-2 flex gap-3 pb-2'>
-        {tags !== null &&
-          tags.map((tag) => (
+      {tags !== null && (
+        <section className='mt-2 flex gap-3 pb-2'>
+          {tags.map((tag) => (
             <span key={tag} className='text-caption-01 text-primary-main'>
               {tag}
             </span>
           ))}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import PopularCityList from '@/app/(component)/PopularCityList';
 import {
-  accompanyList,
   continentList,
   popularCityList,
 } from '@/utils/sampleData';
@@ -35,7 +34,6 @@ export default function Page() {
           </span>
           <AccompanyPostList
             continentList={continentList}
-            accompanyList={accompanyList}
           />
         </section>
       </div>
