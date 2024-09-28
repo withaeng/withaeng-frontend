@@ -82,15 +82,15 @@ const selectedAgeRange = (age: number | number[]): string => {
 export default function FilterModal({
   options,
   onHandle,
-  city,
+  // city,
 }: FilterModalProps) {
-  const [cityList, setCityList] = useState<
-    | {
-        id: string;
-        value: string;
-      }[]
-    | null
-  >(null);
+  // const [cityList, setCityList] = useState<
+  //   | {
+  //       id: string;
+  //       value: string;
+  //     }[]
+  //   | null
+  // >(null);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [today, setToday] = useState<boolean>(false);
@@ -132,7 +132,7 @@ export default function FilterModal({
   };
 
   const resetFilter = () => {
-    setCityList(null);
+    // setCityList(null);
     setSelectededCityList([]);
     setSelectedGenderList([]);
     setStartDate(null);
