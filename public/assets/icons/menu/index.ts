@@ -1,4 +1,3 @@
-import { ReactComponent } from './../../../../src/types/svg.d';
 export { ReactComponent as BellIcon } from './bell.svg';
 export { ReactComponent as BookmarkIcon } from './bookmark.svg';
 export { ReactComponent as CheckIcon } from './check.svg';
