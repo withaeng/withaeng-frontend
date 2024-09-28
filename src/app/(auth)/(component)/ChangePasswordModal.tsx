@@ -16,9 +16,9 @@ export default function ChangePasswordModalPage() {
     e.preventDefault();
     console.log('비밀번호 변경');
     changePassword.mutate({
-      email: searchParams.get('email'),
+      email: searchParams.get('email')!,
       password,
-      code: searchParams.get('code'),
+      code: searchParams.get('code')!,
     });
   };
 
