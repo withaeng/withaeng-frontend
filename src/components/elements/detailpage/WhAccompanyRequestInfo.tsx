@@ -222,53 +222,6 @@ export default function WhAccompanyRequestInfo() {
                       </WhModal>
                     ) : (
                       <>
-                        <div>
-                          {accompany.status === 'joining' && (
-                            <div className='mt-3 flex gap-[10px]'>
-                              <WhButton
-                                fitContent
-                                size='sm'
-                                onClick={() =>
-                                  handleOpenModal('cancel', accompany.nickname)
-                                }
-                                outLine
-                              >
-                                취소
-                              </WhButton>
-                              <WhButton
-                                fitContent
-                                size='sm'
-                                onClick={() =>
-                                  handleOpenModal('approve', accompany.nickname)
-                                }
-                              >
-                                승인
-                              </WhButton>
-                            </div>
-                          )}
-                          {accompany.status === 'joined' && (
-                            <div className={requestCss}>
-                              <CheckIcon
-                                width={20}
-                                height={20}
-                                stroke='#36C304'
-                              />
-                              <span className='mt-1 text-body-03 text-caption-success'>
-                                승인하셨습니다. 벌써 기대가 되네요!
-                              </span>
-                            </div>
-                          )}
-                          {accompany.status !== 'joining' &&
-                            accompany.status !== 'joined' && (
-                              <div className={requestCss}>
-                                <Close20Icon stroke='#2b1917' />
-                                <span className='mt-1 text-body-03 text-caption-main'>
-                                  동행이 취소됐습니다.
-                                </span>
-                              </div>
-                            )}
-                        </div>
-
                         <WhModal
                           isOpen={isOpen && modalType === 'approve'}
                           onClose={onClose}
