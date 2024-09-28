@@ -76,14 +76,16 @@ export const drinkingTypeList = [
   { id: 'NON_DRINKER', value: '아예 음주 안함' },
 ];
 
-export interface UserDetail {
+export interface UserNickname {
   nickname: string;
+}
+
+export interface UserDetail {
   mbti: string[];
   preferTravelType: string;
   preferTravelThemes: string[];
   consumeStyle: string;
   foodRestrictions: string[];
-  preferAccompanyGender: string;
   smokingType: string;
   drinkingType: string;
 }

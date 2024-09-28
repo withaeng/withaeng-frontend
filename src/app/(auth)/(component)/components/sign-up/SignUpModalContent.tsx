@@ -40,9 +40,9 @@ export default function SignUpModalContent({
   };
 
   return (
-    <form onSubmit={handleSignUpSubmit} className='flex flex-col h-full'>
+    <form onSubmit={handleSignUpSubmit} className='flex h-full flex-col'>
       <WhModalHeader>회원가입 정보 입력</WhModalHeader>
-      <div className='grow flex flex-col gap-5 mt-5 xl:gap-10 xl:mt-10 xl:mx-[15px]'>
+      <div className='mt-5 flex grow flex-col gap-5 xl:mx-[15px] xl:mt-10 xl:gap-10'>
         <WhInput
           type='email'
           label='이메일'
@@ -81,36 +81,38 @@ export default function SignUpModalContent({
             성별 {/* FIXME: required label 처리 (임시 작업) */}
             <span className='text-caption-main'>*</span>
           </label>
-          <div id='sign-up_gender' className='flex mt-3 gap-8'>
+          <div id='sign-up_gender' className='mt-3 flex gap-8'>
             <WhRadio
               id='male'
-              name='isMale'
-              value='male'
-              checked={form.isMale}
-              onChange={() => setForm((prev) => ({ ...prev, isMale: true }))}
+              name='gender'
+              value='MALE'
+              checked={form.gender === 'MALE'}
+              onChange={() => setForm((prev) => ({ ...prev, gender: 'MALE' }))}
             >
               남성
             </WhRadio>
             <WhRadio
               id='female'
-              name='isMale'
-              value='female'
-              checked={!form.isMale}
-              onChange={() => setForm((prev) => ({ ...prev, isMale: false }))}
+              name='gender'
+              value='FEMALE'
+              checked={form.gender === 'FEMALE'}
+              onChange={() =>
+                setForm((prev) => ({ ...prev, gender: 'FEMALE' }))
+              }
             >
               여성
             </WhRadio>
           </div>
         </div>
       </div>
-      <div className='flex justify-between mb-3'>
+      <div className='mb-3 flex justify-between'>
         <label htmlFor='이용약관' className='text-body-03 text-nutral-black-05'>
           <span className={secondarySpanCss}>만 14세 이용</span>에 동의하며,{' '}
           <button
             type='button'
             aria-label='개인정보 이용약관 버튼'
             onClick={() => setTermPage(true)}
-            className={`${secondarySpanCss} underline cursor-pointer`}
+            className={`${secondarySpanCss} cursor-pointer underline`}
           >
             개인정보 이용약관
           </button>

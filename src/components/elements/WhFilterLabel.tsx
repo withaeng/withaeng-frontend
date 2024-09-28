@@ -11,8 +11,9 @@ interface WhFilterLabelProps {
 const containerStyle = (icon: string) => {
   switch (icon) {
     case 'right':
-    case 'left':
       return 'rounded-[50px] border border-nutral-white-03 bg-nutral-white-02 hover:border-primary-main hover:bg-primary-eexLight';
+    case 'left':
+      return 'rounded-[50px] border border-nutral-white-03 bg-nutral-white-02 active:border-primary-main active:bg-primary-eexLight';
     case 'none':
       return 'rounded bg-transparent hover:bg-secondary-exLight';
     default:
@@ -38,7 +39,7 @@ const textColorStyle = (icon: string) => {
     case 'right':
       return 'text-nutral-black-05 group-hover:text-primary-main';
     case 'left':
-      return 'text-nutral-black-03 group-hover:text-primary-main';
+      return 'text-nutral-black-03 group-active:text-primary-main';
     case 'none':
       return 'text-secondary-light group-hover:text-secondary-main';
     default:
@@ -63,7 +64,13 @@ export default function WhFilterLabel({
             width={20}
             height={20}
             fill='#535353'
-            className='group-hover:fill-primary-main'
+            className='group-active:hidden'
+          />
+          <Close20Icon
+            width={20}
+            height={20}
+            fill='#535353'
+            className='hidden group-active:block group-active:stroke-primary-main'
           />
         </div>
       )}

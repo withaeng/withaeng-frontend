@@ -3,7 +3,7 @@
 export type AuthModalType =
   | 'login'
   | 'signup'
-  | 'findPassword'
+  | 'find-password'
   | 'checkEmail'
   | 'prefer';
 
@@ -14,7 +14,7 @@ export interface UserSignIn {
 
 export interface UserSignUp extends UserSignIn {
   birth: Date;
-  isMale: boolean;
+  gender: 'MALE' | 'FEMALE';
 }
 
 export interface UserSignUpForm extends UserSignUp {
