@@ -1,0 +1,15 @@
+.slick-slide {
+  margin-right: 12px;
+}
+.slick-list {
+  margin-right: -12px;
+}
+
+@media (min-width: 1280px) {
+  .slick-slide {
+    margin-right: 20px;
+  }
+  .slick-list {
+    margin-right: -20px;
+  }
+}

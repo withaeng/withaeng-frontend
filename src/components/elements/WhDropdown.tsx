@@ -7,10 +7,10 @@ import {
 } from '../../../public/assets/icons/arrow';
 
 const defaultLabelCss =
-  'px-6 py-3 w-full border border-nutral-white-04 rounded flex justify-between disabled:bg-nutral-white-02 disabled:border-nutral-white-02';
+  'px-4 py-2.5 xl:px-6 xl:py-3 w-full border border-nutral-white-04 rounded flex justify-between disabled:bg-nutral-white-02 disabled:border-nutral-white-02';
 const focusLabelCss = 'border-nutral-black-04';
 const defaultCss =
-  'px-6 py-4 text-nutral-black-01 hover:bg-nutral-white-02 w-full text-start';
+  'px-4 py-3 xl:px-6 xl:py-4 text-nutral-black-01 hover:bg-nutral-white-02 w-full text-start';
 const focusCss = 'bg-primary-eexLight hover:bg-primary-exLight';
 
 interface DropdownData {

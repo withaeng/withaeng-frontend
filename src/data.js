@@ -5,7 +5,9 @@ const detailList = {
   thumbnailImageUrl: '/assets/images/thumbnailImageUrl.png',
   regist_at: '2024.12.12',
   view: 99,
-  title: '호스트가 작성한 타이틀 노출',
+  status: '모집중',
+  title:
+    '호스트가 작성한 타이틀 노출호스트가 작성한 타이틀 노출호스트가 작성한 타이틀 노출호스트가 작성한 타이틀 노출',
   tags: [
     { id: 0, title: '태그0' },
     { id: 1, title: '태그1' },

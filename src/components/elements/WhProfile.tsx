@@ -45,10 +45,10 @@ export default function WhProfile({
   const [isHateHover, setIsHateHover] = useState(false);
 
   return (
-    <div className='relative flex min-w-64 justify-center rounded bg-nutral-white-02 px-[14px] pb-5 pt-10 shadow-modal'>
+    <div className='relative flex min-w-64 justify-center rounded px-[14px] pb-5 pt-10 xl:bg-nutral-white-02 xl:shadow-modal'>
       <div className='flex flex-col items-center justify-center'>
         <Image
-          className='absolute -top-7 rounded-full'
+          className='absolute -top-7 rounded-full max-xl:-top-12'
           src={profileImage}
           width={56}
           height={56}
