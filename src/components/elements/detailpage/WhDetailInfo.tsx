@@ -1,12 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
 import {
   PencilIcon,
   PaperclipIcon,
   LinkIcon,
-  RemoveIcon,
+  TrashcanIcon,
 } from '../../../../public/assets/icons/edit';
 import {
   UsersGroupIcon,
@@ -42,12 +43,15 @@ export default function WhDetailInfo() {
   const [isListOpen, setIsListOpen] = useState(true);
   const [editTag, setEditTag] = useState('');
 
+  const router = useRouter();
+
   const handleMoreClick = () => {
     setLookMore(!lookMore);
   };
 
-  const handleRemoveClick = () => {
-    onOpen();
+  const handleDeleteClick = () => {
+    onClose();
+    router.push('/');
   };
 
   const toggleEditMode = () => {
@@ -94,8 +98,8 @@ export default function WhDetailInfo() {
               <button type='button' onClick={toggleEditMode}>
                 <PencilIcon />
               </button>
-              <button type='button' onClick={handleRemoveClick}>
-                <RemoveIcon width={24} height={24} />
+              <button type='button' onClick={handleDeleteClick}>
+                <TrashcanIcon width={24} height={24} />
               </button>
             </div>
           </div>
@@ -115,7 +119,7 @@ export default function WhDetailInfo() {
             </div>
             <WhModalButtonList
               leftLabel='아니오'
-              onClick={onClose}
+              onClick={handleDeleteClick}
               label='네, 삭제할게요.'
             />
           </WhModal>

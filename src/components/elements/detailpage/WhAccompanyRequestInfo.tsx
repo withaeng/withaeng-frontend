@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import WhButton from '../WhButton';
 import { CheckIcon, Close20Icon } from '../../../../public/assets/icons/menu';
 import WhModal from '../modal/WhModal';
@@ -36,6 +37,8 @@ export default function WhAccompanyRequestInfo() {
   const [isListOpen, setIsListOpen] = useState(true);
   const isHost = false;
   const isWait = true;
+
+  const router = useRouter();
 
   const toggleListVisibility = () => setIsListOpen((prev) => !prev);
 
@@ -90,6 +93,11 @@ export default function WhAccompanyRequestInfo() {
     });
 
     setShowProfileModal(!showProfileModal);
+  };
+
+  const handleDeleteClick = () => {
+    onClose();
+    router.push('/');
   };
 
   return (
@@ -296,7 +304,7 @@ export default function WhAccompanyRequestInfo() {
                           </div>
                           <WhModalButtonList
                             leftLabel='아니오'
-                            onClick={onClose}
+                            onClick={handleDeleteClick}
                             label='네, 동행을 취소할게요.'
                           />
                         </WhModal>
@@ -473,7 +481,7 @@ export default function WhAccompanyRequestInfo() {
                             </div>
                             <WhModalButtonList
                               leftLabel='아니오'
-                              onClick={onClose}
+                              onClick={handleDeleteClick}
                               label='네, 동행을 취소할게요.'
                             />
                           </WhModal>
