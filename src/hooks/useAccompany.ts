@@ -48,6 +48,7 @@ export default function useAccompany() {
   });
 
   const getAccompanySearch = (params: TAccompanySearch) =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useQuery({
       queryKey: ['accompany-search'],
       queryFn: () => accompanySeardhApi(params),
