@@ -68,7 +68,7 @@ export default function WhModal({
           className='z-40 h-full w-full bg-[#000000] opacity-20'
           onClick={isDismissible ? handleClose : undefined}
         />
-        <div className='modal-content absolute z-50 max-h-[800px] w-full rounded-t-[20px] bg-nutral-white-01 shadow-modal max-xl:bottom-0 max-xl:h-[calc(100vh-22px)] xl:left-1/2 xl:top-1/2 xl:w-fit xl:-translate-x-1/2 xl:-translate-y-1/2 xl:rounded'>
+        <div className='modal-content absolute z-50 w-full overflow-auto rounded-t-[20px] bg-nutral-white-01 shadow-modal max-xl:bottom-0 max-xl:max-h-[calc(100vh-22px)] xl:left-1/2 xl:top-1/2 xl:max-h-[800px] xl:w-fit xl:-translate-x-1/2 xl:-translate-y-1/2 xl:rounded'>
           <div className={`w-full xl:w-[680px] ${className}`}>
             {!hideCloseButton && (
               <button
