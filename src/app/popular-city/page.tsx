@@ -1,6 +1,6 @@
 'use client';
 
-import { accompanyList, popularCityList } from '@/utils/sampleData';
+import { popularCityList } from '@/utils/sampleData';
 import PopularCityAccompanyList from '@/app/popular-city/(components)/PopularCityAccompanyList';
 import Image from 'next/image';
 import { flags } from '@/utils/nationalFlags';
@@ -10,7 +10,10 @@ export default function PopularCityPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const city = popularCityList.find((el) => el.cityEng === searchParams.name);
+  const country = searchParams.country?.toString();
+  const continent = searchParams.continent?.toString();
+  const cityEng = searchParams.cityEng?.toString();
+  const city = popularCityList.find((el) => el.cityEng === cityEng);
   const cityName = city?.city;
   const flag = flags.find(
     (el: { country: string; flag: string }) => el.country === city?.countryEng
@@ -58,7 +61,11 @@ export default function PopularCityPage({
           <h1 className='text-headline-04 text-nutral-black-01 max-xl:pl-4'>
             {flag} {cityName} 동행 같이행
           </h1>
-          <PopularCityAccompanyList accompanyList={accompanyList} />
+          <PopularCityAccompanyList
+            country={country}
+            continent={continent}
+            cityEng={cityEng}
+          />
         </section>
       </div>
     </>

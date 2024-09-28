@@ -12,6 +12,7 @@ interface ModalState<T = any> {
   open: boolean;
   handler?: Handler<T>;
   props: T;
+  city: T;
   actions: {
     setOpen: (visible: boolean) => void;
     setType: (type: Type) => void;
@@ -21,6 +22,7 @@ interface ModalState<T = any> {
     setButtonNegativeText: (positiveText: string) => void;
     setHandler: (handler: Handler<T>) => void;
     setProps: (props: T) => void;
+    setCity: (city: T) => void;
   };
 }
 
@@ -32,6 +34,7 @@ export const useModalStore = create<ModalState>((set) => ({
   positiveText: '확인',
   negativeText: '취소',
   props: '',
+  city: '',
   actions: {
     setOpen: (visible: boolean) => set({ open: visible }),
     setType: (type: Type) => set({ type }),
@@ -41,6 +44,7 @@ export const useModalStore = create<ModalState>((set) => ({
     setButtonNegativeText: (negativeText: string) => set({ negativeText }),
     setHandler: (handler) => set({ handler }),
     setProps: (props) => set({ props }),
+    setCity: (city) => set({ city }),
   },
 }));
 

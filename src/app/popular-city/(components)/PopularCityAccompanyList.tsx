@@ -1,14 +1,18 @@
 'use client';
 
 import useModal from '@/hooks/useModal';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { TAccompanyFilter, TAccompanyPost } from '@/types/accompany';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
 import WhCard from '@/components/elements/WhCard';
 import dateUtil from '@/utils/dateUtil';
+import useAccompany from '@/hooks/useAccompany';
+import WhNodata from '@/components/elements/WhNodata';
 
 interface PopularCityAccompanyListProps {
-  accompanyList: TAccompanyPost[];
+  country?: string;
+  continent?: string;
+  cityEng?: string;
 }
 
 const accompanyPostList = (accompanyList: TAccompanyPost[]): ReactElement => (
@@ -33,7 +37,9 @@ const accompanyPostList = (accompanyList: TAccompanyPost[]): ReactElement => (
 );
 
 export default function PopularCityAccompanyList({
-  accompanyList,
+  country,
+  continent,
+  cityEng,
 }: PopularCityAccompanyListProps) {
   const { filter } = useModal();
   const [filterInfo, setFilterInfo] = useState<TAccompanyFilter>({
@@ -47,7 +53,17 @@ export default function PopularCityAccompanyList({
     gender: [],
     startDate: new Date(),
   });
+  const [accompanyList, setAccompanyList] = useState<TAccompanyPost[]>([]);
+  const [filteredAccompanyList, setFilteredAccompanyList] = useState<
+    TAccompanyPost[]
+  >([]);
+
   const [filterLabelList, setFilterLabelList] = useState<string[]>([]);
+
+  const { getAccompanyList, getDestinationList, getAccompanySearch } =
+    useAccompany();
+  const { data: allAccompanyList, refetch: allAccompanyListRefetch } =
+    getAccompanyList;
 
   const openFilterModal = async () => {
     const res = await filter(filterInfo);
@@ -115,6 +131,31 @@ export default function PopularCityAccompanyList({
     setFilterLabelList(filterLabelList.filter((lb) => lb !== label));
   };
 
+  const setData = async () => {
+    await allAccompanyListRefetch();
+  };
+
+  useEffect(() => {
+    setData();
+  }, []);
+
+  useEffect(() => {
+    const list =
+      allAccompanyList?.data?.filter(
+        (el) =>
+          el.destination.city === cityEng &&
+          el.destination.country === country &&
+          el.destination.continent === continent
+      ) || [];
+    setAccompanyList(list);
+  }, [allAccompanyList?.data]);
+
+  useEffect(() => {
+    if (accompanyList) {
+      setFilteredAccompanyList(accompanyList);
+    }
+  }, [accompanyList]);
+
   return (
     <>
       <section className='mb-5 mt-3 flex gap-3 overflow-auto max-xl:pl-4'>
@@ -139,7 +180,11 @@ export default function PopularCityAccompanyList({
       </section>
       <section className='mb-[120px] flex h-full w-full justify-center'>
         <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
-          {accompanyPostList(accompanyList)}
+          {filteredAccompanyList.length > 0 ? (
+            accompanyPostList(filteredAccompanyList)
+          ) : (
+            <WhNodata />
+          )}
         </ul>
       </section>
     </>

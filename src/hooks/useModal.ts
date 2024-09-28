@@ -11,6 +11,7 @@ const useModal = () => {
     setButtonNegativeText,
     setHandler,
     setProps,
+    setCity,
   } = useModalActions();
 
   const alert = (content: string, positiveText: string, title?: string) => {
@@ -41,10 +42,18 @@ const useModal = () => {
     });
   };
 
-  const filter = (props: TAccompanyFilter | null) => {
+  const filter = (
+    props: TAccompanyFilter | null,
+    city?: { id: string; value: string }[] | null
+  ) => {
     setOpen(true);
     setProps(props);
     setType('filter');
+    if (city) {
+      setCity(city);
+    } else {
+      setCity(null);
+    }
     return new Promise<TAccompanyFilter | null>((res) => {
       setHandler(res);
     });

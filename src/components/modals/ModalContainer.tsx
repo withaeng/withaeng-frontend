@@ -21,6 +21,7 @@ export default function ModalContainer() {
     negativeText,
     handler,
     props,
+    city,
   } = useModalStore();
   const { setOpen, setType, setProps } = useModalActions();
   const [modalRoot, setModalRoot] = useState<HTMLDivElement | null>(null);
@@ -56,7 +57,7 @@ export default function ModalContainer() {
     }
   };
 
-  const handleFilterClose = (res: TAccompanyFilter) => {
+  const handleFilterClose = (res: TAccompanyFilter | null) => {
     if (modalRef.current) {
       setOpen(false);
       setProps(null);
@@ -117,7 +118,11 @@ export default function ModalContainer() {
         )}
         {type === 'filter' && (
           <Modal ref={modalRef}>
-            <FilterModal onHandle={handleFilterClose} options={props} />
+            <FilterModal
+              onHandle={handleFilterClose}
+              options={props}
+              city={city}
+            />
           </Modal>
         )}
       </div>,

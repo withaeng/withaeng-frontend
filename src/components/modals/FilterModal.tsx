@@ -12,6 +12,7 @@ import { CloseIcon } from '../../../public/assets/icons/menu';
 interface FilterModalProps {
   options: TAccompanyFilter;
   onHandle?: (value: TAccompanyFilter | null) => void;
+  city: { id: string; value: string }[];
 }
 
 const cityList = [
@@ -78,7 +79,18 @@ const selectedAgeRange = (age: number | number[]): string => {
   return `${age}살`;
 };
 
-export default function FilterModal({ options, onHandle }: FilterModalProps) {
+export default function FilterModal({
+  options,
+  onHandle,
+  city,
+}: FilterModalProps) {
+  const [cityList, setCityList] = useState<
+    | {
+        id: string;
+        value: string;
+      }[]
+    | null
+  >(null);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [today, setToday] = useState<boolean>(false);
@@ -120,6 +132,7 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
   };
 
   const resetFilter = () => {
+    setCityList(null);
     setSelectededCityList([]);
     setSelectedGenderList([]);
     setStartDate(null);
@@ -224,27 +237,30 @@ export default function FilterModal({ options, onHandle }: FilterModalProps) {
           </span>
         </div>
         <div className='mt-5 flex h-[232px] flex-col gap-10 overflow-auto xl:h-[619px]'>
-          <section className='flex w-full flex-col gap-5'>
-            <div>
-              <span className={tilteCss}>여행지</span>
-              <span className={descriptionCss}>
-                {selectedCityList.map((el) => el.value).join(',')} (최대 3개
-                도시까지 선택 가능합니다.)
-              </span>
-            </div>
-            <div className='flex flex-wrap gap-5'>
-              {cityList.map((city) => (
-                <WhChip
-                  key={city.id}
-                  value={city.value}
-                  checked={isIncludes('city', city.id)}
-                  onClick={() => selectCity(city)}
-                >
-                  {city.value}
-                </WhChip>
-              ))}
-            </div>
-          </section>
+          {cityList && (
+            <section className='flex w-full flex-col gap-5'>
+              <div>
+                <span className={tilteCss}>여행지</span>
+                <span className={descriptionCss}>
+                  {selectedCityList.map((el) => el.value).join(',')} (최대 3개
+                  도시까지 선택 가능합니다.)
+                </span>
+              </div>
+              <div className='flex flex-wrap gap-5'>
+                {cityList.map((city) => (
+                  <WhChip
+                    key={city.id}
+                    value={city.value}
+                    checked={isIncludes('city', city.id)}
+                    onClick={() => selectCity(city)}
+                  >
+                    {city.value}
+                  </WhChip>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section className='flex w-full flex-col gap-5'>
             <div>
               <span className={tilteCss}>동행 일정</span>
