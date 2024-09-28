@@ -22,7 +22,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'withaeng.com',
+        hostname: 'withaeng-images.s3.ap-northeast-2.amazonaws.com',
       },
     ],
   },
