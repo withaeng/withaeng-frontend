@@ -1,25 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
 import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
 import Step3ModalContent from '@/app/(auth)/(component)/components/prefer/Step3ModalContent';
 import WhModal from '@/components/elements/modal/WhModal';
 import WhModalButtonList from '@/components/elements/modal/WhModalButtonList';
-import { useRouter } from 'next/navigation';
+import StepBar from '@/components/StepBar';
 import useUser from '@/hooks/useUser';
 import { useUserStore } from '@/providers/UserStoreProvider';
-
-function StepBar({ value }: { value: number }): React.ReactNode {
-  return (
-    <div className='mt-2 h-0.5 w-full bg-primary-exLight'>
-      <div
-        className='h-full bg-primary-main transition-all'
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
 
 export default function PreferModalPage() {
   const router = useRouter();
@@ -75,11 +66,7 @@ export default function PreferModalPage() {
     >
       <div className='flex h-full flex-col'>
         <p className='text-right text-nutral-black-04'>
-          <button
-            type='button'
-            onClick={handleClose}
-            className='max-xl:text-caption-01'
-          >
+          <Link className='max-xl:text-caption-01' href='/' replace>
             건너뛰기
           </button>
         </p>

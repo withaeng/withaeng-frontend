@@ -16,6 +16,7 @@ import StarterKit from '@tiptap/starter-kit';
 import ResizableImageExtension from '@/app/sample/editor/TiptapImageResize';
 import '@/app/sample/editor/tiptap.css';
 import { CameraIcon } from '../../../../public/assets/icons/edit';
+import { CloseIcon } from '../../../../public/assets/icons/menu';
 
 export default function Step3ModalContent({
   form,
@@ -74,6 +75,7 @@ export default function Step3ModalContent({
     const { files } = e.target;
     const uploadFile = files[0];
     console.log(uploadFile);
+    if (!uploadFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(uploadFile);
     reader.onloadend = () => {
@@ -81,39 +83,53 @@ export default function Step3ModalContent({
     };
   };
 
+  const handleDeleteImage = () => {
+    setImage('');
+  };
+
   if (!editor) {
     return null;
   }
   return (
-    <div className='grow flex flex-col overflow-hidden'>
-      <h3 className='text-headline-03 my-10'>마지막이에요! 힘내주세요!! ✈️</h3>
+    <div className='flex grow flex-col overflow-hidden'>
+      <h3 className='my-5 text-headline-04 xl:my-10 xl:text-headline-03'>
+        마지막이에요! 힘내주세요!! ✈️
+      </h3>
       <div className='flex flex-col gap-4 overflow-auto'>
-        <button
-          type='button'
-          className='w-full h-[216px] relative'
-          onClick={handleOpenInput}
-        >
+        <div className='relative h-[216px] w-full'>
           {image ? (
-            <div className='flex items-center justify-center w-full h-full overflow-hidden'>
+            <div className='relative flex h-full w-full items-center justify-center overflow-hidden'>
               <Image
-                width={510}
+                width={533}
                 height={216}
-                className='object-cover'
+                className='object-contain'
                 src={image}
                 alt='배너 이미지'
               />
+              <button
+                type='button'
+                aria-label='닫기 버튼'
+                onClick={handleDeleteImage}
+                className='absolute right-3 top-3'
+              >
+                <CloseIcon width={24} height={24} stroke='#FFFFFF' />
+              </button>
             </div>
           ) : (
-            <div className='bg-nutral-white-02 flex flex-col justify-center items-center gap-2.5 py-15'>
+            <button
+              type='button'
+              className='flex w-full flex-col items-center justify-center gap-2.5 bg-nutral-white-02 py-15'
+              onClick={handleOpenInput}
+            >
               <CameraIcon />
               <p className='text-center text-caption-03 text-nutral-white-04'>
                 사진을 업로드해주세요. <br />
                 업로드하신 이미지가 없으면 기본이미지가 올라갑니다.
               </p>
               <p className='text-caption-03 text-nutral-white-04'>(1280x460)</p>
-            </div>
+            </button>
           )}
-        </button>
+        </div>
         <input
           ref={bannerImage}
           id='banner-image'
@@ -130,21 +146,21 @@ export default function Step3ModalContent({
           value={form.title}
         />
 
-        <div className='prose max-w-none tiptap'>
+        <div className='tiptap prose max-w-none'>
           <TiptapRegisterToolbar editor={editor} />
           <EditorContent
-            className='w-full prose-p:m-0 border-nutral-white-04 border h-[30rem] overflow-auto p-5 *:outline-none *:h-full'
+            className='h-[30rem] w-full overflow-auto border border-nutral-white-04 p-5 *:h-full *:outline-none prose-p:m-0'
             editor={editor}
           />
         </div>
-        <div className='border-b border-nutral-white-03 p-2 flex gap-2 mb-2'>
+        <div className='mb-2 flex gap-2 border-b border-nutral-white-03 p-2'>
           <ul className='flex gap-3'>
             {form.tags.length > 0 &&
               form.tags.map((tag) => (
                 <li key={tag}>
                   <button
                     type='button'
-                    className='shrink-0 px-4 py-2 rounded-full bg-primary-main text-nutral-white-01 hover:bg-primary-light text-caption-01'
+                    className='shrink-0 rounded-full bg-primary-main px-4 py-2 text-caption-01 text-nutral-white-01 hover:bg-primary-light'
                     onClick={() => delTags(tag)}
                   >
                     {tag}
@@ -155,7 +171,7 @@ export default function Step3ModalContent({
           {form.tags.length < 3 && (
             <input
               type='text'
-              className='outline-none grow py-1'
+              className='grow py-1 outline-none'
               value={newTag}
               maxLength={10}
               onChange={(e) => setNewTag(e.target.value)}
