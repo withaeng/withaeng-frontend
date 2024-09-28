@@ -5,8 +5,11 @@ import WhDetailInfo from '@/components/elements/detailpage/WhDetailInfo';
 import WhAccompanyRequestInfo from '@/components/elements/detailpage/WhAccompanyRequestInfo';
 import WhCard from '@/components/elements/WhCard';
 import detailList from '@/data';
+import WhReplyContent from '@/components/elements/detailpage/WhReplyContent';
+import DetailMenu from '../../components/elements/detailpage/DetailMenu';
 
-const titleCss = 'text-nutral-black-01 text-headline-04 mt-[60px] mb-5';
+const titleCss =
+  'text-nutral-black-01 text-headline-04 mt-[60px] max-xl:mt-10 mb-5';
 
 const accompanyList = [
   {
@@ -80,48 +83,58 @@ const accompanyList = [
 ];
 
 const showAccompanyList = () => (
-    <>
-      {accompanyList.map((accompany) => (
-        <li key={`accompany-${accompany.id}`}>
-          <WhCard
-            status={accompany.status}
-            profileImageUrl={accompany.profileImageUrl}
-            nickname={accompany.nickname}
-            title={accompany.title}
-            tags={accompany.tags}
-            startTripDate={accompany.startTripDate}
-            endTripDate={accompany.endTripDate}
-            accompanyCnt={accompany.accompanyCnt}
-            accompaniedCnt={accompany.accompaniedCnt}
-            thumbnailImageUrl={accompany.thumbnailImageUrl}
-          />
-        </li>
-      ))}
-    </>
-  );
+  <>
+    {accompanyList.map((accompany) => (
+      <li key={`accompany-${accompany.id}`}>
+        <WhCard
+          status={accompany.status}
+          profileImageUrl={accompany.profileImageUrl}
+          nickname={accompany.nickname}
+          title={accompany.title}
+          tags={accompany.tags}
+          startTripDate={accompany.startTripDate}
+          endTripDate={accompany.endTripDate}
+          accompanyCnt={accompany.accompanyCnt}
+          accompaniedCnt={accompany.accompaniedCnt}
+          thumbnailImageUrl={accompany.thumbnailImageUrl}
+        />
+      </li>
+    ))}
+  </>
+);
 
 export default function DetailPage() {
   return (
     <div className='flex flex-col items-center'>
-      <Image
-        src={detailList.thumbnailImageUrl}
-        width={1280}
-        height={460}
-        alt='profile-image'
-      />
-      <div className='flex gap-5 my-5'>
-        {/* left */}
-        <WhDetailInfo />
+      <div className='relative'>
+        <div className='absolute right-6 top-4 cursor-pointer xl:hidden'>
+          <DetailMenu />
+        </div>
 
-        {/* right */}
-        <WhAccompanyRequestInfo />
+        <Image
+          src={detailList.thumbnailImageUrl}
+          width={1280}
+          height={460}
+          alt='profile-image'
+        />
       </div>
+      <div className='max-xl:w-full'>
+        <div className='my-5 flex gap-5 max-xl:flex-wrap'>
+          {/* left */}
+          <WhDetailInfo />
 
+          {/* right */}
+          <WhAccompanyRequestInfo />
+        </div>
+        <WhReplyContent />
+      </div>
       {/* 추천 동행 게시글 */}
-      <div>
-        <h2 className={titleCss}>추천 동행 게시글</h2>
-        <section className='w-full h-full mb-[120px]'>
-          <ul className='flex flex-wrap gap-5'>{showAccompanyList()}</ul>
+      <div className='max-xl:w-full max-xl:flex-wrap max-xl:px-4'>
+        <h2 className={`${titleCss} max-xl:mb-[10px]`}>추천 동행 게시글</h2>
+        <section className='mb-[120px] h-full w-full max-w-[1280px]'>
+          <ul className='flex gap-5 overflow-x-auto max-xl:gap-[10px]'>
+            {showAccompanyList()}
+          </ul>
         </section>
       </div>
     </div>
