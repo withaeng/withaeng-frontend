@@ -16,7 +16,12 @@ export async function apiPost<T, R>(
   }).then((res) => res.json());
 }
 
-export function apiGet() {}
+export function apiGet<R>(url: string | URL | Request): Promise<ApiResponse<R>> {
+  return fetch(url, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((res) => res.json());
+}
 
 export async function apiPut<T, R>(
   url: string | URL | Request,

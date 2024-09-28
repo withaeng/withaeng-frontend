@@ -442,6 +442,11 @@ export interface AccompanyReplyResponse {
   status: AccompanyReplyStatus;
 }
 
+/* 동행 게시글 전체 조회 res */
+export interface AccompanyItem {
+
+}
+
 export type {
   AccompanyAge,
   AccompanyGender,
