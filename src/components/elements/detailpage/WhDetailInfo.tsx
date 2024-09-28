@@ -37,7 +37,7 @@ const moreLookTextCss =
 const isHost = false;
 
 export default function WhDetailInfo() {
-  const { isOpen, onOpen, onClose } = useModal();
+  const { isOpen, onClose } = useModal();
   const [lookMore, setLookMore] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false); // 추가된 상태
   const [isListOpen, setIsListOpen] = useState(true);
@@ -59,20 +59,6 @@ export default function WhDetailInfo() {
   };
 
   const toggleListVisibility = () => setIsListOpen((prev) => !prev);
-
-  const addTags = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // if (e.key === 'Enter' && newTag !== '' && !form.tags.includes(newTag)) {
-    //   setForm((prev) => ({ ...prev, tags: [...prev.tags, newTag] }));
-    //   setNewTag('');
-    // }
-  };
-
-  const delTags = (delTag: string) => {
-    // setForm((prev) => ({
-    //   ...prev,
-    //   tags: prev.tags.filter((tag) => tag !== delTag),
-    // }));
-  };
 
   return (
     <div className='max-w-[847px] max-xl:w-full'>
@@ -231,7 +217,6 @@ export default function WhDetailInfo() {
                   value={editTag}
                   maxLength={10}
                   onChange={(e) => setEditTag(e.target.value)}
-                  onKeyUp={addTags}
                   placeholder='태그를 입력해주세요. (최대 3개)'
                 />
               </div>

@@ -36,11 +36,11 @@ export default function WhReplyContent() {
   const [lookMore, setLookMore] = useState(false);
   const [modalConfig, setModalConfig] = useState({
     isOpen: false,
-    type: '', // 'profile' or 'feedback'
+    type: '',
     title: '',
     message: '',
   });
-  const { isOpen, onOpen, onClose } = useModal();
+  const { onClose } = useModal();
 
   const handleMoreClick = () => {
     setLookMore(!lookMore);
@@ -150,7 +150,7 @@ export default function WhReplyContent() {
       {modalConfig.isOpen && modalConfig.type === 'profile' && (
         <WhModal
           isOpen={modalConfig.isOpen}
-          onClose={closeModal}
+          onClose={onClose}
           className='flex flex-col justify-between px-4 py-5 xl:px-[84px] xl:py-[72px]'
           hideCloseButton
         >
