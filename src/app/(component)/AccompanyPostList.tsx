@@ -80,8 +80,8 @@ export default function AccompanyPostList({
     continent: '',
     country: '',
     endDate: '',
-    maxAllowedAge: 'MIN',
-    maxMemberCount: 0,
+    maxAllowedAge: 'MAX',
+    maxMemberCount: 8,
     minAllowedAge: 'MIN',
     minMemberCount: 0,
     page: 1,
@@ -139,7 +139,6 @@ export default function AccompanyPostList({
           )
         );
       }
-      const queryString = '';
       await accompanySearchRefetch();
     },
 
@@ -152,6 +151,10 @@ export default function AccompanyPostList({
       return;
     }
 
+    console.log(searchedAccompanyList?.data);
+    setSearchParams({
+      ...searchParams,
+    });
     setFilterInfo(res);
 
     const list: string[] = [];

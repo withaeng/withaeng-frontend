@@ -32,7 +32,7 @@ const accompanySeardhApi = (
   searchParams.append('preferGender', params.preferGender.toString());
 
   const queryString = searchParams.toString();
-  return apiGet(`/api/v1/accompany/search?=${queryString}`);
+  return apiGet(`/api/v1/accompany/search?${queryString}`);
 };
 
 export default function useAccompany() {
