@@ -68,8 +68,8 @@ export type AccompanyData = {
   continent: string;
   country: string;
   city: string;
-  startTripDate: Date;
-  endTripDate: Date;
+  startTripDate: Date | null;
+  endTripDate: Date | null;
   bannerImageUrl: string;
   accompanyCnt: number;
   openKakaoUrl: string;

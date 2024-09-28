@@ -70,7 +70,7 @@ export default function Step1ModalContent({
               onChange={(value: Date | null) =>
                 setForm((prev: AccompanyData) => ({
                   ...prev,
-                  startTripDate: value ?? undefined,
+                  startTripDate: value,
                 }))
               }
             />
@@ -82,7 +82,7 @@ export default function Step1ModalContent({
                   onChange={(value: Date | null) =>
                     setForm((prev: AccompanyData) => ({
                       ...prev,
-                      startTripDate: value ?? undefined,
+                      startTripDate: value,
                     }))
                   }
                 />
