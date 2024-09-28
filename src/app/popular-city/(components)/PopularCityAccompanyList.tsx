@@ -60,8 +60,7 @@ export default function PopularCityAccompanyList({
 
   const [filterLabelList, setFilterLabelList] = useState<string[]>([]);
 
-  const { getAccompanyList, getDestinationList, getAccompanySearch } =
-    useAccompany();
+  const { getAccompanyList } = useAccompany();
   const { data: allAccompanyList, refetch: allAccompanyListRefetch } =
     getAccompanyList;
 
