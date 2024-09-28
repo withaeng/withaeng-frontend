@@ -50,8 +50,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/:path*',
-        destination: process.env.API_BASE_URL + '/:path*',
+        source: '/api/:path*',
+        destination: process.env.API_BASE_URL + '/api/:path*',
       },
     ];
   },
