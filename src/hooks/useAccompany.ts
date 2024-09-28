@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ApiResponse } from '@/@types/response';
-import { apiGet, apiPost } from '@/utils/api';
+import { apiGet, apiPost, apiPut } from '@/utils/api';
 import { TAccompanyPost, TAccompanySearch } from '@/types/accompany';
 import {
   CreateAccompanyRequest,
@@ -49,7 +49,7 @@ const registerPostApi = (
 };
 
 /** S3 image upload */
-const uploadPostImageApi = (url: string, image: File) => apiPost(url, image);
+const uploadPostImageApi = (url: string, image: File) => apiPut(url, image);
 
 export default function useAccompany() {
   const router = useRouter();
