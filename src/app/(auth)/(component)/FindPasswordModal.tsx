@@ -17,13 +17,13 @@ export default function FindPasswordModalPage() {
     e.preventDefault();
     console.log('비밀번호 찾기 이메일 전송');
     await sendEmailPw.mutateAsync({ email }).then(() => {
-      router.replace(`/checkEmailPw?${createQueryString('email', email)}`);
+      router.replace(`/check-email-pw?${createQueryString('email', email)}`);
     });
   };
 
   return (
     <WhModal isOpen onClose={() => router.back()}>
-      <div className='px-4 py-5 xl:px-[105px] xl:py-[72px] max-xl:h-full'>
+      <div className='px-4 py-5 max-xl:h-full xl:px-[105px] xl:py-[72px]'>
         <FindPasswordModalContent
           email={email}
           setEmail={setEamil}

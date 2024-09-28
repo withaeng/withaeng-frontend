@@ -14,7 +14,7 @@ import { useUserStore } from '@/providers/UserStoreProvider';
 
 export default function PreferModalPage() {
   const router = useRouter();
-  const { updateUserDetail } = useUser();
+  const { updateUserNickname, updateUserPrefer } = useUser();
   const [step, setStep] = useState(1);
   const {
     nickname,
@@ -23,20 +23,18 @@ export default function PreferModalPage() {
     preferTravelThemes,
     consumeStyle,
     foodRestrictions,
-    preferAccompanyGender,
     smokingType,
     drinkingType,
   } = useUserStore((state) => state);
 
   const updateData = () => {
-    updateUserDetail.mutate({
-      nickname,
+    updateUserNickname.mutate({ nickname });
+    updateUserPrefer.mutate({
       mbti,
       preferTravelType,
       preferTravelThemes,
       consumeStyle,
       foodRestrictions,
-      preferAccompanyGender,
       smokingType,
       drinkingType,
     });
@@ -70,7 +68,7 @@ export default function PreferModalPage() {
         <p className='text-right text-nutral-black-04'>
           <Link className='max-xl:text-caption-01' href='/' replace>
             건너뛰기
-          </Link>
+          </button>
         </p>
         <StepBar value={(step / 3) * 100} />
         {step === 1 && (

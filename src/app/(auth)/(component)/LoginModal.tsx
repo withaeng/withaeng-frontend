@@ -7,24 +7,24 @@ export default function LoginModalPage() {
   return (
     <WhModal isOpen>
       <div className='px-10 py-[125px] xl:px-[101px] xl:py-[116px]'>
-        <div className='mb-5 xl:mb-12 flex justify-center'>
+        <div className='mb-5 flex justify-center xl:mb-12'>
           <LogoImage />
         </div>
         <LoginModalContent />
-        <div className='flex justify-between mt-5 xl:mx-10 text-nutral-black-03'>
-          <Link href='/findPassword' replace>
+        <div className='mt-5 flex justify-between text-nutral-black-03 xl:mx-10'>
+          <Link href='/find-password' replace>
             <button type='button' className='text-body-03'>
               비밀번호 찾기
             </button>
           </Link>
-          <div className='flex gap-2 items-center'>
+          <div className='flex items-center gap-2'>
             <p className='text-body-03 max-xl:hidden'>
               아직 회원이 아니신가요?
             </p>
             <Link href='/signup' replace>
               <button
                 type='button'
-                className='xl:text-secondary-main text-subtitle-02 xl:text-body-03'
+                className='text-subtitle-02 xl:text-body-03 xl:text-secondary-main'
               >
                 회원가입
               </button>
