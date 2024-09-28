@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Step1ModalContent from '@/app/(auth)/(component)/components/prefer/Step1ModalContent';
 import Step2ModalContent from '@/app/(auth)/(component)/components/prefer/Step2ModalContent';
@@ -66,7 +65,11 @@ export default function PreferModalPage() {
     >
       <div className='flex h-full flex-col'>
         <p className='text-right text-nutral-black-04'>
-          <Link className='max-xl:text-caption-01' href='/' replace>
+          <button
+            type='button'
+            className='max-xl:text-caption-01'
+            onClick={handleClose}
+          >
             건너뛰기
           </button>
         </p>
