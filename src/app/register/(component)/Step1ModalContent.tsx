@@ -46,10 +46,12 @@ export default function Step1ModalContent({
             tabValue={tabCountry}
             onTabChange={setTabCountry}
             value={form.country ?? ''}
-            onChange={(value: string) =>
+            onChange={() =>
               setForm((prev: CreateAccompanyRequest) => ({
                 ...prev,
-                country: value,
+                continent: 'EAST_ASIA',
+                country: 'KOREA',
+                city: 'SEOUL',
               }))
             }
           />
