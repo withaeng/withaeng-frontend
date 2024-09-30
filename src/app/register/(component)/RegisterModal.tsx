@@ -48,7 +48,7 @@ export default function RegisterModal() {
     <WhModal
       isOpen
       onClose={() => router.back()}
-      className='h-full max-h-[800px] overflow-auto px-4 pb-5 pt-15 xl:h-[800px] xl:px-[85px] xl:py-[72px]'
+      className='h-full max-h-[800px] px-4 pb-5 pt-15 xl:h-[800px] xl:px-[85px] xl:py-[72px]'
       isDismissible={false}
     >
       <div className='flex h-full flex-col'>
