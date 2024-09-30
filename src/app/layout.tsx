@@ -121,7 +121,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko' className={pretendard.className}>
-      <head>
+      {/* <head>
         <link
           rel='stylesheet'
           href='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css'
@@ -134,7 +134,7 @@ export default function RootLayout({
           src='https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js'
           async
         />
-      </head>
+      </head> */}
       <body className='flex h-dvh flex-col'>
         <QueryConfigContext>
           <Header />
@@ -142,7 +142,7 @@ export default function RootLayout({
           <Footer />
           {modal}
           <div id='modal-root' />
-          <div id='global-modal' className='h-full w-full' />
+          {/* <div id='global-modal' className='h-full w-full' /> */}
           <ModalContainer />
         </QueryConfigContext>
       </body>

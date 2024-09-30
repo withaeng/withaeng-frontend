@@ -1,4 +1,4 @@
-@import "../styles/custom_calendar.css";
+@import '../styles/custom_calendar.css';
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +15,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-nutral-white-03 rounded-full;
+  @apply rounded-full bg-nutral-white-03;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,7 +45,6 @@
     opacity: 0;
   }
 }
-
 
 /* ui kit > uk-modal */
 .uk-modal {

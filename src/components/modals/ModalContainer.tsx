@@ -45,7 +45,7 @@ export default function ModalContainer() {
     if (modalRef.current) {
       setOpen(false);
       handler?.(true);
-      window.UIkit.modal(modalRef.current).hide();
+      // window.UIkit.modal(modalRef.current).hide();
     }
   };
 
@@ -53,7 +53,7 @@ export default function ModalContainer() {
     if (modalRef.current) {
       setOpen(false);
       handler?.(false);
-      window.UIkit.modal(modalRef.current).hide();
+      // window.UIkit.modal(modalRef.current).hide();
     }
   };
 
@@ -62,13 +62,13 @@ export default function ModalContainer() {
       setOpen(false);
       setProps(null);
       handler?.(res);
-      window.UIkit.modal(modalRef.current).hide();
+      // window.UIkit.modal(modalRef.current).hide();
     }
   };
 
   useEffect(() => {
     if (modalRoot && modalRef.current && open) {
-      window.UIkit.modal(modalRef.current).show();
+      // window.UIkit.modal(modalRef.current).show();
     }
   }, [modalRoot, modalRef, open]);
 
