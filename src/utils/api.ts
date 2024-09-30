@@ -40,6 +40,19 @@ export async function apiPut<T, R>(
   }).then((res) => res.json());
 }
 
+export async function apiFilePut<R>(
+  url: string | URL | Request,
+  file: File
+): Promise<ApiResponse<R>> {
+  return fetch(url, {
+    method: 'PUT',
+    body: file,
+    headers: {
+      'Content-Type': file.type,
+    },
+  }).then((res) => res.json());
+}
+
 export async function apiPatch<T, R>(
   url: string | URL | Request,
   body: T

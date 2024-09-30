@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ApiResponse } from '@/@types/response';
-import { apiGet, apiPost, apiPut } from '@/utils/api';
+import { apiFilePut, apiGet, apiPost } from '@/utils/api';
 import { TAccompanyPost, TAccompanySearch } from '@/types/accompany';
 import {
   CreateAccompanyRequest,
@@ -49,7 +49,7 @@ const registerPostApi = (
 };
 
 /** S3 image upload */
-const uploadPostImageApi = (url: string, image: File) => apiPut(url, image);
+const uploadPostImageApi = (url: string, image: File) => apiFilePut(url, image);
 
 export default function useAccompany() {
   const router = useRouter();
@@ -83,9 +83,12 @@ export default function useAccompany() {
         console.log('성공?');
         // 이미지 있으면 S3에 업로드
         if (variables.imageFile) {
+          const formData = new FormData();
+          formData.append('Content-Type', variables.imageFile.type);
+          formData.append('file', variables.imageFile);
           uploadPostImageApi(data.data.preSignedUrl, variables.imageFile);
         }
-        router.replace(`/detail/${data.data.id}`);
+        // router.replace(`/detail/${data.data.id}`);
       }
     },
     onError: console.error,
