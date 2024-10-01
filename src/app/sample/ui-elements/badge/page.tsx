@@ -50,16 +50,16 @@ const badgeList = [
     value: '동행 성공 100회',
   },
   {
-    name: 'lock',
+    name: 'no_data',
     value: '동행 성공 100회',
   },
 ];
 
 export default function Page() {
   return (
-    <section className='h-full grid grid-cols-3 gap-x-12 gap-y-12 justify-items-center bg-nutral-white-02 py-[60px] px-20'>
+    <section className='grid h-full grid-cols-3 justify-items-center gap-x-12 gap-y-12 bg-nutral-white-02 px-20 py-[60px]'>
       {badgeList.map((badge) => (
-        <div className='flex flex-col gap-4 items-center'>
+        <div className='flex flex-col items-center gap-4'>
           <WhBadge key={badge.name} name={badge.name} />
           <span className='text-subtitle-01'>{badge.value}</span>
         </div>

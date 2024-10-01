@@ -25,7 +25,7 @@ export default function WhTab({
 }: TabProps) {
   return (
     <div>
-      <ul className='text-subtitle-01 flex whitespace-nowrap overflow-x-auto w-full'>
+      <ul className='text-subtitle-01 flex whitespace-nowrap overflow-x-auto w-full pl-0 m-0'>
         {dataList.map((item) => (
           <li key={item.id}>
             <button

@@ -5,9 +5,9 @@ import {
 
 export default function Footer() {
   return (
-    <footer className='py-10 bg-nutral-white-02 border-t border-t-nutral-white-03'>
-      <ul className='flex justify-center items-center text-caption-02 text-nutral-white-04'>
-        <li className='flex items-center gap-2 text-caption-01 text-nutral-black-04 cursor-pointer px-5'>
+    <footer className='border-t border-t-nutral-white-03 bg-nutral-white-02 py-10'>
+      <ul className='flex items-center justify-center text-caption-02 text-nutral-white-04'>
+        <li className='flex cursor-pointer items-center gap-2 px-5 text-caption-01 text-nutral-black-04'>
           <CopyrightIcon />
           2024 Withaeng
         </li>

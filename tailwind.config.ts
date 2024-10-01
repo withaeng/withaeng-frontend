@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  mode: 'jit', // calc 사용 가능
   theme: {
     colors: {
       primary: {
@@ -156,6 +157,13 @@ const config: Config = {
         '26': '6.5rem',
         '29': '7.25rem',
       },
+    },
+    screens: {
+      xs: '360px',
+      sm: '640px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
     },
   },
   plugins: [require('@tailwindcss/typography')],

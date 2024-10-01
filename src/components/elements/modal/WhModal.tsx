@@ -60,22 +60,22 @@ export default function WhModal({
       mountOnEnter
       unmountOnExit
       classNames='modal-transition'
-      className='fixed top-0 left-0 w-dvw h-dvh'
+      className='fixed left-0 top-0 h-dvh w-dvw'
     >
       <div ref={nodeRef}>
         <div
           role='presentation'
-          className='w-full h-full bg-[#000000] opacity-20 z-40'
+          className='z-40 h-full w-full bg-[#000000] opacity-20'
           onClick={isDismissible ? handleClose : undefined}
         />
-        <div className='modal-content absolute max-xl:bottom-0 max-xl:h-[576px] w-full xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2 bg-nutral-white-01 z-50 xl:w-fit rounded-t-[20px] xl:rounded shadow-modal'>
-          <div className={`w-full xl:w-[680px] h-full ${className}`}>
+        <div className='modal-content absolute z-50 max-h-[800px] w-full overflow-auto rounded-t-[20px] bg-nutral-white-01 shadow-modal max-xl:bottom-0 max-xl:max-h-[calc(100vh-22px)] xl:left-1/2 xl:top-1/2 xl:w-fit xl:-translate-x-1/2 xl:-translate-y-1/2 xl:rounded'>
+          <div className={`w-full xl:w-[680px] ${className}`}>
             {!hideCloseButton && (
               <button
                 type='button'
                 aria-label='닫기 버튼'
                 onClick={handleClose}
-                className='absolute top-5 right-5'
+                className='absolute right-5 top-5'
               >
                 <CloseIcon width={24} height={24} stroke='#333333' />
               </button>

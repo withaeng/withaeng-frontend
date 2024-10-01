@@ -10,7 +10,7 @@ const initFormData: UserSignUpForm = {
   email: '',
   password: '',
   birth: new Date(),
-  isMale: true,
+  gender: 'MALE',
   term: false,
 };
 
@@ -20,7 +20,7 @@ export default function SignUpModalPage() {
 
   return (
     <WhModal isOpen>
-      <div className='px-4 py-5 xl:px-[105px] h-full xl:py-[72px] xl:h-[800px]'>
+      <div className='h-full px-4 py-5 xl:h-[800px] xl:px-[105px] xl:py-[72px]'>
         {!termPage ? (
           <SignUpModalContent
             form={form}

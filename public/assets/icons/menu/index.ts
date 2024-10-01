@@ -10,3 +10,4 @@ export { ReactComponent as SearchIcon } from './search.svg';
 export { ReactComponent as SettingIcon } from './setting.svg';
 export { ReactComponent as ShareIosIcon } from './share-ios.svg';
 export { ReactComponent as TagIcon } from './tag.svg';
+export { ReactComponent as Kebab } from './kebab.svg';
