@@ -34,12 +34,12 @@ const topInfoTextCss = 'text-caption-02 text-nutral-black-04';
 const moreLookTextCss =
   'min-xl:hidden mt-3 max-xl:text-body-03 text-nutral-black-05';
 
-const isHost = false;
+const isHost = true;
 
 export default function WhDetailInfo() {
-  const { isOpen, onClose } = useModal();
+  const { isOpen, onClose, onOpen } = useModal();
   const [lookMore, setLookMore] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(false); // 추가된 상태
+  const [isEditMode, setIsEditMode] = useState(false);
   const [isListOpen, setIsListOpen] = useState(true);
   const [editTag, setEditTag] = useState('');
 
@@ -50,15 +50,29 @@ export default function WhDetailInfo() {
   };
 
   const handleDeleteClick = () => {
+    onOpen();
+  };
+
+  const confirmDelete = () => {
     onClose();
     router.push('/');
   };
 
   const toggleEditMode = () => {
-    setIsEditMode(!isEditMode); // Edit 모드 토글
+    setIsEditMode(!isEditMode);
   };
 
   const toggleListVisibility = () => setIsListOpen((prev) => !prev);
+
+  const handleShareClipBoard = async () => {
+    const currentUrl = window.location.href;
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      alert('링크가 복사되었습니다. 친구들과 함께 떠나볼까요?');
+    } catch (err) {
+      console.log('링크 복사를 실패하였습니다.');
+    }
+  };
 
   return (
     <div className='max-w-[847px] max-xl:w-full'>
@@ -78,7 +92,7 @@ export default function WhDetailInfo() {
 
             {/* right */}
             <div className='flex gap-6 max-xl:hidden'>
-              <button type='button'>
+              <button type='button' onClick={handleShareClipBoard}>
                 <LinkIcon />
               </button>
               <button type='button' onClick={toggleEditMode}>
@@ -105,8 +119,8 @@ export default function WhDetailInfo() {
             </div>
             <WhModalButtonList
               leftLabel='아니오'
-              onClick={handleDeleteClick}
               label='네, 삭제할게요.'
+              onClick={confirmDelete}
             />
           </WhModal>
 

@@ -104,10 +104,16 @@ export default function WhAccompanyRequestInfo() {
     <div className='w-[393px] max-xl:mt-5 max-xl:w-full'>
       <div className='flex justify-between pr-4'>
         <h3 className='mb-3 text-subtitle-01 max-xl:px-4'>
-          {isHost ? '동행장' : `승인 요청 리스트`}
-          <span className='text-primary-main'>
-            &nbsp;{detailList.itemList.length}
-          </span>
+          {isHost ? (
+            '동행장'
+          ) : (
+            <>
+              승인 요청 리스트
+              <span className='text-primary-main'>
+                &nbsp;{detailList.itemList.length}
+              </span>
+            </>
+          )}
         </h3>
         <ArrowIcon
           className={`transform cursor-pointer transition-transform duration-300 xl:hidden ${

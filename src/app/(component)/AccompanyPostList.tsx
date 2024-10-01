@@ -13,6 +13,7 @@ import WhCard from '@/components/elements/WhCard';
 import WhFilterLabel from '@/components/elements/WhFilterLabel';
 import useAccompany from '@/hooks/useAccompany';
 import WhNodata from '@/components/elements/WhNodata';
+import { useRouter } from 'next/navigation';
 
 interface AccompanyPostListProps {
   continentList: TabData[];
@@ -34,22 +35,27 @@ function formatSchedule(startDate: Date, endDate: Date = new Date()): string {
   return `${startDateStr}(${duration}일)`;
 }
 
-const accompanyPostList = (accompanyList: TAccompanyPost[]): ReactElement => (
+const accompanyPostList = (
+  accompanyList: TAccompanyPost[],
+  handlePostClick: (id: number) => void
+): ReactElement => (
   <>
     {accompanyList.map((accompany) => (
       <li key={accompany.id} className='w-full'>
-        <WhCard
-          status={accompany.status}
-          profileImageUrl={accompany.userProfileImageUrl}
-          nickname={accompany.userNickname}
-          title={accompany.title}
-          tags={accompany.tags}
-          startTripDate={accompany.startTripDate}
-          endTripDate={accompany.endTripDate}
-          accompanyCnt={accompany.memberCount}
-          accompaniedCnt={accompany.joinedCount}
-          thumbnailImageUrl={accompany.bannerImageUrl}
-        />
+        <button type='button' onClick={() => handlePostClick(accompany.id)}>
+          <WhCard
+            status={accompany.status}
+            profileImageUrl={accompany.userProfileImageUrl}
+            nickname={accompany.userNickname}
+            title={accompany.title}
+            tags={accompany.tags}
+            startTripDate={accompany.startTripDate}
+            endTripDate={accompany.endTripDate}
+            accompanyCnt={accompany.memberCount}
+            accompaniedCnt={accompany.joinedCount}
+            thumbnailImageUrl={accompany.bannerImageUrl}
+          />
+        </button>
       </li>
     ))}
   </>
@@ -57,6 +63,8 @@ const accompanyPostList = (accompanyList: TAccompanyPost[]): ReactElement => (
 export default function AccompanyPostList({
   continentList,
 }: AccompanyPostListProps) {
+  const router = useRouter();
+
   const { filter } = useModal();
   const [accompanyList, setAccompanyList] = useState<TAccompanyPost[]>([]);
   const [filteredAccompanyList, setFilteredAccompanyList] = useState<
@@ -245,6 +253,10 @@ export default function AccompanyPostList({
     }
   }, [allDestinationList?.data]);
 
+  const handlePostClick = (id: string) => {
+    router.push(`/accompany/${id}`);
+  };
+
   return (
     <div className='max-xl:pl-4'>
       <WhTab
@@ -275,7 +287,7 @@ export default function AccompanyPostList({
         <section className='max-xl:[calc(100%+1rem)] mb-[120px] flex h-full justify-center max-xl:-ml-4'>
           <ul className='m-0 flex w-full flex-wrap gap-5 pl-0 max-sm:justify-center'>
             {filteredAccompanyList.length > 0 ? (
-              accompanyPostList(filteredAccompanyList)
+              accompanyPostList(filteredAccompanyList, handlePostClick)
             ) : (
               <WhNodata />
             )}

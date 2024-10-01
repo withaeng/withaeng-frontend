@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import PopularCityList from '@/app/(component)/PopularCityList';
-import {
-  continentList,
-  popularCityList,
-} from '@/utils/sampleData';
+import { continentList, popularCityList } from '@/utils/sampleData';
 import AccompanyPostList from '@/app/(component)/AccompanyPostList';
 import FloatingButton from '@/app/(component)/FloatingButton';
 
@@ -14,7 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className='max-xs:mb-10 mb-[59px] bg-nutral-white-02 py-[52px]'>
+      <div className='mb-[59px] bg-nutral-white-02 py-[52px] max-xs:mb-10'>
         <section className='mx-auto w-full max-w-7xl'>
           <span className='inline-block text-left text-headline-04 text-nutral-black-03 max-xl:pl-4 xl:hidden xl:text-headline-02'>
             ✈️ 지금, 가장 많이 떠나는 곳이에요
@@ -32,9 +29,7 @@ export default function Page() {
           <span className='text-left text-headline-04 text-nutral-black-01 max-xl:pl-4'>
             🛫 원하는 여행지를 설정하세요.
           </span>
-          <AccompanyPostList
-            continentList={continentList}
-          />
+          <AccompanyPostList continentList={continentList} />
         </section>
       </div>
       <FloatingButton />
